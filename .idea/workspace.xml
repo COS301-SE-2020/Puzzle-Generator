@@ -64,6 +64,7 @@
       <option name="presentableId" value="Default" />
       <updated>1592075260767</updated>
       <workItem from="1592075264172" duration="4544000" />
+      <workItem from="1592083996643" duration="603000" />
     </task>
     <task id="LOCAL-00001" summary="Added node modules to directory">
       <created>1592075972276</created>
@@ -90,7 +91,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

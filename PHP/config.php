@@ -1,5 +1,4 @@
 <?php
-$db = pg_connect("host=ec2-176-34-114-78.eu-west-1.compute.amazonaws.com dbname=d8al2oqsu0r3qc user=dmkrncobzlbxty password=
-56a0b4aa37594eb2b4a12136dcb4cc67ec2524b9edcebd9d9009580b8d922a96");
+$myPDO = new PDO('pgsql:host=ec2-54-228-209-117.eu-west-1.compute.amazonaws.com; dbname=dfqtmc7rr2t3l3', 'kxdtgexhuustyz', '90aa97f7e6cbcae5a990672689f5501f60beb55617de070c88f1913aed6f7b5f');
 
 ?>

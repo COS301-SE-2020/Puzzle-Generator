@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const dotenv = require('dotenv').config();
 const Str = require('@supercharge/strings')
 
-const PORT = process.env.port || 8080
+const PORT = process.env.port || 443
 
 const DB_NAME = "dfqtmc7rr2t3l3";
 const DB_USERNAME = "kxdtgexhuustyz";

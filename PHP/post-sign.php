@@ -22,7 +22,7 @@
         $data_string = json_encode($data);
 
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "http://127.0.0.1:64800/posts");
+        curl_setopt($ch, CURLOPT_URL, "http://127.0.0.1:443/posts");
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

@@ -10,7 +10,7 @@
   <body>
   
 
-    <form role="form" method="post" action="post-sign.php">
+    <form role="form" method="post" action="php/post-sign.php">
       <div class="form-group row">
         <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
         <div class="col-sm-10">

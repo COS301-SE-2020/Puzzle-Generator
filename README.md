@@ -14,6 +14,7 @@ https://share.clickup.com/l/h/4-2672456-1/f369fe92bad9fb7
 * Charlotte Jacobs:
 
 * Jaynill Gopal:
+http://www.linkedin.com/in/jaynill-gopal-5b32381a4
 
 * Tapiwa Mazibuko:
 https://www.linkedin.com/in/tapiwa-m-066326120

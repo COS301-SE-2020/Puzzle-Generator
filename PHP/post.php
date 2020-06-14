@@ -65,7 +65,7 @@
               exit();
      	}
 
-        echo "The form has been submitted";
+        echo "You have successfully signed up.";
         session_start();
         $data = array("username" => $_POST['email'], "password" => $_POST['password'], "name" => $_POST['user']);
         $data_string = json_encode($data);

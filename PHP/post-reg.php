@@ -15,7 +15,7 @@
         $errPass = '<p class="errText">Password must be at least 8 characters and must contain at least one lower case letter, one upper case letter and one digit</p>';
     }
     else {
-        echo "The form has been submitted";
+        echo "You have successfully signed up.";
         session_start();
         $data = array("username" => $_POST['email'], "password" => $_POST['password'], "name" => $_POST['user']);
         $data_string = json_encode($data);

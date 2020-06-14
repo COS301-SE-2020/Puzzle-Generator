@@ -38,6 +38,12 @@
           <li class="nav-item mr-4"><strong>
             <a class="nav-link" href="PHP/view.php">View</a></strong>
           </li>
+          <li class="nav-item mr-4"><strong>
+            <a class="nav-link" href="PHP/register.php">Register</a></strong>
+          </li>
+          <li class="nav-item mr-4"><strong>
+            <a class="nav-link" href="PHP/sign_in.php">Sign in</a></strong>
+          </li>
         </ul>
       </nav>
     </div>

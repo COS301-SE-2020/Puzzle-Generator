@@ -35,7 +35,7 @@
             $data = array("username" => $_POST['email'], "password" => $_POST['password'], "name" => $_POST['user']);
             $data_string = json_encode($data);
 
-            $ch = curl_init('http://localhost:443/phpcallback');
+            $ch = curl_init('/phpcallback');
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

@@ -29,7 +29,7 @@ https://www.linkedin.com/in/tsholofelo-gomba-8
 ### Charlotte Jacobs 
 u15165622
 * Charlotte was responsible for the html and css of the website as well as some database functionality.
-* 
+* https://charley817.github.io
 
 ### Jaynill Gopal 
 u15175295

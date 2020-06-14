@@ -8,6 +8,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
+    <script>
+
+
+    </script>
     <?php
 
 
@@ -26,6 +30,7 @@
         }
         else {
             echo "The form has been submitted";
+            alert("here");
             session_start();
             $data = array("username" => $_POST['email'], "password" => $_POST['password'], "name" => $_POST['user']);
             $data_string = json_encode($data);
@@ -45,7 +50,7 @@
     }
      ?>
 
-    <form role="form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <form role="form" method="post" action="post-reg.php">
       <div class="form-group row">
         <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
         <div class="col-sm-10">

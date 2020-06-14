@@ -12,6 +12,7 @@ https://share.clickup.com/l/h/4-2672456-1/f369fe92bad9fb7
 
 ## Members LinkedIn Profile Links
 * Charlotte Jacobs:
+https://www.linkedin.com/in/charlotte-jacobs-b1558216b/
 
 * Jaynill Gopal:
 http://www.linkedin.com/in/jaynill-gopal-5b32381a4

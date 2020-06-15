@@ -3,11 +3,7 @@
 
   if (isset($_POST['submit'])) {
     // Check if name has been entered
-    if (empty($_POST['user'])) {
-        $errName = 'Please enter your user name';
-    }
-    // Check if email has been entered and is valid
-    else if (empty($_POST['email'])) {
+    if (empty($_POST['email'])) {
         $errEmail = 'Please enter a valid email address';
     }
     // check if a password has been entered and if it is a valid password
@@ -16,7 +12,6 @@
     }
     else {
         echo "You have successfully signed in.";
-        alert("here");
         session_start();
         $data = array("username" => $_POST['email'], "password" => $_POST['password']);
         $data_string = json_encode($data);

@@ -27,6 +27,7 @@ https://www.linkedin.com/in/tapiwa-m-066326120
 https://www.linkedin.com/in/tsholofelo-gomba-8
 
 * Yuval Langa:
+https://www.linkedin.com/in/yuval-langa-27ab251ab/
 
 # Profile Descriptions
 ### Charlotte Jacobs 

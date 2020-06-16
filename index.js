@@ -4,8 +4,9 @@ const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 const dotenv = require('dotenv').config();
 const Str = require('@supercharge/strings')
+var cors = require('cors');
 
-const PORT = process.env.port || 8080
+const PORT = process.env.port || 3200
 
 const DB_NAME = "dfqtmc7rr2t3l3";
 const DB_USERNAME = "kxdtgexhuustyz";
@@ -23,6 +24,7 @@ const pool = new Pool
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 /*
 **user endpoints below
@@ -30,6 +32,10 @@ app.use(express.json());
 
 //create user endpoint
 app.post('/api/users/createUser', (request, response) => {
+	//set headers
+	  response.header('Access-Control-Allow-Origin','*');
+	  response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+	  response.header('Content-Type','application/json');
 	//retrieve password, username and name from the request body
 	const newUserUsername = request.body.username;
 	const newUserPassword = request.body.password;
@@ -101,6 +107,10 @@ app.post('/api/users/createUser', (request, response) => {
 
 //login user endpoint
 app.post('/api/users/login', (request, response) => {
+	//set headers
+	  response.header('Access-Control-Allow-Origin','*');
+	  response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+	  response.header('Content-Type','application/json');
 	//retrieve username from the request body
 	const enteredUsername = request.body.username;
 
@@ -135,12 +145,16 @@ app.post('/api/users/login', (request, response) => {
 
 //puzzle creation endpoint
 app.post('/api/puzzle/createPuzzle', (request, response) => {
+	//set headers
+	  response.header('Access-Control-Allow-Origin','*');
+	  response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+	  response.header('Content-Type','application/json');
 	const userToken = request.body.token;
 	const puzzleName = request.body.name;
 	var currentUserId = null;
 
 	pool.query('SELECT * FROM public."users" WHERE "token" = ($1)', [userToken], (error, results) => {
-		if(error){			
+		if(error){
 			response.status(400).send("Server error: " + error.message );
 		}
 		else
@@ -155,7 +169,7 @@ app.post('/api/puzzle/createPuzzle', (request, response) => {
 					}
 					else
 					{
-						response.status(200);
+						response.status(200).send("Puzzle created");
 					}
 				});
 			}
@@ -166,13 +180,17 @@ app.post('/api/puzzle/createPuzzle', (request, response) => {
 
 //rating creation endpoint
 app.post('/api/puzzle/createPuzzleRating', (request, response) => {
+	//set headers
+	  response.header('Access-Control-Allow-Origin','*');
+	  response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+	  response.header('Content-Type','application/json');
 	const userToken = request.body.token;
 	const selectedPuzzlePuzzleId = request.body.puzzleId;
 	const newRating = request.body.rating;
 	var currentUserId = null;
 
 	pool.query('SELECT * FROM public."users" WHERE "token" = ($1)', [userToken], (error, results) => {
-		if(error){			
+		if(error){
 			response.status(400).send("Server error: " + error.message );
 		}
 		else
@@ -187,7 +205,7 @@ app.post('/api/puzzle/createPuzzleRating', (request, response) => {
 					}
 					else
 					{
-						response.status(200);
+						response.status(200).send("Rating created");
 					}
 				});
 			}
@@ -198,6 +216,10 @@ app.post('/api/puzzle/createPuzzleRating', (request, response) => {
 
 //endpoint for getting puzzle ratings
 app.get('/api/getRatings', (request,response) => {
+  console.log("test");
+  response.header('Access-Control-Allow-Origin','*');
+  response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  response.header('Content-Type','application/json');
 	var ratingsJSONArrayObject = {};
 	var ratingJSONObjectReturned = {};
 	var currRating = null;
@@ -205,45 +227,44 @@ app.get('/api/getRatings', (request,response) => {
 	var currPID;
 	var index = 0;
 	var array = [];
-	
 	pool.query('SELECT * FROM public."puzzleRating"', (error, results) => {
-		if(error){			
+		if(error){
 			response.status(400).send("Server error: " + error.message );
-		}
-		else
-		{
-			ratingsJSONArrayObject = results.rows;
-			var ratingsJSONArrayObjectSize = Object.keys(ratingsJSONArrayObject).length;
-			ratingsJSONArrayObject.forEach(obj => {
-				Object.entries(obj).forEach(([key, value]) => {
-					if(key == "puzzleId"){
-					    currPID = `${value}`;
-					    pool.query('SELECT * FROM public."puzzle" WHERE "puzzleId" = ($1)', [currPID], (error, results) => {
-					        if(error){			
-								response.status(400).send("Server error: " + error.message );
-							}
-							else
-							{
-								if(results.rowCount  > 0 )
+			}
+			else
+			{
+				ratingsJSONArrayObject = results.rows;
+				var ratingsJSONArrayObjectSize = Object.keys(ratingsJSONArrayObject).length;
+				ratingsJSONArrayObject.forEach(obj => {
+			        Object.entries(obj).forEach(([key, value]) => {
+			        	if(key == "puzzleId"){
+			        		currPID = `${value}`;
+	 		        		pool.query('SELECT * FROM public."puzzle" WHERE "puzzleId" = ($1)', [currPID], (error, results) => {
+			        			if(error){
+									response.status(400).send("Server error: " + error.message );
+								}
+								else
 								{
-									ratingJSONObjectReturned = {"title":results.rows[0].name, "rating": ratingsJSONArrayObject[index].rating};
-									++index;
-									array.push(ratingJSONObjectReturned);
-									if(index == ratingsJSONArrayObjectSize)
+									if(results.rowCount  > 0 )
 									{
-										response.status(201).send(array);
+										ratingJSONObjectReturned = {"title":results.rows[0].name, "rating": ratingsJSONArrayObject[index].rating, "userId": ratingsJSONArrayObject[index].userId, "puzzleId": ratingsJSONArrayObject[index].puzzleId};
+										++index;
+										array.push(ratingJSONObjectReturned);
+										if(index == ratingsJSONArrayObjectSize)
+										{
+											response.status(201).send(array);
+										}
 									}
 								}
-							}
-			     		});
-			       	}
-			    });
-		  	});
-		}
-	});
+			        		});
+			        	}
+			        });
+		    	});
+			}
+		});
 });
 
-app.get('/', (req, res) => res.send('user management testing'))
+app.get('/', (req, res) => res.send('Puzzle Generator API'))
 
 
 app.listen(PORT);

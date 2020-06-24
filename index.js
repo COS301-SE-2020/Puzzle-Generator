@@ -216,7 +216,6 @@ app.post('/api/puzzle/createPuzzleRating', (request, response) => {
 
 //endpoint for getting puzzle ratings
 app.get('/api/getRatings', (request,response) => {
-  console.log("test");
   response.header('Access-Control-Allow-Origin','*');
   response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   response.header('Content-Type','application/json');
@@ -264,8 +263,7 @@ app.get('/api/getRatings', (request,response) => {
 		});
 });
 
-app.get('/', (req, res) => res.send('Puzzle Generator API'))
+app.get('/', (req, res) => res.send('Puzzle Generator API'));
 
 
 app.listen(PORT);
-console.

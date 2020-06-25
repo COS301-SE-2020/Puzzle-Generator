@@ -26,7 +26,7 @@
             'Content-Length: ' . strlen($data_string))
         );
 
-        echo curl_exec($ch)."\n";
+        //echo curl_exec($ch)."\n";
         $result = curl_exec($ch);
         $json = json_decode($result, true);
         curl_close($ch);

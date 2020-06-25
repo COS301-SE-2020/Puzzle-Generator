@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>Canvas</title>
+
+
+  <script type="text/javascript" src="canvas.js" async></script>
+  <style>
+    body {
+      margin: 0;
+      overflow-x: hidden;
+    }
+    #div1 {
+      width: 350px;
+      height: 70px;
+      padding: 10px;
+      border: 1px solid #aaaaaa;
+    }
+  </style>
+  <script>
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("text");
+      ev.target.appendChild(document.getElementById(data));
+    }
+</script>
+</head>
+
+<body>
+  <div style = "text-align:center;" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <canvas height="600" width="800"></canvas>
+  </div>
+
+  <img id="drag1" src="https://i.pinimg.com/originals/05/e0/4c/05e04cd99c1ef5e8cd526d2b5a20e6b1.jpg" draggable="true" ondragstart="drag(event)" width="590" height="693">
+
+</body>
+
+</html>

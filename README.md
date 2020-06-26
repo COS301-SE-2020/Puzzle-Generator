@@ -1,62 +1,27 @@
-# Puzzle-Generator
-### Puzzles have been a hobby of many people over the centuries, coming in variousforms which have various ways of solving.  Puzzles have played a role in people’sproblem solving skills.  Puzzle generators have allowed for more puzzles to becreated, using various techniques to create interesting and challenging puzzles.
+# PrometheusPuzzles
 
-# Links
-* Demo 1:
-https://drive.google.com/open?id=1dgIFI7GV9VXc4w2dRC03IuXgYNfCkN8K
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
 
-## Documenation
-* SRS Document:
-https://www.overleaf.com/read/qqzbxwhmwvxf
+## Development server
 
-## Project Management Tool
-* Clickup:
-https://share.clickup.com/l/h/4-2672456-1/f369fe92bad9fb7
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Members LinkedIn Profile Links
-* Charlotte Jacobs:
-https://www.linkedin.com/in/charlotte-jacobs-b1558216b/
+## Code scaffolding
 
-* Jaynill Gopal:
-http://www.linkedin.com/in/jaynill-gopal-5b32381a4
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-* Tapiwa Mazibuko:
-https://www.linkedin.com/in/tapiwa-m-066326120
+## Build
 
-* Tsholofelo Gomba:
-https://www.linkedin.com/in/tsholofelo-gomba-8
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-* Yuval Langa:
-https://www.linkedin.com/in/yuval-langa-27ab251ab/
+## Running unit tests
 
-# Profile Descriptions
-### Charlotte Jacobs 
-u15165622
-* Charlotte was responsible for the html and css of the website as well as some database functionality.
-* https://charley817.github.io
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-### Jaynill Gopal 
-u15175295
-* Jaynill was responsible for the web server as well as backend functionality and github branching.
-* https://jaynillg.github.io
+## Running end-to-end tests
 
-### Tapiwa Mazibuko 
-u18203541
-* Tapiwa was responsible for the database and github.
-* https://tapiwamazibuko.github.io
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-### Tsholofelo Gomba
-u17391718
-* Tsholofelo was responsible for the user management and github.
-* https://u173Tsh.github.io
+## Further help
 
-### Yuval Langa
-u18174142
-* Yval was responsible for the team management and integration.
-* https://glasses-kun.github.io/online-cv/
-
-
-
-
-
-
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

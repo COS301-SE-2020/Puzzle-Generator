@@ -6,7 +6,9 @@ const dotenv = require('dotenv').config();
 const Str = require('@supercharge/strings')
 var cors = require('cors');
 
-const PORT = process.env.port || 3200
+let server = require('nodeServer');
+
+const PORT = process.env.port || 3200;
 
 const DB_NAME = "dfqtmc7rr2t3l3";
 const DB_USERNAME = "kxdtgexhuustyz";

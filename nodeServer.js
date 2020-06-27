@@ -1,15 +1,16 @@
 var http = require('http');
 var fs = require('fs');
-var io = require('socket.io')(http);
+//var io = require('socket.io')(http);
 var app = require('express')(http);
 var url = require('url');
 //var time = require('time');
+const PORT = process.env.port || 3200;
 
 http.createServer(function (req, res) {
     /*res.writeHead(200, {'Content-Type': 'text/html'});
     res.end('Hello World!');*/
-    var qry  = url.parse(req.url, true);
-    fs.readFile('WCStyles.css', function(err, data) {
+   // var qry  = url.parse(req.url, true);
+    fs.readFile('/CSS/style.css', function(err, data) {
         if(err)
         {
             res.writeHead(404, {'Content-Type': 'text/css'});
@@ -20,19 +21,21 @@ http.createServer(function (req, res) {
         res.end();
     });
 
-    fs.readFile('clock.html', function(err, data) {
+    fs.readFile('index.html', function(err, data) {
         if(err)
         {
             res.writeHead(404, {'Content-Type': 'text/html'});
             return res.end("404 Not Found");
+            console.log(err)
         }
         res.writeHead(200, {'Content-Type': 'text/html'});
+        console.log(data);
         res.write(data);
         res.end();
     });
 
 
-    app.get('/', function (req, res) {
+    /*app.get('/', function (req, res) {
 
         if (req.param('q') == 'timezones') {
 
@@ -66,8 +69,10 @@ http.createServer(function (req, res) {
         }
 
     });*/
-}).listen(8881, function(){
-    console.log("Listening on port 8881");
+}).listen(PORT, function(){
+    console.log("Listening on port "+PORT);
 });
-
+app.get('/', function(req, res) {
+    res.sendFile('index.html', {root: __dirname })
+});
 

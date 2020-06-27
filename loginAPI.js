@@ -5,8 +5,9 @@ const bcrypt = require('bcryptjs');
 const dotenv = require('dotenv').config();
 const Str = require('@supercharge/strings')
 var cors = require('cors');
+var fs = require('fs');
 
-let server = require('nodeServer');
+//let server = require('./nodeServer');
 
 const PORT = process.env.port || 3200;
 
@@ -22,7 +23,7 @@ const pool = new Pool
     database:DB_NAME,
     password:DB_PASSWORD,
     ssl: { rejectUnauthorized: false }
-})
+});
 
 const app = express();
 app.use(express.json());
@@ -265,7 +266,35 @@ app.get('/api/getRatings', (request,response) => {
 		});
 });
 
-app.get('/', (req, res) => res.send('Puzzle Generator API'));
+app.get('/',  (req, res) =>{
+
+    fs.readFile('index.html', function(err, data) {
+        if(err)
+        {
+            res.writeHead(404, {'Content-Type': 'text/html'});
+            return res.end("404 Not Found");
+            console.log(err)
+        }else {
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            // console.log(data);
+            res.write(data);
+        }
+        res.end();
+    });
+	 fs.readFile('/CSS/style.css', function(err, data) {
+        if(err)
+        {
+            res.writeHead(404, {'Content-Type': 'text/css'});
+            return res.end("404 Not Found");
+        }
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.write(data);
+        res.end();
+    });
+
+} /*res.send('Puzzle Generator API')*/);
 
 
-app.listen(PORT);
+app.listen(PORT, function(){
+    console.log("Listening on port "+PORT);
+});

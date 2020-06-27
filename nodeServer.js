@@ -4,13 +4,42 @@ var fs = require('fs');
 var app = require('express')(http);
 var url = require('url');
 //var time = require('time');
-const PORT = process.env.port || 3200;
+//
+ const PORT = process.env.port || 3200;
 
+http.createServer(function (req, res) {
+    /*fs.readFile('/CSS/style.css', function(err, data) {
+        if(err)
+        {
+            res.writeHead(404, {'Content-Type': 'text/css'});
+            return res.end("404 Not Found");
+        }
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.write(data);
+        res.end();
+    });*/
+    fs.readFile('index.html', function(err, data) {
+         if(err)
+         {
+             res.writeHead(404, {'Content-Type': 'text/html'});
+             return res.end("404 Not Found");
+             console.log(err)
+         }else {
+            res.writeHead(200, {'Content-Type': 'text/html'});
+           // console.log(data);
+            res.write(data);
+        }
+        res.end();
+    });
+}).listen(PORT, function(){
+    console.log("Listening on port "+PORT);
+});
+/*
 http.createServer(function (req, res) {
     /*res.writeHead(200, {'Content-Type': 'text/html'});
     res.end('Hello World!');*/
    // var qry  = url.parse(req.url, true);
-    fs.readFile('/CSS/style.css', function(err, data) {
+   /* fs.readFile('/CSS/style.css', function(err, data) {
         if(err)
         {
             res.writeHead(404, {'Content-Type': 'text/css'});
@@ -22,15 +51,17 @@ http.createServer(function (req, res) {
     });
 
     fs.readFile('index.html', function(err, data) {
-        if(err)
+       /* if(err)
         {
             res.writeHead(404, {'Content-Type': 'text/html'});
             return res.end("404 Not Found");
             console.log(err)
+        }else */
+        /*{
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            console.log(data);
+            res.write(data);
         }
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        console.log(data);
-        res.write(data);
         res.end();
     });
 
@@ -69,10 +100,12 @@ http.createServer(function (req, res) {
         }
 
     });*/
+/*
 }).listen(PORT, function(){
     console.log("Listening on port "+PORT);
 });
+/*
 app.get('/', function(req, res) {
     res.sendFile('index.html', {root: __dirname })
 });
-
+*/

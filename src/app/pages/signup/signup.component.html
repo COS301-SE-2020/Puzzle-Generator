@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center none" style="background-color: aqua;">
+        <mat-card class="regForm">
+            <mat-card-header>
+                <mat-card-title>Sign Up</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="regFormContent">
+                <form [formGroup]="signUpForm" (ngSubmit)="createNewUser(signUpForm.value)"> 
+                    <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your full name</mat-label>
+                        <input class="input" matInput placeholder="John Doe" formControlName="name" required >
+                    </mat-form-field>
+                        <div>
+                            <ng-container *ngFor="let error of error_messages.name">
+                                <mat-error class="error-message" *ngIf="signUpForm.get('name').hasError(error.type) && (signUpForm.get('name').dirty || signUpForm.get('name').touched)">
+                                    {{ error.message }}
+                                </mat-error>
+                            </ng-container>
+                        </div> 
+                    </div>
+
+                    <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your email</mat-label>
+                        <input class="input" matInput placeholder="john@doe.com" formControlName="email" >
+                    </mat-form-field>
+                        <div>
+                            <ng-container *ngFor="let error of error_messages.email">
+                                <mat-error class="error-message" *ngIf="signUpForm.get('email').hasError(error.type) && (signUpForm.get('email').dirty || signUpForm.get('email').touched)">
+                                    {{ error.message }}
+                                </mat-error>
+                            </ng-container>
+                        </div>
+                    </div>
+
+                    <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your password</mat-label>
+                        <input class="input" matInput required formControlName="password">
+                    </mat-form-field>
+                        <div>
+                            <ng-container *ngFor="let error of error_messages.password">
+                                <mat-error class="error-message" *ngIf="signUpForm.get('password').hasError(error.type) && (signUpForm.get('password').dirty || signUpForm.get('password').touched)">
+                                    {{ error.message }}
+                                </mat-error>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Confirm password</mat-label>
+                        <input class="input" matInput  required formControlName="confirmPassword">
+                    </mat-form-field> 
+                        <div>
+                            <ng-container *ngFor="let error of error_messages.confirmPassword">
+                                <mat-error class="error-message" *ngIf="signUpForm.get('confirmPassword').hasError(error.type) && (signUpForm.get('confirmPassword').dirty || signUpForm.get('confirmPassword').touched)">
+                                    {{ error.message }}
+                                </mat-error>
+                            </ng-container>
+                        </div> 
+                    </div>
+                </form>  
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button>Sign Up</button>
+                <a routerLink="/index" mat-raised-button color="accent">Cancel</a>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 const express = require('express');
-const Pool = require("pg").Pool
+const Pool = require("pg").Pool;
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const dotenv = require('dotenv').config();
@@ -7,9 +7,19 @@ const Str = require('@supercharge/strings')
 var cors = require('cors');
 var fs = require('fs');
 
-//let server = require('./nodeServer');
+const app = express();
+app.use(express.json());
+app.use(cors());
 
 const PORT = process.env.port || 3200;
+
+/*let server = require('./nodeServer');
+var svr;
+svr = server.getInstance(app, PORT);
+svr.setEnvironment(app, fs, http, url);
+*/
+
+
 
 const DB_NAME = "dfqtmc7rr2t3l3";
 const DB_USERNAME = "kxdtgexhuustyz";
@@ -25,9 +35,6 @@ const pool = new Pool
     ssl: { rejectUnauthorized: false }
 });
 
-const app = express();
-app.use(express.json());
-app.use(cors());
 
 /*
 **user endpoints below
@@ -268,30 +275,21 @@ app.get('/api/getRatings', (request,response) => {
 
 app.get('/',  (req, res) =>{
 
-    fs.readFile('index.html', function(err, data) {
-        if(err)
-        {
-            res.writeHead(404, {'Content-Type': 'text/html'});
-            return res.end("404 Not Found");
-            console.log(err)
-        }else {
-            res.writeHead(200, {'Content-Type': 'text/html'});
-            // console.log(data);
-            res.write(data);
-        }
-        res.end();
-    });
-	 fs.readFile('/CSS/style.css', function(err, data) {
+	res.sendFile(__dirname+"/"+"index.html");
+	res.sendFile(__dirname+"/"+"css/style.css");
+    /*fs.readFile('./css/style.css', function(err, data) {
         if(err)
         {
             res.writeHead(404, {'Content-Type': 'text/css'});
             return res.end("404 Not Found");
+            console.log(err)
+        }else {
+            res.writeHead(200, {'Content-Type': 'text/css'});
+            // console.log(data);
+            res.write(data);
         }
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        res.write(data);
         res.end();
-    });
-
+    });*/
 } /*res.send('Puzzle Generator API')*/);
 
 

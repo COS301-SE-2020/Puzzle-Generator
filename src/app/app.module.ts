@@ -23,6 +23,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatRadioModule } from '@angular/material/radio';
 import {MatListModule} from '@angular/material/list';
+import { NavbarComponent } from './navbar/navbar.component';
+import { RatingsComponent } from './pages/ratings/ratings.component';
+
 
 //pages
 import { IndexComponent } from './pages/index/index.component';

@@ -1,1 +1,42 @@
-<p>login works!</p>
+<div class="container">
+    <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center none">
+        <mat-card class="regForm">
+            <mat-card-header>
+                <mat-card-title class="cardTitle">Login</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="regFormContent">
+                <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)"> 
+                    <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your email</mat-label>
+                        <input class="input" matInput placeholder="john@doe.com" formControlName="email" required>
+                    </mat-form-field>
+                        <div>
+                            <ng-container *ngFor="let error of error_messages.email">
+                                <mat-error class="error-message" *ngIf="loginForm.get('email').hasError(error.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+                                    {{ error.message }}
+                                </mat-error>
+                            </ng-container>
+                        </div>
+                    </div>
+
+                    <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your password</mat-label>
+                        <input class="input" matInput required formControlName="password" type="password">
+                    </mat-form-field>
+                        <div>
+                            <ng-container *ngFor="let error of error_messages.password">
+                                <mat-error class="error-message" *ngIf="loginForm.get('password').hasError(error.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                                    {{ error.message }}
+                                </mat-error>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <button mat-raised-button type="submit" [disabled]="!loginForm.valid" class="btns" id="one">Login</button>
+                    <a routerLink="/index" mat-raised-button color="accent" class="btns" id="two">Cancel</a>
+                </form>  
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

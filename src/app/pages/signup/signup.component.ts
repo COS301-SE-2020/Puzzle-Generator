@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormGroup, FormBuilder, FormControl, AbstractControl } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { User } from '../../models/user';
-import { validateBasis } from '@angular/flex-layout';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { APIService } from '../../servives/api.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
@@ -11,53 +11,36 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 })
 export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
-  newUser: User;
-  control: AbstractControl;
+  newUser: any;
+  errorr: string;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private api: APIService) {}
 
-  // email = new FormControl('', [Validators.required, Validators.email]);
-  // name = new FormControl('', [Validators.required])
-  // password = new FormControl('', [Validators.required, Validators.minLength(8)])
-  // confirmPassword = new FormControl('', [Validators.required])
-
-  createNewUser(createUser: User){
-    console.log(createUser);
+  //method for creating a new user. A new JSON object is created and sent to the node api
+  createNewUser(createUser: any){
+    this.errorr = '';
+    if(this.doPasswordsMatch(this.signUpForm.controls['password'].value, this.signUpForm.controls['confirmPassword'].value) == true){
+      this.newUser = {
+        "name": createUser.name,
+        "username": createUser.email,
+        "password": createUser.password
+      }
+      if(this.newUser != null){
+        this.api.createUser(this.newUser).subscribe( data => {
+          console.log(data);
+          if(HttpErrorResponse['status'] === 409){
+            this.errorr = "Email already registers in the db";
+            console.log("User Already Exists")}
+        })
+      }
+    }
+    else
+    {  
+      this.errorr = "Passwords no match";
+    }
   }
 
-  // getNameErrorMessage() {
-  //   if (this.name.hasError('required')) {
-  //     return 'Please input a value';
-  //   }
-  //   return this.name.hasError('name') ? 'Not a valid name' : '';
-  // }
-
-  // getEmailErrorMessage() {
-  //   if (this.email.hasError('required')) {
-  //     return 'Please input a value';
-  //   }
-  //   return this.email.hasError('email') ? 'Not a valid email address' : '';
-  // }
-
-  // getPasswordErrorMessage() {
-  //   if (this.password.hasError('required')) {
-  //     return 'Please input a value';
-  //   }
-  //   return this.password.hasError('password') ? 'Too short' : '';
-  // }
-
-  // getConfirmPasswordErrorMessage() {
-  //   if (this.confirmPassword.hasError('required')) {
-  //     return 'Please input a value';
-  //   }
-    
-  //   console.log("---> ", this.password);
-  //   console.log("---> ", this.confirmPassword)
-  //   if (this.password !== this.confirmPassword) {
-  //     return 'Passwords do not match';
-  //   }
-  // }
-
+  //error messages used during login/register validation
   error_messages = {
     'name': [
       { type: 'required', message: 'Full name is required.' },
@@ -69,11 +52,11 @@ export class SignupComponent implements OnInit {
     ],
     'password': [
       { type: 'required', message: 'Password is required.' },
-      { type: 'minlength', message: 'Password must have more than 8 characters.' }
+      { type: 'minlength', message: 'Password must have at least 6 characters.' }
     ],
     'confirmPassword': [
       { type: 'required', message: 'password is required.' },
-      { type: 'minlength', message: 'Password must have more than 8 characters.' }
+      { type: 'minlength', message: 'Password must have at least 6 characters.' }
     ],
   }
 
@@ -81,9 +64,20 @@ export class SignupComponent implements OnInit {
     this.signUpForm = this.formBuilder.group({ 
       name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(8)]]
-    }); 
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
+    });
   }
+
+  //checking if passwords match
+  doPasswordsMatch(firstPassword: string, secondPassword: string) {
+        if (firstPassword !== secondPassword) {
+          //this.errorr = "Passwords do not match: " + controlName + " " + matchingControlName;
+            return false;
+        } else {
+          //this.errorr = "Match: " + controlName + " " + matchingControlName;
+          return true;
+        }
+    }
 
 }

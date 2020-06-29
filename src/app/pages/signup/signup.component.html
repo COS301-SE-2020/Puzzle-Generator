@@ -1,8 +1,8 @@
 <div class="container">
-    <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center none" style="background-color: aqua;">
+    <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center none">
         <mat-card class="regForm">
             <mat-card-header>
-                <mat-card-title>Sign Up</mat-card-title>
+                <mat-card-title class="cardTitle">Sign Up</mat-card-title>
             </mat-card-header>
             <mat-card-content class="regFormContent">
                 <form [formGroup]="signUpForm" (ngSubmit)="createNewUser(signUpForm.value)"> 
@@ -23,7 +23,7 @@
                     <div>
                     <mat-form-field appearance="fill">
                         <mat-label>Enter your email</mat-label>
-                        <input class="input" matInput placeholder="john@doe.com" formControlName="email" >
+                        <input class="input" matInput placeholder="john@doe.com" formControlName="email" required>
                     </mat-form-field>
                         <div>
                             <ng-container *ngFor="let error of error_messages.email">
@@ -37,7 +37,7 @@
                     <div>
                     <mat-form-field appearance="fill">
                         <mat-label>Enter your password</mat-label>
-                        <input class="input" matInput required formControlName="password">
+                        <input class="input" matInput required formControlName="password" type="password">
                     </mat-form-field>
                         <div>
                             <ng-container *ngFor="let error of error_messages.password">
@@ -50,7 +50,7 @@
                     <div>
                     <mat-form-field appearance="fill">
                         <mat-label>Confirm password</mat-label>
-                        <input class="input" matInput  required formControlName="confirmPassword">
+                        <input class="input" matInput  required formControlName="confirmPassword" type="password">
                     </mat-form-field> 
                         <div>
                             <ng-container *ngFor="let error of error_messages.confirmPassword">
@@ -58,14 +58,14 @@
                                     {{ error.message }}
                                 </mat-error>
                             </ng-container>
+                            <span id="passError">{{errorr}}</span>
                         </div> 
                     </div>
+                    <button mat-raised-button type="submit" [disabled]="!signUpForm.valid" class="btn" id="one">Sign Up</button>
+                    
+                    <a routerLink="/index" mat-raised-button color="accent" class="btns">Cancel</a>
                 </form>  
             </mat-card-content>
-            <mat-card-actions>
-                <button mat-raised-button>Sign Up</button>
-                <a routerLink="/index" mat-raised-button color="accent">Cancel</a>
-            </mat-card-actions>
         </mat-card>
     </div>
 </div>

@@ -28,6 +28,8 @@ import {MatListModule} from '@angular/material/list';
 import { IndexComponent } from './pages/index/index.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { RatingsComponent } from './pages/ratings/ratings.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { LoginComponent } from './pages/login/login.component';
     IndexComponent,
     SignupComponent,
     LoginComponent,
+    NavbarComponent,
+    RatingsComponent,
   ],
   imports: [
     BrowserModule,

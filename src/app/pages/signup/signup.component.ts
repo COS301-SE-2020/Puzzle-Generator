@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { User } from '../../models/user';
-import { APIService } from '../../servives/api.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { APIService } from '../../services/api.service';
 
 @Component({
   selector: 'app-signup',
@@ -12,13 +11,13 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
   newUser: any;
-  errorr: string;
+  formError: string;
 
   constructor(private formBuilder: FormBuilder, private api: APIService) {}
 
   //method for creating a new user. A new JSON object is created and sent to the node api
   createNewUser(createUser: any){
-    this.errorr = '';
+    this.formError = '';
     if(this.doPasswordsMatch(this.signUpForm.controls['password'].value, this.signUpForm.controls['confirmPassword'].value) == true){
       this.newUser = {
         "name": createUser.name,
@@ -26,17 +25,19 @@ export class SignupComponent implements OnInit {
         "password": createUser.password
       }
       if(this.newUser != null){
-        this.api.createUser(this.newUser).subscribe( data => {
-          console.log(data);
-          if(HttpErrorResponse['status'] === 409){
-            this.errorr = "Email already registers in the db";
-            console.log("User Already Exists")}
-        })
+        this.api.createUser(this.newUser).subscribe( 
+          data => {console.log(data);},
+          error => {//if status code other than in the 200 range returned, show error
+            console.log('Error from API: ', error.error);
+            if(error.status >= 401){
+              this.formError = error.error;
+            }
+          })
       }
     }
     else
     {  
-      this.errorr = "Passwords no match";
+      this.formError = "Passwords no match";
     }
   }
 
@@ -72,10 +73,10 @@ export class SignupComponent implements OnInit {
   //checking if passwords match
   doPasswordsMatch(firstPassword: string, secondPassword: string) {
         if (firstPassword !== secondPassword) {
-          //this.errorr = "Passwords do not match: " + controlName + " " + matchingControlName;
+          //this.formError = "Passwords do not match: " + controlName + " " + matchingControlName;
             return false;
         } else {
-          //this.errorr = "Match: " + controlName + " " + matchingControlName;
+          //this.formError = "Match: " + controlName + " " + matchingControlName;
           return true;
         }
     }

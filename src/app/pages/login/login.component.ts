@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { APIService } from 'src/app/servives/api.service';
+import { APIService } from 'src/app/services/api.service';
 import { User } from 'src/app/models/user';
 
 @Component({
@@ -11,7 +11,7 @@ import { User } from 'src/app/models/user';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   verifyUser: any;
-  errorr: string;
+  formError: string;
 
   constructor(private formBuilder: FormBuilder, private api: APIService) {}
 
@@ -22,9 +22,15 @@ export class LoginComponent implements OnInit {
         "username":currentUser.email,
         "password":currentUser.password
       }
-      this.api.loginUser(this.verifyUser).subscribe( data => {
-        console.log(data);
-      })
+      
+      this.api.loginUser(this.verifyUser).subscribe( 
+        data => { console.log(data); this.formError = ""; },
+        error => {//if status code other than in the 200 range returned, show error
+          console.log('Error from API: ', error.error);
+          if(error.status >= 401){
+            this.formError = error.error;
+          }
+        })
     }
   }
 

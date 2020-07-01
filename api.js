@@ -390,7 +390,7 @@ app.get('/api/getRatings', (request,response) => {
 		});
 });
 
-app.get('/', (req, res) => res.send('Puzzle Generator API'));
+app.get('/', (req, res) => res.send('Puzzle Generator API'))
 
 
 app.listen(PORT);

@@ -24,19 +24,24 @@ describe('Users', () => {
     });*/
     describe('/POST /api/users/createUser', () => {
         it('it should POST create user', (done) => {
-            var randomnumber = random(2);
+
+            var randomnumber = Date.now();
+            console.log(randomnumber);
+            var uname = "test"+randomnumber+"@user.com";
+            console.log("Uname::"+uname);
             let user = {
                 "name": "Test User"+randomnumber,
-                "username": "test"+randomnumber+"@user.com",
+                "username": uname,
                 "password": "testpassword"
             };
             chai.request(server)
                 .post('/api/users/createUser')
                 .send(user)
                 .end((err, res) => {
-                    res.should.have.status(200);
+                    res.should.have.status(201);
                     res.body.should.be.a('json');
                     res.body.length.should.be.eql(0);
+                    console.log("5555\t res");
                     done();
                 });
         });
@@ -48,14 +53,14 @@ describe('Users', () => {
         it('it should not POST a user without username field', (done) => {
             let user = {
                 "name": "Prom Metheus",
-                "username": "j@that.com",
+                "username": "",
                 "password": "testpassword"
             };
             chai.request(server)
                 .post('/api/users/login')
                 .send(user)
                 .end((err, res) => {
-                    res.should.have.status(200);
+                    res.should.have.status(403);
                     res.body.should.be.a('object');
                     res.body.should.have.property('errors');
                     //res.body.errors.should.have.property('username');
@@ -100,7 +105,7 @@ describe('Users', () => {
                 .send(user)
                 .end((err, res) => {
                     res.should.have.status(409);
-                    res.body.should.be.a('json');
+                    res.body.should.be.a('Object');
                     res.body.length.should.be.eql(0);
                     done();
                 });

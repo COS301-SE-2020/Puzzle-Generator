@@ -16,6 +16,10 @@ app.use(cors());
 
 //const PORT = process.env.port || 3200;
 
+app.get('/', (req, res) => {
+    res.status(403).send("Unauthorized");
+    res.send('Puzzle Generator API')
+});
 
 /**
 ** user endpoints below
@@ -25,11 +29,16 @@ app.use(cors());
  * create user endpoint
  */
 var usersRouter = require('./users');
+//var loginRouter = require('./login');
+var puzzleRouter = require('./puzzle');
 router.use('users',usersRouter);
+//router.use('login', loginRouter);
+router.use('puzzle', puzzleRouter);
+
 /**
  * login user endpoint
  */
-
+/*
 router.post('/api/users/login', (request, response) => {
     //set headers
     response.header('Access-Control-Allow-Origin','*');
@@ -62,7 +71,7 @@ router.post('/api/users/login', (request, response) => {
         });
     }
 });
-
+*/
 
 /**
 ** PUZZLE ENDPOINTS BELOW
@@ -71,11 +80,7 @@ router.post('/api/users/login', (request, response) => {
 /**
  * puzzle creation endpoint
  */
-router.post('/api/puzzle/createPuzzle', (request, response) => {
-    //set headers
-    response.header('Access-Control-Allow-Origin','*');
-    response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    response.header('Content-Type','application/json');
+/*router.post('/api/puzzle/createPuzzle', (request, response) => {
     const userToken = request.body.token;
     const puzzleName = request.body.name;
     var currentUserId = null;
@@ -103,15 +108,15 @@ router.post('/api/puzzle/createPuzzle', (request, response) => {
         }
     })
 });
-
+*/
 /**
  * rating creation endpoint
  */
-router.post('/api/puzzle/createPuzzleRating', (request, response) => {
-    //set headers
-    response.header('Access-Control-Allow-Origin','*');
-    response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    response.header('Content-Type','application/json');
+/*app.post('/api/puzzle/createPuzzleRating', (request, response) => {
+    // //set headers
+    //   response.header('Access-Control-Allow-Origin','*');
+    //   response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    //   response.header('Content-Type','application/json');
     const userToken = request.body.token;
     const selectedPuzzlePuzzleId = request.body.puzzleId;
     const newRating = request.body.rating;
@@ -140,14 +145,12 @@ router.post('/api/puzzle/createPuzzleRating', (request, response) => {
         }
     })
 });
-
+*/
 /**
  * endpoint for getting puzzle ratings
  */
+/*
 router.get('/api/getRatings', (request,response) => {
-    response.header('Access-Control-Allow-Origin','*');
-    response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    response.header('Content-Type','application/json');
     var ratingsJSONArrayObject = {};
     var ratingJSONObjectReturned = {};
     var currRating = null;
@@ -191,5 +194,5 @@ router.get('/api/getRatings', (request,response) => {
         }
     });
 });
-
+*/
 module.exports = router;

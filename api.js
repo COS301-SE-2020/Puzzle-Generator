@@ -7,7 +7,7 @@ const Str = require('@supercharge/strings')
 var cors = require('cors');
 const { request } = require('express');
 
-const PORT = process.env.port || 3200
+const PORT = process.env.port || 3200;
 
 const pool = new Pool
 ({
@@ -390,7 +390,7 @@ app.get('/api/getRatings', (request,response) => {
 		});
 });
 
-app.get('/', (req, res) => res.send('Puzzle Generator API'))
+app.get('/', (req, res) => res.send('Puzzle Generator API'));
 
 
 app.listen(PORT);

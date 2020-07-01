@@ -3,7 +3,7 @@ const Pool = require("pg").Pool
 const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 const dotenv = require('dotenv').config();
-const Str = require('@supercharge/strings')
+const Str = require('@supercharge/strings');
 var cors = require('cors');
 const { request } = require('express');
 

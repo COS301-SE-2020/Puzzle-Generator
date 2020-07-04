@@ -23,15 +23,17 @@ const db = require('./config/database');
     .then( () => {console.log("Successfully connected to db");} )
     .catch( error => {console.log("Error: ", error);})
 
-//app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors());
 
 app.get('/', (request, response) => {response.send("Sequelize API test");});
 
 //all requests associated with the user must make use of this route
-//app.use('/api/users', require('./routes/users'));
 app.use('/api/users', require('./routes/users'));
+
+
+//all requests associated with the user must make use of this route
+app.use('/api/puzzles', require('./routes/puzzles'));
 
 const PORT = process.env.PORT || 3200;
 

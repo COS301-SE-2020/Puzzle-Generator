@@ -7,6 +7,8 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const Str = require('@supercharge/strings');
 const bcrypt = require('bcrypt');
+const PuzzleRating = require('../models/PuzzleRating');
+const Puzzle = require('../models/Puzzle');
 
 
 // router.get('/getAllUsers', (request, response) => { 
@@ -116,7 +118,7 @@ router.put('/updateName', (request, response) => {
             .catch( error => {
                 response.status(500).send("Server error");
             } )
-})
+});
 
 router.put('/resetPassword', (request, response) => {
     User.findAll( { raw: true, where: { username: {[Op.like]:  request.body.username } } } )
@@ -139,7 +141,59 @@ router.put('/resetPassword', (request, response) => {
     .catch( error => {
         response.status(500).send("Server Error");
     })
-})
+});
 
+//get puzzles by user
+router.post('/getPuzzlesByUser', (request, response) => { 
+    let userID = null
+    User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
+        .then( user => {
+            userID = user[0].id;
+            
+            Puzzle.findAll( { raw: true, where: { creatorID: userID  } } )
+            .then( puzzles => {
+                if(puzzles) {
+                    console.log(puzzles);
+                    response.status(201).send(puzzles);
+                }
+                else{
+                    response.status(200).send("No puzzles yet");
+                }
+            })
+            .catch( error => {
+                response.status(404).send("User does not exist");
+            });
+        })
+        .catch( error => {
+            console.log("Failed to get user due to: ", error)
+        })
+        
+});
+
+//get ratings by user
+router.post('/getPuzzleRatingsByUser', (request, response) => { 
+    let raterID = null
+    User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
+        .then( user => {
+            raterID = user[0].id;
+
+            PuzzleRating.findAll( { raw: true, where: { userID: parseInt(raterID)  } } )
+            .then( puzzles => {
+                if(puzzles) {
+                    console.log(puzzles);
+                    response.status(201).send(puzzles);
+                }
+                else{
+                    response.status(200).send("No Ratings yet");
+                }
+            })
+            .catch( error => {
+                response.status(403).send("Failed to get user due to: ", error)
+            });
+        })
+        .catch( error => {
+            response.status(403).send("Failed to get user due to: ", error)
+        });
+});
 
 module.exports = router;

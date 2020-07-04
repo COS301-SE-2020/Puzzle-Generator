@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   //method for logging in user and getting the token associated with the said user
   loginUser(currentUser: User){
+    this.formError = '';
     if(currentUser !== null){
       this.verifyUser = {
         "username":currentUser.email,

@@ -31,6 +31,8 @@ import { RatingsComponent } from './pages/ratings/ratings.component';
 import { IndexComponent } from './pages/index/index.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { ResetSuccessComponent } from './pages/reset-success/reset-success.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { LoginComponent } from './pages/login/login.component';
     IndexComponent,
     SignupComponent,
     LoginComponent,
+    ResetPasswordComponent,
+    ResetSuccessComponent,
   ],
   imports: [
     BrowserModule,

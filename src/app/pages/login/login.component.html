@@ -35,9 +35,12 @@
                         </div>
                     </div>
                     <button mat-raised-button type="submit" [disabled]="!loginForm.valid" class="btns" id="one">Login</button>
-                    <a routerLink="/index" mat-raised-button color="accent" class="btns" id="two">Cancel</a>
+                    <a routerLink="/index" mat-raised-button class="btns" id="two">Cancel</a>
                 </form>  
             </mat-card-content>
+            <mat-card-actions>
+                <a routerLink="/resetPassword" class="link">Forgot Password</a>
+            </mat-card-actions>
         </mat-card>
     </div>
 </div>

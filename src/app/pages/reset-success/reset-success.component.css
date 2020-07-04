@@ -8,10 +8,6 @@
     background-color: #7C593A;
 }
 
-#one{
-    margin: 5%;
-}
-
 .regForm{
     width: 30%;
     text-align: center;
@@ -24,12 +20,4 @@
 .cardTitle{
     margin-left: 1rem;
     margin-top: 1rem;
-}
-
-#passError{
-    color: red;
-}
-
-.link{
-    color: black;
 }

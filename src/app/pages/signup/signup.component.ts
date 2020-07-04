@@ -37,7 +37,7 @@ export class SignupComponent implements OnInit {
     }
     else
     {  
-      this.formError = "Passwords no match";
+      this.formError = "Passwords do not match";
     }
   }
 

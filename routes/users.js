@@ -10,17 +10,6 @@ const bcrypt = require('bcrypt');
 const PuzzleRating = require('../models/PuzzleRating');
 const Puzzle = require('../models/Puzzle');
 
-
-// router.get('/getAllUsers', (request, response) => { 
-//     User.findAll()
-//         .then( users => {
-//             response.send(users);
-//         })
-//         .catch( error => {
-//             console.log("Failed: ", error)
-//         })
-// });
-
 router.post('/createUser', (request, response) => {
     const username = request.body.username;
 	const password = bcrypt.hashSync(request.body.password, 10);
@@ -41,7 +30,7 @@ router.post('/createUser', (request, response) => {
                     name, username, password, token
                 })
                 .then( data => {
-                    response.status(201).json({ "token": data.token});
+                    response.status(201).json({ "token": data.token, "name": data.name});
                 })
                 .catch( error => { 
                     response.status(500);
@@ -73,7 +62,7 @@ router.post('/login', (request, response) => {
             else {
                 bcrypt.compare(password, user[0].password, (err, res) => {
                     if(res){
-                        response.status(201).json({"token": user[0].token});
+                        response.status(201).json({"token": user[0].token, "name": user[0].name});
                     }
                     else {
                         response.status(403).send("Passwords do not match");
@@ -127,12 +116,13 @@ router.put('/resetPassword', (request, response) => {
             response.status(404).send("Failed to retrieve user with given username");
         }
         else{
-            //update record
             User.update(
                 { password: bcrypt.hashSync(request.body.password, 10) },
                 { returning: true, raw: true, plain: true, where: { username: request.body.username }}
             )
-            .then( response.status(200).send("Password reset. Please login") )
+            .then( () => {
+                response.status(200).send("Password reset. Please login");
+             })
             .catch( error => {
                 response.status(500).send("Server error");
             } )

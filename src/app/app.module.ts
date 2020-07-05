@@ -33,6 +33,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RatingsComponent } from './pages/ratings/ratings.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ResetSuccessComponent } from './pages/reset-success/reset-success.component';
+import { RateFormComponent } from './pages/rate-form/rate-form.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ResetSuccessComponent } from './pages/reset-success/reset-success.compo
     NavbarComponent,
     ResetPasswordComponent,
     ResetSuccessComponent,
+    RateFormComponent,
   ],
   imports: [
     BrowserModule,

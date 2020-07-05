@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';   
+import {HttpClient} from '@angular/common/http';
 import { User } from '../models/user';
 import { Puzzle } from '../models/Puzzle';
 import { PuzzleRating } from '../models/PuzzleRating';
-import {HttpHeaders} from '@angular/common/http';    
-import { Observable } from 'rxjs';  
+import {HttpHeaders} from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +18,10 @@ export class APIService {
    */
   //create new user
   createUser(newUser: User){
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'} ) }; 
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'} ) };
     return this.http.post('http://localhost:3200/api/users/createUser',newUser, httpOptions);
   }
-  
+
   loginUser(currentUser: User){
     const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
     return this.http.post('http://localhost:3200/api/users/login', currentUser, httpOptions);
@@ -61,25 +61,25 @@ export class APIService {
 * Puzzle endpoints start here
 */
 getAllPuzzles(){
-  return this.http.get('http://localhost:3200/api/users/getAllPuzzles');
+  return this.http.get('http://localhost:3200/api/puzzles/getAllPuzzles');
 }
 
-getAllPuzzleByID(puzzleID: number){ 
-  return this.http.get('http://localhost:3200/api/users/getPuzzleByID?Id=' + puzzleID);
+getAllPuzzleByID(puzzleID: number){
+  return this.http.get('http://localhost:3200/api/puzzles/getPuzzleByID?Id=' + puzzleID);
 }
 
 createNewPuzzle(puzzle: Puzzle){
   const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
-  return this.http.post('http://localhost:3200/api/users/createPuzzle', puzzle, httpOptions);
+  return this.http.post('http://localhost:3200/api/puzzles/createPuzzle', puzzle, httpOptions);
 }
 
 createNewPuzzleRating(rating: PuzzleRating){
   const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
-  return this.http.post('http://localhost:3200/api/users/createPuzzleRating', rating, httpOptions);
+  return this.http.post('http://localhost:3200/api/puzzles/createPuzzleRating', rating, httpOptions);
 }
 
 getAllPuzzleRatings(){
-  return this.http.get('http://localhost:3200/api/users/getAllPuzzleRatings');
+  return this.http.get('http://localhost:3200/api/puzzles/getAllPuzzleRatings');
 }
 
 /**

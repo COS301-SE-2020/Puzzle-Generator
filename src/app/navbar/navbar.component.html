@@ -1,11 +1,14 @@
 <div class="row">
-  <nav class="navbar navbar-dark bg-inverse">
+  <nav class="navbar navbar-dark justify-content-center">
     <div class="container">
-        <ul class="nav navbar-nav" routerLinkActive="active">
+        <ul class="nav navbar-nav mr-auto" routerLinkActive="active">
             <li class="nav-item"><a class="nav-link" routerLink="/ratings">View</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="">Create</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="">Profile</a></li>
         </ul>
+        <span class="navbar-text">
+            Hello, {{name}}
+        </span>
     </div>
   </nav>
 </div>

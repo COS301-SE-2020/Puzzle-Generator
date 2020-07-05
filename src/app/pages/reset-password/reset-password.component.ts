@@ -27,8 +27,8 @@ export class ResetPasswordComponent implements OnInit {
         "password": currentUser.password
       }
       if(this.verifyUser != null){
-        this.api.resetPassword(this.verifyUser).subscribe( 
-          () => { },
+        this.api.resetPassword(this.verifyUser).subscribe(
+          () => {},
           error => {//if status code other than in the 200 range returned, show error
             if(error.status >= 401){
               this.formError = error.error;
@@ -41,7 +41,7 @@ export class ResetPasswordComponent implements OnInit {
       }
     }
     else
-    {  
+    {
       this.formError = "Passwords do not match";
     }
   }
@@ -63,7 +63,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.resetPasswordForm = this.formBuilder.group({ 
+    this.resetPasswordForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]]

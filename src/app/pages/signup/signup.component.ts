@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { User } from '../../models/user';
 import { APIService } from '../../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +14,7 @@ export class SignupComponent implements OnInit {
   newUser: any;
   formError: string;
 
-  constructor(private formBuilder: FormBuilder, private api: APIService) {}
+  constructor(private formBuilder: FormBuilder, private api: APIService, private router: Router) {}
 
   //method for creating a new user. A new JSON object is created and sent to the node api
   createNewUser(createUser: any){
@@ -25,8 +26,10 @@ export class SignupComponent implements OnInit {
         "password": createUser.password
       }
       if(this.newUser != null){
-        this.api.createUser(this.newUser).subscribe( 
-          data => {console.log(data);},
+        this.api.createUser(this.newUser).subscribe(
+          data => {console.log(data);
+              this.router.navigate(['/login']);
+            },
           error => {//if status code other than in the 200 range returned, show error
             console.log('Error from API: ', error.error);
             if(error.status >= 401){
@@ -36,7 +39,7 @@ export class SignupComponent implements OnInit {
       }
     }
     else
-    {  
+    {
       this.formError = "Passwords do not match";
     }
   }
@@ -62,7 +65,7 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.signUpForm = this.formBuilder.group({ 
+    this.signUpForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],

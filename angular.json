@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "prometheus-puzzles"
+  "defaultProject": "prometheus-puzzles",
+  "cli": {
+    "analytics": "1cd3ccb0-f863-4f8c-8717-90b28b2b50c3"
+  }
 }

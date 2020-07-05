@@ -5,7 +5,7 @@
                 <mat-card-title class="cardTitle">Login</mat-card-title>
             </mat-card-header>
             <mat-card-content class="regFormContent">
-                <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)"> 
+                <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
                     <div>
                     <mat-form-field appearance="fill">
                         <mat-label>Enter your email</mat-label>
@@ -36,7 +36,7 @@
                     </div>
                     <button mat-raised-button type="submit" [disabled]="!loginForm.valid" class="btns" id="one">Login</button>
                     <a routerLink="/index" mat-raised-button class="btns" id="two">Cancel</a>
-                </form>  
+                </form>
             </mat-card-content>
             <mat-card-actions>
                 <a routerLink="/resetPassword" class="link">Forgot Password</a>

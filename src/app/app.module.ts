@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,14 +24,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatRadioModule } from '@angular/material/radio';
 import {MatListModule} from '@angular/material/list';
-import { NavbarComponent } from './navbar/navbar.component';
-import { RatingsComponent } from './pages/ratings/ratings.component';
-
 
 //pages
 import { IndexComponent } from './pages/index/index.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { RatingsComponent } from './pages/ratings/ratings.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ResetSuccessComponent } from './pages/reset-success/reset-success.component';
 
@@ -40,11 +40,14 @@ import { ResetSuccessComponent } from './pages/reset-success/reset-success.compo
     IndexComponent,
     SignupComponent,
     LoginComponent,
+    RatingsComponent,
+    NavbarComponent,
     ResetPasswordComponent,
     ResetSuccessComponent,
   ],
   imports: [
     BrowserModule,
+    NgxPaginationModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,

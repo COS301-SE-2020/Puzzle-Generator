@@ -76,6 +76,14 @@ router.post('/login', (request, response) => {
     }
 });
 
+router.post('/getUser', (request, response) => {
+    User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
+    .then( user => {
+        response.status(200).json({"name": user[0].name, "username": user[0].username});
+    })
+    .catch();
+})
+
 router.put('/updateUsername', (request, response) => {
     var regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	if(!regex.test(request.body.username))

@@ -6,6 +6,7 @@ const User = require('../models/User');
 const Puzzle = require('../models/Puzzle');
 const PuzzleRating = require('../models/PuzzleRating')
 const Sequelize = require('sequelize');
+const e = require('express');
 const Op = Sequelize.Op;
 
 /**
@@ -14,14 +15,40 @@ const Op = Sequelize.Op;
 
 //get all puzzles
 router.get('/getAllPuzzles', (request, response) => { 
+    var puzzleJsonObject = [];
+    var puzzlePlaceholder = {};
+    var index = 0;
     Puzzle.findAll()
         .then( puzzles => {
-            console.log(puzzles);
-            response.status(201).send(puzzles);
+            var array = puzzles;
+            var totalNumPuzzles = Object.keys(puzzles).length;
+            //console.log(array);
+           // response.status(201).send(puzzles);
+            array.forEach(element => {
+                User.findAll({ raw: true, where: {id: element.creatorID }})
+                .then( data => { 
+                    //console.log("--- ", data[0].name);
+                    //console.log("** ", array[count].creatorID);
+                    puzzlePlaceholder = {
+                        "id":array[index].id,
+                        "name":array[index].name,
+                        "description":array[index].description,
+                        "puzzleObject":array[index].puzzleObject,
+                        "createdAt":array[index].createdAt,
+                        "creator":data[0].name
+                    };
+                    ++index;
+                    puzzleJsonObject.push(puzzlePlaceholder);
+                    if(index == totalNumPuzzles){
+                        response.status(201).send(puzzleJsonObject);
+                    }
+                })
+                .catch( error => { console.log("Error: ", error);});
+            });
         })
         .catch( error => {
             console.log("Failed to get all puzzles due to: ", error)
-        })
+        });
 });
 
 //get puzzle by id

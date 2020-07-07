@@ -22,7 +22,7 @@ describe('Users', () => {
     });*/
     describe('/POST /api/users/createUser', () => {
         it('it should POST create user', (done) => {
-            var randomnumber = Math.random();
+            var randomnumber = Math.ceil(Math.random()*100);
             let user = {
                 "name": "Test User"+randomnumber,
                 "username": "test"+randomnumber+"@user.com",
@@ -32,6 +32,7 @@ describe('Users', () => {
                 .post('/api/users/createUser')
                 .send(user)
                 .end((err, res) => {
+                    console.log(res)
                     res.should.have.status(201);
                     res.body.should.be.a('json');
                     res.body.length.should.be.eql(0);

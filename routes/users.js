@@ -12,9 +12,9 @@ const PuzzleRating = require('../models/PuzzleRating');
 const Puzzle = require('../models/Puzzle');
 
 router.post('/createUser', (request, response) => {
-    const username = request.query.username;
-	const password = bcrypt.hashSync(request.query.password, 10);
-    const name = request.query.name;
+    const username = request.body.username;
+	const password = bcrypt.hashSync(request.body.password, 10);
+    const name = request.body.name;
     var token = Str.random();
 
     var regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -23,7 +23,7 @@ router.post('/createUser', (request, response) => {
 		response.status(403).send("Invalid username, must be a valid email address");
     }
     else{
-        User.findAll( { where: { username: {[Op.like]:  request.query.username } } } )
+        User.findAll( { where: { username: {[Op.like]:  request.body.username } } } )
         .then( user => {
             if(user.length == 0){
                 //create user
@@ -48,14 +48,14 @@ router.post('/createUser', (request, response) => {
 });
 
 router.post('/login', (request, response) => {
-    const password = request.query.password;
+    const password = request.body.password;
     var regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	if(!regex.test(request.query.username))
+	if(!regex.test(request.body.username))
 	{
 		response.status(403).send("Invalid username, must be a valid email address");
     }
     else{
-        User.findAll( { raw: true, where: { username: {[Op.like]:  request.query.username } } } )
+        User.findAll( { raw: true, where: { username: {[Op.like]:  request.body.username } } } )
         .then( user => {
             if(user.length == 0){
                 response.status(404).send("User not found");
@@ -78,7 +78,7 @@ router.post('/login', (request, response) => {
 });
 
 router.post('/getUser', (request, response) => {
-    User.findAll( { raw: true, where: { token: {[Op.like]:  request.query.token } } } )
+    User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
     .then( user => {
         response.status(200).json({"name": user[0].name, "username": user[0].username});
     })
@@ -87,14 +87,14 @@ router.post('/getUser', (request, response) => {
 
 router.put('/updateUsername', (request, response) => {
     var regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	if(!regex.test(request.query.username))
+	if(!regex.test(request.body.username))
 	{
 		response.status(403).send("Invalid username, must be a valid email address");
     }
     else{
         User.update(
-            { username: request.query.username },
-            { returning: true, raw: true, plain: true, where: { token: request.query.token } }
+            { username: request.body.username },
+            { returning: true, raw: true, plain: true, where: { token: request.body.token } }
         )
         .then( data => { 
             response.status(201).json({"username": data[1].username});
@@ -107,8 +107,8 @@ router.put('/updateUsername', (request, response) => {
 
 router.put('/updateName', (request, response) => {
             User.update(
-                { name: request.query.name },
-                { returning: true, raw: true, plain: true, where: { token: request.query.token } }
+                { name: request.body.name },
+                { returning: true, raw: true, plain: true, where: { token: request.body.token } }
             )
             .then( data => {
                 response.status(201).json({"name": data[1].name});
@@ -119,15 +119,15 @@ router.put('/updateName', (request, response) => {
 });
 
 router.put('/resetPassword', (request, response) => {
-    User.findAll( { raw: true, where: { username: {[Op.like]:  request.query.username } } } )
+    User.findAll( { raw: true, where: { username: {[Op.like]:  request.body.username } } } )
     .then( user => {
         if(user.length == 0){
             response.status(404).send("Failed to retrieve user with given username");
         }
         else{
             User.update(
-                { password: bcrypt.hashSync(request.query.password, 10) },
-                { returning: true, raw: true, plain: true, where: { username: request.query.username }}
+                { password: bcrypt.hashSync(request.body.password, 10) },
+                { returning: true, raw: true, plain: true, where: { username: request.body.username }}
             )
             .then( () => {
                 response.status(200).send("Password reset. Please login");
@@ -145,7 +145,7 @@ router.put('/resetPassword', (request, response) => {
 //get puzzles by user
 router.post('/getPuzzlesByUser', (request, response) => { 
     let userID = null
-    User.findAll( { raw: true, where: { token: {[Op.like]:  request.query.token } } } )
+    User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
         .then( user => {
             userID = user[0].id;
             
@@ -172,7 +172,7 @@ router.post('/getPuzzlesByUser', (request, response) => {
 //get ratings by user
 router.post('/getPuzzleRatingsByUser', (request, response) => { 
     let raterID = null
-    User.findAll( { raw: true, where: { token: {[Op.like]:  request.query.token } } } )
+    User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
         .then( user => {
             raterID = user[0].id;
 

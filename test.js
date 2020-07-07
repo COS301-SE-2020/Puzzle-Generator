@@ -6,13 +6,11 @@ process.env.NODE_ENV = 'test';
 
 let mongoose = require("mongoose");
 //let users = require('/api/users/createUser');
-
 let chai = require('chai');
 
 let chaiHttp = require('chai-http');
 let server = require('./app');
 let should = chai.should();
-
 
 chai.use(chaiHttp);
 
@@ -24,7 +22,7 @@ describe('Users', () => {
     });*/
     describe('/POST /api/users/createUser', () => {
         it('it should POST create user', (done) => {
-            var randomnumber = random(2);
+            var randomnumber = Math.random();
             let user = {
                 "name": "Test User"+randomnumber,
                 "username": "test"+randomnumber+"@user.com",
@@ -34,7 +32,7 @@ describe('Users', () => {
                 .post('/api/users/createUser')
                 .send(user)
                 .end((err, res) => {
-                    res.should.have.status(200);
+                    res.should.have.status(201);
                     res.body.should.be.a('json');
                     res.body.length.should.be.eql(0);
                     done();
@@ -55,8 +53,8 @@ describe('Users', () => {
                 .post('/api/users/login')
                 .send(user)
                 .end((err, res) => {
-                    res.should.have.status(200);
-                    res.body.should.be.a('object');
+                    res.should.have.status(201);
+                    res.body.should.be.a('json');
                     res.body.should.have.property('errors');
                     //res.body.errors.should.have.property('username');
                     //res.body.errors.username.should.have.property('kind').eql('required');
@@ -77,8 +75,8 @@ describe('Users', () => {
                 .post('/api/users/login')
                 .send(user)
                 .end((err, res) => {
-                    res.should.have.status(403);
-                    res.body.should.be.a('object');
+                    res.should.have.status(403||404||500);
+                    res.body.should.be.a('text');
                     res.body.should.have.property('errors');
                     //res.body.errors.should.have.property('username');
                     //res.body.errors.username.should.have.property('kind').eql('required');
@@ -99,8 +97,8 @@ describe('Users', () => {
                 .post('/api/users/createUser')
                 .send(user)
                 .end((err, res) => {
-                    res.should.have.status(409);
-                    res.body.should.be.a('json');
+                    res.should.have.status(409||500);
+                    res.body.should.be.a('text');
                     res.body.length.should.be.eql(0);
                     done();
                 });

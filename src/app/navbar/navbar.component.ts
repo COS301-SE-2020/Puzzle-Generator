@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { getName } from '.././pages/login/login.component';
+//import { getName } from '.././pages/login/login.component';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.name = getName();
+    this.name = localStorage.getItem('name');
   }
 
 }

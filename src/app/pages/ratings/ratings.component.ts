@@ -5,7 +5,6 @@ import { User } from 'src/app/models/user';
 import { Router } from '@angular/router';
 import { PuzzleArr } from './puzzleArr';
 import { RatingsArr } from './RatingsArr';
-import { getName } from '../login/login.component';
 
 @Component({
   selector: 'app-ratings',
@@ -24,8 +23,6 @@ export class RatingsComponent implements OnInit {
 
   populate()
   {
-
-
     this.api.getAllPuzzleRatings().subscribe(
       data=> {
         for(let i=0; data[i]!= null; i++){
@@ -34,6 +31,7 @@ export class RatingsComponent implements OnInit {
           ratingObj.rating = data[i].rating;
           ratingObj.puzzleID = data[i].puzzleID;
           this.ratings.push(ratingObj);
+
         }
       },
       error => {
@@ -48,7 +46,7 @@ export class RatingsComponent implements OnInit {
           puzzleObj.id = data[i].id;
           puzzleObj.name = data[i].name;
           puzzleObj.description = data[i].description;
-          puzzleObj.creator = data[i].creatorID;
+          puzzleObj.creator = data[i].creator;
 
           let j = 0;
           let total = 0;
@@ -68,6 +66,7 @@ export class RatingsComponent implements OnInit {
             puzzleObj.rating = total/j;
           }
           this.puzzles.push(puzzleObj);
+
           //console.log(this.puzzles[i]);
         }
           //this.puzzles.push(data);
@@ -80,8 +79,6 @@ export class RatingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.populate();
-    this.name = getName();
-    this.name = this.name; 
   }
 
 }

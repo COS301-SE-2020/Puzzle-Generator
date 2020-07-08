@@ -10,5 +10,11 @@
 
 .navbar-text{
   color: white;
-  text-align: left; 
+  text-align: left;
+}
+
+ul.nav a:hover { color: #7C593A !important; }
+
+span{
+  float: right; 
 }

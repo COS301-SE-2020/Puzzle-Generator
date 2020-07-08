@@ -4,16 +4,6 @@ import { APIService } from 'src/app/services/api.service';
 import { User } from 'src/app/models/user';
 import { Router } from '@angular/router';
 
-export var nameVal: string;
-
-export function getName(){
-  return nameVal;
-}
-
-export function setName(name: string){
-  nameVal = name;
-}
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -37,7 +27,8 @@ export class LoginComponent implements OnInit {
 
       this.api.loginUser(this.verifyUser).subscribe(
         data => { console.log(data);
-          setName(data["name"]);
+          localStorage.removeItem('name');
+          localStorage.setItem('name', data['name']);
           this.formError = "";
         this.router.navigate(['/ratings']);
       },

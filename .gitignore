@@ -22,3 +22,6 @@ node_modules
 # Ignore workspace.xml for Jetbrains
 workspace.xml
 *.xml
+
+#ignore old structure
+OLD structure

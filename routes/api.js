@@ -15,8 +15,6 @@ app.use(express.json());
 app.use(cors());
 
 //const PORT = process.env.port || 3200;
-
-
 /**
 ** user endpoints below
 */
@@ -25,12 +23,14 @@ app.use(cors());
  * create user endpoint
  */
 var usersRouter = require('./users');
+var puzzleRouter = require('./puzzles');
 router.use('users',usersRouter);
+router.use('puzzle',puzzleRouter)
 /**
  * login user endpoint
  */
 
-router.post('/api/users/login', (request, response) => {
+/*router.post('/api/users/login', (request, response) => {
     //set headers
     response.header('Access-Control-Allow-Origin','*');
     response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -71,6 +71,7 @@ router.post('/api/users/login', (request, response) => {
 /**
  * puzzle creation endpoint
  */
+/*
 router.post('/api/puzzle/createPuzzle', (request, response) => {
     //set headers
     response.header('Access-Control-Allow-Origin','*');
@@ -103,10 +104,11 @@ router.post('/api/puzzle/createPuzzle', (request, response) => {
         }
     })
 });
-
+*/
 /**
  * rating creation endpoint
  */
+/*
 router.post('/api/puzzle/createPuzzleRating', (request, response) => {
     //set headers
     response.header('Access-Control-Allow-Origin','*');
@@ -140,10 +142,11 @@ router.post('/api/puzzle/createPuzzleRating', (request, response) => {
         }
     })
 });
-
+*/
 /**
  * endpoint for getting puzzle ratings
  */
+/*
 router.get('/api/getRatings', (request,response) => {
     response.header('Access-Control-Allow-Origin','*');
     response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -191,5 +194,5 @@ router.get('/api/getRatings', (request,response) => {
         }
     });
 });
-
+*/
 module.exports = router;

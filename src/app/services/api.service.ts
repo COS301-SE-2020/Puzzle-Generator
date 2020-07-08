@@ -82,6 +82,10 @@ getAllPuzzleRatings(){
   return this.http.get('http://localhost:3200/api/puzzles/getAllPuzzleRatings');
 }
 
+getSearchedPuzzles(term: any){
+  return this.http.get('http://localhost:3200/api/puzzles/getSearchedPuzzles/' + term);
+}
+
 /**
 * Puzzle endpoints end here
 */

@@ -17,6 +17,9 @@ export class RatingsComponent implements OnInit {
   name: string;
   ratings: Array<RatingsArr> = [];
 
+  //searchbar
+  searchTextboxValue: string;
+
   constructor(private api: APIService) {
 
   }
@@ -75,6 +78,22 @@ export class RatingsComponent implements OnInit {
         console.log('Error from API: ', error.error);
       })
 
+  }
+
+  searchItems(searchValue: any){
+    if(searchValue != undefined){
+      this.api.getSearchedPuzzles(searchValue).subscribe( data => {
+        var dataObjectSize = Object.keys(data).length;
+        if(dataObjectSize == 0 )
+        {
+          console.log("Nothing matches given criteria")
+        }
+        else{
+          //Please populate the page with the data received. Other puzzles not fromd data must be cleared 
+          console.log(data);
+        }
+      });
+    }
   }
 
   ngOnInit(): void {

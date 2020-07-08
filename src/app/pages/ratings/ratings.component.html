@@ -1,5 +1,13 @@
 <app-navbar></app-navbar>
 
+<mat-form-field class="example-form-field">
+    <mat-label>Search</mat-label>
+    <input matInput type="text" (input)="searchTextboxValue=$event.target.value">
+    <button mat-button matSuffix   (click)="searchItems(searchTextboxValue)">
+      <mat-icon>search</mat-icon>
+    </button>
+</mat-form-field>
+
 <div class="container">
     <div class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
         <mat-card *ngFor="let puzzle of puzzles">

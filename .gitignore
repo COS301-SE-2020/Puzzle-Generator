@@ -25,3 +25,6 @@ workspace.xml
 
 #ignore old structure
 OLD structure
+
+#Ignore current directory's Readme from overwriting existing
+readme.md

@@ -1,3 +1,6 @@
+#Ignore database file
+database.js
+
 # Ignore Mac system files
 .DS_store
 
@@ -5,7 +8,7 @@
 node_modules
 
 # Ignore all text files
-#*.txt
+*.txt
 
 # Ignore files related to API keys
 .env
@@ -13,5 +16,12 @@ node_modules
 # Ignore SASS config files
 .sass-cache
 
-#ignore Jetbrains files
+# Ignore JetBrains files
 .idea
+
+# Ignore workspace.xml for Jetbrains
+workspace.xml
+*.xml
+
+#ignore old structure
+OLD structure

@@ -6,13 +6,11 @@ process.env.NODE_ENV = 'test';
 
 let mongoose = require("mongoose");
 //let users = require('/api/users/createUser');
-
 let chai = require('chai');
 
 let chaiHttp = require('chai-http');
 let server = require('./app');
 let should = chai.should();
-
 
 chai.use(chaiHttp);
 
@@ -24,24 +22,20 @@ describe('Users', () => {
     });*/
     describe('/POST /api/users/createUser', () => {
         it('it should POST create user', (done) => {
-
-            var randomnumber = Date.now();
-            console.log(randomnumber);
-            var uname = "test"+randomnumber+"@user.com";
-            console.log("Uname::"+uname);
+            var randomnumber = Math.ceil(Math.random()*100);
             let user = {
                 "name": "Test User"+randomnumber,
-                "username": uname,
+                "username": "test"+randomnumber+"@user.com",
                 "password": "testpassword"
             };
             chai.request(server)
                 .post('/api/users/createUser')
                 .send(user)
                 .end((err, res) => {
+                    console.log(res)
                     res.should.have.status(201);
                     res.body.should.be.a('json');
                     res.body.length.should.be.eql(0);
-                    console.log("5555\t res");
                     done();
                 });
         });
@@ -53,15 +47,15 @@ describe('Users', () => {
         it('it should not POST a user without username field', (done) => {
             let user = {
                 "name": "Prom Metheus",
-                "username": "",
+                "username": "j@that.com",
                 "password": "testpassword"
             };
             chai.request(server)
                 .post('/api/users/login')
                 .send(user)
                 .end((err, res) => {
-                    res.should.have.status(403);
-                    res.body.should.be.a('object');
+                    res.should.have.status(201);
+                    res.body.should.be.a('json');
                     res.body.should.have.property('errors');
                     //res.body.errors.should.have.property('username');
                     //res.body.errors.username.should.have.property('kind').eql('required');
@@ -82,8 +76,8 @@ describe('Users', () => {
                 .post('/api/users/login')
                 .send(user)
                 .end((err, res) => {
-                    res.should.have.status(403);
-                    res.body.should.be.a('object');
+                    res.should.have.status(403||404||500);
+                    res.body.should.be.a('text');
                     res.body.should.have.property('errors');
                     //res.body.errors.should.have.property('username');
                     //res.body.errors.username.should.have.property('kind').eql('required');
@@ -104,8 +98,8 @@ describe('Users', () => {
                 .post('/api/users/createUser')
                 .send(user)
                 .end((err, res) => {
-                    res.should.have.status(409);
-                    res.body.should.be.a('Object');
+                    res.should.have.status(409||500);
+                    res.body.should.be.a('text');
                     res.body.length.should.be.eql(0);
                     done();
                 });

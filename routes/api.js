@@ -15,12 +15,6 @@ app.use(express.json());
 app.use(cors());
 
 //const PORT = process.env.port || 3200;
-
-app.get('/', (req, res) => {
-    res.status(403).send("Unauthorized");
-    res.send('Puzzle Generator API')
-});
-
 /**
 ** user endpoints below
 */
@@ -29,17 +23,14 @@ app.get('/', (req, res) => {
  * create user endpoint
  */
 var usersRouter = require('./users');
-//var loginRouter = require('./login');
-var puzzleRouter = require('./puzzle');
+var puzzleRouter = require('./puzzles');
 router.use('users',usersRouter);
-//router.use('login', loginRouter);
-router.use('puzzle', puzzleRouter);
-
+router.use('puzzle',puzzleRouter)
 /**
  * login user endpoint
  */
-/*
-router.post('/api/users/login', (request, response) => {
+
+/*router.post('/api/users/login', (request, response) => {
     //set headers
     response.header('Access-Control-Allow-Origin','*');
     response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -71,7 +62,7 @@ router.post('/api/users/login', (request, response) => {
         });
     }
 });
-*/
+
 
 /**
 ** PUZZLE ENDPOINTS BELOW
@@ -80,7 +71,12 @@ router.post('/api/users/login', (request, response) => {
 /**
  * puzzle creation endpoint
  */
-/*router.post('/api/puzzle/createPuzzle', (request, response) => {
+/*
+router.post('/api/puzzle/createPuzzle', (request, response) => {
+    //set headers
+    response.header('Access-Control-Allow-Origin','*');
+    response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    response.header('Content-Type','application/json');
     const userToken = request.body.token;
     const puzzleName = request.body.name;
     var currentUserId = null;
@@ -112,11 +108,12 @@ router.post('/api/users/login', (request, response) => {
 /**
  * rating creation endpoint
  */
-/*app.post('/api/puzzle/createPuzzleRating', (request, response) => {
-    // //set headers
-    //   response.header('Access-Control-Allow-Origin','*');
-    //   response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    //   response.header('Content-Type','application/json');
+/*
+router.post('/api/puzzle/createPuzzleRating', (request, response) => {
+    //set headers
+    response.header('Access-Control-Allow-Origin','*');
+    response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    response.header('Content-Type','application/json');
     const userToken = request.body.token;
     const selectedPuzzlePuzzleId = request.body.puzzleId;
     const newRating = request.body.rating;
@@ -151,6 +148,9 @@ router.post('/api/users/login', (request, response) => {
  */
 /*
 router.get('/api/getRatings', (request,response) => {
+    response.header('Access-Control-Allow-Origin','*');
+    response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    response.header('Content-Type','application/json');
     var ratingsJSONArrayObject = {};
     var ratingJSONObjectReturned = {};
     var currRating = null;

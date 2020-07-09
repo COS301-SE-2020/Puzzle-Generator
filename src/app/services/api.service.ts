@@ -32,6 +32,11 @@ export class APIService {
     return this.http.put('http://localhost:3200/api/users/resetPassword', currentUser, httpOptions);
   }
 
+  getUser(token: any){
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'} ) }; 
+    return this.http.post('http://localhost:3200/api/users/getUser',token, httpOptions);
+  }
+
   updateName(currentUser: User){
     const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
     return this.http.put('http://localhost:3200/api/users/updateName', currentUser, httpOptions);
@@ -42,9 +47,9 @@ export class APIService {
     return this.http.put('http://localhost:3200/api/users/updateUsername', currentUser, httpOptions);
   }
 
-  getPuzzlesByUser(token: any){
+  getPuzzlesByUser(token: any): Observable<any[]> {
     const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
-    return this.http.post('http://localhost:3200/api/users/getPuzzlesByUser', token, httpOptions);
+    return this.http.post<any[]>('http://localhost:3200/api/users/getPuzzlesByUser', token, httpOptions);
   }
 
   getPuzzleRatingssByUser(token: any){

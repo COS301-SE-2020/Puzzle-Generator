@@ -29,6 +29,7 @@ import {MatListModule} from '@angular/material/list';
 import { IndexComponent } from './pages/index/index.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RatingsComponent } from './pages/ratings/ratings.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
@@ -42,6 +43,7 @@ import { CreateComponent } from './pages/create/create.component';
     IndexComponent,
     SignupComponent,
     LoginComponent,
+    ProfileComponent,
     RatingsComponent,
     NavbarComponent,
     ResetPasswordComponent,

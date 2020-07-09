@@ -4,4 +4,5 @@ export class PuzzleArr{
   description: string;
   creator: string;
   rating: number;
+  created: any; 
 }

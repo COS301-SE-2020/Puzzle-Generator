@@ -92,6 +92,7 @@ export class RatingsComponent implements OnInit {
       puzzleObj.name = data[i].name;
       puzzleObj.description = data[i].description;
       puzzleObj.creator = data[i].creator;
+      puzzleObj.created = data[i].createdAt;
 
       let j = 0;
       let total = 0;
@@ -119,8 +120,8 @@ export class RatingsComponent implements OnInit {
 
   checkData(data: any){
     this.ratePID = data;
-    this.rateUID = localStorage.getItem('token');
-    //this.rateUID = localStorage.getItem('id');
+    //this.rateUID = localStorage.getItem('token');
+    this.rateUID = localStorage.getItem('id');
     //console.log(localStorage.getItem('id'));
   }
 
@@ -132,14 +133,19 @@ export class RatingsComponent implements OnInit {
       //console.log(this.ratePID);
       //console.log(this.rateUID);
       this.ratingEntry = {
-        "token":this.rateUID,
+        "id":this.rateUID,
         "puzzleID":this.ratePID,
-        "rating":result
+        "rating":result,
+        "token": localStorage.getItem('token')
       }
 
       console.log(this.ratingEntry);
 
       this.api.createNewPuzzleRating(this.ratingEntry).subscribe();
+
+      location.reload();
+
+      alert("Rating added");
 
     });
   }

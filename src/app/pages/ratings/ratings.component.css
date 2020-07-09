@@ -1,3 +1,7 @@
+.container-fluid{
+  background-image: url('../../../assets/images/bg2.jpg');
+}
+
 img{
   width: 20vw;
   height: 20vw;
@@ -6,4 +10,21 @@ img{
 h1{
   text-align: center;
 
+}
+
+mat-card{
+  margin: auto;
+  margin-bottom: 2vw;
+  margin-top: 2vw;
+  background-color: white;
+  color: #7C593A;
+}
+
+.btns{
+  background-color: #7C593A;
+  color: white;
+}
+
+.example-form-field{
+  margin-left: 2vw;
 }

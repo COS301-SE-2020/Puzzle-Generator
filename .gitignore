@@ -1,0 +1,30 @@
+#Ignore database file
+database.js
+
+# Ignore Mac system files
+.DS_store
+
+# Ignore node_modules folder
+node_modules
+
+# Ignore all text files
+*.txt
+
+# Ignore files related to API keys
+.env
+
+# Ignore SASS config files
+.sass-cache
+
+# Ignore JetBrains files
+.idea
+
+# Ignore workspace.xml for Jetbrains
+workspace.xml
+*.xml
+
+#ignore old structure
+OLD structure
+
+#Ignore current directory's Readme from overwriting existing
+readme.md

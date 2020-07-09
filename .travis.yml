@@ -1,0 +1,4 @@
+language: node_js
+
+notifications:
+  webhooks: https://nzvm1.cs.up.ac.za/travis

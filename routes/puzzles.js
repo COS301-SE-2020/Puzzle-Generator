@@ -63,6 +63,18 @@ router.get('/getPuzzleByID/:id', (request, response) => {
         })
 });
 
+//get puzzles fitting searchbar criteria
+router.get('/getSearchedPuzzles/:term', (request, response) => { 
+    const term = request.params.term;
+    Puzzle.findAll( { raw: true, where: { name: {[Op.iLike]:  '%' + term + '%' } } } )
+        .then( puzzle => {
+            response.status(201).send(puzzle);
+        })
+        .catch( error => {
+            response.status(403).send("Failed due to: ", error);
+        })
+});
+
 //create a new puzzle entry into the db
 router.post('/createPuzzle', (request, response) => {
     const name = request.body.name;

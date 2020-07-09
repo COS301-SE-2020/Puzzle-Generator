@@ -7,7 +7,6 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { RatingsComponent } from './pages/ratings/ratings.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ResetSuccessComponent } from './pages/reset-success/reset-success.component';
-import { RateFormComponent } from './pages/rate-form/rate-form.component';
 import { CreateComponent } from './pages/create/create.component';
 
 
@@ -19,7 +18,6 @@ const routes: Routes = [
   {path: 'ratings', component: RatingsComponent},
   {path: 'resetPassword', component: ResetPasswordComponent},
   {path: 'resetSuccess', component: ResetSuccessComponent},
-  {path: 'rateForm', component: RateFormComponent},
   {path: 'create', component: CreateComponent},
 
     // otherwise redirect to home

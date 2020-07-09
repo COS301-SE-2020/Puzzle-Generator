@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RateFormComponent } from './rate-form.component';
+import { RateDialogComponent } from './rate-dialog.component';
 
-describe('RateFormComponent', () => {
-  let component: RateFormComponent;
-  let fixture: ComponentFixture<RateFormComponent>;
+describe('RateDialogComponent', () => {
+  let component: RateDialogComponent;
+  let fixture: ComponentFixture<RateDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RateFormComponent ]
+      declarations: [ RateDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RateFormComponent);
+    fixture = TestBed.createComponent(RateDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

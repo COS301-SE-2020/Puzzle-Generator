@@ -33,7 +33,7 @@ export class APIService {
   }
 
   getUser(token: any){
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'} ) }; 
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'} ) };
     return this.http.post('http://localhost:3200/api/users/getUser',token, httpOptions);
   }
 

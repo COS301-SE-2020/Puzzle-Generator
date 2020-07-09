@@ -64,20 +64,19 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /* Provide token here */
 
     this.currentUser = {
-      "token": this.token
+      "token": localStorage.getItem('token')
     }
 
     this.api.getUser(this.currentUser).subscribe( data => {
       this.currentUserObject = data;
 
-      this.updateNameForm = this.formBuilder.group({ 
+      this.updateNameForm = this.formBuilder.group({
         name: [data['name'], [Validators.required, Validators.pattern('[a-zA-Z ]*')]]
       });
 
-      this.updateUsernameForm = this.formBuilder.group({ 
+      this.updateUsernameForm = this.formBuilder.group({
         username: [data['username'], [Validators.required, Validators.email]]
       });
     });

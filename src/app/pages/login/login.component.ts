@@ -29,6 +29,12 @@ export class LoginComponent implements OnInit {
         data => { console.log(data);
           localStorage.removeItem('name');
           localStorage.setItem('name', data['name']);
+          localStorage.removeItem('token');
+          localStorage.setItem('token', data['token']);
+
+          // update api to get id as well 
+          //localStorage.removeItem('id');
+          //localStorage.setItem('id', data['id']);
           this.formError = "";
         this.router.navigate(['/ratings']);
       },

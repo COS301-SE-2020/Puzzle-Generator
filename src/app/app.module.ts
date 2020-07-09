@@ -34,8 +34,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RatingsComponent } from './pages/ratings/ratings.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ResetSuccessComponent } from './pages/reset-success/reset-success.component';
-import { RateFormComponent } from './pages/rate-form/rate-form.component';
 import { CreateComponent } from './pages/create/create.component';
+import { RateDialogComponent } from './rate-dialog/rate-dialog.component';
 
 @NgModule({
   declarations: [
@@ -48,8 +48,8 @@ import { CreateComponent } from './pages/create/create.component';
     NavbarComponent,
     ResetPasswordComponent,
     ResetSuccessComponent,
-    RateFormComponent,
     CreateComponent,
+    RateDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +69,7 @@ import { CreateComponent } from './pages/create/create.component';
     MatInputModule, MatListModule,
     MatCardModule, MatFormFieldModule, MatDialogModule, MatGridListModule, MatRadioModule, ReactiveFormsModule
   ],
+  entryComponents: [RateDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

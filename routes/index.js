@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
     }
   });*/
   res.writeHead(200, {'Content-Type': 'text/html'});
-  res.render('index', { title: 'Express 123' });
+  res.render('src/index', { title: 'Prometheus puzzles' });
 
 });
 

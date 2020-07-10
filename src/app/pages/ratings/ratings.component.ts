@@ -155,6 +155,10 @@ export class RatingsComponent implements OnInit {
     this.openRateDialog();
   }
 
+  reload(){
+    this.populate(null);
+  }
+
   ngOnInit(): void {
     this.populate(null);
   }

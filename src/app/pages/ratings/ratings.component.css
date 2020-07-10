@@ -28,3 +28,7 @@ mat-card{
 .example-form-field{
   margin-left: 2vw;
 }
+
+#resetBtn{
+  margin-left: 2vw; 
+}

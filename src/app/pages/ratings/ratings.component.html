@@ -7,6 +7,8 @@
       <mat-icon>search</mat-icon>
     </button>
 </mat-form-field>
+<button mat-button id="resetBtn" class="btns" (click)="reload()">Reset Search Criteria</button>
+
 
 <div class="container-fluid">
     <div class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
@@ -15,7 +17,7 @@
                 <mat-card-title>{{puzzle.name}}</mat-card-title>
                 <mat-card-subtitle>Created by {{puzzle.creator}}</mat-card-subtitle>
                 <mat-card-subtitle>Rating: {{puzzle.rating}}</mat-card-subtitle>
-                <mat-card-subtitle>Date: {{puzzle.created}}</mat-card-subtitle> 
+                <mat-card-subtitle>Date: {{puzzle.created}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
                 <img src="assets/images/puzzles/{{puzzle.id}}.png">

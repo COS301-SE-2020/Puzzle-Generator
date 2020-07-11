@@ -72,7 +72,8 @@ export class RatingsComponent implements OnInit {
         var dataObjectSize = Object.keys(data).length;
         if(dataObjectSize == 0 )
         {
-          console.log("Nothing matches given criteria")
+          alert("Nothing matches given criteria");
+          console.log("Nothing matches given criteria");
         }
         else{
           //Please populate the page with the data received. Other puzzles not fromd data must be cleared
@@ -121,7 +122,7 @@ export class RatingsComponent implements OnInit {
   checkData(data: any){
     this.ratePID = data;
     //this.rateUID = localStorage.getItem('token');
-    this.rateUID = localStorage.getItem('id');
+    //this.rateUID = localStorage.getItem('id');
     //console.log(localStorage.getItem('id'));
   }
 
@@ -133,7 +134,7 @@ export class RatingsComponent implements OnInit {
       //console.log(this.ratePID);
       //console.log(this.rateUID);
       this.ratingEntry = {
-        "id":this.rateUID,
+        //"id":this.rateUID,
         "puzzleID":this.ratePID,
         "rating":result,
         "token": localStorage.getItem('token')

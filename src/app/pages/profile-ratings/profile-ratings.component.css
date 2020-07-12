@@ -1,0 +1,37 @@
+#image, #profileImage{
+    width: 20rem;
+    height: 22rem;
+}
+
+#profileImage{
+    border-radius: 220rem;
+    background-position: left top;
+    padding: 2rem;
+    width: 23rem;
+}
+
+.profile{
+    margin: 3rem;
+    padding: 2rem;
+    width: 25rem;
+    background-color:  #7C593A;
+}
+
+.flex-container{
+    margin: 0.9rem;
+}
+
+.userPuzzles{
+    margin: 0.2rem;
+    background-color:  #7C593A;
+}
+
+.btns{
+    background-color: whitesmoke;
+    margin: 0.3rem;
+    height: 3rem;
+}
+
+.content{
+    background-image: url('../../../assets/images/bg2.jpg');
+}

@@ -52,9 +52,9 @@ export class APIService {
     return this.http.post<any[]>('http://localhost:3200/api/users/getPuzzlesByUser', token, httpOptions);
   }
 
-  getPuzzleRatingssByUser(token: any){
+  getPuzzleRatingsByUser(token: any): Observable<any[]>{
     const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
-    return this.http.post('http://localhost:3200/api/users/getPuzzleRatingsByUser', token, httpOptions);
+    return this.http.post<any[]>('http://localhost:3200/api/users/getPuzzleRatingsByUser', token, httpOptions);
   }
 
   /**

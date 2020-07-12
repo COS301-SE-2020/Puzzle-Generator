@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { APIService } from 'src/app/services/api.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { Puzzle } from 'src/app/models/Puzzle';
 
 @Component({
   selector: 'app-profile',
@@ -19,10 +16,7 @@ export class ProfileComponent implements OnInit {
   updateNameForm: FormGroup;
   updateUsernameForm: FormGroup;
 
-  //user  puzzle variables
-  puzzleList: Observable <Puzzle[]> ;
-
-  constructor(private activatedRoute: ActivatedRoute, private route: Router, private api: APIService, private formBuilder: FormBuilder) { }
+  constructor(private api: APIService, private formBuilder: FormBuilder) { }
 
   updateName(){
     this.currentUser = null;
@@ -59,10 +53,6 @@ export class ProfileComponent implements OnInit {
     ]
   }
 
-  getUserPuzzles(){
-    this.puzzleList = this.api.getPuzzlesByUser(this.currentUser);
-  }
-
   ngOnInit(): void {
 
     this.currentUser = {
@@ -80,8 +70,6 @@ export class ProfileComponent implements OnInit {
         username: [data['username'], [Validators.required, Validators.email]]
       });
     });
-
-    this.getUserPuzzles();
   }
 
 }

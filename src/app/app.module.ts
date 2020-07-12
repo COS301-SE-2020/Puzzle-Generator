@@ -36,6 +36,8 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 import { ResetSuccessComponent } from './pages/reset-success/reset-success.component';
 import { CreateComponent } from './pages/create/create.component';
 import { RateDialogComponent } from './rate-dialog/rate-dialog.component';
+import { ProfilePuzzlesComponent } from './pages/profile-puzzles/profile-puzzles.component';
+import { ProfileRatingsComponent } from './pages/profile-ratings/profile-ratings.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { RateDialogComponent } from './rate-dialog/rate-dialog.component';
     ResetSuccessComponent,
     CreateComponent,
     RateDialogComponent,
+    ProfilePuzzlesComponent,
+    ProfileRatingsComponent,
   ],
   imports: [
     BrowserModule,

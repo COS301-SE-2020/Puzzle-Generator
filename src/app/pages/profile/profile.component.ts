@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
     this.currentUser = null;
       if(this.nameTextboxValue != undefined){
       this.currentUser = {
-        "token": this.token,
+        "token": localStorage.getItem('token'),
         "name": this.nameTextboxValue
       }
       this.api.updateName(this.currentUser).subscribe( data => {
@@ -36,7 +36,7 @@ export class ProfileComponent implements OnInit {
     this.currentUser = null;
     if(this.usernameTextboxValue != undefined){
     this.currentUser = {
-      "token": this.token,
+      "token": localStorage.getItem('token'),
       "username": this.usernameTextboxValue
     }
     this.api.updateUsername(this.currentUser).subscribe( data => {
@@ -50,6 +50,10 @@ export class ProfileComponent implements OnInit {
     'username': [
       { type: 'required', message: 'Email is required.' },
       { type: 'email', message: 'Invalid email format.' }
+    ],
+    'name': [
+      { type: 'required', message: 'Full name is required.' },
+      { type: 'pattern', message: 'Name can only consist of letters' }
     ]
   }
 

@@ -12,6 +12,13 @@
                 <mat-form-field appearance="fill">
                     <input matInput formControlName="name"  value="{{currentUserObject.name}}" (input)="nameTextboxValue=$event.target.value"> 
                 </mat-form-field>
+                <div>
+                    <ng-container *ngFor="let error of error_messages.name">
+                        <mat-error class="error-message" *ngIf="updateNameForm.get('name').hasError(error.type) && (updateNameForm.get('name').dirty || updateNameForm.get('name').touched)">
+                            {{ error.message }}
+                        </mat-error>
+                    </ng-container>
+                </div> 
                 <button mat-raised-button type="submit" [disabled]="!updateNameForm.valid" class="btns" >Save</button>
             </form>
 
@@ -19,6 +26,13 @@
                 <mat-form-field appearance="fill">
                     <input matInput formControlName="username"  value="{{currentUserObject.username}}" (input)="usernameTextboxValue=$event.target.value"> 
                 </mat-form-field>
+                <div>
+                    <ng-container *ngFor="let error of error_messages.username">
+                        <mat-error class="error-message" *ngIf="updateUsernameForm.get('username').hasError(error.type) && (updateUsernameForm.get('username').dirty || updateUsernameForm.get('username').touched)">
+                            {{ error.message }}
+                        </mat-error>
+                    </ng-container>
+                </div>
                 <button mat-raised-button type="submit" [disabled]="!updateUsernameForm.valid" class="btns">Save</button>
             </form>
         </div>

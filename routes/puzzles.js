@@ -6,7 +6,6 @@ const User = require('../models/User');
 const Puzzle = require('../models/Puzzle');
 const PuzzleRating = require('../models/PuzzleRating')
 const Sequelize = require('sequelize');
-const e = require('express');
 const Op = Sequelize.Op;
 
 /**
@@ -18,36 +17,28 @@ router.get('/getAllPuzzles', (request, response) => {
     var puzzleJsonObject = [];
     var puzzlePlaceholder = {};
     var index = 0;
-    Puzzle.findAll()
+    Puzzle.findAll({ raw: true, include: User})
         .then( puzzles => {
             var array = puzzles;
             var totalNumPuzzles = Object.keys(puzzles).length;
-            //console.log(array);
-           // response.status(201).send(puzzles);
             array.forEach(element => {
-                User.findAll({ raw: true, where: {id: element.creatorID }})
-                .then( data => { 
-                    //console.log("--- ", data[0].name);
-                    //console.log("** ", array[count].creatorID);
-                    puzzlePlaceholder = {
-                        "id":array[index].id,
-                        "name":array[index].name,
-                        "description":array[index].description,
-                        "puzzleObject":array[index].puzzleObject,
-                        "createdAt":array[index].createdAt,
-                        "creator":data[0].name
-                    };
-                    ++index;
-                    puzzleJsonObject.push(puzzlePlaceholder);
-                    if(index == totalNumPuzzles){
-                        response.status(201).send(puzzleJsonObject);
-                    }
-                })
-                .catch( error => { console.log("Error: ", error);});
+                puzzlePlaceholder = {
+                    "id":element.id,
+                    "name":element.name,
+                    "description": element.description,
+                    "puzzleObject": element.puzzleObject,
+                    "createdAt": element.createdAt,
+                    "creator": element['testUser.name']
+                };
+                ++index;
+                puzzleJsonObject.push(puzzlePlaceholder);
+                if(index == totalNumPuzzles){
+                    response.status(201).send(puzzleJsonObject);
+                }
             });
         })
         .catch( error => {
-            console.log("Failed to get all puzzles due to: ", error)
+            response.status(500).send("Failed to get all puzzles due to: ", error)
         });
 });
 
@@ -123,15 +114,36 @@ router.post('/createPuzzleRating', (request, response) => {
     .then( user => {
         userID = user[0].id;
 
-        PuzzleRating.create({
-            rating, puzzleID, userID
-        })
-        .then( () => {
-            response.status(200).send("Puzzle rating successfully created")
-        })
-        .catch( error => {
-            response.status(403).send("Puzzle rating creation failed due to: ", error);
-        });
+        PuzzleRating.findAll({ raw: true,
+            where: { userID:  userID, puzzleID:  puzzleID }
+          })
+          .then( data => { 
+              if(data.length == 0){ //rating doesnt exist so create new rating
+                  PuzzleRating.create({
+                      rating, puzzleID, userID
+                    })
+                    .then( () => {
+                        response.status(200).send("Puzzle rating successfully created")
+                    })
+                    .catch( error => {
+                        response.status(403).send("Puzzle rating creation failed due to: ", error);
+                    });
+                }
+                else
+                {
+                    PuzzleRating.update( //rating exists so update current rating
+                        { rating: rating },
+                        { returning: true, raw: true, plain: true, where: { userID:  userID, puzzleID:  puzzleID } }
+                    )
+                    .then( () => {
+                        response.status(200).send("Puzzle rating successfully updated");
+                     })
+                    .catch( error => {
+                        response.status(500).send("Server error");
+                    } );
+                }
+            })
+          .catch( error => { response.status(500).send("Error: ", error); })
     })
     .catch(error => {
         response.status(403).send("User not found due to: ", error);

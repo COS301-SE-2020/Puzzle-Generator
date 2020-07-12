@@ -133,7 +133,7 @@ router.put('/resetPassword', (request, response) => {
              })
             .catch( error => {
                 response.status(500).send("Server error");
-            } )
+            } );
         }
     })
     .catch( error => {
@@ -144,54 +144,60 @@ router.put('/resetPassword', (request, response) => {
 //get puzzles by user
 router.post('/getPuzzlesByUser', (request, response) => { 
     let userID = null
-    User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
-        .then( user => {
-            userID = user[0].id;
-            
-            Puzzle.findAll( { raw: true, where: { creatorID: userID  } } )
-            .then( puzzles => {
-                if(puzzles) {
-                    console.log(puzzles);
-                    response.status(201).send(puzzles);
-                }
-                else{
-                    response.status(200).send("No puzzles yet");
-                }
-            })
-            .catch( error => {
-                response.status(404).send("User does not exist");
-            });
+    User.findOne({ raw: true, where: { token: {[Op.like]:  request.body.token } } })
+    .then( user => {
+        userID = user.id;
+           
+        Puzzle.findAll( { raw: true, where: { creatorID: userID  } } )
+        .then( puzzles => {
+            if(puzzles) {
+                response.status(201).send(puzzles);
+            }
+            else{
+                response.status(200).send("No puzzles yet");
+            }
         })
         .catch( error => {
-            console.log("Failed to get user due to: ", error)
-        })
-        
+            response.status(404).send("User does not exist");
+        });
+    })
+    .catch( error => {
+        response.status(500).send("Failed due to server error: ", error);
+    })   
 });
 
 //get ratings by user
 router.post('/getPuzzleRatingsByUser', (request, response) => { 
-    let raterID = null
-    User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
-        .then( user => {
-            raterID = user[0].id;
+    let raterID = null;
+    let ratingJsonObject = [];
+    let ratingPlaceholder = {};
+    let index = 0;
+    User.findOne({ raw: true, where: { token: {[Op.like]:  request.body.token } } })
+    .then( user => { 
+        raterID = user.id;  
 
-            PuzzleRating.findAll( { raw: true, where: { userID: parseInt(raterID)  } } )
-            .then( puzzles => {
-                if(puzzles) {
-                    console.log(puzzles);
-                    response.status(201).send(puzzles);
+        PuzzleRating.findAll({  raw: true, where: { userID: parseInt(raterID)}, include: [Puzzle , User] })
+        .then( data => {
+            let array = data;
+            var totalNumRatings = Object.keys(data).length;
+            array.forEach(element => {
+                ratingPlaceholder = {
+                    "puzzleName": element['testPuzzle.name'],
+                    "rating":element.rating,
+                    "puzzleID":element.puzzleID
                 }
-                else{
-                    response.status(200).send("No Ratings yet");
+                ++index;
+                ratingJsonObject.push(ratingPlaceholder);
+                if(index == totalNumRatings){
+                    response.status(201).send(ratingJsonObject);
                 }
-            })
-            .catch( error => {
-                response.status(403).send("Failed to get user due to: ", error)
             });
         })
         .catch( error => {
-            response.status(403).send("Failed to get user due to: ", error)
+            response.status(500).send("Server error: ", error);
         });
+    })
+    .catch( error => { response.status(500).send("Server error: ", error); });
 });
 
 module.exports = router;

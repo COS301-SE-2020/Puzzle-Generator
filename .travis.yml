@@ -1,16 +1,21 @@
 language: node_js
-
-notifications:
-  webhooks: https://nzvm1.cs.up.ac.za/travis
+node_js: 4
 
 sudo: required
 before_install:
+  - npm i -g npm@version-number
   - npm install -g node-gyp
+cache:
+  npm: false
+
 env:
-  - CXX=g++-5
+  - CXX=g++-4.8
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - g++-5
+      - g++-4.8
+
+notifications:
+  webhooks: https://nzvm1.cs.up.ac.za/travis

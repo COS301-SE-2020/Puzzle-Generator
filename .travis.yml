@@ -2,3 +2,15 @@ language: node_js
 
 notifications:
   webhooks: https://nzvm1.cs.up.ac.za/travis
+
+sudo: required
+before_install:
+  - npm install -g node-gyp
+env:
+  - CXX=g++-5
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-5

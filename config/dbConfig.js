@@ -1,6 +1,13 @@
 var Sequelize = require('sequelize');
 
-module.exports = new Sequelize(process.env.DBDatabase, process.env.DBUsername, process.env.DBPass, {
+let dbname = process.env.dbDatabase;
+let uname =  process.env.dbUsername;
+let pass = process.env.dbpass;
+console.log(dbname);
+console.log(uname);
+console.log(pass);
+
+module.exports = new Sequelize(dbname, uname, pass, {
   host: 'ec2-54-228-209-117.eu-west-1.compute.amazonaws.com',
   dialect: 'postgres',
   port: 5432,

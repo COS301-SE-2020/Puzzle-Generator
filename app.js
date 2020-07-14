@@ -15,7 +15,7 @@ var loginRouter = require('./routes/login');
 var puzzleRouter = require('./routes/puzzle');
 var apiRouter = require('./routes/api');
 
-const db = require('./config/database');
+const db = require('./config/dbConfig');
 
 //test db connection
 db.authenticate()
@@ -35,13 +35,19 @@ app.all("/*", function(req, res, next) {
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.engine('html',require('pug').renderFile);
+app.set('view engine', 'html');
 
 app.use(logger('dev'));
 //app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.static(path.join(__dirname, 'src')));
+app.set("views",path.join(__dirname,"views"));
+
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
@@ -69,6 +75,7 @@ app.use(function(err, req, res, next) {
 app.get('/', (request, response) => {response.send("Sequelize API test");});
 
 module.exports = app;
+console.log(process.env.dbPass)
 /*
 //all requests associated with the user must make use of this route
 app.use('/api/users', require('./routes/users'));

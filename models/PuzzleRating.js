@@ -1,5 +1,5 @@
 const sequelize = require('sequelize');
-const db = require('../config/database');
+const db = require('../config/dbConfig');
 const { Sequelize } = require('sequelize');
 
 const PuzzleRating = db.define('testPuzzleRatings', {

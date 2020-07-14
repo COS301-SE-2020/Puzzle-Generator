@@ -1,0 +1,6 @@
+name: Prometheus_Puzzles
+env:
+  dbpass: ${{ secrets.DBPass }}
+  dbName: ${{ secrets.DBName }}
+  dbDatabase: ${{ secrets.DBDatabase }}
+  dbUsername: ${{ secrets.DBUserName }}

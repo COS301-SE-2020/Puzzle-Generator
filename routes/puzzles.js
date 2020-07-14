@@ -1,7 +1,7 @@
 const express = require('express');
 const { response, request } = require('express');
 const router = express.Router();
-const db = require('../config/database');
+const db = require('../config/dbConfig');
 const User = require('../models/User');
 const Puzzle = require('../models/Puzzle');
 const PuzzleRating = require('../models/PuzzleRating')
@@ -14,7 +14,7 @@ const Op = Sequelize.Op;
  */
 
 //get all puzzles
-router.get('/getAllPuzzles', (request, response) => { 
+router.get('/getAllPuzzles', (request, response) => {
     var puzzleJsonObject = [];
     var puzzlePlaceholder = {};
     var index = 0;
@@ -26,7 +26,7 @@ router.get('/getAllPuzzles', (request, response) => {
            // response.status(201).send(puzzles);
             array.forEach(element => {
                 User.findAll({ raw: true, where: {id: element.creatorID }})
-                .then( data => { 
+                .then( data => {
                     //console.log("--- ", data[0].name);
                     //console.log("** ", array[count].creatorID);
                     puzzlePlaceholder = {
@@ -52,7 +52,7 @@ router.get('/getAllPuzzles', (request, response) => {
 });
 
 //get puzzle by id
-router.get('/getPuzzleByID/:id', (request, response) => { 
+router.get('/getPuzzleByID/:id', (request, response) => {
     const theID = parseInt(request.params.id);
     Puzzle.findAll( { raw: true, where: { id: theID } } )
         .then( puzzle => {
@@ -92,7 +92,7 @@ router.post('/createPuzzle', (request, response) => {
  * Puzzle Ratings Endpoints
  *  */
 //get all puzzle ratings
-router.get('/getAllPuzzleRatings', (request, response) => { 
+router.get('/getAllPuzzleRatings', (request, response) => {
     PuzzleRating.findAll()
         .then( puzzleRatings => {
             response.status(200).send(puzzleRatings);
@@ -102,7 +102,7 @@ router.get('/getAllPuzzleRatings', (request, response) => {
         })
 });
 
-//create a new rating 
+//create a new rating
 router.post('/createPuzzleRating', (request, response) => {
     const rating = request.body.rating;
     const puzzleID = request.body.puzzleID;

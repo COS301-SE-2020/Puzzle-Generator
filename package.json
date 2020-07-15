@@ -1,13 +1,13 @@
 {
-  "name": "nodeapp",
-  "version": "0.0.0",
+  "name": "Prometheus_Puzzles",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www && ng serv",
     "ng": "ng",
     "startAngular": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

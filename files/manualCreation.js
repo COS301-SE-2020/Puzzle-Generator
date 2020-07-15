@@ -7,6 +7,7 @@ function setDistanceMetric(metric)
 
 window.onload = function() {
 	let canvas = document.getElementById('container');
+	let canvasCoords = canvas.getBoundingClientRect();
 	let width = canvas.offsetWidth;
 	let height = canvas.offsetHeight;
 	let sites = [];
@@ -42,8 +43,8 @@ window.onload = function() {
 	canvas.addEventListener('mousedown', function(event){
 		if(!generateButtonClicked)
 		{
-			let x = event.clientX;
-			let y = event.clientY;
+			let x = event.clientX - canvasCoords.x;
+			let y = event.clientY - canvasCoords.y;
 			let point = createPoint(x, y);
 			sites.push({
 				x: point.x(),

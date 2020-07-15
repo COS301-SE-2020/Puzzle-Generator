@@ -11,6 +11,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "engines": {
+    "node": "14.0",
+    "npm": "6.0.0"
+  },
   "author": "team_prometheus",
   "license": "ISC",
   "dependencies": {

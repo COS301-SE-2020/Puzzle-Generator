@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+//import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { APIService } from 'src/app/services/api.service';
-import { User } from 'src/app/models/user';
-import { Router } from '@angular/router';
+//import { User } from 'src/app/models/User';
+//import { Router } from '@angular/router';
 import { PuzzleArr } from './puzzleArr';
 import { RatingsArr } from './RatingsArr';
 
@@ -89,7 +89,7 @@ export class RatingsComponent implements OnInit {
           console.log("Nothing matches given criteria")
         }
         else{
-          //Please populate the page with the data received. Other puzzles not fromd data must be cleared 
+          //Please populate the page with the data received. Other puzzles not fromd data must be cleared
           console.log(data);
         }
       });

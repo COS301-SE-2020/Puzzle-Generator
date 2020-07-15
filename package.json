@@ -7,7 +7,7 @@
     "ng": "ng",
     "startAngular": "ng serve",
     "build": "ng build",
-    
+
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

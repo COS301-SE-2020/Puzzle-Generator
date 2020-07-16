@@ -1,4 +1,6 @@
 <app-navbar></app-navbar>
+<!--app-navbar-profile></app-navbar-profile--> 
+
 <div class="content">
 <div class="container" >
     <mat-card class="profile">
@@ -8,9 +10,9 @@
         <mat-card-content>
         <div><img src="assets/images/profile.jpg" id="profileImage"></div>
         <div *ngIf="currentUserObject">
-            <form [formGroup]="updateNameForm" (ngSubmit)="updateName()"> 
+            <form [formGroup]="updateNameForm" (ngSubmit)="updateName()">
                 <mat-form-field appearance="fill">
-                    <input matInput formControlName="name"  value="{{currentUserObject.name}}" (input)="nameTextboxValue=$event.target.value"> 
+                    <input matInput formControlName="name"  value="{{currentUserObject.name}}" (input)="nameTextboxValue=$event.target.value">
                 </mat-form-field>
                 <div>
                     <ng-container *ngFor="let error of error_messages.name">
@@ -18,13 +20,13 @@
                             {{ error.message }}
                         </mat-error>
                     </ng-container>
-                </div> 
+                </div>
                 <button mat-raised-button type="submit" [disabled]="!updateNameForm.valid" class="btns" >Save</button>
             </form>
 
-            <form [formGroup]="updateUsernameForm" (ngSubmit)="updateUsername()"> 
+            <form [formGroup]="updateUsernameForm" (ngSubmit)="updateUsername()">
                 <mat-form-field appearance="fill">
-                    <input matInput formControlName="username"  value="{{currentUserObject.username}}" (input)="usernameTextboxValue=$event.target.value"> 
+                    <input matInput formControlName="username"  value="{{currentUserObject.username}}" (input)="usernameTextboxValue=$event.target.value">
                 </mat-form-field>
                 <div>
                     <ng-container *ngFor="let error of error_messages.username">
@@ -39,9 +41,5 @@
         </mat-card-content>
     </mat-card>
 </div>
-
-<app-profile-puzzles></app-profile-puzzles>
-
-<app-profile-ratings></app-profile-ratings>
 
 </div>

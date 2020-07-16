@@ -1,12 +1,20 @@
-<form [formGroup]="form" (ngSubmit)="submit(form)">
-  <h1 mat-dialog-title>Rate Puzzle</h1>
+<form [formGroup]="form" (ngSubmit)="submit(form.value)">
+  <h1 mat-dialog-title>Rate Puzzle (out of 5)</h1>
   <mat-dialog-content>
     <mat-form-field>
-      <input matInput formControlName="rating" placeholder="Enter Rating">
+      <input matInput type="number" min="1" max="5" formControlName="rating" placeholder="Enter Rating" ngControl="rating">
     </mat-form-field>
+    <div>
+        <ng-container *ngFor="let error of error_messages.rating">
+            <mat-error class="error-message" *ngIf="form.get('rating').hasError(error.type) && (form.get('rating').dirty || form.get('rating').touched)">
+                {{ error.message }}
+            </mat-error>
+        </ng-container>
+    </div>
+
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button mat-button type="submit">Submit</button>
+    <button mat-button type="submit" [disabled]="!form.valid">Submit</button>
     <button mat-button type="button" mat-dialog-close>Cancel</button>
   </mat-dialog-actions>
 </form>

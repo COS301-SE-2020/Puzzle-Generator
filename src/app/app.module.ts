@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +26,7 @@ import { MatGridListModule } from '@angular/material/grid-list'
 import { MatRadioModule } from '@angular/material/radio';
 import {MatListModule} from '@angular/material/list';
 
+
 //pages
 import { IndexComponent } from './pages/index/index.component';
 import { SignupComponent } from './pages/signup/signup.component';
@@ -38,6 +40,7 @@ import { CreateComponent } from './pages/create/create.component';
 import { RateDialogComponent } from './rate-dialog/rate-dialog.component';
 import { ProfilePuzzlesComponent } from './pages/profile-puzzles/profile-puzzles.component';
 import { ProfileRatingsComponent } from './pages/profile-ratings/profile-ratings.component';
+import { NavbarProfileComponent } from './navbar-profile/navbar-profile.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +57,7 @@ import { ProfileRatingsComponent } from './pages/profile-ratings/profile-ratings
     RateDialogComponent,
     ProfilePuzzlesComponent,
     ProfileRatingsComponent,
+    NavbarProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,7 +75,8 @@ import { ProfileRatingsComponent } from './pages/profile-ratings/profile-ratings
     HttpClientModule,
     FormsModule,
     MatInputModule, MatListModule,
-    MatCardModule, MatFormFieldModule, MatDialogModule, MatGridListModule, MatRadioModule, ReactiveFormsModule
+    MatCardModule, MatFormFieldModule, MatDialogModule, MatGridListModule, MatRadioModule, ReactiveFormsModule,
+    MDBBootstrapModule.forRoot(),
   ],
   entryComponents: [RateDialogComponent],
   providers: [],

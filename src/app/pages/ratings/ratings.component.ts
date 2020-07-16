@@ -133,20 +133,25 @@ export class RatingsComponent implements OnInit {
       //console.log(result);
       //console.log(this.ratePID);
       //console.log(this.rateUID);
-      this.ratingEntry = {
+
+      if (result != ""){
+
+        this.ratingEntry = {
         //"id":this.rateUID,
-        "puzzleID":this.ratePID,
-        "rating":result,
-        "token": localStorage.getItem('token')
+          "puzzleID":this.ratePID,
+          "rating":result,
+          "token": localStorage.getItem('token')
+        }
+
+        console.log(this.ratingEntry);
+
+        if(this.api.createNewPuzzleRating(this.ratingEntry).subscribe())
+        {
+          alert("Rating added");
+        }
+
+        location.reload();
       }
-
-      console.log(this.ratingEntry);
-
-      this.api.createNewPuzzleRating(this.ratingEntry).subscribe();
-
-      location.reload();
-
-      alert("Rating added");
 
     });
   }

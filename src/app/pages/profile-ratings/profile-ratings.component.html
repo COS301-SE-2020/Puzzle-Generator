@@ -1,3 +1,6 @@
+<app-navbar></app-navbar>
+<!--app-navbar-profile></app-navbar-profile--> 
+
 <h2>My Ratings</h2>
 <div *ngIf="currentUser" class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
     <mat-card *ngFor="let rating of ratingList|async" class="userPuzzles">

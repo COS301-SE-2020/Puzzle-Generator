@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from 'src/app/services/api.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +17,7 @@ export class ProfileComponent implements OnInit {
   updateNameForm: FormGroup;
   updateUsernameForm: FormGroup;
 
-  constructor(private api: APIService, private formBuilder: FormBuilder) { }
+  constructor(private api: APIService, private formBuilder: FormBuilder, private router: Router) { }
 
   updateName(){
     this.currentUser = null;
@@ -58,6 +59,11 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    if(!localStorage.getItem('token')){
+      this.router.navigate(['/index']);
+      alert("You are not logged in");
+    }
 
     this.currentUser = {
       "token": localStorage.getItem('token')

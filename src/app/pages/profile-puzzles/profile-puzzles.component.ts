@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { APIService } from 'src/app/services/api.service';
 import { Puzzle } from 'src/app/models/Puzzle';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-puzzles',
@@ -14,13 +15,19 @@ export class ProfilePuzzlesComponent implements OnInit {
   //user  puzzle variables
   puzzleList: Observable <Puzzle[]> ;
 
-  constructor(private api: APIService) { }
+  constructor(private api: APIService, private router: Router) { }
 
   getUserPuzzles(){
     this.puzzleList = this.api.getPuzzlesByUser(this.currentUser);
   }
 
   ngOnInit(): void {
+
+    if(!localStorage.getItem('token')){
+      this.router.navigate(['/index']);
+      alert("You are not logged in");
+    }
+
     this.currentUser = {
       "token": localStorage.getItem('token')
     }

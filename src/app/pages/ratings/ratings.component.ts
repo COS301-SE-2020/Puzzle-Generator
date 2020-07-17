@@ -27,7 +27,7 @@ export class RatingsComponent implements OnInit {
   //searchbar
   searchTextboxValue: string;
 
-  constructor(private api: APIService, private cdr: ChangeDetectorRef, private dialog: MatDialog) {
+  constructor(private api: APIService, private cdr: ChangeDetectorRef, private dialog: MatDialog, private router: Router) {
   }
 
   populate(populatePuz: any)
@@ -166,6 +166,10 @@ export class RatingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(!localStorage.getItem('token')){
+      this.router.navigate(['/index']);
+      alert("You are not logged in");
+    }
     this.populate(null);
   }
 

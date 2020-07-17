@@ -37,6 +37,16 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('id', data['id']);
           this.formError = "";
         this.router.navigate(['/ratings']);
+
+        //var timeoutHandle = window.setTimeout(...);
+        //window.clearTimeout(timeoutHandle);
+        //timeoutHandle = window.setTimeout(...);
+
+        setTimeout(()=>{
+          localStorage.removeItem('token');
+          this.router.navigate(['login']);
+          alert("You have been logged out after 1 hour");
+        },3600000);
       },
         error => {//if status code other than in the 200 range returned, show error
           console.log('Error from API: ', error.error);

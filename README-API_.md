@@ -31,7 +31,7 @@ App.js - this is the entry point of the application. It also defines the major r
 		4.2		[Get Puzzle By ID](#get-puzzle-by-id)   
 		4.3		[Get Searched Puzzles](#get-searched-puzzles)   
 		4.4		[Create Puzzle](#create-puzzle)   
-		4.5		[Get All Puzzle Ratings](#get-all-puzzle-ratings) 
+		4.5		[Get All Puzzle Ratings](#get-all-puzzle-ratings)
         4.6		[Create Puzzle Rating](#create-puzzle-rating) 
          
     
@@ -140,7 +140,7 @@ This endpoint will return a `token` which must be used for all further requests 
 
 ```json
 {
-    "name": "Jane Doe",
+	"name": "Jane Doe",
 	"token": "vjefe7238ou23jonefciohd"
 }
 ```
@@ -317,7 +317,7 @@ The following fields must be provided in the request body:
 This endpoint will return a list of puzzles created by the user as a json object or an array of json objects depending on the number of puzzles made
 ```json
 {
-	"puzzleID": 1,
+    "puzzleID": 1,
     "name": "XYZ",
     "description": "Cool puzzle",
     "dateCreated": "23-12-2020"
@@ -353,9 +353,10 @@ The following fields must be provided in the request body:
 ##### Response Body
 
 This endpoint will return a list of puzzle ratings made by the user as a json object or an array of json objects depending on the number of puzzle ratings made
+
 ```json
 {
-	"puzzleID": 1,
+    "puzzleID": 1,
     "name": "XYZ",
     "description": "Cool puzzle",
     "rating": 3
@@ -389,7 +390,7 @@ Puzzle details, including name of creator are returned. A single json object or 
 
 ```json
 {
-	"puzzleID": 1,
+    "puzzleID": 1,
     "name": "XYZ",
     "description": "Cool puzzle",
     "creator": "Jane Doe"
@@ -422,7 +423,7 @@ The specified puzzle is returned
 
 ```json
 {
-	"puzzleID": 1,
+    "puzzleID": 1,
     "name": "XYZ",
     "description": "Cool puzzle",
     "creator": "Jane Doe"
@@ -491,7 +492,7 @@ This endpoint is used when creating a new puzzle.
 The following must be specified.
 ```json
 {
-	"name": "ABC",
+    "name": "ABC",
     "description": "Puzzleeeeee",
     "token": "dxcfjv87uihyihfnjk",
     "puzzleObject": "[{x:3, y:6}, {x:5, y:9}]",
@@ -565,7 +566,7 @@ This endpoint is used when creating a new puzzle rating.
 The following must be specified.
 ```json
 {
-	"puzzleID": 3,
+    "puzzleID": 3,
     "token": "dxcfjv87uihyihfnjk",
     "rating": 3
 }

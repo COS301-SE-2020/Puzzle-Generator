@@ -35,7 +35,6 @@ App.js - this is the entry point of the application. It also defines the major r
 		4.3		[Get Searched Puzzles](#get-searched-puzzles)   
 		4.4		[Create Puzzle](#create-puzzle)   
 		4.5		[Get All Puzzle Ratings](#get-all-puzzle-ratings)
-        
         4.6		[Create Puzzle Rating](#create-puzzle-rating) 
          
     

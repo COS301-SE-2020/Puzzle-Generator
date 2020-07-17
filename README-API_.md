@@ -4,9 +4,12 @@ The system will make use of the API for communication between components. This d
 
 The API makes use of [RESTful](https://restfulapi.net/resource-naming/) conventions.
 
-All calls made to the database make use of the Sequelize frameworks. As such, the API is structured as follows:												|
-Models - this contains definitions of the users, puzzles and puzzle ratings classes as defined in the database. The models are used in the endpoints when referencing a specific table as per Sequelize standards 												|
-Routes - this contains the puzzle.js and users.js files containing the endpoints described below. This separation makes it easier to see which endpoint are concerned with user operations and which with puzzle operations.												|
+All calls made to the database make use of the Sequelize frameworks. As such, the API is structured as follows:
+
+Models - this contains definitions of the users, puzzles and puzzle ratings classes as defined in the database. The models are used in the endpoints when referencing a specific table as per Sequelize standards.
+
+Routes - this contains the puzzle.js and users.js files containing the endpoints described below. This separation makes it easier to see which endpoint are concerned with user operations and which with puzzle operations.
+
 App.js - this is the entry point of the application. It also defines the major routes `api/user` and `api/puzzles` which each of the endpoints below expand on.
 
 # Table of Contents
@@ -31,7 +34,8 @@ App.js - this is the entry point of the application. It also defines the major r
 		4.2		[Get Puzzle By ID](#get-puzzle-by-id)   
 		4.3		[Get Searched Puzzles](#get-searched-puzzles)   
 		4.4		[Create Puzzle](#create-puzzle)   
-		4.5		[Get All Puzzle Ratings](#get-all-puzzle-ratings)												|
+		4.5		[Get All Puzzle Ratings](#get-all-puzzle-ratings)
+        
         4.6		[Create Puzzle Rating](#create-puzzle-rating) 
          
     

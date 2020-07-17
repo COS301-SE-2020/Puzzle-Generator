@@ -1,5 +1,5 @@
 .container-fluid{
-  background-image: url('../../../assets/images/bg2.jpg');
+  background-image: url('../../../assets/images/bg3.jpg');
 }
 
 img{
@@ -31,4 +31,9 @@ mat-card{
 
 #resetBtn{
   margin-left: 2vw;
+}
+
+#spinner{
+  margin: auto ;
+
 }

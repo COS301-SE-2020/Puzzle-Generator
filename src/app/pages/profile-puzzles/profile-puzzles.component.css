@@ -1,37 +1,22 @@
-#image, #profileImage{
-    width: 20rem;
-    height: 22rem;
-}
-
-#profileImage{
-    border-radius: 220rem;
-    background-position: left top;
-    padding: 2rem;
-    width: 23rem;
-}
-
-.profile{
-    margin: 3rem;
-    padding: 2rem;
-    width: 25rem;
-    background-color:  #7C593A;
-}
-
-.flex-container{
-    margin: 0.9rem;
-}
-
-.userPuzzles{
-    margin: 0.2rem;
-    background-color:  #7C593A;
+#image{
+    width: 20vw;
+    height: 20vw;
 }
 
 .btns{
-    background-color: whitesmoke;
-    margin: 0.3rem;
-    height: 3rem;
+  background-color: #7C593A;
+  color: white;
 }
 
-.content{
-    background-image: url('../../../assets/images/bg2.jpg');
+.container-fluid{
+    background-image: url('../../../assets/images/bg3.jpg');
+    color: white; 
+}
+
+mat-card{
+  margin: auto;
+  margin-bottom: 2vw;
+  margin-top: 2vw;
+  background-color: white;
+  color: #7C593A;
 }

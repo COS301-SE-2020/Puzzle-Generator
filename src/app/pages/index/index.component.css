@@ -6,10 +6,20 @@
     padding: 1%;
 }
 
-.content{
-    background-image: url('../../../assets/images/bg2.jpg');
+.container-fluid{
+    background-image: url('../../../assets/images/bg3.jpg');
 }
 
 .btns{
     background-color: #7C593A;
+    color:white;
+}
+
+
+mat-card{
+  margin: auto;
+  margin-bottom: 2vw;
+  margin-top: 2vw;
+  background-color: white;
+  color: #7C593A;
 }

@@ -24,6 +24,8 @@ export class RatingsComponent implements OnInit {
   rateUID: string;
   ratingEntry: any;
   formError: string;
+  show: boolean;
+  dataAvailable: boolean;
   //searchbar
   searchTextboxValue: string;
 
@@ -32,6 +34,7 @@ export class RatingsComponent implements OnInit {
 
   populate(populatePuz: any)
   {
+    this.ratings.length = 0;
     this.api.getAllPuzzleRatings().subscribe(
       data=> {
         for(let i=0; data[i]!= null; i++){
@@ -40,7 +43,6 @@ export class RatingsComponent implements OnInit {
           ratingObj.rating = data[i].rating;
           ratingObj.puzzleID = data[i].puzzleID;
           this.ratings.push(ratingObj);
-
         }
       },
       error => {
@@ -101,6 +103,8 @@ export class RatingsComponent implements OnInit {
       for (let k=0; this.ratings[k]!=null; k++){
         if (this.ratings[k].puzzleID == data[i].id)
         {
+          //********* ERROR HERE - THIS LOOP IS NOT ENTERED WHEN THE RATINGS VALUE IS 0  ************
+          console.log(this.ratings[k]);
           total = total + this.ratings[k].rating;
           j = j+1;
         }
@@ -115,7 +119,8 @@ export class RatingsComponent implements OnInit {
       this.puzzles.push(puzzleObj);
     }
 
-    this.cdr.detectChanges();
+    this.dataAvailable = true;
+    this.show= false;
 
   }
 
@@ -166,10 +171,14 @@ export class RatingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.show=true;
+    this.dataAvailable = false;
     if(!localStorage.getItem('token')){
       this.router.navigate(['/index']);
       alert("You are not logged in");
     }
+
+    // .then on populate does not finish 
     this.populate(null);
   }
 

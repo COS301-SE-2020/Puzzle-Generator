@@ -36,6 +36,7 @@ router.post('/createUser', (request, response) => {
                 })
                 .catch( error => {
                     response.status(500);
+                    console.log(response);
                 })
             }
             else {
@@ -44,6 +45,7 @@ router.post('/createUser', (request, response) => {
         })
         .catch( error => {
             response.status(500).send("Server Error");
+            console.log(error);
         })
     }
 });

@@ -1,20 +1,17 @@
-.descText{
-    padding: 2%;
+#image{
+    width: 20vw;
+    height: 20vw;
 }
 
-.indexNavBtns{
-    padding: 1%;
+.btns{
+  background-color: #7C593A;
+  color: white;
 }
 
 .container-fluid{
     background-image: url('../../../assets/images/bg3.jpg');
+    color: white;
 }
-
-.btns{
-    background-color: #7C593A;
-    color:white;
-}
-
 
 mat-card{
   margin: auto;

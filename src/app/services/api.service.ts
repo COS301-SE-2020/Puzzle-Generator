@@ -38,6 +38,7 @@ export class APIService {
   }
 
   updateName(currentUser: User){
+    console.log("---------");
     const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
     return this.http.put('https://prometheuspuzzles.herokuapp.com/api/users/updateName', currentUser, httpOptions);
   }
@@ -52,9 +53,9 @@ export class APIService {
     return this.http.post<any[]>('https://prometheuspuzzles.herokuapp.com/api/users/getPuzzlesByUser', token, httpOptions);
   }
 
-  getPuzzleRatingssByUser(token: any){
+  getPuzzleRatingsByUser(token: any): Observable<any[]>{
     const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
-    return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/getPuzzleRatingsByUser', token, httpOptions);
+    return this.http.post<any[]>('https://prometheuspuzzles.herokuapp.com/api/users/getPuzzleRatingsByUser', token, httpOptions);
   }
 
   /**
@@ -66,29 +67,29 @@ export class APIService {
 * Puzzle endpoints start here
 */
 getAllPuzzles(){
-  return this.http.get('https://prometheuspuzzles.herokuapp.com/api/puzzles/getAllPuzzles');
+  return this.http.get('http://localhost:3200/api/puzzles/getAllPuzzles');
 }
 
 getAllPuzzleByID(puzzleID: number){
-  return this.http.get('https://prometheuspuzzles.herokuapp.com/api/puzzles/getPuzzleByID?Id=' + puzzleID);
+  return this.http.get('http://localhost:3200/api/puzzles/getPuzzleByID?Id=' + puzzleID);
 }
 
 createNewPuzzle(puzzle: Puzzle){
   const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
-  return this.http.post('https://prometheuspuzzles.herokuapp.com/api/puzzles/createPuzzle', puzzle, httpOptions);
+  return this.http.post('http://localhost:3200/api/puzzles/createPuzzle', puzzle, httpOptions);
 }
 
 createNewPuzzleRating(rating: PuzzleRating){
   const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
-  return this.http.post('https://prometheuspuzzles.herokuapp.com/api/puzzles/createPuzzleRating', rating, httpOptions);
+  return this.http.post('http://localhost:3200/api/puzzles/createPuzzleRating', rating, httpOptions);
 }
 
 getAllPuzzleRatings(){
-  return this.http.get('https://prometheuspuzzles.herokuapp.com/api/puzzles/getAllPuzzleRatings');
+  return this.http.get('http://localhost:3200/api/puzzles/getAllPuzzleRatings');
 }
 
 getSearchedPuzzles(term: any){
-  return this.http.get('https://prometheuspuzzles.herokuapp.com/api/puzzles/getSearchedPuzzles/' + term);
+  return this.http.get('http://localhost:3200/api/puzzles/getSearchedPuzzles/' + term);
 }
 
 /**

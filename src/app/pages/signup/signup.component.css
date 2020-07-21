@@ -1,11 +1,12 @@
 .container{
-    background-image: url('../../../assets/images/bg2.jpg');
+    background-image: url('../../../assets/images/bg3.jpg');
     height: 100%;
     width: 100%;
 }
 
 .btns{
     background-color: #7C593A;
+    color:white
 }
 
 #one{
@@ -27,4 +28,17 @@
 }
 #passError{
     color: red;
+}
+
+
+mat-card{
+  margin: auto;
+  margin-bottom: 2vw;
+  margin-top: 2vw;
+  background-color: white;
+  color: #7C593A;
+}
+
+input {
+  color: black;
 }

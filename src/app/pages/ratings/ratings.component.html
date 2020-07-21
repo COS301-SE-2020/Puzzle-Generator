@@ -3,25 +3,30 @@
 <mat-form-field class="example-form-field">
     <mat-label>Search</mat-label>
     <input matInput type="text" (input)="searchTextboxValue=$event.target.value">
-    <button mat-button matSuffix   (click)="searchItems(searchTextboxValue)">
+    <button mat-button matSuffix (click)="searchItems(searchTextboxValue)">
       <mat-icon>search</mat-icon>
     </button>
 </mat-form-field>
+<button mat-button id="resetBtn" class="btns" (click)="reload()">Reset Search Criteria</button>
 
-<div class="container">
-    <div class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
+<mat-spinner *ngIf="show" id="spinner"></mat-spinner>
+
+<div class="container-fluid">
+    <div *ngIf="dataAvailable" class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
         <mat-card *ngFor="let puzzle of puzzles">
             <mat-card-header>
                 <mat-card-title>{{puzzle.name}}</mat-card-title>
                 <mat-card-subtitle>Created by {{puzzle.creator}}</mat-card-subtitle>
-                <mat-card-subtitle>Rating: {{puzzle.rating}}</mat-card-subtitle>
+                <mat-card-subtitle>Rating: {{puzzle.rating}}/5</mat-card-subtitle>
+                <mat-card-subtitle>Date: {{puzzle.created}}</mat-card-subtitle>
+                <mat-card-subtitle>Description: {{puzzle.description}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
                 <img src="assets/images/puzzles/{{puzzle.id}}.png">
             </mat-card-content>
             <mat-card-actions>
                 <button mat-button class="btns">SOLVE</button>
-                <button mat-button class="btns" routerLink="/rateForm">RATE</button>
+                <button mat-button class="btns" (click)="openAndCheck(puzzle.id)">RATE</button>
             </mat-card-actions>
         </mat-card>
     </div>

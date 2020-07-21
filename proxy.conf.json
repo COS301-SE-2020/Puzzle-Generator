@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "http://localhost:3200",
+    "target": "https://prometheuspuzzles.herokuapp.com",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true

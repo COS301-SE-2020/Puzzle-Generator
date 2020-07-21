@@ -13,20 +13,3 @@
 }
 
 ul.nav a:hover { color: #7C593A !important; }
-
-span{
-  float: right;
-}
-
-#logout{
-  margin-left: 2vw;
-  background-color: #7C593A;
-  color: white;
-  padding: 1vw;
-}
-
-#logout:hover{
-  background-color:  white;
-  color: #7C593A;
-  cursor: pointer;
-}

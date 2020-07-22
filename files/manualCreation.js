@@ -17,7 +17,7 @@ window.onload = function() {
 	let precision = 0;
 	let colors = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine', 'AntiqueWhite'];
 	let generateButtonClicked = false;
-
+	let token = 'KQlH2g5Io_AwCwotB4TUC';
 	let piecesJSONObject = {
 		'pieces' : []
 	};
@@ -83,41 +83,47 @@ window.onload = function() {
 	document.getElementById('manhattanButton').addEventListener('mousedown', function(){
 		setDistanceMetric('manhattan');
 	});
+
+	document.getElementById('tokenLabel').innerHTML = token;
 	
 	document.getElementById('saveButton').addEventListener('mousedown', function() {
-		puzzleImage = stage.toDataURL({ pixelRatio:1 });
-		let tempIndex = puzzleImage.indexOf(',') + 1;
-		puzzleImage = puzzleImage.substring(tempIndex, puzzleImage.length);
+		let puzzleName = document.getElementById('puzzleNameInputBox').value;
+		let puzzleDescription = document.getElementById('puzzleDescriptionInputBox').value;
+
+		let puzzleImage = stage.toDataURL({ pixelRatio: 0.25 });
+
+		let jsonData = {
+			token: token,
+			name: puzzleName,
+			description: puzzleDescription,
+			puzzleObject: piecesJSONObject,
+			image: puzzleImage,
+			shared: false
+		};
 
 		$.ajax({
 			type: 'POST',
 			url: apiURL,
-			// cors: true,
 			headers: { 
 				'Access-Control-Allow-Origin' : '*' 
 			},
-			data: {
-				'token': 'KQlH2g5Io_AwCwotB4TUC',
-				'name': 'First Share',
-				'description': 'dummy',
-				'puzzleObject': piecesJSONObject,
-				'image': puzzleImage,
-				'shared': false
-			},
-			// dataType: 'jsonp',
+			contentType: 'application/json',
+			data: JSON.stringify(jsonData),
+			dataType: 'json',
 			success: function(data, status) {
-				console.log("Data: " + data);
-				console.log("Status: " + status);
+				console.log(data);
+				console.log(status);
 			},
 			error: function(data, status) {
-				console.log("Data: " + data);
-				console.log("Status: " + status);	
+				console.log(data);
+				console.log(status);	
 			}
 		});
 	});
 
 	document.getElementById('saveAndSubmitButton').addEventListener('mousedown', function(){
-
+		let puzzleImage = stage.toDataURL({ pixelRatio: 0.25 });
+		document.getElementById('testingImg').src = puzzleImage;
 	});
 
 	function generatePuzzle()

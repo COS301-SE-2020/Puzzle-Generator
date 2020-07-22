@@ -5,4 +5,5 @@ export class PuzzleArr{
   creator: string;
   rating: string;
   created: any;
+  showRating: boolean; 
 }

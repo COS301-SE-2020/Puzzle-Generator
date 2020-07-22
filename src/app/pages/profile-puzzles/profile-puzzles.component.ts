@@ -14,11 +14,42 @@ export class ProfilePuzzlesComponent implements OnInit {
   currentUser: any;
   //user  puzzle variables
   puzzleList: Observable <Puzzle[]> ;
+  puzzle: any;
+  show: boolean;
+  text: boolean;
 
   constructor(private api: APIService, private router: Router) { }
 
   getUserPuzzles(){
     this.puzzleList = this.api.getPuzzlesByUser(this.currentUser);
+    this.puzzleList.subscribe(data => {
+      if(data[0] == null)
+      {
+        this.text = true;
+      }
+
+    });
+    this.show = false;
+  }
+
+  share(data: any){
+    this.puzzle = {
+      "puzzleID": data
+    }
+    if(this.api.sharePuzzle(this.puzzle).subscribe()){
+        alert("Puzzle shared");
+    }
+    location.reload();
+  }
+
+  stopShare(data: any){
+    this.puzzle = {
+      "puzzleID": data
+    }
+    if(this.api.stopSharingPuzzle(this.puzzle).subscribe()){
+        alert("Stop sharing puzzle");
+    }
+    location.reload();
   }
 
   ngOnInit(): void {
@@ -31,6 +62,9 @@ export class ProfilePuzzlesComponent implements OnInit {
     this.currentUser = {
       "token": localStorage.getItem('token')
     }
+    this.show = true;
+    this.puzzleList = null ;
+    this.text = false; 
 
     this.getUserPuzzles();
   }

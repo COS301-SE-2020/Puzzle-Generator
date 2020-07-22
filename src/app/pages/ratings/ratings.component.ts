@@ -28,6 +28,8 @@ export class RatingsComponent implements OnInit {
   dataAvailable: boolean;
   //searchbar
   searchTextboxValue: string;
+  token: any;
+  currentUser: any;
 
   constructor(private api: APIService, private cdr: ChangeDetectorRef, private dialog: MatDialog, private router: Router) {
   }
@@ -96,6 +98,14 @@ export class RatingsComponent implements OnInit {
       puzzleObj.description = data[i].description;
       puzzleObj.creator = data[i].creator;
       puzzleObj.created = data[i].createdAt;
+      if (puzzleObj.creator== this.currentUser["name"])
+      {
+        puzzleObj.showRating = false;
+      }
+      else
+      {
+        puzzleObj.showRating = true;
+      }
 
       let j = 0;
       let total = 0;
@@ -178,7 +188,18 @@ export class RatingsComponent implements OnInit {
       alert("You are not logged in");
     }
 
-    // .then on populate does not finish
+    this.currentUser = {
+      "token": localStorage.getItem('token')
+    }
+
+    this.api.getUser(this.currentUser).subscribe( data => {
+      console.log(data["name"]);
+      this.currentUser = {
+        "token": localStorage.getItem('token'),
+        "name": data["name"]
+      }
+    });
+
     this.populate(null);
   }
 

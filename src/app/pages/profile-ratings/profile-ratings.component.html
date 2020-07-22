@@ -13,12 +13,12 @@
         <div class="content-details fadeIn-bottom">
             <h3 class="content-title">{{rating.puzzleName}}</h3>
             <button mat-button class="btns">SOLVE</button>
-            <button mat-button class="btns">RATE</button>
+            <button mat-button class="btns" (click)="openAndCheck(rating.puzzleID)">UPDATE RATING</button>
         </div>
     </mat-card>
 </div>
-<div *ngIf="!ratingList">
-    You have not made any ratings at the moment
+<div id="NoneText" *ngIf="text">
+    <h3>You have not made any ratings at the moment</h3>
 </div>
 
 </div>

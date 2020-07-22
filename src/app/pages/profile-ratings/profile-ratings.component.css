@@ -112,7 +112,7 @@
   text-align: center;
   padding-left: 1em;
   padding-right: 1em;
-  margin-bottom: 1em; 
+  margin-bottom: 1em;
   width: 100%;
   top: 50%;
   left: 50%;
@@ -146,4 +146,8 @@
 
 .fadeIn-bottom{
   top: 80%;
+}
+
+#NoneText{
+  text-align: center;
 }

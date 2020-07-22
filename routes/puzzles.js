@@ -27,12 +27,14 @@ router.get('/getAllPuzzles', (request, response) => {
                     "name":element.name,
                     "description": element.description,
                     "puzzleObject": element.puzzleObject,
+                    "image": element.image,
                     "createdAt": element.createdAt,
                     "creator": element['testUser.name']
                 };
                 ++index;
                 puzzleJsonObject.push(puzzlePlaceholder);
                 if(index == totalNumPuzzles){
+                    //console.log(puzzleJsonObject);
                     response.status(201).send(puzzleJsonObject);
                 }
             });

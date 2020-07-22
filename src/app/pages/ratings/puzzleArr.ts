@@ -3,6 +3,6 @@ export class PuzzleArr{
   name: string;
   description: string;
   creator: string;
-  rating: number;
-  created: any; 
+  rating: string;
+  created: any;
 }

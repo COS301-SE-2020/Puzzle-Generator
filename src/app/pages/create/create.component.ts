@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { createModule } from 'src/assets/js/manualCreation.js';
+import Konva from 'konva';
 
 @Component({
   selector: 'app-create',
@@ -10,6 +12,7 @@ export class CreateComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    createModule;
   }
 
 }

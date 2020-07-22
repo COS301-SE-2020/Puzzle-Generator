@@ -11,9 +11,13 @@
 
 <mat-spinner *ngIf="show" id="spinner"></mat-spinner>
 
-<div class="container-fluid">
-    <div *ngIf="dataAvailable" class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
-        <mat-card *ngFor="let puzzle of puzzles">
+<div class="container">
+<div class="container-fluid" *ngIf="dataAvailable" >
+  <h1 class="main-title"><strong>LET'S PLAY</strong></h1>
+    <div class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
+        <mat-card div class="content" *ngFor="let puzzle of puzzles">
+          <div class="content-overlay"></div>
+          <img class="content-image" src="assets/images/puzzles/{{puzzle.id}}.png">
             <mat-card-header>
                 <mat-card-title>{{puzzle.name}}</mat-card-title>
                 <mat-card-subtitle>Created by {{puzzle.creator}}</mat-card-subtitle>
@@ -21,13 +25,12 @@
                 <mat-card-subtitle>Date: {{puzzle.created}}</mat-card-subtitle>
                 <mat-card-subtitle>Description: {{puzzle.description}}</mat-card-subtitle>
             </mat-card-header>
-            <mat-card-content>
-                <img src="assets/images/puzzles/{{puzzle.id}}.png">
-            </mat-card-content>
-            <mat-card-actions>
+            <div class="content-details fadeIn-bottom">
+                <h3 class="content-title">{{puzzle.name}}</h3>
                 <button mat-button class="btns">SOLVE</button>
                 <button mat-button class="btns" (click)="openAndCheck(puzzle.id)">RATE</button>
-            </mat-card-actions>
+            </div>
         </mat-card>
     </div>
+</div>
 </div>

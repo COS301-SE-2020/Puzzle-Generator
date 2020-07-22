@@ -111,10 +111,10 @@ export class RatingsComponent implements OnInit {
       }
 
       if (j == 0){
-        puzzleObj.rating = 0;
+        puzzleObj.rating = (0).toString();
       }
       else{
-        puzzleObj.rating = total/j;
+        puzzleObj.rating = (total/j).toFixed(2);
       }
       this.puzzles.push(puzzleObj);
     }
@@ -178,7 +178,7 @@ export class RatingsComponent implements OnInit {
       alert("You are not logged in");
     }
 
-    // .then on populate does not finish 
+    // .then on populate does not finish
     this.populate(null);
   }
 

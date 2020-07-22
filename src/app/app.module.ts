@@ -40,8 +40,6 @@ import { CreateComponent } from './pages/create/create.component';
 import { RateDialogComponent } from './rate-dialog/rate-dialog.component';
 import { ProfilePuzzlesComponent } from './pages/profile-puzzles/profile-puzzles.component';
 import { ProfileRatingsComponent } from './pages/profile-ratings/profile-ratings.component';
-import { NavbarProfileComponent } from './navbar-profile/navbar-profile.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +55,6 @@ import { NavbarProfileComponent } from './navbar-profile/navbar-profile.componen
     RateDialogComponent,
     ProfilePuzzlesComponent,
     ProfileRatingsComponent,
-    NavbarProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,19 @@
+#container {
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    margin-left: 10rem;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5rem;
+  }
+  
+  #label, #generatePuzzleButton, #saveButton, #saveAndSubmitButton {
+    margin-left: 3rem;
+  }
+
+  
+  

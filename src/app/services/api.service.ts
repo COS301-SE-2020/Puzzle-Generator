@@ -92,6 +92,16 @@ getSearchedPuzzles(term: any){
   return this.http.get('http://localhost:3200/api/puzzles/getSearchedPuzzles/' + term);
 }
 
+sharePuzzle(puzzle: any){
+  const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
+  return this.http.put('http://localhost:3200/api/puzzles/sharePuzzle', puzzle, httpOptions);
+}
+
+stopSharingPuzzle(puzzle: any){
+  const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
+  return this.http.put('http://localhost:3200/api/puzzles/stopSharingPuzzle', puzzle, httpOptions);
+}
+
 /**
 * Puzzle endpoints end here
 */

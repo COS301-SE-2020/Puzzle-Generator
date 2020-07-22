@@ -3,7 +3,6 @@ const path = require('path');
 const { request } = require('http');
 const { response } = require('express');
 const Sequelize = require('sequelize');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
@@ -23,9 +22,9 @@ const db = require('./config/database');
     .then( () => {console.log("Successfully connected to db");} )
     .catch( error => {console.log("Error: ", error);})
 
-app.use(express.json());
+// app.use(express.json());
+app.use(express.json({limit: '2mb'}));
 app.use(cors());
-
 app.get('/', (request, response) => {response.send("Sequelize API test");});
 
 //all requests associated with the user must make use of this route

@@ -17,7 +17,7 @@ router.get('/getAllPuzzles', (request, response) => {
     var puzzleJsonObject = [];
     var puzzlePlaceholder = {};
     var index = 0;
-    Puzzle.findAll({ raw: true, include: User})
+    Puzzle.findAll({ raw: true, where: { shared: true }, include: User})
         .then( puzzles => {
             var array = puzzles;
             var totalNumPuzzles = Object.keys(puzzles).length;
@@ -93,6 +93,35 @@ router.post('/createPuzzle', (request, response) => {
     .catch(error => {
         response.status(403).send("User not found due to: ", error);
     });
+});
+
+//share puzzle
+router.put('/sharePuzzle',(request, response) => {
+    const puzzleID = request.body.puzzleID;
+    Puzzle.update( 
+        { shared: true },
+        { returning: true, raw: true, plain: true, where: { id:  puzzleID } }
+    )
+    .then( () => {
+        response.status(200).send("Successfully shared");
+     })
+    .catch( error => {
+        response.status(500).send("Server error");
+    } );
+});
+//stop sharing puzzle
+router.put('/stopSharingPuzzle',(request, response) => {
+    const puzzleID = request.body.puzzleID;
+    Puzzle.update( 
+        { shared: false },
+        { returning: true, raw: true, plain: true, where: { id:  puzzleID } }
+    )
+    .then( () => {
+        response.status(200).send("Successfully shared");
+     })
+    .catch( error => {
+        response.status(500).send("Server error");
+    } );
 });
 
 /**

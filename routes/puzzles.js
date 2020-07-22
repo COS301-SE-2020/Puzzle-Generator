@@ -71,13 +71,17 @@ router.post('/createPuzzle', (request, response) => {
     const name = request.body.name;
     const description = request.body.description;
     const puzzleObject = request.body.puzzleObject;
+    const shared = request.body.shared;
+    const image = request.body.image;
     let creatorID = null;
     User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
     .then( user => {
         creatorID = user[0].id;
 
+        console.log(name, description, puzzleObject, creatorID, shared, image);
+
         Puzzle.create({
-            name, description, puzzleObject, creatorID
+            name, description, puzzleObject, creatorID, shared, image
         })
         .then( () => {
             response.status(200).send("Puzzle successfully saved")

@@ -1,20 +1,23 @@
-let distanceMetric = 'euclidean';
+let apiURL = "http://localhost:3200/api/puzzles/createPuzzle";
 
+let distanceMetric = 'euclidean';
 function setDistanceMetric(metric)
 {
 	distanceMetric = metric;
 }
 
 window.onload = function() {
+	let puzzleImage;
 	let canvas = document.getElementById('container');
 	let canvasCoords = canvas.getBoundingClientRect();
 	let width = canvas.offsetWidth;
 	let height = canvas.offsetHeight;
 	let sites = [];
 	let siteBoundaries = [];
-	let precision = 4;
+	let precision = 0;
 	let colors = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine', 'AntiqueWhite'];
 	let generateButtonClicked = false;
+
 	let piecesJSONObject = {
 		'pieces' : []
 	};
@@ -73,12 +76,48 @@ window.onload = function() {
 
 	document.getElementById('generatePuzzleButton').addEventListener('mousedown', generatePuzzle);
 	
-	document.getElementById('saveButton').addEventListener('mousedown', function(){
-		
+	document.getElementById('euclideanButton').addEventListener('mousedown', function(){
+		setDistanceMetric('euclidean');
+	});
+
+	document.getElementById('manhattanButton').addEventListener('mousedown', function(){
+		setDistanceMetric('manhattan');
+	});
+	
+	document.getElementById('saveButton').addEventListener('mousedown', function() {
+		puzzleImage = stage.toDataURL({ pixelRatio:1 });
+		let tempIndex = puzzleImage.indexOf(',') + 1;
+		puzzleImage = puzzleImage.substring(tempIndex, puzzleImage.length);
+
+		$.ajax({
+			type: 'POST',
+			url: apiURL,
+			// cors: true,
+			headers: { 
+				'Access-Control-Allow-Origin' : '*' 
+			},
+			data: {
+				'token': 'KQlH2g5Io_AwCwotB4TUC',
+				'name': 'First Share',
+				'description': 'dummy',
+				'puzzleObject': piecesJSONObject,
+				'image': puzzleImage,
+				'shared': false
+			},
+			// dataType: 'jsonp',
+			success: function(data, status) {
+				console.log("Data: " + data);
+				console.log("Status: " + status);
+			},
+			error: function(data, status) {
+				console.log("Data: " + data);
+				console.log("Status: " + status);	
+			}
+		});
 	});
 
 	document.getElementById('saveAndSubmitButton').addEventListener('mousedown', function(){
-		
+
 	});
 
 	function generatePuzzle()
@@ -137,7 +176,8 @@ window.onload = function() {
 			layer.add(piece);
 		}
 		layer.draw();
-		console.log(piecesJSONObject);
+		piecesJSONObject = JSON.stringify(piecesJSONObject);
+		// console.log(piecesJSONObject);
 	}
 
 	function trimPoints(pointArray)
@@ -176,7 +216,7 @@ window.onload = function() {
 		{
 			for(let col = 0; col < width; col++)
 			{
-				let distances = calculateDistancesFromSitesToPoint(col, row, sites, distanceMetric);
+				let distances = calculateDistancesFromSitesToPoint(col, row, sites);
 				let equidistantPoints = equidistantPointsPresent(distances);
 				// for(let i = 0; i < equidistantPoints.length; i++)
 				// {
@@ -202,8 +242,6 @@ window.onload = function() {
 
 		while(index != -1)
 		{
-			//For euclidean
-			// index = distances.indexOf(minimumDistance.toFixed(precision) + '');
 			index = distances.indexOf(minimumDistance);
 			if(index != -1)
 			{
@@ -216,7 +254,7 @@ window.onload = function() {
 		return returnArray;
 	}
 
-	function calculateDistancesFromSitesToPoint(xOfPoint, yOfPoint, sitePoints, distanceMetric)
+	function calculateDistancesFromSitesToPoint(xOfPoint, yOfPoint, sitePoints)
 	{
 		let result = [];
 		if(distanceMetric === 'euclidean')

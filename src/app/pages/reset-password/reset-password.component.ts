@@ -17,7 +17,7 @@ export class ResetPasswordComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private api: APIService, private router: Router ) {}
 
-  //method for logging in user and getting the token associated with the said user
+  // method for logging in user and getting the token associated with the said user
   resetPassword(currentUser: User){
     this.resetDone = '';
     this.formError = '';

@@ -22,14 +22,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatGridListModule } from '@angular/material/grid-list'
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatListModule} from '@angular/material/list';
 
-//import { FormsModule } from '@angular/forms';
+// import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+// @ts-ignore
+import {RateFormComponent} from 'rate-dialog/rate-dialog.component';
 
-//pages
+// pages
 import { IndexComponent } from './pages/index/index.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -39,6 +41,7 @@ import { RatingsComponent } from './pages/ratings/ratings.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ResetSuccessComponent } from './pages/reset-success/reset-success.component';
 import { CreateComponent } from './pages/create/create.component';
+
 import { RateDialogComponent } from './rate-dialog/rate-dialog.component';
 import { ProfilePuzzlesComponent } from './pages/profile-puzzles/profile-puzzles.component';
 import { ProfileRatingsComponent } from './pages/profile-ratings/profile-ratings.component';

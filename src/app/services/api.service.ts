@@ -16,10 +16,10 @@ export class APIService {
   /**
    * User endpoints start here
    */
-  //create new user
+  // create new user
   createUser(newUser: User){
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'} ) };
-    return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/createUser',newUser, httpOptions);
+    return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/createUser', newUser, httpOptions);
   }
 
   loginUser(currentUser: User){
@@ -34,11 +34,11 @@ export class APIService {
 
   getUser(token: any){
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'} ) };
-    return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/getUser',token, httpOptions);
+    return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/getUser', token, httpOptions);
   }
 
   updateName(currentUser: User){
-    console.log("---------");
+    console.log('---------');
     const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
     return this.http.put('https://prometheuspuzzles.herokuapp.com/api/users/updateName', currentUser, httpOptions);
   }

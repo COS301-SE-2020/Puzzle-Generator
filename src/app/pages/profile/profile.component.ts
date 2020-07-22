@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { APIService } from 'src/app/services/api.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Puzzle } from 'src/app/models/Puzzle';
 
 @Component({
   selector: 'app-profile',
@@ -17,13 +19,16 @@ export class ProfileComponent implements OnInit {
   updateNameForm: FormGroup;
   updateUsernameForm: FormGroup;
 
-  constructor(private api: APIService, private formBuilder: FormBuilder, private router: Router) { }
+  //user  puzzle variables
+  puzzleList: Observable <Puzzle[]> ;
+
+  constructor(private activatedRoute: ActivatedRoute, private route: Router, private api: APIService, private formBuilder: FormBuilder) { }
 
   updateName(){
     this.currentUser = null;
       if(this.nameTextboxValue != undefined){
       this.currentUser = {
-        "token": localStorage.getItem('token'),
+        "token": this.token,
         "name": this.nameTextboxValue
       }
       this.api.updateName(this.currentUser).subscribe( data => {
@@ -37,7 +42,7 @@ export class ProfileComponent implements OnInit {
     this.currentUser = null;
     if(this.usernameTextboxValue != undefined){
     this.currentUser = {
-      "token": localStorage.getItem('token'),
+      "token": this.token,
       "username": this.usernameTextboxValue
     }
     this.api.updateUsername(this.currentUser).subscribe( data => {
@@ -51,35 +56,33 @@ export class ProfileComponent implements OnInit {
     'username': [
       { type: 'required', message: 'Email is required.' },
       { type: 'email', message: 'Invalid email format.' }
-    ],
-    'name': [
-      { type: 'required', message: 'Full name is required.' },
-      { type: 'pattern', message: 'Name can only consist of letters' }
     ]
   }
 
-  ngOnInit(): void {
+  getUserPuzzles(){
+    this.puzzleList = this.api.getPuzzlesByUser(this.currentUser);
+  }
 
-    if(!localStorage.getItem('token')){
-      this.router.navigate(['/index']);
-      alert("You are not logged in");
-    }
+  ngOnInit(): void {
+    /* Provide token here */
 
     this.currentUser = {
-      "token": localStorage.getItem('token')
+      "token": this.token
     }
 
     this.api.getUser(this.currentUser).subscribe( data => {
       this.currentUserObject = data;
 
-      this.updateNameForm = this.formBuilder.group({
+      this.updateNameForm = this.formBuilder.group({ 
         name: [data['name'], [Validators.required, Validators.pattern('[a-zA-Z ]*')]]
       });
 
-      this.updateUsernameForm = this.formBuilder.group({
+      this.updateUsernameForm = this.formBuilder.group({ 
         username: [data['username'], [Validators.required, Validators.email]]
       });
     });
+
+    this.getUserPuzzles();
   }
 
 }

@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,12 +39,16 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RatingsComponent } from './pages/ratings/ratings.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ResetSuccessComponent } from './pages/reset-success/reset-success.component';
+import { RateFormComponent } from './pages/rate-form/rate-form.component';
 import { CreateComponent } from './pages/create/create.component';
+<<<<<<< HEAD
 
 import { RateDialogComponent } from './rate-dialog/rate-dialog.component';
 import { ProfilePuzzlesComponent } from './pages/profile-puzzles/profile-puzzles.component';
 import { ProfileRatingsComponent } from './pages/profile-ratings/profile-ratings.component';
 import { NavbarProfileComponent } from './navbar-profile/navbar-profile.component';
+=======
+>>>>>>> parent of b9b1081... Merge branch 'website/angular' into test
 
 @NgModule({
   declarations: [
@@ -78,8 +81,7 @@ import { NavbarProfileComponent } from './navbar-profile/navbar-profile.componen
     HttpModule,
     FormsModule,
     MatInputModule, MatListModule,
-    MatCardModule, MatFormFieldModule, MatDialogModule, MatGridListModule, MatRadioModule, ReactiveFormsModule,
-    MDBBootstrapModule.forRoot(),
+    MatCardModule, MatFormFieldModule, MatDialogModule, MatGridListModule, MatRadioModule, ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

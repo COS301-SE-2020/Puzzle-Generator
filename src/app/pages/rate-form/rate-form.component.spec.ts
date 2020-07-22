@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavbarProfileComponent } from './navbar-profile.component';
+import { RateFormComponent } from './rate-form.component';
 
-describe('NavbarProfileComponent', () => {
-  let component: NavbarProfileComponent;
-  let fixture: ComponentFixture<NavbarProfileComponent>;
+describe('RateFormComponent', () => {
+  let component: RateFormComponent;
+  let fixture: ComponentFixture<RateFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavbarProfileComponent ]
+      declarations: [ RateFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavbarProfileComponent);
+    fixture = TestBed.createComponent(RateFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

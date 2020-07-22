@@ -12,7 +12,6 @@ export class ResetSuccessComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router ) {}
 
   ngOnInit() {
-
     let message = this.route.snapshot.paramMap.get('message');
   }
 

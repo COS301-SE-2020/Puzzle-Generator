@@ -15,6 +15,7 @@ https://share.clickup.com/l/h/4-2672456-1/f369fe92bad9fb7
 
 ## Members LinkedIn Profile Links
 * Charlotte Jacobs:
+https://www.linkedin.com/in/charlotte-jacobs-b1558216b/
 
 * Jaynill Gopal:
 
@@ -30,7 +31,7 @@ https://www.linkedin.com/in/tsholofelo-gomba-8
 ### Charlotte Jacobs 
 u15165622
 * Charlotte was responsible for the html and css of the website as well as some database functionality.
-* 
+* https://charley817.github.io
 
 ### Jaynill Gopal 
 u15175295

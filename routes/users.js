@@ -1,7 +1,9 @@
+
 const express = require('express');
 const { response, request } = require('express');
 const router = express.Router();
-const db = require('../config/database');
+//const db = require('../config/database');
+const db = require('../config/dbConfig');
 const User = require('../models/User');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
@@ -133,7 +135,7 @@ router.put('/resetPassword', (request, response) => {
              })
             .catch( error => {
                 response.status(500).send("Server error");
-            } );
+            } )
         }
     })
     .catch( error => {
@@ -144,26 +146,28 @@ router.put('/resetPassword', (request, response) => {
 //get puzzles by user
 router.post('/getPuzzlesByUser', (request, response) => {
     let userID = null
-    User.findOne({ raw: true, where: { token: {[Op.like]:  request.body.token } } })
-    .then( user => {
-        userID = user.id;
+    User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
+        .then( user => {
+            userID = user[0].id;
 
-        Puzzle.findAll( { raw: true, where: { creatorID: userID  } } )
-        .then( puzzles => {
-            if(puzzles) {
-                response.status(201).send(puzzles);
-            }
-            else{
-                response.status(200).send("No puzzles yet");
-            }
+            Puzzle.findAll( { raw: true, where: { creatorID: userID  } } )
+            .then( puzzles => {
+                if(puzzles) {
+                    console.log(puzzles);
+                    response.status(201).send(puzzles);
+                }
+                else{
+                    response.status(200).send("No puzzles yet");
+                }
+            })
+            .catch( error => {
+                response.status(404).send("User does not exist");
+            });
         })
         .catch( error => {
-            response.status(404).send("User does not exist");
-        });
-    })
-    .catch( error => {
-        response.status(500).send("Failed due to server error: ", error);
-    })
+            console.log("Failed to get user due to: ", error)
+        })
+
 });
 
 //get ratings by user
@@ -193,3 +197,4 @@ router.post('/getPuzzleRatingsByUser', (request, response) => {
 });
 
 module.exports = router;
+

@@ -26,9 +26,6 @@ dist
 .sass-cache
 
 # Ignore JetBrains files
-<<<<<<< HEAD
-.idea
-=======
 .idea
 
 # Ignore workspace.xml for Jetbrains
@@ -38,6 +35,4 @@ workspace.xml
 #ignore old structure
 OLD structure
 
-#Ignore current directory's Readme from overwriting existing
-readme.md
->>>>>>> origin/test
+

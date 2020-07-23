@@ -8,6 +8,8 @@
 https://www.overleaf.com/read/mwgctytsqcvq
 * Demo Two SRS Document:
 https://www.overleaf.com/read/qqzbxwhmwvxf
+* User manual for the website
+https://www.overleaf.com/read/hkvxmjmcfhcq 
 
 
 ## Project Management Tool

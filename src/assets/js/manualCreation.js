@@ -20,7 +20,7 @@ window.onload = function() {
 	let precision = 0;
 	let colors = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine', 'AntiqueWhite'];
 	let generateButtonClicked = false;
-	let token = 'KQlH2g5Io_AwCwotB4TUC';
+	//let token = 'KQlH2g5Io_AwCwotB4TUC';
 	let piecesJSONObject = {
 		'pieces' : []
 	};
@@ -87,9 +87,10 @@ window.onload = function() {
 		setDistanceMetric('manhattan');
 	});
 
-	document.getElementById('tokenLabel').innerHTML = token;
+	// = token;
 	
 	document.getElementById('saveButton').addEventListener('mousedown', function() {
+		let token = document.getElementById('tokenLabel').innerHTML;
 		let puzzleName = document.getElementById('puzzleNameInputBox').value;
 		let puzzleDescription = document.getElementById('puzzleDescriptionInputBox').value;
 

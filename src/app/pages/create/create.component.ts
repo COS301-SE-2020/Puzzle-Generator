@@ -9,10 +9,13 @@ import Konva from 'konva';
 })
 export class CreateComponent implements OnInit {
 
+  token: any;
+
   constructor() { }
 
   ngOnInit(): void {
     createModule;
+    this.token = localStorage.getItem('token')
   }
 
 }

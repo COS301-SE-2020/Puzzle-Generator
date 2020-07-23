@@ -184,7 +184,8 @@ router.post('/getPuzzleRatingsByUser', (request, response) => {
                 ratingPlaceholder = {
                     "puzzleName": element['testPuzzle.name'],
                     "rating":element.rating,
-                    "puzzleID":element.puzzleID
+                    "puzzleID":element.puzzleID,
+                    "image": element['testPuzzle.image']
                 }
                 ++index;
                 ratingJsonObject.push(ratingPlaceholder);

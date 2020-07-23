@@ -69,33 +69,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc03ffa6-5b32-4dc5-b649-27063c56dc06" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/api.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.js.old" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.js.old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/dbConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/dbConfig.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main-es2015.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/main-es2015.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main-es5.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/main-es5.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/vendor-es2015.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/vendor-es2015.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/vendor-es2015.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/vendor-es2015.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/vendor-es5.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/vendor-es5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/vendor-es5.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/vendor-es5.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e2e/protractor.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/e2e/protractor.conf.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/karma.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/karma.conf.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Puzzle.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Puzzle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/PuzzleRating.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/PuzzleRating.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json.old" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json.old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/pool.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/pool.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/puzzle.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/puzzle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/puzzles.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/puzzles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +98,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Users\jayni\Documents\Campus Stuff\2020\COS301 Software Engineering\Capstone Project\GIT\Puzzle-Generator\node_modules\typescript\lib" />
   </component>
-  <component name="RunManager" selected="npm.startAngular">
+  <component name="RunManager" selected="npm.Angular CLI Server">
     <configuration name="Tests (prometheus-puzzles)" type="JavaScriptTestRunnerKarma">
       <config-file value="$PROJECT_DIR$/karma.conf.js" />
       <karma-package-dir value="$PROJECT_DIR$/node_modules/@angular/cli" />
@@ -194,8 +169,8 @@
       <item itemvalue="npm.Angular CLI Server" />
       <item itemvalue="npm.build" />
       <item itemvalue="npm.postinstall" />
-      <item itemvalue="Protractor.E2E Tests (prometheus-puzzles)" />
       <item itemvalue="npm.startAngular" />
+      <item itemvalue="Protractor.E2E Tests (prometheus-puzzles)" />
     </list>
     <recent_temporary>
       <list>
@@ -217,7 +192,7 @@
       <updated>1595361931539</updated>
       <workItem from="1595361938025" duration="12162000" />
       <workItem from="1595449083349" duration="2488000" />
-      <workItem from="1595486332788" duration="3750000" />
+      <workItem from="1595486332788" duration="5122000" />
     </task>
     <servers />
   </component>
@@ -257,26 +232,26 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="323" y="16" width="655" height="675" key="EnvironmentVariablesDialog/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1595489240780" />
-    <state width="1323" height="110" key="GridCell.Tab.0.bottom" timestamp="1595489867713">
+    <state width="1323" height="151" key="GridCell.Tab.0.bottom" timestamp="1595491905372">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="242" key="GridCell.Tab.0.bottom/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1595410741805" />
-    <state width="1323" height="110" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1595489867713" />
-    <state width="1323" height="110" key="GridCell.Tab.0.center" timestamp="1595489867713">
+    <state width="1323" height="151" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1595491905372" />
+    <state width="1323" height="151" key="GridCell.Tab.0.center" timestamp="1595491905372">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="242" key="GridCell.Tab.0.center/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1595410741805" />
-    <state width="1323" height="110" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1595489867713" />
-    <state width="1323" height="110" key="GridCell.Tab.0.left" timestamp="1595489867713">
+    <state width="1323" height="151" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1595491905372" />
+    <state width="1323" height="151" key="GridCell.Tab.0.left" timestamp="1595491905372">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="242" key="GridCell.Tab.0.left/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1595410741805" />
-    <state width="1323" height="110" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1595489867713" />
-    <state width="1323" height="110" key="GridCell.Tab.0.right" timestamp="1595489867713">
+    <state width="1323" height="151" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1595491905372" />
+    <state width="1323" height="151" key="GridCell.Tab.0.right" timestamp="1595491905372">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="242" key="GridCell.Tab.0.right/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1595410741805" />
-    <state width="1323" height="110" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1595489867713" />
+    <state width="1323" height="151" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1595491905372" />
     <state x="8" y="54" width="1347" height="619" key="MergeDialog" timestamp="1595365745047">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

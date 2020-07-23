@@ -43,7 +43,7 @@ app.use(logger('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, 'src')));
+//app.use(express.static(path.join(__dirname, 'src')));
 app.set("views",path.join(__dirname,"views"));
 
 /**

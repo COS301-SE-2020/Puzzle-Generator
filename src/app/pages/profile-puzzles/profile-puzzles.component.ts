@@ -19,14 +19,42 @@ export class ProfilePuzzlesComponent implements OnInit {
   show: boolean;
   text: boolean;
   imageList: any;
+  temp: boolean = false;
+  tee: any;
 
   constructor(private api: APIService, private router: Router) { }
 
   getUserPuzzles(){
     this.api.getPuzzlesByUser(this.currentUser).subscribe( data => {
       this.userPuzzleList = data;
+      console.log("------");
+      console.log(data[1].image);
+
+      //let puzzleImage = data[0].image.toDataURL();
+
+    this.temp = true;
+    this.getBase64ImageFromUrl(data[0].image)
+    .then(result => this.tee = result)
+    .catch(err => console.error(err));
       this.show = false;
     });
+  }
+
+  async getBase64ImageFromUrl(imageUrl) {
+    var res = await fetch(imageUrl);
+    var blob = await res.blob();
+  
+    return new Promise((resolve, reject) => {
+      var reader  = new FileReader();
+      reader.addEventListener("load", function () {
+          resolve( reader.result);
+      }, false);
+  
+      reader.onerror = () => {
+        return reject(this);
+      };
+      reader.readAsDataURL(blob);
+    })
   }
 
   share(data: any){

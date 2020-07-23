@@ -3,7 +3,7 @@ var Sequelize = require('sequelize');
 let dbname = process.env.dbDatabase;
 let uname =  process.env.dbUsername;
 let pass = process.env.dbpass;
-let dbHost = process.env.dbHost;
+let dbHost = process.env.dbHost; 
 console.log(dbname);
 console.log(uname);
 console.log(pass);

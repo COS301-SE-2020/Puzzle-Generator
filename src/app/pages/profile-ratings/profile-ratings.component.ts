@@ -15,22 +15,20 @@ export class ProfileRatingsComponent implements OnInit {
 
   currentUser: any;
   //user puzzle ratings variables
-  ratingList: Observable <any[]> ;
+  //ratingList: Observable <any[]> ;
+  userRatingsList: any;
   text: boolean;
   ratePID: number;
   ratingEntry: any;
   rateDialogRef: MatDialogRef<RateDialogComponent>;
+  show: boolean;
 
   constructor(private api: APIService, private router: Router, private dialog: MatDialog) { }
 
   getUserPuzzleRatings(){
-    this.ratingList = this.api.getPuzzleRatingsByUser(this.currentUser);
-    this.ratingList.subscribe(data => {
-      if(data[0] == null)
-      {
-        this.text = true;
-      }
-
+    this.api.getPuzzleRatingsByUser(this.currentUser).subscribe( data => {
+      this.userRatingsList = data;
+      this.show = false;
     });
   }
 
@@ -83,8 +81,7 @@ export class ProfileRatingsComponent implements OnInit {
       "token": localStorage.getItem('token')
     }
 
-    this.text = false;
-    this.ratingList = null;
+    this.show = true;
 
     this.getUserPuzzleRatings();
   }

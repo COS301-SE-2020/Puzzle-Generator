@@ -2,8 +2,9 @@
 <!--app-navbar-profile></app-navbar-profile-->
 <div class="container-fluid">
 <h1 class="main-title">My Ratings</h1>
+<mat-spinner *ngIf="show" id="spinner"></mat-spinner>
 <div *ngIf="currentUser" class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
-    <mat-card *ngFor="let rating of ratingList|async" class="content">
+    <mat-card *ngFor="let rating of userRatingsList" class="content">
       <div class="content-overlay"></div>
       <img class="content-image" src="assets/images/puzzles/{{rating.puzzleID}}.png">
         <mat-card-header>

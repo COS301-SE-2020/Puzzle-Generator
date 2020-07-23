@@ -13,23 +13,20 @@ export class ProfilePuzzlesComponent implements OnInit {
 
   currentUser: any;
   //user  puzzle variables
-  puzzleList: Observable <Puzzle[]> ;
+  //puzzleList: Observable <Puzzle[]> ;
+  userPuzzleList: any;
   puzzle: any;
   show: boolean;
   text: boolean;
+  imageList: any;
 
   constructor(private api: APIService, private router: Router) { }
 
   getUserPuzzles(){
-    this.puzzleList = this.api.getPuzzlesByUser(this.currentUser);
-    this.puzzleList.subscribe(data => {
-      if(data[0] == null)
-      {
-        this.text = true;
-      }
-
+    this.api.getPuzzlesByUser(this.currentUser).subscribe( data => {
+      this.userPuzzleList = data;
+      this.show = false;
     });
-    this.show = false;
   }
 
   share(data: any){
@@ -63,8 +60,6 @@ export class ProfilePuzzlesComponent implements OnInit {
       "token": localStorage.getItem('token')
     }
     this.show = true;
-    this.puzzleList = null ;
-    this.text = false; 
 
     this.getUserPuzzles();
   }

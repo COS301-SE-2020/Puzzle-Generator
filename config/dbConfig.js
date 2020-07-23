@@ -7,9 +7,10 @@ let dbHost = process.env.dbHost;
 console.log(dbname);
 console.log(uname);
 console.log(pass);
+console.log(dbHost);
 
 module.exports = new Sequelize(dbname, uname, pass, {
-  host: dbHost,
+  host: 'ec2-52-208-175-161.eu-west-1.compute.amazonaws.com',
   dialect: 'postgres',
   port: 5432,
   ssl:true,

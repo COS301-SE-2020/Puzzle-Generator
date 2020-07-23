@@ -52,7 +52,6 @@ export class RatingsComponent implements OnInit {
       });
 
 
-
     if (populatePuz != null)
     {
       this.getPuzzles(populatePuz);

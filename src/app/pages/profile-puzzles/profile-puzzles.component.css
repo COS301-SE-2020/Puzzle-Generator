@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
 #image, #profileImage{
     width: 250px;
     height: 250px;
@@ -62,7 +64,10 @@ mat-card-title{
     margin-top: 5px;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Raleway);
+#spinner{
+  margin: auto ;
+}
+
 
 *, *:before, *:after{
   margin: 0;
@@ -178,5 +183,5 @@ mat-card-title{
 }
 
 #NoneText{
-  text-align: center; 
+  text-align: center;
 }

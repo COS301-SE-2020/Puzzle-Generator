@@ -17,9 +17,9 @@
             <button *ngIf="puzzle.shared" mat-button class="btns" (click)="stopShare(puzzle.id)">STOP SHARING</button>
         </div>
     </mat-card>
-    
+
   </div>
-  <div *ngIf="text">
+  <div *ngIf="!show">
     <h3 id="NoneText" >You have not created any puzzles at the moment</h3>
   </div>
 </div>

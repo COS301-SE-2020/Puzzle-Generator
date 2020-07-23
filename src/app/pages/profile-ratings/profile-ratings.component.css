@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
 #image{
     width: 20vw;
     height: 20vw;
@@ -33,7 +34,10 @@
     color: gray;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Raleway);
+#spinner{
+  margin: auto ;
+}
+
 
 *, *:before, *:after{
   margin: 0;

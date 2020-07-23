@@ -1,0 +1,20 @@
+.navbar{
+  background-color: #7C593A;
+}
+
+.nav-link{
+  color: white;
+  font-size: 1.2vw;
+  margin-right: 1.5vw;
+}
+
+.navbar-text{
+  color: white;
+  text-align: left;
+}
+
+ul.nav a:hover { color: #7C593A !important; }
+
+span{
+  float: right; 
+}

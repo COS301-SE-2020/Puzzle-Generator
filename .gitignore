@@ -1,9 +1,21 @@
+<<<<<<< HEAD
+=======
+#Ignore database file
+database.js
+
+>>>>>>> origin/test
 # Ignore Mac system files
 .DS_store
 
 # Ignore node_modules folder
 node_modules
 
+<<<<<<< HEAD
+=======
+# Ignore local dist folder, needs to create a new one
+dist
+
+>>>>>>> origin/test
 # Ignore all text files
 *.txt
 
@@ -14,4 +26,18 @@ node_modules
 .sass-cache
 
 # Ignore JetBrains files
+<<<<<<< HEAD
 .idea
+=======
+.idea
+
+# Ignore workspace.xml for Jetbrains
+workspace.xml
+*.xml
+
+#ignore old structure
+OLD structure
+
+#Ignore current directory's Readme from overwriting existing
+readme.md
+>>>>>>> origin/test

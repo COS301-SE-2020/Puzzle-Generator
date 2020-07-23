@@ -70,7 +70,43 @@
   <component name="ChangeListManager">
     <list default="true" id="bc03ffa6-5b32-4dc5-b649-27063c56dc06" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/images/bg1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/images/bg2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/images/bg3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/images/imgA.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/images/imgB.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/images/imgC.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/images/profile.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/images/puzzles/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/images/puzzles/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/images/puzzles/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/images/puzzles/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/images/puzzles/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/images/puzzles/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/images/puzzles/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/bg2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/main-es2015.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/main-es2015.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/main-es5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/main-es5.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/polyfills-es2015.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/polyfills-es2015.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/polyfills-es5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/polyfills-es5.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/runtime-es2015.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/runtime-es2015.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/runtime-es5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/runtime-es5.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/styles-es2015.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/styles-es2015.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/styles-es5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/styles-es5.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/vendor-es2015.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/vendor-es2015.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/vendor-es5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/vendor-es5.js.map" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +134,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Users\jayni\Documents\Campus Stuff\2020\COS301 Software Engineering\Capstone Project\GIT\Puzzle-Generator\node_modules\typescript\lib" />
   </component>
-  <component name="RunManager" selected="npm.Angular CLI Server">
+  <component name="RunManager" selected="npm.postinstall">
     <configuration name="Tests (prometheus-puzzles)" type="JavaScriptTestRunnerKarma">
       <config-file value="$PROJECT_DIR$/karma.conf.js" />
       <karma-package-dir value="$PROJECT_DIR$/node_modules/@angular/cli" />
@@ -174,8 +210,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.startAngular" />
         <item itemvalue="npm.postinstall" />
+        <item itemvalue="npm.startAngular" />
         <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
@@ -192,7 +228,7 @@
       <updated>1595361931539</updated>
       <workItem from="1595361938025" duration="12162000" />
       <workItem from="1595449083349" duration="2488000" />
-      <workItem from="1595486332788" duration="5122000" />
+      <workItem from="1595486332788" duration="5523000" />
     </task>
     <servers />
   </component>
@@ -232,26 +268,26 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="323" y="16" width="655" height="675" key="EnvironmentVariablesDialog/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1595489240780" />
-    <state width="1323" height="151" key="GridCell.Tab.0.bottom" timestamp="1595491905372">
+    <state width="1323" height="151" key="GridCell.Tab.0.bottom" timestamp="1595492370115">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="242" key="GridCell.Tab.0.bottom/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1595410741805" />
-    <state width="1323" height="151" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1595491905372" />
-    <state width="1323" height="151" key="GridCell.Tab.0.center" timestamp="1595491905372">
+    <state width="1323" height="151" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1595492370115" />
+    <state width="1323" height="151" key="GridCell.Tab.0.center" timestamp="1595492370115">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="242" key="GridCell.Tab.0.center/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1595410741805" />
-    <state width="1323" height="151" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1595491905372" />
-    <state width="1323" height="151" key="GridCell.Tab.0.left" timestamp="1595491905372">
+    <state width="1323" height="151" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1595492370115" />
+    <state width="1323" height="151" key="GridCell.Tab.0.left" timestamp="1595492370115">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="242" key="GridCell.Tab.0.left/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1595410741805" />
-    <state width="1323" height="151" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1595491905372" />
-    <state width="1323" height="151" key="GridCell.Tab.0.right" timestamp="1595491905372">
+    <state width="1323" height="151" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1595492370115" />
+    <state width="1323" height="151" key="GridCell.Tab.0.right" timestamp="1595492370115">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="242" key="GridCell.Tab.0.right/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1595410741805" />
-    <state width="1323" height="151" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1595491905372" />
+    <state width="1323" height="151" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1595492370115" />
     <state x="8" y="54" width="1347" height="619" key="MergeDialog" timestamp="1595365745047">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

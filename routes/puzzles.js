@@ -13,79 +13,122 @@ const Op = Sequelize.Op;
  * Note to self: Forgot to set on delete/update cascade to foreign keys. Please do so on final table in Postgres
  */
 
+/**
+ * Note to self: Forgot to set on delete/update cascade to foreign keys. Please do so on final table in Postgres
+ */
+
 //get all puzzles
 router.get('/getAllPuzzles', (request, response) => {
-    var puzzleJsonObject = [];
-    var puzzlePlaceholder = {};
-    var index = 0;
-    Puzzle.findAll()
-        .then( puzzles => {
-            var array = puzzles;
-            var totalNumPuzzles = Object.keys(puzzles).length;
-            //console.log(array);
-           // response.status(201).send(puzzles);
-            array.forEach(element => {
-                User.findAll({ raw: true, where: {id: element.creatorID }})
-                .then( data => {
-                    //console.log("--- ", data[0].name);
-                    //console.log("** ", array[count].creatorID);
-                    puzzlePlaceholder = {
-                        "id":array[index].id,
-                        "name":array[index].name,
-                        "description":array[index].description,
-                        "puzzleObject":array[index].puzzleObject,
-                        "createdAt":array[index].createdAt,
-                        "creator":data[0].name
-                    };
-                    ++index;
-                    puzzleJsonObject.push(puzzlePlaceholder);
-                    if(index == totalNumPuzzles){
-                        response.status(201).send(puzzleJsonObject);
-                    }
-                })
-                .catch( error => { console.log("Error: ", error);});
-            });
-        })
-        .catch( error => {
-            console.log("Failed to get all puzzles due to: ", error)
-        });
+  var puzzleJsonObject = [];
+  var puzzlePlaceholder = {};
+  var index = 0;
+  Puzzle.findAll({ raw: true, where: { shared: true }, include: User})
+    .then( puzzles => {
+      var array = puzzles;
+      var totalNumPuzzles = Object.keys(puzzles).length;
+      array.forEach(element => {
+        puzzlePlaceholder = {
+          "id":element.id,
+          "name":element.name,
+          "description": element.description,
+          "puzzleObject": element.puzzleObject,
+          "image": element.image,
+          "createdAt": element.createdAt,
+          "creator": element['testUser.name']
+        };
+        ++index;
+        puzzleJsonObject.push(puzzlePlaceholder);
+        if(index == totalNumPuzzles){
+          //console.log(puzzleJsonObject);
+          response.status(201).send(puzzleJsonObject);
+        }
+      });
+    })
+    .catch( error => {
+      response.status(500).send("Failed to get all puzzles due to: ", error)
+    });
 });
 
 //get puzzle by id
 router.get('/getPuzzleByID/:id', (request, response) => {
-    const theID = parseInt(request.params.id);
-    Puzzle.findAll( { raw: true, where: { id: theID } } )
-        .then( puzzle => {
-            response.status(201).send(puzzle);
-        })
-        .catch( error => {
-            response.status(403).send("Failed due to: ", error);
-        })
+  const theID = parseInt(request.params.id);
+  Puzzle.findAll( { raw: true, where: { id: theID } } )
+    .then( puzzle => {
+      response.status(201).send(puzzle);
+    })
+    .catch( error => {
+      response.status(403).send("Failed due to: ", error);
+    })
+});
+
+//get puzzles fitting searchbar criteria
+router.get('/getSearchedPuzzles/:term', (request, response) => {
+  const term = request.params.term;
+  Puzzle.findAll( { raw: true, where: { name: {[Op.iLike]:  '%' + term + '%' } } } )
+    .then( puzzle => {
+      response.status(201).send(puzzle);
+    })
+    .catch( error => {
+      response.status(403).send("Failed due to: ", error);
+    })
 });
 
 //create a new puzzle entry into the db
 router.post('/createPuzzle', (request, response) => {
-    const name = request.body.name;
-    const description = request.body.description;
-    const puzzleObject = request.body.puzzleObject;
-    let creatorID = null;
-    User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
+  const name = request.body.name;
+  const description = request.body.description;
+  const puzzleObject = request.body.puzzleObject;
+  const shared = request.body.shared;
+  const image = request.body.image;
+  let creatorID = null;
+  User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
     .then( user => {
-        creatorID = user[0].id;
+      creatorID = user[0].id;
 
-        Puzzle.create({
-            name, description, puzzleObject, creatorID
-        })
+      console.log(name, description, puzzleObject, creatorID, shared, image);
+
+      Puzzle.create({
+        name, description, puzzleObject, creatorID, shared, image
+      })
         .then( () => {
-            response.status(200).send("Puzzle successfully saved")
+          response.status(200).send("Puzzle successfully saved")
         })
         .catch( error => {
-            response.status(403).send("Puzzle creation failed due to: ", error);
+          response.status(403).send("Puzzle creation failed due to: ", error);
         })
     })
     .catch(error => {
-        response.status(403).send("User not found due to: ", error);
+      response.status(403).send("User not found due to: ", error);
     });
+});
+
+//share puzzle
+router.put('/sharePuzzle',(request, response) => {
+  const puzzleID = request.body.puzzleID;
+  Puzzle.update(
+    { shared: true },
+    { returning: true, raw: true, plain: true, where: { id:  puzzleID } }
+  )
+    .then( () => {
+      response.status(200).send("Successfully shared");
+    })
+    .catch( error => {
+      response.status(500).send("Server error");
+    } );
+});
+//stop sharing puzzle
+router.put('/stopSharingPuzzle',(request, response) => {
+  const puzzleID = request.body.puzzleID;
+  Puzzle.update(
+    { shared: false },
+    { returning: true, raw: true, plain: true, where: { id:  puzzleID } }
+  )
+    .then( () => {
+      response.status(200).send("Successfully shared");
+    })
+    .catch( error => {
+      response.status(500).send("Server error");
+    } );
 });
 
 /**
@@ -93,39 +136,58 @@ router.post('/createPuzzle', (request, response) => {
  *  */
 //get all puzzle ratings
 router.get('/getAllPuzzleRatings', (request, response) => {
-    PuzzleRating.findAll()
-        .then( puzzleRatings => {
-            response.status(200).send(puzzleRatings);
-        })
-        .catch( error => {
-            response.status(403).send("Failed due to: ", error);
-        })
+  PuzzleRating.findAll()
+    .then( puzzleRatings => {
+      response.status(200).send(puzzleRatings);
+    })
+    .catch( error => {
+      response.status(403).send("Failed due to: ", error);
+    })
 });
 
 //create a new rating
 router.post('/createPuzzleRating', (request, response) => {
-    const rating = request.body.rating;
-    const puzzleID = request.body.puzzleID;
-    let userID = null;
-    User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
+  const rating = request.body.rating;
+  const puzzleID = request.body.puzzleID;
+  let userID = null;
+  User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
     .then( user => {
-        userID = user[0].id;
+      userID = user[0].id;
 
-        PuzzleRating.create({
-            rating, puzzleID, userID
+      PuzzleRating.findAll({ raw: true,
+        where: { userID:  userID, puzzleID:  puzzleID }
+      })
+        .then( data => {
+          if(data.length == 0){ //rating doesnt exist so create new rating
+            PuzzleRating.create({
+              rating, puzzleID, userID
+            })
+              .then( () => {
+                response.status(200).send("Puzzle rating successfully created")
+              })
+              .catch( error => {
+                response.status(403).send("Puzzle rating creation failed due to: ", error);
+              });
+          }
+          else
+          {
+            PuzzleRating.update( //rating exists so update current rating
+              { rating: rating },
+              { returning: true, raw: true, plain: true, where: { userID:  userID, puzzleID:  puzzleID } }
+            )
+              .then( () => {
+                response.status(200).send("Puzzle rating successfully updated");
+              })
+              .catch( error => {
+                response.status(500).send("Server error");
+              } );
+          }
         })
-        .then( () => {
-            response.status(200).send("Puzzle rating successfully created")
-        })
-        .catch( error => {
-            response.status(403).send("Puzzle rating creation failed due to: ", error);
-        });
+        .catch( error => { response.status(500).send("Error: ", error); })
     })
     .catch(error => {
-        response.status(403).send("User not found due to: ", error);
+      response.status(403).send("User not found due to: ", error);
     });
 
 });
-
-
 module.exports = router;

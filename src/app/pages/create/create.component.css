@@ -1,3 +1,11 @@
+.container-fluid{
+  /* background-color: #7C593A; */
+}
+
+.content{
+  margin-left: 10rem;
+}
+
 #container {
     width: 500px;
     height: 500px;

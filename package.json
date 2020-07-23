@@ -40,6 +40,8 @@
     "doxygen": "^0.3.2",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
+    "angular-bootstrap-md": "^9.3.1",
+    "konva": "^7.0.3",
     "latest": "^0.2.0",
     "mocha": "^8.0.1",
     "mongoose": "^5.9.23",

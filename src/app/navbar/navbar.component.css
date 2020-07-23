@@ -13,8 +13,12 @@
   text-align: left;
 }
 
-ul.nav a:hover { color: #7C593A !important; }
+ul.nav li:hover > a { color: #7C593A !important; }
 
 span{
   float: right; 
+}
+
+.dropdown-item{
+  font-size: 1vw !important;
 }

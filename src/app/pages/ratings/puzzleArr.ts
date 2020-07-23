@@ -2,6 +2,8 @@ export class PuzzleArr{
   id: number;
   name: string;
   description: string;
-  creator: number;
-  rating: number; 
+  creator: string;
+  rating: string;
+  created: any;
+  showRating: boolean; 
 }

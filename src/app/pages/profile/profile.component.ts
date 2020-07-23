@@ -31,11 +31,15 @@ export class ProfileComponent implements OnInit {
         "token": this.token,
         "name": this.nameTextboxValue
       }
+      localStorage.removeItem('name');
+      localStorage.setItem('name', this.currentUser['name']);
       this.api.updateName(this.currentUser).subscribe( data => {
         this.currentUserObject['name'] = data['name'];
       });
+      alert("Name updated");
     }
     else{ console.log("No value provided");}
+    location.reload();
   }
 
   updateUsername(){

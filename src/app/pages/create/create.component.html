@@ -1,2 +1,22 @@
 <app-navbar></app-navbar>
-<p>create works!</p>
+<div class="container-fluid">
+<h1 class="main-title"><strong>LET'S CREATE</strong></h1>
+
+<label id="label">What puzzle type would you like to generate?</label>
+<mat-radio-group class="radio-group">
+  <mat-radio-button class="radio-button" value="euclidean" name="distanceMetric" id="euclideanButton" > Euclidian </mat-radio-button>
+  <mat-radio-button class="radio-button" value="manhattan" name="distanceMetric" id="manhattanButton" > Manhattan </mat-radio-button>
+</mat-radio-group>
+<br>
+<label id="label">Create puzzle by selecting points on the canvas</label>
+
+<br>
+<div id="container">
+</div>
+<br>
+
+<button mat-raised-button class="btns" id="generatePuzzleButton">Generate Puzzle</button>
+<button mat-raised-button class="btns" id="saveButton">Save</button>
+<button mat-raised-button class="btns" id="saveAndSubmitButton">Save and Submit</button>
+<br><br>
+</div>

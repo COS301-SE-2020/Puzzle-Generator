@@ -84,7 +84,7 @@ app.use(function(err, req, res, next) {
 app.get('/', (request, response) => {response.send("Sequelize API test");});
 
 module.exports = app;
-console.log(process.env.dbPass)
+//console.log(process.env.dbPass)
 /*
 //all requests associated with the user must make use of this route
 app.use('/api/users', require('./routes/users'));

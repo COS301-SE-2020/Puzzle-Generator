@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-let pool = require("./pool");
+//let pool = require("./pool");
 //puzzle creation endpoint
 router.post('/createPuzzle', (request, response) => {
     const userToken = request.body.token;

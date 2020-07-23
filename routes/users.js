@@ -197,6 +197,6 @@ router.post('/getPuzzleRatingsByUser', (request, response) => {
             response.status(403).send("Failed to get user due to: ", error)
         });
 });
-
+ 
 module.exports = router;
 

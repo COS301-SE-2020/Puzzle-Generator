@@ -6,7 +6,7 @@
   <div *ngIf="currentUser" class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
     <mat-card *ngFor="let puzzle of userPuzzleList" class="content">
       <div class="content-overlay"></div>
-      <img class="content-image" src="assets/images/puzzles/{{puzzle.id}}.png">
+      <img class="content-image" src="{{puzzle.image}}">
         <mat-card-header>
             <mat-card-title>{{puzzle.name}}</mat-card-title>
             <mat-card-subtitle>Description: {{puzzle.description}}</mat-card-subtitle>
@@ -17,14 +17,9 @@
             <button *ngIf="puzzle.shared" mat-button class="btns" (click)="stopShare(puzzle.id)">STOP SHARING</button>
         </div>
     </mat-card>
-
-    <div *ngIf="temp">
-      Test
-      <img src="{{tee}}" alt="abbb">
-    </div>
-
   </div>
-  <div *ngIf="!show">
+
+  <div *ngIf="text">
     <h3 id="NoneText" >You have not created any puzzles at the moment</h3>
   </div>
 </div>

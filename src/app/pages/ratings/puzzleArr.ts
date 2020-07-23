@@ -5,5 +5,6 @@ export class PuzzleArr{
   creator: string;
   rating: string;
   created: any;
-  showRating: boolean; 
+  showRating: boolean;
+  image: any; 
 }

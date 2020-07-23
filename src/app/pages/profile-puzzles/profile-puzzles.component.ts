@@ -27,8 +27,10 @@ export class ProfilePuzzlesComponent implements OnInit {
   getUserPuzzles(){
     this.api.getPuzzlesByUser(this.currentUser).subscribe( data => {
       this.userPuzzleList = data;
-      console.log("------");
-      console.log(data[1].image);
+      if (data[0]==null)
+      {
+        this.text = true;
+      }
 
       //let puzzleImage = data[0].image.toDataURL();
 
@@ -43,13 +45,13 @@ export class ProfilePuzzlesComponent implements OnInit {
   async getBase64ImageFromUrl(imageUrl) {
     var res = await fetch(imageUrl);
     var blob = await res.blob();
-  
+
     return new Promise((resolve, reject) => {
       var reader  = new FileReader();
       reader.addEventListener("load", function () {
           resolve( reader.result);
       }, false);
-  
+
       reader.onerror = () => {
         return reject(this);
       };
@@ -88,6 +90,7 @@ export class ProfilePuzzlesComponent implements OnInit {
       "token": localStorage.getItem('token')
     }
     this.show = true;
+    this.text = false;
 
     this.getUserPuzzles();
   }

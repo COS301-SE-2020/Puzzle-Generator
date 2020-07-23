@@ -17,7 +17,7 @@
     <div class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
         <mat-card div class="content" *ngFor="let puzzle of puzzles">
           <div class="content-overlay"></div>
-          <img class="content-image" src="assets/images/puzzles/{{puzzle.id}}.png">
+          <img class="content-image" src="{{puzzle.image}}">
             <mat-card-header>
                 <mat-card-title>{{puzzle.name}}</mat-card-title>
                 <mat-card-subtitle>Created by {{puzzle.creator}}</mat-card-subtitle>

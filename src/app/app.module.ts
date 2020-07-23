@@ -25,7 +25,7 @@ import { MatGridListModule } from '@angular/material/grid-list'
 import { MatRadioModule } from '@angular/material/radio';
 import {MatListModule} from '@angular/material/list';
 
-// import { FormsModule } from '@angular/forms';
+//import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 //pages
@@ -40,9 +40,6 @@ import { ResetSuccessComponent } from './pages/reset-success/reset-success.compo
 import { RateFormComponent } from './pages/rate-form/rate-form.component';
 import { CreateComponent } from './pages/create/create.component';
 
-import { RateDialogComponent } from './rate-dialog/rate-dialog.component';
-import { ProfilePuzzlesComponent } from './pages/profile-puzzles/profile-puzzles.component';
-import { ProfileRatingsComponent } from './pages/profile-ratings/profile-ratings.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,9 +53,6 @@ import { ProfileRatingsComponent } from './pages/profile-ratings/profile-ratings
     ResetSuccessComponent,
     RateFormComponent,
     CreateComponent,
-    RateDialogComponent,
-    ProfilePuzzlesComponent,
-    ProfileRatingsComponent,
   ],
   imports: [
     BrowserModule,

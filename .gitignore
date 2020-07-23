@@ -10,9 +10,6 @@ node_modules
 # Ignore local dist folder, needs to create a new one
 dist
 
-#ignore public folder
-public
-
 # Ignore all text files
 *.txt
 

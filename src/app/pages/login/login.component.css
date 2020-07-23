@@ -1,18 +1,7 @@
 .container{
     background-image: url('../../../assets/images/bg2.jpg');
-    /*background-image: url('../../../assets/images/back/jude.jpg');*/
-    background-color: #7C593A;
     height: 100%;
     width: 100%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-}
-
-h1{
-    margin-top: 1rem;
-    font-family: keep-calm;
 }
 
 .btns{
@@ -23,30 +12,18 @@ h1{
     margin: 5%;
 }
 
-#two{
-    color: white;
-}
-
 .regForm{
-    width: 20%;
+    width: 30%;
     text-align: center;
-}
-
-#passError{
-    color: red;
 }
 
 .regFormContent{
     margin-top: 1rem;
 }
 
-h1{
-    margin-top: 1rem;
-    font-family: keep-calm;
-}
-
 .cardTitle{
-    margin-left: 9.5rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
 }
 
 #passError{
@@ -56,9 +33,3 @@ h1{
 .link{
      color: black;
    }
-    
-
-img{
-    width: 100%;
-    height: 100%;
-}

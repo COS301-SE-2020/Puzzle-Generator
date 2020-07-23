@@ -8,6 +8,7 @@
     "startAngular": "ng serve",
     "build": "ng build",
     "test": "ng test",
+    "testApi": "node test.js",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ng build --output-path dist"

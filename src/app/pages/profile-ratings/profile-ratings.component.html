@@ -7,7 +7,7 @@
 <div *ngIf="currentUser" class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
     <mat-card *ngFor="let rating of userRatingsList" class="content">
       <div class="content-overlay"></div>
-      <img class="content-image" src="assets/images/puzzles/{{rating.puzzleID}}.png">
+      <img class="content-image" src="{{rating.image}}">
         <mat-card-header>
             <mat-card-title>{{rating.puzzleName}}</mat-card-title>
             <mat-card-subtitle>Rating: {{rating.rating}}/5</mat-card-subtitle>

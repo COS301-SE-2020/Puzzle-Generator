@@ -1,46 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway);
-
-.container-fluid{
-  /*background-image: url('../../../assets/images/bg3.jpg');*/
-  background-color: white;
+#image{
+    width: 20vw;
+    height: 20vw;
 }
-
-.container{
-  background-color: white;
-  height: 100%;
-  width: 100%;
-}
-
-.content-image{
-  width: 20vw;
-  height: 20vw;
-}
-
-h1{
-  text-align: center;
-  font-size: 4vw;
-  font-family: Arial, Helvetica, sans-serif;
-  color: gray;
-}
-
-mat-card{
-  margin: auto;
-  margin-bottom: 2vw;
-  margin-top: 2vw;
-  background-color: rgb(235, 235, 235);
-  color: black;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
-
-mat-card-subtitle{
-  font-size: 15px;
-}
-
-mat-card-title{
-  margin-top: 5px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 
 .btns{
   background-color: #7C593A;
@@ -48,17 +10,34 @@ mat-card-title{
   margin: 0.5vw;
 }
 
-.example-form-field{
-  margin-left: 2vw;
+.userPuzzles{
+    margin: 0.2rem;
+    background-color:  rgb(235, 235, 235);
+    color: black;
+    width: 280px;
 }
 
-#resetBtn{
-  margin-left: 2vw;
+.container-fluid{
+
+    color: white;
+}
+
+.main-title{
+    color: white;
+    text-align: center;
+    text-transform: capitalize;
+    padding: 0.7em 0;
+    margin-top: 30px;
+    font-size: 40px;
+    text-align: center;
+    font-family: keep-calm;
+    color: gray;
 }
 
 #spinner{
   margin: auto ;
 }
+
 
 *, *:before, *:after{
   margin: 0;
@@ -128,6 +107,7 @@ mat-card-title{
 
 .content-image{
   width: 100%;
+  height: 20vw;
   margin-bottom: 10px;
 }
 
@@ -136,6 +116,7 @@ mat-card-title{
   text-align: center;
   padding-left: 1em;
   padding-right: 1em;
+  margin-bottom: 1em;
   width: 100%;
   top: 50%;
   left: 50%;
@@ -169,4 +150,8 @@ mat-card-title{
 
 .fadeIn-bottom{
   top: 80%;
+}
+
+#NoneText{
+  text-align: center;
 }

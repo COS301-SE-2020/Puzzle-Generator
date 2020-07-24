@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { PuzzleArr } from './puzzleArr';
 import { RatingsArr } from './RatingsArr';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { RateDialogComponent } from '../../rate-dialog/rate-dialog.component';
+import { RateDialogComponent } from '../rate-dialog/rate-dialog.component';
 import { PuzzleRating } from 'src/app/models/PuzzleRating';
 
 @Component({
@@ -97,7 +97,7 @@ export class RatingsComponent implements OnInit {
       puzzleObj.description = data[i].description;
       puzzleObj.creator = data[i].creator;
       puzzleObj.created = data[i].createdAt;
-      puzzleObj.image = data[i].image; 
+      puzzleObj.image = data[i].image;
       if (puzzleObj.creator== this.currentUser["name"])
       {
         puzzleObj.showRating = false;

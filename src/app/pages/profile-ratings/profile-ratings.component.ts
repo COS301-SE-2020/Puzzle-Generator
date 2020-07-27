@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Puzzle } from 'src/app/models/Puzzle';
+import { Puzzle } from '../../models/Puzzle';
 import { Observable } from 'rxjs';
-import { APIService } from 'src/app/services/api.service';
+import { APIService } from '../../services/api.service';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { RateDialogComponent } from '../../rate-dialog/rate-dialog.component';
+import { RateDialogComponent } from '../rate-dialog/rate-dialog.component';
 
 @Component({
   selector: 'app-profile-ratings',
@@ -26,7 +26,7 @@ export class ProfileRatingsComponent implements OnInit {
   constructor(private api: APIService, private router: Router, private dialog: MatDialog) { }
 
   getUserPuzzleRatings(){
-    this.api.getPuzzleRatingsByUser(this.currentUser).subscribe( data => {
+    this.api.getPuzzleRatingssByUser(this.currentUser).subscribe( data => {
       this.userRatingsList = data;
       this.show = false;
     });
@@ -79,7 +79,7 @@ export class ProfileRatingsComponent implements OnInit {
 
     this.currentUser = {
       "token": localStorage.getItem('token')
-    }
+    };
 
     this.show = true;
 

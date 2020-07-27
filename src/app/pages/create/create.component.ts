@@ -15,7 +15,7 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
     createModule;
-    this.token = localStorage.getItem('token')
+    this.token = localStorage.getItem('token');
   }
 
 }

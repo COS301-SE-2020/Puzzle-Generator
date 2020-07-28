@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { APIService } from 'src/app/services/api.service';
-import { Puzzle } from 'src/app/models/Puzzle';
+import { APIService } from '../../services/api.service';
+import { Puzzle } from '../../models/Puzzle';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 

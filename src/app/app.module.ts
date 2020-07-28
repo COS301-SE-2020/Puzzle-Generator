@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,7 @@ import { MatGridListModule } from '@angular/material/grid-list'
 import { MatRadioModule } from '@angular/material/radio';
 import {MatListModule} from '@angular/material/list';
 
+//import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 //import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -54,6 +55,7 @@ import { CreateComponent } from './pages/create/create.component';
     RateFormComponent,
     CreateComponent,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     BrowserModule,
     NgxPaginationModule,

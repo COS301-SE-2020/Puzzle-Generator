@@ -31,6 +31,3 @@ OLD structure
 
 #Ignore current directory's Readme from overwriting existing
 readme.md
-
-#ignore environment variables
-.env

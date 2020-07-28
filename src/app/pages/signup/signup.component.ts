@@ -3,7 +3,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { User } from '../../models/User';
 import { APIService } from '../../services/api.service';
 import { Router } from '@angular/router';
-
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',

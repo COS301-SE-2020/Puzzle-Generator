@@ -12,6 +12,10 @@
     width: 23rem;
 }
 
+.infoIcon{
+  float: right;
+}
+
 /* .container{
     background-color: whitesmoke;
     width: 100%;

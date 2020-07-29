@@ -11,6 +11,10 @@
   width: 100%;
 }
 
+.infoIcon{
+  float: right;
+}
+
 .content-image{
   width: 20vw;
   height: 20vw;

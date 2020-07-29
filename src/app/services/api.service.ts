@@ -38,7 +38,6 @@ export class APIService {
   }
 
   updateName(currentUser: User){
-    console.log("---------");
     const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
     return this.http.put('http://localhost:3200/api/users/updateName', currentUser, httpOptions);
   }

@@ -18,6 +18,7 @@
     <div class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
         <mat-card div class="content" *ngFor="let puzzle of puzzles">
           <div class="content-overlay"></div>
+          <mat-icon aria-hidden="false" class="infoIcon">info_outline</mat-icon>
           <img class="content-image" src="{{puzzle.image}}">
             <mat-card-header>
                 <mat-card-title>{{puzzle.name}}</mat-card-title>

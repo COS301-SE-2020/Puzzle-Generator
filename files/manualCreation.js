@@ -9,10 +9,12 @@ let height;
 let stage;
 let layer;
 let square;
+let pointsArray = [];
 let sites = [];
 let siteBoundaries = [];
 let precision = 0;
 let colors = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine', 'AntiqueWhite', 'Red', 'Green'];
+let hoverOverPoint = false;
 let generateButtonClicked = false;
 let token = 'KQlH2g5Io_AwCwotB4TUC';
 let piecesJSONObject = {
@@ -56,17 +58,18 @@ function initializeData()
 	stage.add(layer);
 
 	canvas.addEventListener('mousedown', function(event){
-		if(!generateButtonClicked)
+		if(!generateButtonClicked && !hoverOverPoint)
 		{
 			let x = event.clientX - canvasCoords.x;
 			let y = event.clientY - canvasCoords.y;
 			
 			let point = createPoint(x, y);
-			sites.push({
-				x: point.x(),
-				y: point.y(),
-				id: sites.length,
-			});
+			// pointsArray.push(point);
+			// sites.push({
+			// 	x: point.x(),
+			// 	y: point.y(),
+			// 	id: sites.length,
+			// });
 
 			layer.add(point);
 			layer.draw();
@@ -148,7 +151,34 @@ function createPoint(x, y)
 		y: y,
 		radius: 1,
 		stroke: 'black',
-		strokeWidth: 2,
+		strokeWidth: 4,
+		draggable: true
+	});
+
+	point.on('mouseover', function (event){
+		document.onmousemove = function(event) {
+			point.x(event.pageX - canvasCoords.x);
+			point.y(event.pageY - canvasCoords.y);
+		};
+
+		hoverOverPoint = true;
+		document.body.style.cursor = 'pointer';
+	});
+
+	point.on('mouseout', function(event) {
+		document.onmousemove = null;
+		hoverOverPoint = false;
+		document.body.style.cursor = 'default';
+	});
+
+	point.on('dblclick', function(event) {
+		console.log('double clicked!');
+		// layer.remove(point);
+		document.onmousemove = null;
+		hoverOverPoint = false;
+		document.body.style.cursor = 'default';
+		point.destroy();
+		layer.draw();
 	});
 
 	return point;
@@ -181,6 +211,18 @@ function generatePuzzle()
 	// 	y:331,
 	// }
 	// ];
+	pointsArray = layer.getChildren(function(node) {
+		return node.getClassName() === 'Circle';
+	});
+
+	for (let i = pointsArray.length - 1; i >= 0; i--) {
+		sites.push({
+			x: pointsArray[i].attrs.x,
+			y: pointsArray[i].attrs.y,
+		});
+	}
+
+	layer.destroyChildren();
 
 	///This makes sure that the generate button will only generate once
 	generateButtonClicked = true;
@@ -223,20 +265,32 @@ function createPieces()
 function trimPoints(pointArray)
 {
 	let trimmedPoints = [];
-	let lastPointCol;
+	let lastPointCol = -1;
 	let firstPointCol = pointArray[0];
 	let currentRow = pointArray[1];
+	let crissCross = 1;
 
-	trimmedPoints.push(firstPointCol, currentRow);
+	// trimmedPoints.push(firstPointCol, currentRow);
 
 	for(let index = 0; index < pointArray.length; index+=2)
 	{
 		if(currentRow != pointArray[index+1])
 		{
-			trimmedPoints.push(lastPointCol, currentRow);
-			currentRow = pointArray[index+1];
+			if(crissCross == 1)
+			{
+				trimmedPoints.push(firstPointCol, currentRow);
+				trimmedPoints.push(lastPointCol, currentRow);
+				crissCross = -1;
+			}
+			else
+			{
+				trimmedPoints.push(lastPointCol, currentRow);
+				trimmedPoints.push(firstPointCol, currentRow);
+				crissCross - 1;
+			}
+			
 			firstPointCol = pointArray[index];
-			trimmedPoints.push(firstPointCol, currentRow);
+			currentRow = pointArray[index+1];	
 		}
 		else
 		{

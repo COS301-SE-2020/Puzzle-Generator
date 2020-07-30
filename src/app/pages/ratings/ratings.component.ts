@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { APIService } from 'src/app/services/api.service';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/models/User';
 import { Router } from '@angular/router';
 import { PuzzleArr } from './puzzleArr';
 import { RatingsArr } from './RatingsArr';
@@ -97,7 +97,7 @@ export class RatingsComponent implements OnInit {
       puzzleObj.description = data[i].description;
       puzzleObj.creator = data[i].creator;
       puzzleObj.created = data[i].createdAt;
-      puzzleObj.image = data[i].image; 
+      puzzleObj.image = data[i].image;
       if (puzzleObj.creator== this.currentUser["name"])
       {
         puzzleObj.showRating = false;

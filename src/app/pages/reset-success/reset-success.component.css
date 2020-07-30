@@ -1,0 +1,23 @@
+.container{
+    background-image: url('../../../assets/images/bg2.jpg');
+    height: 100%;
+    width: 100%;
+}
+
+.btns{
+    background-color: #7C593A;
+}
+
+.regForm{
+    width: 30%;
+    text-align: center;
+}
+
+.regFormContent{
+    margin-top: 1rem;
+}
+
+.cardTitle{
+    margin-left: 1rem;
+    margin-top: 1rem;
+}

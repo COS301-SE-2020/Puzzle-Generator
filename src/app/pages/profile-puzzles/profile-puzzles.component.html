@@ -1,0 +1,26 @@
+<img src="assets/images/logo.jpg">
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+  <h1 class="main-title">My Puzzles</h1>
+  <mat-spinner *ngIf="show" id="spinner"></mat-spinner>
+  <div *ngIf="currentUser" class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
+    <mat-card *ngFor="let puzzle of userPuzzleList" class="content">
+      <div class="content-overlay"></div>
+      <img class="content-image" src="{{puzzle.image}}">
+        <mat-card-header>
+            <mat-card-title>{{puzzle.name}}</mat-card-title>
+            <mat-card-subtitle>Description: {{puzzle.description}}</mat-card-subtitle>
+        </mat-card-header>
+        <div class="content-details fadeIn-bottom">
+            <h3 class="content-title">{{puzzle.name}}</h3>
+            <button *ngIf="!puzzle.shared" mat-button class="btns" (click)="share(puzzle.id)">SHARE</button>
+            <button *ngIf="puzzle.shared" mat-button class="btns" (click)="stopShare(puzzle.id)">STOP SHARING</button>
+        </div>
+    </mat-card>
+  </div>
+
+  <div *ngIf="text">
+    <h3 id="NoneText" >You have not created any puzzles at the moment</h3>
+  </div>
+</div>

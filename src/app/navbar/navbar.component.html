@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <mdb-navbar id="navCustom" SideClass="navbar">
+    <div>
+        <ul class="nav navbar-nav mr-auto" routerLinkActive="active">
+            <li class="nav-item"><a class="nav-link" routerLink="/ratings">View</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/create">Create</a></li>
+            <li class="nav-item dropdown" dropdown>
+              <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>Profile<div class="caret"></div></a>
+               <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                 <a class="dropdown-item waves-light" routerLink="/profile" mdbWavesEffect>My Details</a><br>
+                 <a class="dropdown-item waves-light" routerLink="/profileRatings" mdbWavesEffect>My Ratings</a><br>
+                 <a class="dropdown-item waves-light" routerLink="/profilePuzzles" mdbWavesEffect>My Puzzles</a>
+               </div>
+            </li>
+        </ul>
+    </div>
+    <span class="navbar-text">
+        Hello, {{name}}
+        <a id="logout" (click)="logout()">Logout</a>
+    </span>
+  </mdb-navbar>
+</div>

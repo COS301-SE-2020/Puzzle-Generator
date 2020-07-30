@@ -1,0 +1,35 @@
+#image, #profileImage{
+    width: 20rem;
+    height: 22rem;
+}
+
+#profileImage{
+    border-radius: 220rem;
+    padding: 2rem;
+}
+
+h1{
+    margin-top: 1rem;
+    font-family: keep-calm;
+}
+
+.profile{
+  margin-bottom: 2vw;
+  margin-top: 2vw;
+  background-color: white;
+  color: #7C593A;
+}
+
+.flex-container{
+    margin: 0.9rem;
+}
+
+.userPuzzles{
+    margin: 0.2rem;
+    background-color:  #7C593A;
+}
+
+.btns{
+  background-color: #7C593A;
+  color: white;
+}

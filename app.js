@@ -11,8 +11,7 @@ const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var loginRouter = require('./routes/login');
-var puzzleRouter = require('./routes/puzzle');
+var puzzleRouter = require('./routes/puzzles');
 var apiRouter = require('./routes/api');
 
 const db = require('./config/dbConfig');

@@ -17,12 +17,15 @@ let totalSurfaceArea = width * height;
 // let distanceMetric = 'euclidean';
 
 
-let generationSize = 10;
+let generationSize = 10 + 1;
 let tournamentSize = 4;
-let maximumIterations = 50;
+let maximumIterations = 100;
 let seedString = 'apples';
-let numberOfSites = 3;
-let desiredProportions = [0.50, 0.25, 0.25];
+// let numberOfSites = 3;
+// let desiredProportions = [0.50, 0.25, 0.25];
+// let desiredProportions = [0.33, 0.33, 0.33];
+let numberOfSites = 6;
+let desiredProportions = [0.40, 0.20, 0.10, 0.10, 0.10, 0.10];
 
 
 function copyObject(obj)
@@ -74,7 +77,8 @@ function begin()
 	{
 		currentGeneration = nextGeneration;
 		nextGeneration = [];
-		for(let i = 0; i < generationSize; i+=2)
+		nextGeneration.push( getFittest(currentGeneration) );
+		for(let i = 0; i < generationSize - 1; i+=2)
 		{
 			parentX = runTournament(currentGeneration);
 			parentY = runTournament(currentGeneration);
@@ -90,6 +94,18 @@ function begin()
 	}
 
 	console.log('done!');
+}
+
+function getFittest(generation)
+{
+	let fittestChromosome = null;
+	fittestChromosome = generation[0];
+
+	for(let i = 1; i < generationSize; i++)
+		if(generation[i].fitness < fittestChromosome.fitness)
+			fittestChromosome = generation[i];
+
+	return fittestChromosome;
 }
 
 ///Randomly selected a site and a movement direction; then proceed to execute movement using a random offset

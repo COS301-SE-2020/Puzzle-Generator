@@ -10,6 +10,7 @@ import { RatingsComponent } from './pages/ratings/ratings.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ResetSuccessComponent } from './pages/reset-success/reset-success.component';
 import { CreateComponent } from './pages/create/create.component';
+import { AICreateComponent } from './pages/aicreate/aicreate.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'resetPassword', component: ResetPasswordComponent},
   {path: 'resetSuccess', component: ResetSuccessComponent},
   {path: 'create', component: CreateComponent},
+  {path: 'aicreate', component: AICreateComponent}
 
     // otherwise redirect to home
   { path: '', redirectTo: '/index', pathMatch: 'full' },

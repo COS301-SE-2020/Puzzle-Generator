@@ -40,6 +40,7 @@ import { CreateComponent } from './pages/create/create.component';
 import { RateDialogComponent } from './rate-dialog/rate-dialog.component';
 import { ProfilePuzzlesComponent } from './pages/profile-puzzles/profile-puzzles.component';
 import { ProfileRatingsComponent } from './pages/profile-ratings/profile-ratings.component';
+import { AICreateComponent } from './pages/aicreate/aicreate.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +56,7 @@ import { ProfileRatingsComponent } from './pages/profile-ratings/profile-ratings
     RateDialogComponent,
     ProfilePuzzlesComponent,
     ProfileRatingsComponent,
+    AICreateComponent,
   ],
   imports: [
     BrowserModule,

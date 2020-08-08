@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'resetPassword', component: ResetPasswordComponent},
   {path: 'resetSuccess', component: ResetSuccessComponent},
   {path: 'create', component: CreateComponent},
-  {path: 'aicreate', component: AICreateComponent}
+  {path: 'aicreate', component: AICreateComponent},
 
     // otherwise redirect to home
   { path: '', redirectTo: '/index', pathMatch: 'full' },

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.slidecontainer {
+  width: 100%;
+  display: none
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+</style>
+<script>
+function changeSlider(id)
+{
+  var pieces = document.getElementById("fname").value;
+  var value = 100;
+  console.log(id);
+  for(var i  = 0; i < pieces; i++)
+  {
+    if(id === i)
+    {
+
+    }
+    else{
+
+    }
+  }
+}
+</script>
+</head>
+<body>
+
+  <form action="#" onsubmit="return run_this_function()">
+    <label for="fname">Number of Pieces:</label><br>
+    <input type="text" id="fname" name="fname" value=""><br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <script>
+    function run_this_function(){
+      // your code goes here
+      console.log(document.getElementById("fname").value);
+      var sliders = document.getElementById("fname").value;
+      document.getElementById("slidecontainer").style.display = "inline";
+      for(var i = 0; i < (sliders); i++)
+      {
+        var header = document.createElement("P");
+        header.innerHTML = "Piece" + i;
+        document.getElementById("slidecontainer").appendChild(header);
+        var slider = document.createElement("INPUT");
+        slider.type = "range";
+        slider.min = "1";
+        slider.max = "100";
+        slider.value = "1";
+        slider.id = i;
+        slider.oninput = function() {
+          var pieces = document.getElementById("fname").value;
+          var value = 0;
+          for(var i  = 0; i < pieces; i++)
+          {
+            if(this.id == i)
+            {
+                value = this.value;
+                //console.log(value);
+            }
+            else{
+              if((document.getElementById(i).value+value) > 100)
+              {
+                //console.log(value);
+                document.getElementById(i).value = (100 - value);
+                //value += document.getElementById(i).value;
+              }
+              else{
+                value += document.getElementById(i).value;
+              }
+            }
+            if(i == (pieces-1))
+              value =0;
+          }
+        }
+        slider.onchange = "changeSlider(id)";
+        document.getElementById("slidecontainer").appendChild(slider);
+      }
+
+    //  $("0").on("input change", changeSlider(0));
+    }
+
+  </script>
+
+
+<div class="slidecontainer" id="slidecontainer">
+  <p>Default range slider:</p>
+  <input type="range" min="1" max="100" value="1" onclick="changeSlider(id)">
+</div>
+
+</body>
+</html>

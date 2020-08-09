@@ -35,10 +35,6 @@ h1{
   text-align: center;
 }
 
-.flex-container{
-    /* margin: 0.9rem; */
-}
-
 .userPuzzles{
     margin: 0.2rem;
     background-color:  #7C593A;
@@ -49,29 +45,21 @@ h1{
   color: white;
   margin-bottom: 1rem;
 }
-
-
+  
 .logo{
-    height: 9rem;
-  }
-   
-  .example-card {
-    max-width: 400px;
-       background-color: white;
-     color: white;  
-  }
-  
-  
-  .navimg{
-    height: 100%;
-    width: 50%;
-  }
+  height: 13rem;
+}
 
-  .container-fluid{
+.navimg{
+  height: 12rem;
+  width: 70rem;
+}
+
+.container-fluid{
     /*background-image: url('../../../assets/images/bg3.jpg');*/
      background-color: whitesmoke; 
      margin-left: 1.5%;
      margin-right: 1.5%;
      border-radius: 0.5%;
-    
+     height: 100%;
   }

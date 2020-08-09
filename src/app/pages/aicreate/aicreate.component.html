@@ -1,30 +1,46 @@
-<img src="assets/images/logo.jpg">
+<div class="logo">
+  <img class="navimg" src="assets/images/logo_nav.png">
+</div>
 <app-navbar></app-navbar>
+
 <div class="container-fluid">
-
-  <div class="content">
-    <label id="label">What puzzle type would you like to generate?</label>
-    <mat-radio-group class="radio-group">
-      <mat-radio-button class="radio-button" value="euclidean" name="distanceMetric" id="euclideanButton" > Euclidian </mat-radio-button>
-      <mat-radio-button class="radio-button" value="manhattan" name="distanceMetric" id="manhattanButton" > Manhattan </mat-radio-button>
-    </mat-radio-group>
-    <br>
-    <label id="label">Create puzzle an AI Puzzle</label>
-
-    <br>
-    <div id="container">
-    </div>
-    <br>
-
-    <button mat-raised-button class="btns" id="generatePuzzleButton">Generate Puzzle</button> <br >
-      <label id="label">Name: </label><input type="text" name="puzzleName" id="puzzleNameInputBox"><br>
-      <label id="label">Short Description: </label><input type="text" name="puzzleDescription" id="puzzleDescriptionInputBox"><br>
-      <label hidden="true" id="tokenLabel">{{token}}</label>
-
-
-    <button mat-raised-button class="btns" id="saveButton">Save</button>
-    <!-- <button mat-raised-button class="btns" id="saveAndSubmitButton">Save and Submit</button> -->
-    <br><br>
-    <img src="" id="testingImg">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1">
+    <mat-card class="">
+      <mat-card-header>
+        <label>Select Puzzle Type</label>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-radio-group class="radio-group">
+          <mat-radio-button class="radio-button" value="euclidean" name="distanceMetric" id="euclideanButton" > Euclidian </mat-radio-button>
+          <mat-radio-button class="radio-button" value="manhattan" name="distanceMetric" id="manhattanButton" > Manhattan </mat-radio-button>
+        </mat-radio-group>
+      </mat-card-content>
+   </mat-card>
+  
+   <mat-card class="">
+    <mat-card-header>
+      <label>Create puzzle by selecting points on the canvas</label>
+    </mat-card-header>
+    <mat-card-content>
+      <div id="container">
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button class="btns" id="generatePuzzleButton">Generate Puzzle</button>
+    </mat-card-actions>
+  </mat-card>
+  
+  <mat-card class="">
+    <mat-card-header>
+      <mat-card-title>Saving Options</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+       <br >
+        <label id="">Name: </label><br><input type="text" name="puzzleName" id="puzzleNameInputBox"><br>
+        <label id="">Short Description: </label><br><input type="text" name="puzzleDescription" id="puzzleDescriptionInputBox"><br>
+        <label hidden="true" id="tokenLabel">{{token}}</label><br>
+        <button mat-raised-button class="btns" id="saveButton">Save</button>
+    </mat-card-content>
+  </mat-card>
   </div>
 </div>

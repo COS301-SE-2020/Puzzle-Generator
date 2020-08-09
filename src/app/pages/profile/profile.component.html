@@ -1,15 +1,26 @@
-<img src="assets/images/logo.jpg">
+<div class="logo">
+    <img class="navimg" src="assets/images/logo_nav.png">
+  </div>
 <app-navbar></app-navbar>
 <!--app-navbar-profile></app-navbar-profile-->
-
+ 
 
 <div class="container-fluid" >
-    <mat-card class="profile">
+    <div fxLayout="row">
+    <mat-card class="profileImageCard">
         <mat-card-header>
             <h1>Profile</h1>
         </mat-card-header>
         <mat-card-content>
         <div><img src="assets/images/profile.jpg" id="profileImage"></div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="profileText">
+        <mat-card-header>
+            <h1>Edit Details</h1>
+        </mat-card-header>
+        <mat-card-content>
         <div *ngIf="currentUserObject">
             <form [formGroup]="updateNameForm" (ngSubmit)="updateName()">
                 <mat-form-field appearance="fill">
@@ -27,7 +38,7 @@
 
             <form [formGroup]="updateUsernameForm" (ngSubmit)="updateUsername()">
                 <mat-form-field appearance="fill">
-                    <input matInput formControlName="username"  value="{{currentUserObject.username}}" (input)="usernameTextboxValue=$event.target.value">
+                    <input matInput class="move" formControlName="username"  value="{{currentUserObject.username}}" (input)="usernameTextboxValue=$event.target.value">
                 </mat-form-field>
                 <div>
                     <ng-container *ngFor="let error of error_messages.username">
@@ -41,4 +52,5 @@
         </div>
         </mat-card-content>
     </mat-card>
+</div>
 </div>

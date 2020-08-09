@@ -1,27 +1,28 @@
-<img src="assets/images/logo.jpg">
+<div class="logo">
+    <img class="navimg" src="assets/images/toptext2.png">
+  </div>
 <app-navbar></app-navbar>
 <!--app-navbar-profile></app-navbar-profile-->
-<div class="container-fluid">
-<h1 class="main-title">My Ratings</h1>
-<mat-spinner *ngIf="show" id="spinner"></mat-spinner>
-<div *ngIf="currentUser" class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
-    <mat-card *ngFor="let rating of userRatingsList" class="content">
-      <div class="content-overlay"></div>
-      <mat-icon aria-hidden="false" class="infoIcon">info_outline</mat-icon>
-      <img class="content-image" src="{{rating.image}}">
-        <mat-card-header>
-            <mat-card-title>{{rating.puzzleName}}</mat-card-title>
+ 
+<mat-spinner *ngIf="show" id="spinner"></mat-spinner> 
+<div class="container">
+<div class="container-fluid" *ngIf="currentUser" >
+    <h1 class="main-title">My Ratings</h1> 
+    <div class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
+        <mat-card class="content" *ngFor="let rating of userRatingsList">
+          <div class="content-overlay"></div>
+          <img class="content-image" src="{{rating.image}}">
+            <mat-card-title><strong>{{rating.puzzleName}}</strong></mat-card-title>
             <mat-card-subtitle>Rating: {{rating.rating}}/5</mat-card-subtitle>
-        </mat-card-header>
-        <div class="content-details fadeIn-bottom">
-            <h3 class="content-title">{{rating.puzzleName}}</h3>
-            <button mat-button class="btns">SOLVE</button>
-            <button mat-button class="btns" (click)="openAndCheck(rating.puzzleID)">UPDATE RATING</button>
-        </div>
-    </mat-card>
+            <mat-card-actions class="puzzleActions">
+                <button mat-button class="btns">SOLVE</button>
+                <button mat-button class="btns" (click)="openAndCheck(rating.puzzleID)">UPDATE RATING</button>
+            </mat-card-actions>
+        </mat-card>
+    </div> 
 </div>
+</div> 
+
 <div id="NoneText" *ngIf="!show">
     <h3>You have not made any ratings at the moment</h3>
-</div>
-
 </div>

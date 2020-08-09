@@ -1,16 +1,40 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway);
+/* @import url(https://fonts.googleapis.com/css?family=Raleway); */
 
 .container-fluid{
-  /*background-image: url('../../../assets/images/bg3.jpg');*/
-  background-color: white;
+   background-color: lightgrey; 
+   margin-left: 1.5%;
+   margin-right: 1.5%;
+   border-radius: 0.5%;
 }
+
+.logo{
+  height: 9rem;
+}
+
+.navimg{
+  height: 100%;
+  width: 50%;
+}
+
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+
+.navimg{
+  height: 100%;
+  width: 50%;
+}
+
 
 .container{
   background-color: white;
   height: 100%;
   width: 100%;
 }
-
+ 
 .infoIcon{
   float: right;
 }
@@ -27,29 +51,47 @@ h1{
   color: gray;
 }
 
-mat-card{
-  margin: auto;
+ mat-card{
+  margin: auto; 
   margin-bottom: 2vw;
-  margin-top: 2vw;
-  background-color: rgb(235, 235, 235);
+  margin-top: 2vw; 
+  background-color: white;
   color: black;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
+} 
 
-mat-card-subtitle{
-  font-size: 15px;
-}
+ mat-card-subtitle{
+  font-size: 14px;
+   /* color: black;  */
+} 
 
-mat-card-title{
-  margin-top: 5px;
+ mat-card-title{
+   margin-top: 5px; 
   font-family: Arial, Helvetica, sans-serif;
-}
-
+} 
+ 
 
 .btns{
   background-color: #7C593A;
-  color: white;
+  /* color: white; */
   margin: 0.5vw;
+  width: 50%;
+  border: 1px solid white;
+  text-align: center;
+}
+
+.puzzleActions{
+  display: inline;
+}
+
+.puzzleDetails{
+  color: #fff;
+}
+
+#resetBtn:hover, .btns:hover{
+  /* background-color: rgba(0,0,0,0.7);; */
+  background-color: white;
+  color: black;
 }
 
 .example-form-field{
@@ -58,6 +100,7 @@ mat-card-title{
 
 #resetBtn{
   margin-left: 2vw;
+  background-color: #7C593A;
 }
 
 #spinner{
@@ -72,42 +115,10 @@ mat-card-title{
   box-sizing: border-box;
 }
 
-.main-title{
-  text-align: center;
-  text-transform: capitalize;
-  padding: 0.7em 0;
-  margin-top: 30px;
-  font-size: 40px;
-  text-align: center;
-  font-family: keep-calm;
-  color: gray;
-}
-
-.one{
-  color: gold;
-}
-
-
-.one{
- /*  padding: 1em 0;
-  float: left; */
-  width: 50%;
-  margin: auto;
-  margin-bottom: 2vw;
-  margin-top: 2vw;
-}
-
-
-.one .title{
-  color: white;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
 .content {
   position: relative;
-  width: 90%;
-  max-width: 340px;
+  width: 100%;
+  max-width: 340px; 
   overflow: hidden;
 }
 
@@ -128,16 +139,17 @@ mat-card-title{
 
 .content:hover .content-overlay{
   opacity: 1;
+  /* height: 87%; */
 }
 
 .content-image{
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 10px; 
 }
 
 .content-details {
   position: absolute;
-  text-align: center;
+  text-align: justify;
   padding-left: 1em;
   padding-right: 1em;
   width: 100%;
@@ -153,7 +165,7 @@ mat-card-title{
 }
 
 .content:hover .content-details{
-  top: 50%;
+  top: 30%;
   left: 50%;
   opacity: 1;
 }

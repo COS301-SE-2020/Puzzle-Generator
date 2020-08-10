@@ -49,7 +49,8 @@ app.set("views",path.join(__dirname,"views"));
  * Angular - Heroku stuff
  * */
 app.use(bodyParser.json());
-app.use(express.static(__dirname+"/dist/"));
+app.use(express.static(__dirname+"/dist/prometheus-puzzles"));
+app.use('*',express.static(__dirname+"/dist/prometheus-puzzles"));
 /**
  * End Angular - Heroku stuff
  */

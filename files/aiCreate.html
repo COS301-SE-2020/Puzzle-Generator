@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>AI Puzzle Creation</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+
+		#container {
+			width: 500px;
+			height: 500px;
+			/*border: 1px solid black;*/
+		}
+	</style>
+	<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="konva.min.js"></script>
+	<script src="manualCreation.js"></script>
+	<script src="aiCreation.js"></script>
+</head>
+<body>
+	<div id="container" hidden='true'>
+		
+	</div>
+	<div id="inputContainer">
+		<label>Number of pieces for puzzle(maximum is 20): </label><input type="text" name="numberOfPieces" id="numberOfPiecesInputBox" value="3"><br>
+		<label>Number of pieces for Group 1: </label><input type="text" name="numberOfPieces" id="numberOfPiecesInputBox1" value="1"><br>
+		<label>Number of pieces for Group 2: </label><input type="text" name="numberOfPieces" id="numberOfPiecesInputBox2" value="1"><br>
+		<label>Number of pieces for Group 3: </label><input type="text" name="numberOfPieces" id="numberOfPiecesInputBox3" value="1"><br>
+		<input type="radio" name="distanceMetric" id="euclideanButton">Euclidean</input>
+		<input type="radio" name="distanceMetric" id="manhattanButton">Manhattan</input><br>
+		<button id="nextButton">Next-></button>
+	</div>
+	<button id="generatePuzzleAIButton" hidden="true">Generate Puzzle</button><br>
+	<div id="puzzleInformationContainer" hidden="true">
+		<label>Name: </label><input type="text" name="puzzleName" id="puzzleNameInputBox"><br>
+		<label>Short Description: </label><input type="text" name="puzzleDescription" id="puzzleDescriptionInputBox"><br>
+		<label id="tokenLabel" hidden="true">Testing</label>
+		<button id="saveButton">Save</button>
+		<button id="saveAndSubmitButton">Save and Submit</button>
+	</div>
+</body>
+</html>

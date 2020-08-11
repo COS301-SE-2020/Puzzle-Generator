@@ -11,22 +11,18 @@ let Site = {
 	surfaceArea: 0,
 }
 
-// let width = 500;
-// let height = 500;
-let totalSurfaceArea = width * height;
-// let distanceMetric = 'euclidean';
-
+let totalSurfaceArea;
 
 let generationSize = 10 + 1;
 let tournamentSize = 4;
 let maximumIterations = 100;
 let seedString = 'apples';
-// let numberOfSites = 3;
-// let desiredProportions = [0.50, 0.25, 0.25];
-// let desiredProportions = [0.33, 0.33, 0.33];
+
+let sliders = [];
+let labels = [];
 let numberOfSites = 6;
 let desiredProportions = [0.40, 0.20, 0.10, 0.10, 0.10, 0.10];
-
+let groupDistribution = [];
 
 function copyObject(obj)
 {
@@ -61,15 +57,156 @@ function random(max)
     return Math.ceil(rand() * max) - 1;
 }
 
-function begin()
+function expandPuzzle(sites, factor)
+{
+	for(let i = 0; i < sites.length; i++)
+	{
+		sites[i].x = sites[i].x * factor;
+		sites[i].y = sites[i].y * factor;
+	}
+
+	return sites;
+}
+
+window.onload = initializeDataAI;
+
+function initializeDataAI()
+{
+	initializeData();
+
+	document.getElementById('nextButton').addEventListener('mousedown', function() {
+		numberOfSites = document.getElementById('numberOfPiecesInputBox').value;
+
+		groupDistribution.push(document.getElementById('numberOfPiecesInputBox1').value);
+		groupDistribution.push(document.getElementById('numberOfPiecesInputBox2').value);
+		groupDistribution.push(document.getElementById('numberOfPiecesInputBox3').value);
+
+		generateSliders(3);
+		
+		document.getElementById('generatePuzzleAIButton').hidden = false;
+	});
+
+	document.getElementById('generatePuzzleAIButton').addEventListener('mousedown', function(event) {
+		generatePuzzleAI();
+	});
+}
+
+function generatePuzzleAI()
+{
+	desiredProportions = [];
+
+	for(let i = 0; i < 3; i++)
+	{
+		let proportion = (sliders[i].value / groupDistribution[i]) / 100;
+
+		for(let counter = 0; counter < groupDistribution[i]; counter++)
+			desiredProportions.push(proportion);
+	}
+
+	desiredProportions.sort( function(a, b) { return b - a } );
+
+	document.getElementById('inputContainer').innerHTML = '';
+	document.getElementById('container').hidden = false;
+	document.getElementById('puzzleInformationContainer').hidden = false;
+
+	sites = run();
+	sites = expandPuzzle(sites, 10);
+	width = width * 10;
+	height = height * 10;
+
+	generateButtonClicked = true;
+	generateSiteBoundaries();
+	createPieces();
+}
+
+function generateSliders(numberOfSliders)
+{
+	let inputContainer = document.getElementById('inputContainer');
+	let defaultValue = 100/numberOfSliders;
+
+	inputContainer.innerHTML = '';
+
+	for(let i = 0; i < numberOfSliders; i++)
+	{
+		let slider = document.createElement('input');
+		slider.type = 'range';
+		slider.min = 1.00;
+		slider.max = 100.00 - numberOfSliders + 1;
+		slider.value = defaultValue;
+		slider.previousValue = defaultValue;
+		slider.sliderid = i;
+		slider.step = 0.01;
+		slider.addEventListener('input', function() {
+			let difference = this.previousValue - this.value;
+			let distributedValue = (difference/( numberOfSliders - 1 )).toFixed(2);
+
+			let leftover = 0;
+			for(let i = 0 ; i < numberOfSliders; i++)
+			{
+				if(i != this.sliderid)
+				{
+					let tempValue = ( parseFloat(sliders[i].value) + parseFloat(distributedValue) );
+					if(tempValue >= 1.00)
+					{
+						if(leftover != 0 && ( tempValue + leftover ) >= 1.00)
+						{
+							tempValue += leftover;
+							leftover = 0;
+						}
+
+						sliders[i].value = tempValue;
+						sliders[i].previousValue = tempValue;
+						labels[i].innerHTML = parseInt(tempValue);
+					}
+					else
+					{
+						leftover += parseFloat(distributedValue);
+					}
+				}
+			}
+
+			for(let i = 0; leftover != 0 && i < numberOfSliders; i++)
+			{
+				if(i != this.sliderid)
+				{
+					let tempValue = parseFloat(sliders[i].value) + leftover;
+					if(tempValue >= 1.00)
+					{
+						sliders[i].value = tempValue;
+						sliders[i].previousValue = tempValue;
+						labels[i].innerHTML = parseInt(tempValue);
+						leftover = 0;
+					}
+				}
+			}
+
+			this.previousValue = this.value;
+			labels[this.sliderid].innerHTML = parseInt(this.value);
+		});
+
+		let label = document.createElement('label');
+		label.innerHTML = defaultValue.toFixed(0);
+
+		let br = document.createElement('br');
+
+		sliders.push(slider);
+		labels.push(label);
+
+		inputContainer.appendChild(slider);
+		inputContainer.appendChild(label);
+		inputContainer.appendChild(br);
+	}
+}
+
+///Execute the genetic algorithm and returns the resulting site array 
+function run()
 {
 	let currentGeneration = [], nextGeneration = [];
 	let parentX, parentY, children;
 	let x, y;
-	width = width/10;
-	height = height/10;
+	width = 500/10;
+	height = 500/10;
 	totalSurfaceArea = width * height;
-	// initialPopulation();
 
 	nextGeneration = initializeGeneration();
 	console.log(nextGeneration);
@@ -89,11 +226,11 @@ function begin()
 			calculateAndSetFitness(children[1]);
 			nextGeneration.push(...children);
 		}
-
-		console.log(nextGeneration);
 	}
 
+	console.log(nextGeneration);
 	console.log('done!');
+	return getFittest(nextGeneration).sites;
 }
 
 function getFittest(generation)
@@ -188,7 +325,6 @@ function initializeGeneration()
 	let currentGeneration = [];
 	for(let i = 0; i < generationSize; i++)
 	{
-		let t1 = performance.now();
 		let newChromosome = copyObject(Chromosome);
 		for(let siteIndex = 0; siteIndex < numberOfSites; siteIndex++)
 		{
@@ -197,14 +333,8 @@ function initializeGeneration()
 			tempSite.y = random(height + 1);
 			newChromosome.sites.push(tempSite);
 		}
-		let t2 = performance.now();
-		// console.log('It took ' + (t2-t1).toFixed(3) + 'ms to generate chromosome and sites');
-		
-		t1 = performance.now();
+
 		calculateAndSetFitness(newChromosome);
-		t2 = performance.now();
-		// console.log('It took ' + (t2-t1).toFixed(3) + 'ms to calculate fitness!');
-		// console.log(newChromosome);
 		currentGeneration.push(newChromosome);
 	}
 
@@ -215,14 +345,12 @@ function initializeGeneration()
 function calculateAndSetFitness(chromosome)
 {
 	determineAndSetSiteBoundaries(chromosome);
-	// calculateAndSetSurfaceAreas(chromosome);
 	sortSites(chromosome);
 	let fitness = 0, difference;
 
 	for(let i = 0; i < desiredProportions.length; i++)
 	{
 		difference = ( desiredProportions[i] * totalSurfaceArea ) - chromosome.sites[i].surfaceArea;
-		// console.log(totalSurfaceArea);
 		if(difference < 0)
 			difference *= -1;
 		fitness += difference;
@@ -235,11 +363,7 @@ function calculateAndSetFitness(chromosome)
 function sortSites(chromosome)
 {
 	let sites = chromosome.sites;
-	// console.log('Before Sorting: ');
-	// console.log(sites);
 	sites.sort(function(siteA, siteB) { return 	siteB.surfaceArea - siteA.surfaceArea });
-	// console.log('After Sorting: ');
-	// console.log(sites);
 }
 
 ///Generate the boundaries around the sites
@@ -255,8 +379,6 @@ function determineAndSetSiteBoundaries(chromosome)
 			let distances = calculateDistancesFromSitesToPoint(col, row, chromosome.sites);
 			let equidistantPoints = equidistantPointsPresent(distances);
 
-			// chromosome.sites[equidistantPoints[0]].siteBoundaries.push(col);
-			// chromosome.sites[equidistantPoints[0]].siteBoundaries.push(row);
 			chromosome.sites[equidistantPoints[0]].surfaceArea += 1;
 		}
 	}

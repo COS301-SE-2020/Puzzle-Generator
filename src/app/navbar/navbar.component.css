@@ -6,13 +6,11 @@
 .nav-link{
   color: white;
   margin-right: 1.5vw;
-  font-size: 2rem;
 }
 
 .navbar-text{
   color: white;
   text-align: left;
-  font-size: 2rem;
 }
 
 ul.nav li:hover > a { color: #7C593A !important; }
@@ -35,7 +33,7 @@ span{
 }
 
 .dropdown-item{
-  font-size: 2rem !important;
+  font-size: 1vw !important;
 }
 
 .logo{

@@ -1,4 +1,6 @@
 import Konva from 'konva';
+export { width, height, setSites, setGenerateButtonClicked, initializeData, calculateDistancesFromSitesToPoint, 
+	equidistantPointsPresent, generateSiteBoundaries, createPieces };
 
 let apiURL = "http://localhost:3200/api/puzzles/createPuzzle";
 let distanceMetric = 'euclidean';
@@ -24,14 +26,11 @@ let piecesJSONObject = {
 	'pieces' : []
 };
 
+
 ///Initialize data and set functions for buttons
-export function initializeData() 
+function initializeData() 
 {
 	canvas = document.getElementById('container');
-	
-	width = canvas.offsetWidth;
-	height = canvas.offsetHeight;
-
 	stage = new Konva.Stage({
 		container: 'container',
 		width: width,
@@ -59,13 +58,8 @@ export function initializeData()
 			canvasCoords = canvas.getBoundingClientRect();
 			let x = event.clientX - canvasCoords.x;
 			let y = event.clientY - canvasCoords.y;
+			
 			let point = createPoint(x, y);
-			// pointsArray.push(point);
-			// sites.push({
-			// 	x: point.x(),
-			// 	y: point.y(),
-			// 	id: sites.length,
-			// });
 
 			layer.add(point);
 			layer.draw();
@@ -73,7 +67,8 @@ export function initializeData()
 		}
 	});
 
-	document.getElementById('generatePuzzleButton').addEventListener('mousedown', generatePuzzle);
+	if(document.getElementById('generatePuzzleButton') != null)
+		document.getElementById('generatePuzzleButton').addEventListener('mousedown', generatePuzzle);
 
 	document.getElementById('euclideanButton').addEventListener('mousedown', function(){
 		setDistanceMetric('euclidean');
@@ -137,6 +132,18 @@ function savePuzzle(share)
 function setDistanceMetric(metric)
 {
 	distanceMetric = metric;
+}
+
+///Set generateButtonClicked to true to prevent user from clicking it any further
+function setGenerateButtonClicked(bool)
+{
+	generateButtonClicked = bool;
+}
+
+///Set the sites array
+function setSites(tempSites)
+{
+	sites = tempSites;
 }
 
 ///Create a visual representation of where the user clicks
@@ -256,7 +263,6 @@ function createPieces()
 	}
 	layer.draw();
 	piecesJSONObject = JSON.stringify(piecesJSONObject);
-	// console.log(piecesJSONObject);
 }
 
 ///Shortens the array of vertices for each puzzle piece
@@ -267,8 +273,6 @@ function trimPoints(pointArray)
 	let firstPointCol = pointArray[0];
 	let currentRow = pointArray[1];
 	let crissCross = 1;
-
-	// trimmedPoints.push(firstPointCol, currentRow);
 
 	for(let index = 0; index < pointArray.length; index+=2)
 	{

@@ -24,7 +24,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatRadioModule } from '@angular/material/radio';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
+import { MatSliderModule } from '@angular/material/slider';
 
 
 //pages
@@ -40,6 +41,7 @@ import { CreateComponent } from './pages/create/create.component';
 import { RateDialogComponent } from './rate-dialog/rate-dialog.component';
 import { ProfilePuzzlesComponent } from './pages/profile-puzzles/profile-puzzles.component';
 import { ProfileRatingsComponent } from './pages/profile-ratings/profile-ratings.component';
+import { AICreateComponent } from './pages/aicreate/aicreate.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +57,7 @@ import { ProfileRatingsComponent } from './pages/profile-ratings/profile-ratings
     RateDialogComponent,
     ProfilePuzzlesComponent,
     ProfileRatingsComponent,
+    AICreateComponent,
   ],
   imports: [
     BrowserModule,

@@ -119,7 +119,7 @@ h2{
 
 img {
     width: 100%;
-    height: 100%;
+    height: 92%;
   }
 
 
@@ -147,17 +147,16 @@ html {
 
 .btn {
   background-color: transparent;
-/*   border-radius: 0.5rem; */
   border: 1.5px solid black;
   color: black ;
-  height: 3em;
-  line-height: 3em;
-  padding: 0 2.25em;
+  height: 30px;
   text-align: center;
-  width: 150px;
+  width: 80px;
   transition-duration: 0.4s;
   margin: 5px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  font-size: 16px;
+
 }
 
 #more{
@@ -171,91 +170,110 @@ html {
   margin-bottom: 30px;
 }
 
-.btn:hover {
-  background-color: grey;
-  color: white;
-  border: 1px solid grey;
+.indexBtn:hover {
+  background-color: #7C593A;
+  color: white !important;
 
 }
 
-.try{
+body {
+  padding-top: 3.5em;
+
+}
+
+.indexNavImage{
+    width: 15%;
+    height: 60%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 20px;
+}
+
+#indexNav {
+  display: flex;
+  justify-content: space-between;
   background-color: whitesmoke;
-}
-
-
-/* #first{
-  background-image: url('../../../assets/images/whitenew3.jpg');
+ /*   background-color: rgb(207, 207, 207);  */
+   border-bottom: solid 1px rgba(160, 160, 160, 0.3);
+  height: 4.2em;
+  left: 0;
+  line-height: 4em;
+  position: sticky;
+  top: 0;
   width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-  text-align: center;
-} */
-
-
-/* .content{
-    background-image: url('../../../assets/images/bg2.jpg');
-} */
-
-
-/*
-.child-1, .child-2, .child-3{
-    background-color: white;
-    color: #7C593A;
-    background-size: cover;
-    margin: auto;
-    margin-bottom: 2vw;
-    margin-top: 2vw
 }
- */
 
-
-
-/* .indexImg{
-    width: 100%;
-    height: 100%;
-} */
-
-
-
-
-/* .btn {
-    font-size: 80%;
-    border-radius: 5rem;
-    letter-spacing: .1rem;
-    font-weight: bold;
-    padding: 1rem;
-    transition: all 0.2s;
-    width: 250px;
-    height: 50px;
-    background-color: lightgray;
-    text-align: center;
-} */
-
-/* .btn {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  -ms-appearance: none;
-  appearance: none;
-  -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  background-color: transparent;
-  border-radius: 0.5rem;
-  border: 0;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
-  color: black ;
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 300;
-  height: 3em;
-  line-height: 3em;
-  padding: 0 2.25em;
-  text-align: center;
+#indexNav a {
+  color: inherit;
   text-decoration: none;
+}
+
+#indexNav ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+#indexNav ul li {
+  display: inline-block;
+  padding-left: 0;
+}
+
+#indexNav .bar {
+  height: inherit;
+  line-height: inherit;
+  margin-left: 5px;
   white-space: nowrap;
-  width: 250px;
-} */
+  font-family: keep-calm;
+}
+
+#indexNav h1 a {
+  font-size: 0.7em;
+}
+
+#indexNav .links {
+  flex: 1;
+  border-left: solid 1px rgba(160, 160, 160, 0.3);
+  height: inherit;
+  line-height: inherit;
+  margin-left: 1.5em;
+  overflow: hidden;
+  padding-left: 1.5em;
+}
+
+#indexNav .links ul li {
+  border-left: solid 1.5px black;
+  line-height: 1;
+  margin-left: 1em;
+  padding-left: 1em;
+}
+
+#indexNav .links  > ul li a:hover{
+  color: black;
+}
+
+#indexNav .links > a:hover{
+  color: #f6c616;
+}
+
+#indexNav .links ul li:first-child {
+  border-left: 0;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+#indexNav .links ul li a {
+  border-bottom: 0;
+  /* font-family: "Raleway", Helvetica, sans-serif; */
+  font-size: 0.7em;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+
+#btnLink{
+  float: right;
+  margin-top: 10px;
+  margin-right: 15px;
+}

@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1">
+    <mat-card class="">
+      <mat-card-header>
+        <mat-card-title>Algorithm Parameters</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div id="inputContainer">
+          <label>Number of puzzle pieces(20 max):</label><br>
+          <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox" value="3"><br>
+          <label>Number of Group 1 pieces:</label><br>
+          <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox1" value="1"><br>
+          <label>Number of Group 2 pieces:</label><br>
+          <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox2" value="1"><br>
+          <label>Number of Group 3 pieces:</label><br>
+          <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox3" value="1"><br>
+          <label>Select Puzzle Type</label><br>
+          <mat-radio-group class="radio-group">
+            <mat-radio-button class="radio-button" value="euclidean" name="distanceMetric" id="euclideanButton" > Euclidian </mat-radio-button>
+            <mat-radio-button class="radio-button" value="manhattan" name="distanceMetric" id="manhattanButton" > Manhattan </mat-radio-button>
+          </mat-radio-group>
+          <button mat-raised-button class="btns" id="nextButton">Next</button>
+          <button mat-raised-button class="btns" ng-hide='true' id="generatePuzzleAIButton">Generate Puzzle</button><br>
+        </div>
+      </mat-card-content>
+   </mat-card>
+
+   <mat-card class="">
+     <mat-card-header>
+       <mat-card-title>Create a puzzle</mat-card-title>
+     </mat-card-header>
+    <mat-card-content>
+      <div id="container">
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="">
+    <mat-card-header>
+      <mat-card-title>Saving Options</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+       <br >
+        <label id="">Name: </label><br><input type="text" name="puzzleName" id="puzzleNameInputBox"><br>
+        <label id="">Short Description: </label><br><input type="text" name="puzzleDescription" id="puzzleDescriptionInputBox"><br>
+        <label hidden="true" id="tokenLabel">{{token}}</label><br>
+        <button mat-raised-button class="btns" id="saveButton">Save</button>
+    </mat-card-content>
+  </mat-card>
+  </div>
+</div>

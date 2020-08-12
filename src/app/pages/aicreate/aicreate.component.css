@@ -1,0 +1,55 @@
+.container-fluid{
+  background-color: whitesmoke;
+  padding: 3%;
+  /* margin-left: 1.5%; */
+  /* margin-right: 1.5%; */
+  border-radius: 0.5%;
+}
+
+mat-card{
+ margin: 2%;
+}
+
+.content{
+ margin-left: 10rem;
+}
+
+#container {
+   width: 500px;
+   height: 500px;
+   border: 1px solid black;
+   margin: 1rem;
+}
+
+.radio-group {
+   display: flex;
+   flex-direction: column;
+   /* margin-left: 1rem; */
+   font-size: 1vw;
+ }
+
+ #label{
+   text-align: center;
+   padding: 0.7em 0;
+   font-size: 1vw;
+   font-family: keep-calm;
+   color: black;
+ }
+
+ .btns{
+   background-color: #7C593A;
+   color: white;
+   margin: 0 1.3vw;
+ }
+
+
+ .main-title{
+   text-align: center;
+   text-transform: capitalize;
+   padding: 0.7em 0;
+   margin-top: 30px;
+   font-size: 40px;
+   text-align: center;
+   font-family: keep-calm;
+   color: gray;
+ }

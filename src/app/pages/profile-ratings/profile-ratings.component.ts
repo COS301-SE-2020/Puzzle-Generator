@@ -26,10 +26,13 @@ export class ProfileRatingsComponent implements OnInit {
   constructor(private api: APIService, private router: Router, private dialog: MatDialog) { }
 
   getUserPuzzleRatings(){
+    this.userRatingsList = null;
     this.api.getPuzzleRatingsByUser(this.currentUser).subscribe( data => {
       this.userRatingsList = data;
       this.show = false;
+      this.text = true;
     });
+
   }
 
   checkData(data: any){
@@ -82,6 +85,7 @@ export class ProfileRatingsComponent implements OnInit {
     }
 
     this.show = true;
+    this.text = false;
 
     this.getUserPuzzleRatings();
   }

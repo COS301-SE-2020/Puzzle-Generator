@@ -31,32 +31,8 @@ export class ProfilePuzzlesComponent implements OnInit {
       {
         this.text = true;
       }
-
-      //let puzzleImage = data[0].image.toDataURL();
-
-    this.temp = true;
-    this.getBase64ImageFromUrl(data[0].image)
-    .then(result => this.tee = result)
-    .catch(err => console.error(err));
       this.show = false;
     });
-  }
-
-  async getBase64ImageFromUrl(imageUrl) {
-    var res = await fetch(imageUrl);
-    var blob = await res.blob();
-
-    return new Promise((resolve, reject) => {
-      var reader  = new FileReader();
-      reader.addEventListener("load", function () {
-          resolve( reader.result);
-      }, false);
-
-      reader.onerror = () => {
-        return reject(this);
-      };
-      reader.readAsDataURL(blob);
-    })
   }
 
   share(data: any){

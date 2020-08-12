@@ -1,8 +1,9 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
 .container{
-    /*background-image: url('../../../assets/images/back/jude.jpg');*/
-    background-color: #7C593A;
+    background-color: #7C593A; 
     height: 100%;
-    width: 100%;
+    width: 100%; 
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -22,7 +23,7 @@ h1{
 #one{
     margin: 5%;
 }
-
+ 
 #two{
     color: white;
 }
@@ -30,19 +31,21 @@ h1{
 .regForm{
     width: 20%;
     text-align: center;
+    margin-top: 10%;
 }
 
 #passError{
     color: red;
 }
-
+ 
 .regFormContent{
     margin-top: 1rem;
 }
 
-h1{
+h3{
     margin-top: 1rem;
     font-family: keep-calm;
+    padding-left: 78px;
 }
 
 .cardTitle{
@@ -59,5 +62,5 @@ h1{
 
 img{
     width: 100%;
-    height: 100%;
+    height: 80px;
 }

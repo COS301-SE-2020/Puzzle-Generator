@@ -1,14 +1,32 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway);
+/* @import url(https://fonts.googleapis.com/css?family=Raleway); */
 
 .container-fluid{
-  /*background-image: url('../../../assets/images/bg3.jpg');*/
-  background-color: white;
+   background-color: white;
+   margin-left: 1.5%;
+   margin-right: 1.5%;
+   border-radius: 0.5%;
 }
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+
+.navimg{
+  height: 100%;
+  width: 50%;
+}
+
 
 .container{
   background-color: white;
   height: 100%;
   width: 100%;
+}
+
+.infoIcon{
+  float: right;
 }
 
 .content-image{
@@ -23,21 +41,22 @@ h1{
   color: gray;
 }
 
-mat-card{
+ mat-card{
   margin: auto;
   margin-bottom: 2vw;
   margin-top: 2vw;
-  background-color: rgb(235, 235, 235);
+  background-color: gainsboro;
   color: black;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-mat-card-subtitle{
-  font-size: 15px;
+ mat-card-subtitle{
+  font-size: 14px;
+   /* color: black;  */
 }
 
-mat-card-title{
-  margin-top: 5px;
+ mat-card-title{
+   margin-top: 5px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -46,6 +65,23 @@ mat-card-title{
   background-color: #7C593A;
   color: white;
   margin: 0.5vw;
+  width: 50%;
+  text-align: center;
+  font-weight: normal;
+}
+
+.puzzleActions{
+  display: inline;
+}
+
+.puzzleDetails{
+  color: #fff;
+}
+
+#resetBtn:hover, .btns:hover{
+  /* background-color: rgba(0,0,0,0.7);; */
+  background-color: white;
+  color: #7C593A;
 }
 
 .example-form-field{
@@ -54,10 +90,13 @@ mat-card-title{
 
 #resetBtn{
   margin-left: 2vw;
+  background-color: #7C593A;
+  color: #fff;
 }
 
 #spinner{
   margin: auto ;
+  color: black;
 }
 
 *, *:before, *:after{
@@ -68,41 +107,9 @@ mat-card-title{
   box-sizing: border-box;
 }
 
-.main-title{
-  text-align: center;
-  text-transform: capitalize;
-  padding: 0.7em 0;
-  margin-top: 30px;
-  font-size: 40px;
-  text-align: center;
-  font-family: keep-calm;
-  color: gray;
-}
-
-.one{
-  color: gold;
-}
-
-
-.one{
- /*  padding: 1em 0;
-  float: left; */
-  width: 50%;
-  margin: auto;
-  margin-bottom: 2vw;
-  margin-top: 2vw;
-}
-
-
-.one .title{
-  color: white;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
 .content {
   position: relative;
-  width: 90%;
+  width: 100%;
   max-width: 340px;
   overflow: hidden;
 }
@@ -124,6 +131,7 @@ mat-card-title{
 
 .content:hover .content-overlay{
   opacity: 1;
+  /* height: 87%; */
 }
 
 .content-image{
@@ -133,7 +141,7 @@ mat-card-title{
 
 .content-details {
   position: absolute;
-  text-align: center;
+  text-align: justify;
   padding-left: 1em;
   padding-right: 1em;
   width: 100%;
@@ -149,7 +157,7 @@ mat-card-title{
 }
 
 .content:hover .content-details{
-  top: 50%;
+  top: 30%;
   left: 50%;
   opacity: 1;
 }
@@ -170,3 +178,7 @@ mat-card-title{
 .fadeIn-bottom{
   top: 80%;
 }
+
+.spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+        stroke: #7C593A;
+      }

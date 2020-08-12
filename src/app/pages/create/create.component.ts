@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { createModule } from 'src/assets/js/manualCreation.js';
+import { initializeData } from 'src/assets/js/manualCreation.js';
 import Konva from 'konva';
 
 @Component({
@@ -14,8 +14,8 @@ export class CreateComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    createModule;
-    this.token = localStorage.getItem('token')
+    initializeData();
+    this.token = localStorage.getItem('token');
   }
 
 }

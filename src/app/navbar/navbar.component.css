@@ -1,15 +1,18 @@
 ::ng-deep #navCustom nav{
   background-color: #7C593A;
+  height: rem;
 }
 
 .nav-link{
   color: white;
   margin-right: 1.5vw;
+  font-size: 2rem;
 }
 
 .navbar-text{
   color: white;
   text-align: left;
+  font-size: 2rem;
 }
 
 ul.nav li:hover > a { color: #7C593A !important; }
@@ -32,5 +35,13 @@ span{
 }
 
 .dropdown-item{
-  font-size: 1vw !important;
+  font-size: 2rem !important;
+}
+
+.logo{
+  height: 14rem;
+}
+
+.navimg{
+  height: 13rem;
 }

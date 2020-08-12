@@ -73,7 +73,7 @@ h1{
 
 .btns{
   background-color: #7C593A;
-  /* color: white; */
+  color: white;
   margin: 0.5vw;
   width: 50%;
   border: 1px solid white;
@@ -101,6 +101,7 @@ h1{
 #resetBtn{
   margin-left: 2vw;
   background-color: #7C593A;
+  color: #fff;
 }
 
 #spinner{

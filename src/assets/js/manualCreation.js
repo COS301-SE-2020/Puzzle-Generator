@@ -21,7 +21,7 @@ let colors = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'L
 	'AntiqueWhite', 'Red', 'Green'];
 let hoverOverPoint = false;
 let generateButtonClicked = false;
-let token = 'KQlH2g5Io_AwCwotB4TUC';
+//let token = 'KQlH2g5Io_AwCwotB4TUC';
 let piecesJSONObject = {
 	'pieces' : []
 };
@@ -78,7 +78,7 @@ function initializeData()
 		setDistanceMetric('manhattan');
 	});
 
-	document.getElementById('tokenLabel').innerHTML = token;
+	// = token;
 
 	document.getElementById('saveButton').addEventListener('mousedown', function() {
 		savePuzzle(false);
@@ -98,6 +98,8 @@ function savePuzzle(share)
 	let puzzleDescription = document.getElementById('puzzleDescriptionInputBox').value;
 
 	let puzzleImage = stage.toDataURL({ pixelRatio: 0.25 });
+
+	let token = document.getElementById('tokenLabel').innerHTML;
 
 	let jsonData = {
 		token: token,

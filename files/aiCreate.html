@@ -24,7 +24,7 @@
 	<script src="aiCreation.js"></script>
 </head>
 <body>
-	<div id="container" hidden='true'>
+	<div id="container">
 		
 	</div>
 	<div id="inputContainer">
@@ -35,9 +35,9 @@
 		<input type="radio" name="distanceMetric" id="euclideanButton">Euclidean</input>
 		<input type="radio" name="distanceMetric" id="manhattanButton">Manhattan</input><br>
 		<button id="nextButton">Next-></button>
+		<button id="generatePuzzleAIButton">Generate Puzzle</button><br>
 	</div>
-	<button id="generatePuzzleAIButton" hidden="true">Generate Puzzle</button><br>
-	<div id="puzzleInformationContainer" hidden="true">
+	<div id="puzzleInformationContainer">
 		<label>Name: </label><input type="text" name="puzzleName" id="puzzleNameInputBox"><br>
 		<label>Short Description: </label><input type="text" name="puzzleDescription" id="puzzleDescriptionInputBox"><br>
 		<label id="tokenLabel" hidden="true">Testing</label>

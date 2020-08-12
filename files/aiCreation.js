@@ -1,16 +1,21 @@
-// //The structure of each individual/chromosome object
+// import { width, height, setSites, setGenerateButtonClicked, initializeData, calculateDistancesFromSitesToPoint, 
+	// equidistantPointsPresent, generateSiteBoundaries, createPieces } from 'src/assets/js/manualCreation.js'
+
+///The structure of each individual/chromosome object
 let Chromosome = {
 	sites: [],
 	fitness: -1,
 };
 
-// //The structure of each site object
+///The structure of each site object
 let Site = {
 	x: 0,
 	y: 0,
 	surfaceArea: 0,
 }
 
+let generatePuzzleAIButton;
+let tempWidth, tempHeight;
 let totalSurfaceArea;
 
 let generationSize = 10 + 1;
@@ -68,27 +73,32 @@ function expandPuzzle(sites, factor)
 	return sites;
 }
 
-window.onload = initializeDataAI;
+window.onload = function() {
+	initializeDataAI();
+};
 
+// export function initializeDataAI()
 function initializeDataAI()
 {
 	initializeData();
+	generatePuzzleAIButton = document.getElementById('generatePuzzleAIButton');
+	generatePuzzleAIButton.addEventListener('mousedown', generatePuzzleAI);
+	generatePuzzleAIButton.remove();
 
-	document.getElementById('nextButton').addEventListener('mousedown', function() {
-		numberOfSites = document.getElementById('numberOfPiecesInputBox').value;
+	document.getElementById('nextButton').addEventListener('mousedown', displaySlidersCard);
+}
 
-		groupDistribution.push(document.getElementById('numberOfPiecesInputBox1').value);
-		groupDistribution.push(document.getElementById('numberOfPiecesInputBox2').value);
-		groupDistribution.push(document.getElementById('numberOfPiecesInputBox3').value);
+function displaySlidersCard()
+{
+	numberOfSites = document.getElementById('numberOfPiecesInputBox').value;
 
-		generateSliders(3);
-		
-		document.getElementById('generatePuzzleAIButton').hidden = false;
-	});
+	groupDistribution.push(document.getElementById('numberOfPiecesInputBox1').value);
+	groupDistribution.push(document.getElementById('numberOfPiecesInputBox2').value);
+	groupDistribution.push(document.getElementById('numberOfPiecesInputBox3').value);
 
-	document.getElementById('generatePuzzleAIButton').addEventListener('mousedown', function(event) {
-		generatePuzzleAI();
-	});
+	generateSliders(3);
+	
+	document.getElementById('inputContainer').appendChild(generatePuzzleAIButton);
 }
 
 function generatePuzzleAI()
@@ -106,15 +116,12 @@ function generatePuzzleAI()
 	desiredProportions.sort( function(a, b) { return b - a } );
 
 	document.getElementById('inputContainer').innerHTML = '';
-	document.getElementById('container').hidden = false;
-	document.getElementById('puzzleInformationContainer').hidden = false;
 
-	sites = run();
+	let sites = run();
 	sites = expandPuzzle(sites, 10);
-	width = width * 10;
-	height = height * 10;
 
-	generateButtonClicked = true;
+	setSites(sites);
+	setGenerateButtonClicked(true);
 	generateSiteBoundaries();
 	createPieces();
 }
@@ -136,11 +143,12 @@ function generateSliders(numberOfSliders)
 		slider.previousValue = defaultValue;
 		slider.sliderid = i;
 		slider.step = 0.01;
+		
 		slider.addEventListener('input', function() {
 			let difference = this.previousValue - this.value;
 			let distributedValue = (difference/( numberOfSliders - 1 )).toFixed(2);
-
 			let leftover = 0;
+
 			for(let i = 0 ; i < numberOfSliders; i++)
 			{
 				if(i != this.sliderid)
@@ -184,32 +192,36 @@ function generateSliders(numberOfSliders)
 			labels[this.sliderid].innerHTML = parseInt(this.value);
 		});
 
-		let label = document.createElement('label');
-		label.innerHTML = defaultValue.toFixed(0);
+		let headerLabel = document.createElement('label');
+		headerLabel.innerHTML = 'Group ' + (i+1);
+
+		let valueLabel = document.createElement('label');
+		valueLabel.innerHTML = defaultValue.toFixed(0);
 
 		let br = document.createElement('br');
 
 		sliders.push(slider);
-		labels.push(label);
+		labels.push(valueLabel);
 
+
+		inputContainer.appendChild(headerLabel);
 		inputContainer.appendChild(slider);
-		inputContainer.appendChild(label);
+		inputContainer.appendChild(valueLabel);
 		inputContainer.appendChild(br);
 	}
 }
 
-///Execute the genetic algorithm and returns the resulting site array 
+///Executes the genetic algorithm and returns the resulting site array 
 function run()
 {
 	let currentGeneration = [], nextGeneration = [];
 	let parentX, parentY, children;
 	let x, y;
-	width = 500/10;
-	height = 500/10;
-	totalSurfaceArea = width * height;
+	tempWidth = width/10;
+	tempHeight = height/10;
+	totalSurfaceArea = tempWidth * tempHeight;
 
 	nextGeneration = initializeGeneration();
-	console.log(nextGeneration);
 	for(let generation = 0; generation < maximumIterations; generation++)
 	{
 		currentGeneration = nextGeneration;
@@ -233,6 +245,7 @@ function run()
 	return getFittest(nextGeneration).sites;
 }
 
+///Returns the fittest chromosome from generation
 function getFittest(generation)
 {
 	let fittestChromosome = null;
@@ -256,7 +269,7 @@ function mutate(chromosome)
 	///Move site to the right by offset (increment x by offset), or move to the left if at board edge
 	if(movementDirection == 0)
 	{
-		if(selectedSite.x + offset < width)
+		if(selectedSite.x + offset < tempWidth)
 			selectedSite.x = selectedSite.x + offset;
 		else
 			selectedSite.x = selectedSite.x - offset;
@@ -280,7 +293,7 @@ function mutate(chromosome)
 	///Move site downwards by offset (increment y by offset), or move upwards if at board edge
 	else if(movementDirection == 3)
 	{
-		if(selectedSite.y + offset < height)
+		if(selectedSite.y + offset < tempHeight)
 			selectedSite.y = selectedSite.y + offset;
 		else
 			selectedSite.y = selectedSite.y - offset;
@@ -329,8 +342,8 @@ function initializeGeneration()
 		for(let siteIndex = 0; siteIndex < numberOfSites; siteIndex++)
 		{
 			let tempSite = copyObject(Site);
-			tempSite.x = random(width + 1);
-			tempSite.y = random(height + 1);
+			tempSite.x = random(tempWidth + 1);
+			tempSite.y = random(tempHeight + 1);
 			newChromosome.sites.push(tempSite);
 		}
 
@@ -372,9 +385,9 @@ function determineAndSetSiteBoundaries(chromosome)
 	for(let i = 0; i < numberOfSites; i++)
 		chromosome.sites[i].surfaceArea = 0;
 	
-	for(let row = 0; row < height; row++)
+	for(let row = 0; row < tempHeight; row++)
 	{
-		for(let col = 0; col < width; col++)
+		for(let col = 0; col < tempWidth; col++)
 		{
 			let distances = calculateDistancesFromSitesToPoint(col, row, chromosome.sites);
 			let equidistantPoints = equidistantPointsPresent(distances);
@@ -382,87 +395,4 @@ function determineAndSetSiteBoundaries(chromosome)
 			chromosome.sites[equidistantPoints[0]].surfaceArea += 1;
 		}
 	}
-}
-
-///Calculate and set the surface areas for each of the puzzle pieces/sites in a chromosome
-function calculateAndSetSurfaceAreas(chromosome)
-{
-	let sites = chromosome.sites;
-	let tempSurfaceAreasArray = [];
-	let surfaceArea;
-	for(let index = 0; index < sites.length; index++)
-	{
-		/**
-			Since siteBoundaries contains all the pixel x-y coordinates that belong to the site, 
-			dividing the length will give the total number of pixels which is also the area occupied 
-			by the puzzle piece at said site.
-		**/
-		surfaceArea = sites[index].siteBoundaries.length / 2;
-		sites[index].surfaceArea = surfaceArea;
-	}
-}
-
-///Determines which site is closest to a pixel position
-function equidistantPointsPresent(distances)
-{
-	let returnArray = [];
-	let minimumDistance = Math.min(...distances);
-
-	if(distanceMetric === 'euclidean')
-		minimumDistance = minimumDistance.toFixed(precision) + '';
-
-	let index = 0, counter = 0;
-
-	while(index != -1)
-	{
-		index = distances.indexOf(minimumDistance);
-		if(index != -1)
-		{
-			returnArray.push(index+counter);
-			distances.splice(index, 1);
-			counter++;
-		}
-	}
-
-	return returnArray;
-}
-
-///Calculates the distances from each site to pixel in position (xOfPoint, yOfPoint) and returns an array
-function calculateDistancesFromSitesToPoint(xOfPoint, yOfPoint, sitePoints)
-{
-	let result = [];
-	let length = sitePoints.length;
-	for(let i = 0; i < length; i++)
-		result.push(calculateDistance(xOfPoint, yOfPoint, sitePoints[i].x, sitePoints[i].y));
-
-	return result;
-}
-
-///Calculates the distance from point1 to point2 using the selected distance metrix
-function calculateDistance(point1X, point1Y, point2X, point2Y)
-{
-	if(distanceMetric === 'euclidean')
-		return calculateEuclideanDistance(point1X, point1Y, point2X, point2Y);
-	else if(distanceMetric === 'manhattan')
-		return calculateManhattanDistance(point1X, point1Y, point2X, point2Y);
-}
-
-///Calculates and returns the Euclidean distance
-function calculateEuclideanDistance(point1X, point1Y, point2X, point2Y)
-{
-	let result = Math.pow( Math.pow( point1X - point2X, 2 ) + Math.pow( point1Y - point2Y, 2 ), 0.5 );
-	return result.toFixed(precision);
-}
-
-///Calculates and returns the Manhattan distance
-function calculateManhattanDistance(point1X, point1Y, point2X, point2Y)
-{
-	let resultX = point1X - point2X;
-	if(resultX < 0)
-		resultX *= -1;
-	let resultY = point1Y - point2Y;
-	if(resultY < 0)
-		resultY *= -1;
-	let result = resultX + resultY;
-	return result;
 }

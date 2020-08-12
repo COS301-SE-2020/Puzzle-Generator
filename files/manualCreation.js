@@ -1,10 +1,15 @@
+// import Konva from 'konva';
+// export { width, height, setSites, setGenerateButtonClicked, initializeData, calculateDistancesFromSitesToPoint, 
+	// equidistantPointsPresent, generateSiteBoundaries, createPieces };
+
 let apiURL = "http://localhost:3200/api/puzzles/createPuzzle";
 let distanceMetric = 'euclidean';
 
 let puzzleImage;
 let canvas;
 let canvasCoords;
-let width = 500, height = 500;
+let width =  500;
+let height = 500;
 let stage;
 let layer;
 let square;
@@ -12,13 +17,13 @@ let pointsArray = [];
 let sites = [];
 let siteBoundaries = [];
 let precision = 0;
-let colors = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine',
+let colors = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine', 
 	'AntiqueWhite', 'Red', 'Green'];
 let hoverOverPoint = false;
 let generateButtonClicked = false;
-let token = 'KQlH2g5Io_AwCwotB4TUC';
+let token;
 let piecesJSONObject = {
-	pieces : []
+	'pieces' : []
 };
 
 ///Initialize data once window is done loading
@@ -77,7 +82,7 @@ function initializeData()
 		setDistanceMetric('manhattan');
 	});
 
-	document.getElementById('tokenLabel').innerHTML = token;
+	token = document.getElementById('tokenLabel').innerHTML;
 
 	document.getElementById('saveButton').addEventListener('mousedown', function() {
 		savePuzzle(false);
@@ -131,6 +136,18 @@ function savePuzzle(share)
 function setDistanceMetric(metric)
 {
 	distanceMetric = metric;
+}
+
+///Set generateButtonClicked to true to prevent user from clicking it any further
+function setGenerateButtonClicked(bool)
+{
+	generateButtonClicked = bool;
+}
+
+///Set the sites array
+function setSites(tempSites)
+{
+	sites = tempSites;
 }
 
 ///Create a visual representation of where the user clicks
@@ -227,7 +244,6 @@ function generatePuzzle()
 function createPieces()
 {
 	let colorCount = colors.length;
-	let tempArray = [];
 	for(let i = 0; i < sites.length; i++)
 	{
 		let trimmedPoints = trimPoints(siteBoundaries[i]);
@@ -249,7 +265,6 @@ function createPieces()
 		piecesJSONObject.pieces.push(trimmedPoints);
 		layer.add(piece);
 	}
-
 	layer.draw();
 	piecesJSONObject = JSON.stringify(piecesJSONObject);
 }
@@ -296,7 +311,6 @@ function trimPoints(pointArray)
 ///Generate the boundaries around the sites
 function generateSiteBoundaries()
 {
-	console.log(sites);
 	for(let i = 0; i < sites.length; i++)
 		siteBoundaries[i] = [];
 

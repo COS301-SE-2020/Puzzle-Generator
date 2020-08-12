@@ -1,5 +1,5 @@
 import Konva from 'konva';
-export { width, height, setSites, setGenerateButtonClicked, initializeData, calculateDistancesFromSitesToPoint, 
+export { width, height, setSites, setGenerateButtonClicked, initializeData, calculateDistancesFromSitesToPoint,
 	equidistantPointsPresent, generateSiteBoundaries, createPieces };
 
 let apiURL = "http://localhost:3200/api/puzzles/createPuzzle";
@@ -17,7 +17,7 @@ let pointsArray = [];
 let sites = [];
 let siteBoundaries = [];
 let precision = 0;
-let colors = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine', 
+let colors = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine',
 	'AntiqueWhite', 'Red', 'Green'];
 let hoverOverPoint = false;
 let generateButtonClicked = false;
@@ -28,7 +28,8 @@ let piecesJSONObject = {
 
 
 ///Initialize data and set functions for buttons
-function initializeData() 
+
+function initializeData()
 {
 	canvas = document.getElementById('container');
 	stage = new Konva.Stage({
@@ -58,7 +59,7 @@ function initializeData()
 			canvasCoords = canvas.getBoundingClientRect();
 			let x = event.clientX - canvasCoords.x;
 			let y = event.clientY - canvasCoords.y;
-			
+
 			let point = createPoint(x, y);
 
 			layer.add(point);
@@ -113,8 +114,8 @@ function savePuzzle(share)
 	$.ajax({
 		type: 'POST',
 		url: apiURL,
-		headers: { 
-			'Access-Control-Allow-Origin' : '*' 
+		headers: {
+			'Access-Control-Allow-Origin' : '*'
 		},
 		contentType: 'application/json',
 		data: JSON.stringify(jsonData),
@@ -125,7 +126,7 @@ function savePuzzle(share)
 		},
 		error: function(data, status) {
 			console.log(data);
-			console.log(status);	
+			console.log(status);
 		}
 	});
 }
@@ -190,7 +191,7 @@ function createPoint(x, y)
 	return point;
 }
 
-///Calls the necessary functions to generate puzzle's vertiecs as well as the visual representation 
+///Calls the necessary functions to generate puzzle's vertiecs as well as the visual representation
 function generatePuzzle()
 {
 	//Testing data
@@ -238,7 +239,7 @@ function generatePuzzle()
 	createPieces();
 }
 
-///Creates the puzzle pieces from the siteBoundaries for each site(position selected by the user) 
+///Creates the puzzle pieces from the siteBoundaries for each site(position selected by the user)
 function createPieces()
 {
 	let colorCount = colors.length;
@@ -292,10 +293,10 @@ function trimPoints(pointArray)
 				trimmedPoints.push(firstPointCol, currentRow);
 				crissCross - 1;
 			}
-			
+
 			firstPointCol = pointArray[index];
 			lastPointCol = pointArray[index];
-			currentRow = pointArray[index+1];	
+			currentRow = pointArray[index+1];
 		}
 		else
 		{

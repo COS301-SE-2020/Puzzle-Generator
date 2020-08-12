@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <!--app-navbar-profile></app-navbar-profile-->
- 
+
 
 <div class="container-fluid" >
     <div fxLayout="row">
@@ -17,10 +17,10 @@
         <mat-card-header>
             <h1>Edit Details</h1>
         </mat-card-header>
-        <mat-card-content>
+        <mat-card-content class="move">
         <div *ngIf="currentUserObject">
             <form [formGroup]="updateNameForm" (ngSubmit)="updateName()">
-                <mat-form-field appearance="fill">
+                <mat-form-field appearance="standard">
                     <input matInput formControlName="name"  value="{{currentUserObject.name}}" (input)="nameTextboxValue=$event.target.value">
                 </mat-form-field>
                 <div>
@@ -34,8 +34,8 @@
             </form>
 
             <form [formGroup]="updateUsernameForm" (ngSubmit)="updateUsername()">
-                <mat-form-field appearance="fill">
-                    <input matInput class="move" formControlName="username"  value="{{currentUserObject.username}}" (input)="usernameTextboxValue=$event.target.value">
+                <mat-form-field appearance="standard">
+                    <input matInput formControlName="username"  value="{{currentUserObject.username}}" (input)="usernameTextboxValue=$event.target.value">
                 </mat-form-field>
                 <div>
                     <ng-container *ngFor="let error of error_messages.username">
@@ -49,5 +49,3 @@
         </div>
         </mat-card-content>
     </mat-card>
-</div>
-</div>

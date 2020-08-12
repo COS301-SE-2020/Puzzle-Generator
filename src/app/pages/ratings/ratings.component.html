@@ -1,19 +1,17 @@
 <app-navbar></app-navbar>
-  
+<div class="container">
 <mat-form-field class="example-form-field">
     <mat-label>Search</mat-label>
-    <input matInput type="text" (input)="searchTextboxValue=$event.target.value">
-    <button mat-button matSuffix (click)="searchItems(searchTextboxValue)">
-      <mat-icon>search</mat-icon>
-    </button>
+    <input matInput (keyup)="applyFilter($event.target.value)">
 </mat-form-field>
 <button mat-button id="resetBtn" (click)="reload()">RESET SEARCH CRITERIA</button>
+<div class="spinner">
+  <mat-spinner *ngIf="show" id="spinner"></mat-spinner>
+</div>
 
-<mat-spinner *ngIf="show" id="spinner"></mat-spinner> 
-<div class="container">
 <div class="container-fluid" *ngIf="dataAvailable" >
     <div class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
-        <mat-card class="content" *ngFor="let puzzle of puzzles">
+        <mat-card class="content"  *ngFor="let puzzle of this.datasource.filteredData">
           <div class="content-overlay"></div>
           <!-- <mat-icon aria-hidden="false" class="infoIcon">info_outline</mat-icon> -->
           <img class="content-image" src="{{puzzle.image}}">
@@ -31,6 +29,6 @@
               <button *ngIf="puzzle.showRating" mat-button class="btns" (click)="openAndCheck(puzzle.id)">RATE</button>
             </mat-card-actions>
         </mat-card>
-    </div> 
+    </div>
 </div>
-</div>   
+</div>

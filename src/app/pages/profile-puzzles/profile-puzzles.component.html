@@ -1,9 +1,7 @@
 <app-navbar></app-navbar>
-
-<mat-spinner *ngIf="show" id="spinner"></mat-spinner> 
 <div class="container">
 <div class="container-fluid" *ngIf="currentUser" >
-    <h1 class="main-title" *ngIf="userPuzzleList">My Puzzles</h1> 
+    <h1 class="main-title">My Puzzles</h1>
     <div class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
         <mat-card class="content" *ngFor="let puzzle of userPuzzleList">
           <div class="content-overlay"></div>
@@ -15,10 +13,13 @@
               <button *ngIf="puzzle.shared" mat-button class="btns" (click)="stopShare(puzzle.id)">STOP SHARING</button>
             </mat-card-actions>
         </mat-card>
-    </div> 
+    </div>
 </div>
-</div> 
- 
+</div>
+
   <div *ngIf="text">
-    <h3 id="NoneText" >You have not created any puzzles at the moment</h3>
+    <h2 id="NoneText" >You have not created any puzzles at the moment</h2>
   </div>
+<div class="spinner">
+  <mat-spinner *ngIf="show" id="spinner"></mat-spinner>
+</div> 

@@ -1,5 +1,7 @@
 <app-navbar></app-navbar>
-
+<div>
+ <a id="help" src="../../../assets/gifHelp.mp4">Help</a>
+</div>
 <div class="container-fluid">
   <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1">
     <mat-card class="">
@@ -13,7 +15,7 @@
         </mat-radio-group>
       </mat-card-content>
    </mat-card>
-  
+
    <mat-card class="">
     <mat-card-header>
       <label>Create puzzle by selecting points on the canvas</label>
@@ -26,7 +28,7 @@
       <button mat-raised-button class="btns" id="generatePuzzleButton">Generate Puzzle</button>
     </mat-card-actions>
   </mat-card>
-  
+
   <mat-card class="">
     <mat-card-header>
       <mat-card-title>Saving Options</mat-card-title>
@@ -36,7 +38,6 @@
         <label id="">Name: </label><br><input type="text" name="puzzleName" id="puzzleNameInputBox"><br>
         <label id="">Short Description: </label><br><input type="text" name="puzzleDescription" id="puzzleDescriptionInputBox"><br>
         <label hidden="true" id="tokenLabel">{{token}}</label><br>
-        <!-- <label>{{token}}</label> -->
         <button mat-raised-button class="btns" id="saveButton">Save</button>
     </mat-card-content>
   </mat-card>

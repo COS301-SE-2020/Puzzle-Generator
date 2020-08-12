@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { APIService } from 'src/app/services/api.service';
 import { User } from 'src/app/models/user';
@@ -8,6 +8,8 @@ import { RatingsArr } from './RatingsArr';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RateDialogComponent } from '../../rate-dialog/rate-dialog.component';
 import { PuzzleRating } from 'src/app/models/PuzzleRating';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-ratings',
@@ -16,6 +18,7 @@ import { PuzzleRating } from 'src/app/models/PuzzleRating';
 })
 export class RatingsComponent implements OnInit {
 
+  displayedColumns: string[] = ["id","name","description","creator","rating","created","showRating","image"];
   rateDialogRef: MatDialogRef<RateDialogComponent>;
   puzzles: Array<PuzzleArr> = [];
   name: string;
@@ -30,6 +33,7 @@ export class RatingsComponent implements OnInit {
   searchTextboxValue: string;
   token: any;
   currentUser: any;
+  datasource: any;
 
   constructor(private api: APIService, private cdr: ChangeDetectorRef, private dialog: MatDialog, private router: Router) {
   }
@@ -97,7 +101,7 @@ export class RatingsComponent implements OnInit {
       puzzleObj.description = data[i].description;
       puzzleObj.creator = data[i].creator;
       puzzleObj.created = data[i].createdAt;
-      puzzleObj.image = data[i].image; 
+      puzzleObj.image = data[i].image;
       if (puzzleObj.creator== this.currentUser["name"])
       {
         puzzleObj.showRating = false;
@@ -129,9 +133,18 @@ export class RatingsComponent implements OnInit {
       this.puzzles.push(puzzleObj);
     }
 
+    this.datasource = new MatTableDataSource(this.puzzles);
+
     this.dataAvailable = true;
     this.show= false;
 
+  }
+
+  applyFilter(filterValue: string) {
+    this.datasource.filterPredicate = function(data, filter: string): boolean {
+      return data.name.toLowerCase().includes(filter)
+    };
+    this.datasource.filter = filterValue.trim().toLowerCase();
   }
 
   checkData(data: any){
@@ -201,6 +214,6 @@ export class RatingsComponent implements OnInit {
     });
 
     this.populate(null);
-  }
 
+  }
 }

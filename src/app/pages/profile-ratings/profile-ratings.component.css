@@ -1,21 +1,11 @@
 /* @import url(https://fonts.googleapis.com/css?family=Raleway); */
 
 .container-fluid{
-  background-color: lightgrey; 
+  background-color: white;
   margin-left: 1.5%;
   margin-right: 1.5%;
   border-radius: 0.5%;
 }
-
-.logo{
-  height: 13rem;
-}
-
-.navimg{
-  height: 12rem;
-  width: 70rem;
-}
-
 
 .example-header-image {
  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
@@ -31,7 +21,6 @@
 
 .container{
  background-color: white;
- height: 100%;
  width: 100%;
 }
 
@@ -53,23 +42,23 @@ h1{
 }
 
 mat-card{
- margin: auto; 
+ margin: auto;
  margin-bottom: 2vw;
- margin-top: 1vw; 
- background-color: white;
+ margin-top: 1vw;
+ background-color: gainsboro;
  color: black;
  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-} 
+}
 
 mat-card-subtitle{
  font-size: 14px;
   /* color: black;  */
-} 
+}
 
 mat-card-title{
-  margin-top: 5px; 
+  margin-top: 5px;
  font-family: Arial, Helvetica, sans-serif;
-} 
+}
 
 
 .btns{
@@ -116,12 +105,19 @@ mat-card-title{
 .content {
  position: relative;
  width: 100%;
- max-width: 340px; 
+ max-width: 340px;
  overflow: hidden;
 }
 
 .content-image{
  width: 100%;
- margin-bottom: 10px; 
+ margin-bottom: 10px;
 }
 
+#NoneText{
+  text-align: center;
+}
+
+.spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+        stroke: #7C593A;
+      }

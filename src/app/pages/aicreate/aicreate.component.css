@@ -1,5 +1,5 @@
 .container-fluid{
-  background-color: whitesmoke; 
+  background-color: whitesmoke;
   padding: 3%;
   /* margin-left: 1.5%; */
   /* margin-right: 1.5%; */
@@ -39,7 +39,7 @@ mat-card{
  .btns{
    background-color: #7C593A;
    color: white;
-   margin: 0 1.3vw; 
+   margin: 0 1.3vw;
  }
 
 
@@ -53,13 +53,3 @@ mat-card{
    font-family: keep-calm;
    color: gray;
  }
-
- .logo{
-   height: 13rem;
- }
-
- .navimg{
-   height: 12rem;
-   width: 70rem;
- }
-

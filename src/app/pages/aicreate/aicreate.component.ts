@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { initializeDataAI } from 'src/assets/js/aiCreation.js';
 
 @Component({
   selector: 'app-aicreate',
@@ -13,6 +14,7 @@ export class AICreateComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  	initializeDataAI();
     this.token = localStorage.getItem('token');
   }
 

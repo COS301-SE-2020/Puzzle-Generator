@@ -7,29 +7,38 @@
   <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1">
     <mat-card class="">
       <mat-card-header>
-        <label>Select Puzzle Type</label>
+        <mat-card-title>Algorithm Parameters</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <mat-radio-group class="radio-group">
-          <mat-radio-button class="radio-button" value="euclidean" name="distanceMetric" id="euclideanButton" > Euclidian </mat-radio-button>
-          <mat-radio-button class="radio-button" value="manhattan" name="distanceMetric" id="manhattanButton" > Manhattan </mat-radio-button>
-        </mat-radio-group>
+        <div id="inputContainer">
+          <label>Number of puzzle pieces(20 max):</label><br>
+          <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox" value="3"><br>
+          <label>Number of Group 1 pieces:</label><br>
+          <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox1" value="1"><br>
+          <label>Number of Group 2 pieces:</label><br>
+          <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox2" value="1"><br>
+          <label>Number of Group 3 pieces:</label><br>
+          <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox3" value="1"><br>
+          <label>Select Puzzle Type</label><br>
+          <mat-radio-group class="radio-group">
+            <mat-radio-button class="radio-button" value="euclidean" name="distanceMetric" id="euclideanButton" > Euclidian </mat-radio-button>
+            <mat-radio-button class="radio-button" value="manhattan" name="distanceMetric" id="manhattanButton" > Manhattan </mat-radio-button>
+          </mat-radio-group>
+          <button mat-raised-button class="btns" id="nextButton">Next</button>
+          <button mat-raised-button class="btns" ng-hide='true' id="generatePuzzleAIButton">Generate Puzzle</button><br>
+        </div>
       </mat-card-content>
    </mat-card>
   
    <mat-card class="">
     <mat-card-header>
-      <label>Create puzzle by selecting points on the canvas</label>
+      <label>------->ADD APPROPRIATE HEADER HERE<-------</label>
     </mat-card-header>
     <mat-card-content>
       <div id="container">
       </div>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button class="btns" id="generatePuzzleButton">Generate Puzzle</button>
-    </mat-card-actions>
   </mat-card>
-  
   <mat-card class="">
     <mat-card-header>
       <mat-card-title>Saving Options</mat-card-title>

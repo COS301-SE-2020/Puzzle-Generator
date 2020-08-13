@@ -14,6 +14,9 @@ export class SignupComponent implements OnInit {
   newUser: any;
   formError: string;
 
+  token: any;
+  name: any;
+
   constructor(private formBuilder: FormBuilder, private api: APIService, private router: Router) {}
 
   //method for creating a new user. A new JSON object is created and sent to the node api
@@ -27,8 +30,13 @@ export class SignupComponent implements OnInit {
       }
       if(this.newUser != null){
         this.api.createUser(this.newUser).subscribe(
-          data => {console.log(data);
-              this.router.navigate(['/login']);
+            data => {
+              console.log(data);
+              localStorage.removeItem('name');
+              localStorage.setItem('name', data['name']);
+              localStorage.removeItem('token');
+              localStorage.setItem('token', data['token']);
+              this.router.navigate(['/ratings']);
             },
           error => {//if status code other than in the 200 range returned, show error
             console.log('Error from API: ', error.error);

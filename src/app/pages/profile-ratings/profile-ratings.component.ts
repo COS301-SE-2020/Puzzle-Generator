@@ -26,20 +26,18 @@ export class ProfileRatingsComponent implements OnInit {
   constructor(private api: APIService, private router: Router, private dialog: MatDialog) { }
 
   getUserPuzzleRatings(){
-    this.userRatingsList = null;
     this.api.getPuzzleRatingsByUser(this.currentUser).subscribe( data => {
       this.userRatingsList = data;
+      if (data[0]==null)
+      {
+        this.text = true;
+      }
       this.show = false;
-      this.text = true;
     });
-
   }
 
   checkData(data: any){
     this.ratePID = data;
-    //this.rateUID = localStorage.getItem('token');
-    //this.rateUID = localStorage.getItem('id');
-    //console.log(localStorage.getItem('id'));
   }
 
   openRateDialog(){

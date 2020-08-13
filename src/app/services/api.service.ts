@@ -53,6 +53,7 @@ export class APIService {
   }
 
   getPuzzleRatingsByUser(token: any): Observable<any[]>{
+    console.log("Called with value: ", token);
     const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
     return this.http.post<any[]>('http://localhost:3200/api/users/getPuzzleRatingsByUser', token, httpOptions);
   }

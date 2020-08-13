@@ -50,6 +50,11 @@ app.set("views",path.join(__dirname,"views"));
  * */
 app.use(bodyParser.json());
 app.use(express.static(__dirname+"/dist/prometheus-puzzles"));
+app.use('/', indexRouter);
+app.use('/api/users', usersRouter);
+app.use('/api', apiRouter);
+//app.use('/api/login', loginRouter);
+app.use('api/puzzle', puzzleRouter);
 app.use('*',express.static(__dirname+"/dist/prometheus-puzzles"));
 /**
  * End Angular - Heroku stuff

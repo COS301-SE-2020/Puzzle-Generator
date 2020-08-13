@@ -45,25 +45,24 @@ app.use(cookieParser());
 //app.use(express.static(path.join(__dirname, 'src')));
 app.set("views",path.join(__dirname,"views"));
 
-/**
- * Angular - Heroku stuff
- * */
-app.use(bodyParser.json());
-app.use(express.static(__dirname+"/dist/prometheus-puzzles"));
-
-//app.use('/', indexRouter);
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 app.use('/api/users', usersRouter);
 app.use('/api', apiRouter);
 //app.use('/api/login', loginRouter);
 app.use('/api/puzzle', puzzleRouter);
+/**
+ * Angular - Heroku stuff
+ * */
+app.use(bodyParser.json());
+app.use(express.static(__dirname+"/dist"));
 
-app.use('/*',express.static(__dirname+"/dist/prometheus-puzzles"));
+//app.use('/', indexRouter);
+app.use('/*',express.static(__dirname+"/dist"));
 /**
  * End Angular - Heroku stuff
  */
 
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
 
 
 

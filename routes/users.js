@@ -180,6 +180,10 @@ router.post('/getPuzzleRatingsByUser', (request, response) => {
         .then( data => {
             let array = data;
             var totalNumRatings = Object.keys(data).length;
+            // if(totalNumRatings == 0 )
+            // {
+            //     response.status(201).send(ratingJsonObject);
+            // }
             array.forEach(element => {
                 ratingPlaceholder = {
                     "puzzleName": element['testPuzzle.name'],
@@ -190,9 +194,12 @@ router.post('/getPuzzleRatingsByUser', (request, response) => {
                 ++index;
                 ratingJsonObject.push(ratingPlaceholder);
                 if(index == totalNumRatings){
+                    console.log("Sending back: ", ratingJsonObject);
                     response.status(201).send(ratingJsonObject);
                 }
             });
+            response.status(201).send(ratingJsonObject);
+            //console.log("Here after for loop ", ratingJsonObject);
         })
         .catch( error => {
             response.status(500).send("Server error: ", error);

@@ -34,7 +34,6 @@ router.get('/getAllPuzzles', (request, response) => {
                 ++index;
                 puzzleJsonObject.push(puzzlePlaceholder);
                 if(index == totalNumPuzzles){
-                    //console.log(puzzleJsonObject);
                     response.status(201).send(puzzleJsonObject);
                 }
             });
@@ -80,7 +79,7 @@ router.post('/createPuzzle', (request, response) => {
     .then( user => {
         creatorID = user[0].id;
 
-        console.log(name, description, puzzleObject, creatorID, shared, image);
+        //console.log(name, description, puzzleObject, creatorID, shared, image);
 
         Puzzle.create({
             name, description, puzzleObject, creatorID, shared, image
@@ -148,13 +147,13 @@ router.post('/createPuzzleRating', (request, response) => {
     User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
     .then( user => {
         userID = user[0].id;
-
+        
         PuzzleRating.findAll({ raw: true,
             where: { userID:  userID, puzzleID:  puzzleID }
           })
           .then( data => { 
               if(data.length == 0){ //rating doesnt exist so create new rating
-                  PuzzleRating.create({
+                PuzzleRating.create({
                       rating, puzzleID, userID
                     })
                     .then( () => {

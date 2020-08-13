@@ -16,9 +16,29 @@ let square;
 let pointsArray = [];
 let sites = [];
 let siteBoundaries = [];
+let pieces = [];
 let precision = 0;
-let colors = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine', 
-	'AntiqueWhite', 'Red', 'Green'];
+
+let colorPalettes = [];
+//Default palette
+let selectedPalette;
+let paletteCounter = 0;
+let radioButtons = [];
+
+/** Tutorial for adding more color palettes: **/
+//Step 1: Make an array with desired colors - can be hex values or names
+let defaultPalette = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine', 'AntiqueWhite', 'Red', 'Green'];
+//Step 2: Add the array to the page using this function with the array as a first and the desired name as a second parameter
+addColorPalette(defaultPalette, "Default");
+//Step 3: Profit!!
+
+let shadesOfBluePalette = ['DarkBlue', 'DeepSkyBlue', 'MediumBlue', 'DodgerBlue', 'MidnightBlue', 'RoyalBlue', 'DarkSlateBlue', 'CornflowerBlue', 'SkyBlue', 'PowderBlue'];
+addColorPalette(shadesOfBluePalette, "Shades of Blue");
+
+let shadesOfGreenPalette = ['Teal', 'MediumSpringGreen', 'LimeGreen', 'ForestGreen', 'MediumSeaGreen', 'LawnGreen', 'PaleGreen', 'GreenYellow', 'Aquamarine'];
+addColorPalette(shadesOfGreenPalette, "Shades of Green");
+
+
 let hoverOverPoint = false;
 let generateButtonClicked = false;
 let token;
@@ -31,9 +51,71 @@ window.onload = function() {
 	initializeData();
 };
 
+///Add a color palette to the page and needed functionality
+function addColorPalette(arrayOfColors, paletteName)
+{
+	colorPalettes.push(arrayOfColors);
+	// let radioButton = document.createElement('mat-radio-button');
+	let radioButton = document.createElement('input');
+	radioButton.type = 'radio';
+	radioButton.class = 'radio-button';
+	radioButton.value = paletteName;
+	radioButton.innerHTML = paletteName;
+	radioButton.name = 'colorPalette';
+	radioButton.paletteid = paletteCounter++;
+	radioButton.addEventListener('mousedown', function() {
+		selectedPalette = colorPalettes[this.paletteid];
+		changePuzzleColorPalette(selectedPalette);
+	});
+
+	radioButtons.push(radioButton);
+}
+
+///Changes the displayed color palette used on the puzzle and re-renders it
+function changePuzzleColorPalette(colors)
+{
+	if(pieces.length > 0)
+	{
+		layer.removeChildren();
+		for(let i = 0; i < pieces.length; i++)
+		{
+			pieces[i].attrs.stroke = colors[i % colors.length];
+			layer.add(pieces[i]);
+		}
+
+		layer.draw();
+	}
+}
+
+function randomizePuzzleColorPalette()
+{
+	if(pieces.length > 0)
+	{
+		layer.removeChildren();
+		for(let i = 0; i < pieces.length; i++)
+		{
+			pieces[i].attrs.stroke = getRandomRGB();
+			layer.add(pieces[i]);
+		}
+
+		layer.draw();
+	}
+}
+
+///Returns a random RGB value
+function getRandomRGB()
+{
+	let r = Math.floor(Math.random() * 256);
+	let g = Math.floor(Math.random() * 256);
+	let b = Math.floor(Math.random() * 256);
+	return "rgb(" + r + "," + g + "," + b + ")";
+}
+
 ///Initialize data and set functions for buttons
 function initializeData() 
 {
+	selectedPalette = defaultPalette;
+
 	canvas = document.getElementById('container');
 	stage = new Konva.Stage({
 		container: 'container',
@@ -71,6 +153,8 @@ function initializeData()
 		}
 	});
 
+	addColorPalettePicker();
+
 	if(document.getElementById('generatePuzzleButton') != null)
 		document.getElementById('generatePuzzleButton').addEventListener('mousedown', generatePuzzle);
 
@@ -93,6 +177,29 @@ function initializeData()
 	// 	// document.getElementById('testingImg').src = puzzleImage;
 	// 	savePuzzle(true);
 	// });
+}
+
+function addColorPalettePicker()
+{
+	let colorPaletteDiv = document.getElementById('colorPalettes');
+	let label;
+	for(let i = 0; i < radioButtons.length; i++)
+	{
+		label = document.createElement('label');
+		label.innerHTML = radioButtons[i].value;
+		colorPaletteDiv.appendChild(radioButtons[i]);
+		colorPaletteDiv.appendChild(label);
+	}
+	
+	label = document.createElement('label');
+	label.innerHTML = 'Randomize Colors';
+
+	let tempRandomizeButton = document.createElement('button');
+	tempRandomizeButton.innerHTML = 'Randomize Colors';
+	tempRandomizeButton.addEventListener('mousedown', randomizePuzzleColorPalette);
+
+	colorPaletteDiv.appendChild(document.createElement('br'));
+	colorPaletteDiv.appendChild(tempRandomizeButton);
 }
 
 ///Create a post ajax request and send it to the API in order to save the user's created puzzle
@@ -243,13 +350,12 @@ function generatePuzzle()
 ///Creates the puzzle pieces from the siteBoundaries for each site(position selected by the user) 
 function createPieces()
 {
-	let colorCount = colors.length;
 	for(let i = 0; i < sites.length; i++)
 	{
 		let trimmedPoints = trimPoints(siteBoundaries[i]);
 		let piece = new Konva.Line({
 			points: trimmedPoints,
-			stroke: colors[i % colorCount],
+			stroke: selectedPalette[i % selectedPalette.length],
 			strokeWidth: 1,
 			draggable: true,
 		});
@@ -262,6 +368,7 @@ function createPieces()
 			document.body.style.cursor = 'default';
 		});
 
+		pieces.push(piece);
 		piecesJSONObject.pieces.push(trimmedPoints);
 		layer.add(piece);
 	}

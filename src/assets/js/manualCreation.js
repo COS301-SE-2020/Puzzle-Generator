@@ -1,11 +1,13 @@
 import Konva from 'konva';
-export { width, height, setSites, setGenerateButtonClicked, initializeData, calculateDistancesFromSitesToPoint,
+export { width, height, setSites, setDisableEditMode, initializeData, calculateDistancesFromSitesToPoint, 
 	equidistantPointsPresent, generateSiteBoundaries, createPieces };
 
 let apiURL = "http://localhost:3200/api/puzzles/createPuzzle";
 let distanceMetric = 'euclidean';
+let token;
 
-let puzzleImage;
+let contentDiv = null;
+let aiContentDiv = null;
 let canvas;
 let canvasCoords;
 let width =  500;
@@ -16,22 +18,137 @@ let square;
 let pointsArray = [];
 let sites = [];
 let siteBoundaries = [];
+let pieces = [];
 let precision = 0;
-let colors = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine',
-	'AntiqueWhite', 'Red', 'Green'];
-let hoverOverPoint = false;
-let generateButtonClicked = false;
-//let token = 'KQlH2g5Io_AwCwotB4TUC';
-let piecesJSONObject = {
-	'pieces' : []
-};
 
+let colorPalettes = [];
+//Default palette
+let selectedPalette;
+let paletteCounter = 0;
+let radioButtons = [];
+
+let hoverOverPoint = false;
+let disableEditMode = false;
+let deletePointButtonClicked = false;
+let piecesJSONObject;
+
+/** Tutorial for adding more color palettes: **/
+//Step 1: Make an array with desired colors - can be hex values or names
+let defaultPalette = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine', 'AntiqueWhite', 'Red', 'Green'];
+//Step 2: Add the array to the page using this function with the array as a first and the desired name as a second parameter
+addColorPalette(defaultPalette, "Default");
+//Step 3: Profit!!
+
+let shadesOfBluePalette = ['DarkBlue', 'DeepSkyBlue', 'MediumBlue', 'DodgerBlue', 'MidnightBlue', 'RoyalBlue', 'DarkSlateBlue', 'CornflowerBlue', 'SkyBlue', 'PowderBlue'];
+addColorPalette(shadesOfBluePalette, "Shades of Blue");
+
+let shadesOfGreenPalette = ['Teal', 'MediumSpringGreen', 'LimeGreen', 'ForestGreen', 'MediumSeaGreen', 'LawnGreen', 'PaleGreen', 'GreenYellow', 'Aquamarine'];
+addColorPalette(shadesOfGreenPalette, "Shades of Green");
+
+///Add a color palette to the page and needed functionality
+function addColorPalette(arrayOfColors, paletteName)
+{
+	colorPalettes.push(arrayOfColors);
+	// let radioButton = document.createElement('mat-radio-button');
+	let radioButton = document.createElement('input');
+	radioButton.type = 'radio';
+	radioButton.class = 'radio-button';
+	radioButton.value = paletteName;
+	radioButton.innerHTML = paletteName;
+	radioButton.name = 'colorPalette';
+	radioButton.paletteid = paletteCounter++;
+	radioButton.addEventListener('mousedown', function() {
+		selectedPalette = colorPalettes[this.paletteid];
+		changePuzzleColorPalette(selectedPalette);
+	});
+
+	radioButtons.push(radioButton);
+}
+
+///Changes the displayed color palette used on the puzzle and re-renders it
+function changePuzzleColorPalette(colors)
+{
+	if(pieces.length > 0)
+	{
+		layer.removeChildren();
+		for(let i = 0; i < pieces.length; i++)
+		{
+			pieces[i].attrs.stroke = colors[i % colors.length];
+			layer.add(pieces[i]);
+		}
+
+		layer.draw();
+	}
+}
+
+function randomizePuzzleColorPalette()
+{
+	if(pieces.length > 0)
+	{
+		layer.removeChildren();
+		for(let i = 0; i < pieces.length; i++)
+		{
+			pieces[i].attrs.stroke = getRandomRGB();
+			layer.add(pieces[i]);
+		}
+
+		layer.draw();
+	}
+}
+
+///Returns a random RGB value
+function getRandomRGB()
+{
+	let r = Math.floor(Math.random() * 256);
+	let g = Math.floor(Math.random() * 256);
+	let b = Math.floor(Math.random() * 256);
+	return "rgb(" + r + "," + g + "," + b + ")";
+}
 
 ///Initialize data and set functions for buttons
-
-function initializeData()
+function initializeData() 
 {
+	if(document.getElementById('aiContentDiv') == null)
+	{
+		console.log('were in manual!');
+		if(contentDiv == null)
+		{
+			console.log('first encounter!');
+			contentDiv = document.getElementById('contentDiv').cloneNode(true);
+			document.getElementById('main').innerHTML = "";
+		}
+		else
+		{
+			console.log('Not the first enctouner O.o');
+			document.getElementById('contentDiv').remove();
+		}
+			document.getElementById('main').appendChild(contentDiv.cloneNode(true));
+	}
+	else
+	{
+		console.log('were in aiCreation!');
+		if(aiContentDiv == null)
+		{
+			aiContentDiv = document.getElementById('aiContentDiv').cloneNode(true);
+			document.getElementById('main').innerHTML = "";
+		}
+		else
+		{
+			document.getElementById('aiContentDiv').remove();
+		}
+			document.getElementById('main').appendChild(aiContentDiv.cloneNode(true));
+	}
+
+	disableEditMode = false;
+	
+	piecesJSONObject = {
+		'pieces' : []
+	};
+
+	selectedPalette = defaultPalette;
+	console.log(canvas);
 	canvas = document.getElementById('container');
+	console.log(canvas);
 	stage = new Konva.Stage({
 		container: 'container',
 		width: width,
@@ -54,12 +171,12 @@ function initializeData()
 	stage.add(layer);
 
 	canvas.addEventListener('mousedown', function(event){
-		if(!generateButtonClicked && !hoverOverPoint)
+		if(!disableEditMode && !hoverOverPoint)
 		{
 			canvasCoords = canvas.getBoundingClientRect();
 			let x = event.clientX - canvasCoords.x;
 			let y = event.clientY - canvasCoords.y;
-
+			
 			let point = createPoint(x, y);
 
 			layer.add(point);
@@ -67,6 +184,8 @@ function initializeData()
 			console.log("X: " + x + " Y: " + y);
 		}
 	});
+
+	addColorPalettePicker();
 
 	if(document.getElementById('generatePuzzleButton') != null)
 		document.getElementById('generatePuzzleButton').addEventListener('mousedown', generatePuzzle);
@@ -79,11 +198,26 @@ function initializeData()
 		setDistanceMetric('manhattan');
 	});
 
-	// = token;
-
 	document.getElementById('saveButton').addEventListener('mousedown', function() {
 		savePuzzle(false);
 	});
+
+	if(document.getElementById('deletePointButton') != null)
+	{
+		document.getElementById('deletePointButton').addEventListener('mousedown', function() {
+			deletePointButtonClicked = !deletePointButtonClicked;
+			if(deletePointButtonClicked)
+			{
+				disableEditMode = true;
+				this.innerHTML = 'edit';
+			}
+			else
+			{
+				disableEditMode = false;
+				this.innerHTML = 'delete';
+			}
+		});
+	}
 
 	// document.getElementById('saveAndSubmitButton').addEventListener('mousedown', function() {
 	// 	// let puzzleImage = stage.toDataURL({ pixelRatio: 0.25 });
@@ -92,15 +226,37 @@ function initializeData()
 	// });
 }
 
+function addColorPalettePicker()
+{
+	let colorPaletteDiv = document.getElementById('colorPalettes');
+	let label;
+	for(let i = 0; i < radioButtons.length; i++)
+	{
+		label = document.createElement('label');
+		label.innerHTML = radioButtons[i].value;
+		colorPaletteDiv.appendChild(radioButtons[i]);
+		colorPaletteDiv.appendChild(label);
+	}
+	
+	document.getElementById('randomizeColorsButton').addEventListener('mousedown', randomizePuzzleColorPalette);
+	// label = document.createElement('label');
+	// label.innerHTML = 'Randomize Colors';
+	// let tempRandomizeButton = document.createElement('button');
+	// tempRandomizeButton.innerHTML = 'Randomize Colors';
+	// tempRandomizeButton.addEventListener('mousedown', randomizePuzzleColorPalette);
+	// colorPaletteDiv.appendChild(document.createElement('br'));
+	// colorPaletteDiv.appendChild(tempRandomizeButton);
+}
+
 ///Create a post ajax request and send it to the API in order to save the user's created puzzle
 function savePuzzle(share)
 {
+	token = document.getElementById('tokenLabel').innerHTML;
+	
 	let puzzleName = document.getElementById('puzzleNameInputBox').value;
 	let puzzleDescription = document.getElementById('puzzleDescriptionInputBox').value;
 
 	let puzzleImage = stage.toDataURL({ pixelRatio: 0.25 });
-
-	let token = document.getElementById('tokenLabel').innerHTML;
 
 	let jsonData = {
 		token: token,
@@ -114,8 +270,8 @@ function savePuzzle(share)
 	$.ajax({
 		type: 'POST',
 		url: apiURL,
-		headers: {
-			'Access-Control-Allow-Origin' : '*'
+		headers: { 
+			'Access-Control-Allow-Origin' : '*' 
 		},
 		contentType: 'application/json',
 		data: JSON.stringify(jsonData),
@@ -126,7 +282,7 @@ function savePuzzle(share)
 		},
 		error: function(data, status) {
 			console.log(data);
-			console.log(status);
+			console.log(status);	
 		}
 	});
 }
@@ -137,10 +293,10 @@ function setDistanceMetric(metric)
 	distanceMetric = metric;
 }
 
-///Set generateButtonClicked to true to prevent user from clicking it any further
-function setGenerateButtonClicked(bool)
+///Set disableEditMode to true to prevent user from clicking it any further
+function setDisableEditMode(bool)
 {
-	generateButtonClicked = bool;
+	disableEditMode = bool;
 }
 
 ///Set the sites array
@@ -178,20 +334,22 @@ function createPoint(x, y)
 		document.body.style.cursor = 'default';
 	});
 
-	point.on('dblclick', function(event) {
-		console.log('double clicked!');
-		// layer.remove(point);
-		document.onmousemove = null;
-		hoverOverPoint = false;
-		document.body.style.cursor = 'default';
-		point.destroy();
-		layer.draw();
+	point.on('click', function(event) {
+		// console.log('clicked!');
+		if(deletePointButtonClicked)
+		{
+			document.onmousemove = null;
+			hoverOverPoint = false;
+			document.body.style.cursor = 'default';
+			point.destroy();
+			layer.draw();
+		}
 	});
 
 	return point;
 }
 
-///Calls the necessary functions to generate puzzle's vertiecs as well as the visual representation
+///Calls the necessary functions to generate puzzle's vertiecs as well as the visual representation 
 function generatePuzzle()
 {
 	//Testing data
@@ -233,22 +391,21 @@ function generatePuzzle()
 	layer.destroyChildren();
 
 	///This makes sure that the generate button will only generate once
-	generateButtonClicked = true;
+	disableEditMode = true;
 
 	generateSiteBoundaries();
 	createPieces();
 }
 
-///Creates the puzzle pieces from the siteBoundaries for each site(position selected by the user)
+///Creates the puzzle pieces from the siteBoundaries for each site(position selected by the user) 
 function createPieces()
 {
-	let colorCount = colors.length;
 	for(let i = 0; i < sites.length; i++)
 	{
 		let trimmedPoints = trimPoints(siteBoundaries[i]);
 		let piece = new Konva.Line({
 			points: trimmedPoints,
-			stroke: colors[i % colorCount],
+			stroke: selectedPalette[i % selectedPalette.length],
 			strokeWidth: 1,
 			draggable: true,
 		});
@@ -261,6 +418,7 @@ function createPieces()
 			document.body.style.cursor = 'default';
 		});
 
+		pieces.push(piece);
 		piecesJSONObject.pieces.push(trimmedPoints);
 		layer.add(piece);
 	}
@@ -293,10 +451,10 @@ function trimPoints(pointArray)
 				trimmedPoints.push(firstPointCol, currentRow);
 				crissCross - 1;
 			}
-
+			
 			firstPointCol = pointArray[index];
 			lastPointCol = pointArray[index];
-			currentRow = pointArray[index+1];
+			currentRow = pointArray[index+1];	
 		}
 		else
 		{

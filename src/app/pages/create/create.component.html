@@ -2,8 +2,8 @@
 <div>
  <a id="help" src="../../../assets/gifHelp.mp4">Help</a>
 </div>
-<div class="container-fluid">
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1">
+<div class="container-fluid" id="main">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1" id="contentDiv">
     <mat-card class="">
       <mat-card-header>
         <label>Select Puzzle Type</label>
@@ -21,10 +21,15 @@
       <label>Create puzzle by selecting points on the canvas</label>
     </mat-card-header>
     <mat-card-content>
+      <mat-icon id="deletePointButton">delete</mat-icon>
       <div id="container">
       </div>
     </mat-card-content>
     <mat-card-actions>
+      <div id='colorPalettes'>
+      </div>
+      <button mat-raised-button class="btns" id="randomizeColorsButton">Randomize Colors</button>
+      <!-- <button mat-raised-button class="btns" id="deletePointButton">Delete Mode</button> -->
       <button mat-raised-button class="btns" id="generatePuzzleButton">Generate Puzzle</button>
     </mat-card-actions>
   </mat-card>

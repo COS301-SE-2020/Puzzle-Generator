@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
-<div class="container-fluid" id="main">
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1" id="aiContentDiv">
+<div class="container-fluid">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1">
     <mat-card class="">
       <mat-card-header>
         <mat-card-title>Algorithm Parameters</mat-card-title>
@@ -18,14 +18,11 @@
           <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox3" value="1"><br>
           <label>Select Puzzle Type</label><br>
           <mat-radio-group class="radio-group">
-            <mat-radio-button class="radio-button" value="euclidean" name="distanceMetric" id="euclideanButton" > Euclidian </mat-radio-button>
-            <mat-radio-button class="radio-button" value="manhattan" name="distanceMetric" id="manhattanButton" > Manhattan </mat-radio-button>
+            <mat-radio-button class="radio-button" value="euclidean" name="distanceMetric" id="euclideanButtonAI" > Euclidian </mat-radio-button>
+            <mat-radio-button class="radio-button" value="manhattan" name="distanceMetric" id="manhattanButtonAI" > Manhattan </mat-radio-button>
           </mat-radio-group>
           <button mat-raised-button class="btns" id="nextButton">Next</button>
-          <button mat-raised-button class="btns" id="generatePuzzleAIButton">Generate Puzzle</button><br>
-        </div>
-        <div id='colorPalettes'>
-          <button mat-raised-button class="btns" id="randomizeColorsButton">Randomize Colors</button>
+          <button mat-raised-button class="btns" id="generatePuzzleButtonAI">Generate Puzzle</button><br>
         </div>
       </mat-card-content>
    </mat-card>
@@ -35,7 +32,10 @@
        <mat-card-title>Create a puzzle</mat-card-title>
      </mat-card-header>
     <mat-card-content>
-      <div id="container">
+      <div id="containerAI">
+      </div>
+      <div id='colorPalettesAI'>
+        <button mat-raised-button class="btns" id="randomizeColorsButtonAI">Randomize Colors</button>
       </div>
     </mat-card-content>
   </mat-card>
@@ -48,7 +48,7 @@
         <label id="">Name: </label><br><input type="text" name="puzzleName" id="puzzleNameInputBox"><br>
         <label id="">Short Description: </label><br><input type="text" name="puzzleDescription" id="puzzleDescriptionInputBox"><br>
         <label hidden="true" id="tokenLabel">{{token}}</label><br>
-        <button mat-raised-button class="btns" id="saveButton" routerLink="/profilePuzzles">Save</button>
+        <button mat-raised-button class="btns" id="saveButtonAI">Save</button>
     </mat-card-content>
   </mat-card>
   </div>

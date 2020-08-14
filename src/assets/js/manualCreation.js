@@ -106,63 +106,10 @@ function getRandomRGB()
 }
 
 ///Initialize data and set functions for buttons
-function initializeData() 
+function initializeData(appendedString) 
 {
-	// let main = document.getElementById('main');
-	// if(document.getElementById('aiContentDiv') == null)
-	// {
-	// 	console.log('were in manual!');
-	// 	if(contentDiv == null)
-	// 	{
-	// 		console.log('first encounter!');
-	// 		contentDiv = document.getElementById('contentDiv').cloneNode(true);
-	// 		main.innerHTML = "";
-	// 	}
-	// 	else
-	// 	{
-	// 		console.log('Not the first enctouner O.o');
-	// 		document.getElementById('contentDiv').remove();
-	// 	}
-	// 	main.appendChild(contentDiv.cloneNode(true));
-	// }
-	// else
-	// {
-	// 	console.log('were in aiCreation!');
-	// 	if(aiContentDiv == null)
-	// 	{
-	// 		aiContentDiv = document.getElementById('aiContentDiv').cloneNode(true);
-	// 		main.innerHTML = "";
-	// 	}
-	// 	else
-	// 	{
-	// 		document.getElementById('aiContentDiv').remove();
-	// 	}
-
-	// 	main.appendChild(aiContentDiv.cloneNode(true));
-	// }
-
-	// if(contentDiv == null && document.getElementById('contentDiv') != null)
-	// {
-	// 	console.log('first encounter for manual!');
-	// 	contentDiv = document.getElementById('contentDiv').cloneNode(true);
-	// }
-	// else if(aiContentDiv == null && document.getElementById('aiContentDiv') != null)
-	// {
-	// 	console.log('first encounter for AI!');
-	// 	aiContentDiv = document.getElementById('aiContentDiv').cloneNode(true);
-	// 	// main.innerHTML = "";
-	// }
-
-	// if(document.getElementById('aiContentDiv') != null)
-	// {
-	// 	document.getElementById('aiContentDiv').remove();
-	// 	main.appendChild(aiContentDiv.cloneNode(true));
-	// }
-	// else if(document.getElementById('contentDiv') != null)
-	// {
-	// 	document.getElementById('contentDiv').remove();
-	// 	main.appendChild(contentDiv.cloneNode(true));
-	// }
+	if(appendedString == undefined)
+		appendedString = '';
 
 	disableEditMode = false;
 	
@@ -172,10 +119,10 @@ function initializeData()
 
 	selectedPalette = defaultPalette;
 	console.log(canvas);
-	canvas = document.getElementById('container');
+	canvas = document.getElementById('container'+appendedString);
 	console.log(canvas);
 	stage = new Konva.Stage({
-		container: 'container',
+		container: 'container'+appendedString,
 		width: width,
 		height: height,
 	});
@@ -210,20 +157,19 @@ function initializeData()
 		}
 	});
 
-	addColorPalettePicker();
+	addColorPalettePicker(appendedString);
 
-	if(document.getElementById('generatePuzzleButton') != null)
-		document.getElementById('generatePuzzleButton').addEventListener('mousedown', generatePuzzle);
+	document.getElementById('generatePuzzleButton'+appendedString).addEventListener('mousedown', generatePuzzle);
 
-	document.getElementById('euclideanButton').addEventListener('mousedown', function(){
+	document.getElementById('euclideanButton'+appendedString).addEventListener('mousedown', function(){
 		setDistanceMetric('euclidean');
 	});
 
-	document.getElementById('manhattanButton').addEventListener('mousedown', function(){
+	document.getElementById('manhattanButton'+appendedString).addEventListener('mousedown', function(){
 		setDistanceMetric('manhattan');
 	});
 
-	document.getElementById('saveButton').addEventListener('mousedown', function() {
+	document.getElementById('saveButton'+appendedString).addEventListener('mousedown', function() {
 		savePuzzle(false);
 	});
 
@@ -251,9 +197,9 @@ function initializeData()
 	// });
 }
 
-function addColorPalettePicker()
+function addColorPalettePicker(appendedString)
 {
-	let colorPaletteDiv = document.getElementById('colorPalettes');
+	let colorPaletteDiv = document.getElementById('colorPalettes'+appendedString);
 	let label;
 	for(let i = 0; i < radioButtons.length; i++)
 	{
@@ -263,14 +209,7 @@ function addColorPalettePicker()
 		colorPaletteDiv.appendChild(label);
 	}
 	
-	document.getElementById('randomizeColorsButton').addEventListener('mousedown', randomizePuzzleColorPalette);
-	// label = document.createElement('label');
-	// label.innerHTML = 'Randomize Colors';
-	// let tempRandomizeButton = document.createElement('button');
-	// tempRandomizeButton.innerHTML = 'Randomize Colors';
-	// tempRandomizeButton.addEventListener('mousedown', randomizePuzzleColorPalette);
-	// colorPaletteDiv.appendChild(document.createElement('br'));
-	// colorPaletteDiv.appendChild(tempRandomizeButton);
+	document.getElementById('randomizeColorsButton'+appendedString).addEventListener('mousedown', randomizePuzzleColorPalette);
 }
 
 ///Create a post ajax request and send it to the API in order to save the user's created puzzle

@@ -20,7 +20,7 @@ let totalSurfaceArea;
 
 let generationSize = 10 + 1;
 let tournamentSize = 4;
-let maximumIterations = 100;
+let maximumIterations = 150;
 let seedString = 'apples';
 
 let sliders = [];
@@ -75,13 +75,13 @@ function expandPuzzle(sites, factor)
 
 export function initializeDataAI()
 {
-	initializeData();
-	generatePuzzleAIButton = document.getElementById('generatePuzzleAIButton');
+	initializeData('AI');
+	generatePuzzleAIButton = document.getElementById('generatePuzzleButtonAI');
 	generatePuzzleAIButton.addEventListener('mousedown', generatePuzzleAI);
 	generatePuzzleAIButton.remove();
 
 	document.getElementById('nextButton').addEventListener('mousedown', displaySlidersCard);
-	colorPalettesDiv = document.getElementById('colorPalettes');
+	colorPalettesDiv = document.getElementById('colorPalettesAI');
 	colorPalettesDiv.remove();
 }
 

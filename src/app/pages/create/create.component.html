@@ -2,8 +2,8 @@
 <div>
  <a id="help" src="../../../assets/gifHelp.mp4">Help</a>
 </div>
-<div class="container-fluid" id="main">
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1" id="contentDiv">
+<div class="container-fluid">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1">
     <mat-card class="">
       <mat-card-header>
         <label>Select Puzzle Type</label>
@@ -43,7 +43,7 @@
         <label id="">Name: </label><br><input type="text" name="puzzleName" id="puzzleNameInputBox"><br>
         <label id="">Short Description: </label><br><input type="text" name="puzzleDescription" id="puzzleDescriptionInputBox"><br>
         <label hidden="true" id="tokenLabel">{{token}}</label><br>
-        <button mat-raised-button class="btns" id="saveButton" routerLink="/profilePuzzles">Save</button>
+        <button mat-raised-button class="btns" id="saveButton">Save</button>
     </mat-card-content>
   </mat-card>
   </div>

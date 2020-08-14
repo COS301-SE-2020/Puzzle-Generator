@@ -108,36 +108,61 @@ function getRandomRGB()
 ///Initialize data and set functions for buttons
 function initializeData() 
 {
-	if(document.getElementById('aiContentDiv') == null)
-	{
-		console.log('were in manual!');
-		if(contentDiv == null)
-		{
-			console.log('first encounter!');
-			contentDiv = document.getElementById('contentDiv').cloneNode(true);
-			document.getElementById('main').innerHTML = "";
-		}
-		else
-		{
-			console.log('Not the first enctouner O.o');
-			document.getElementById('contentDiv').remove();
-		}
-			document.getElementById('main').appendChild(contentDiv.cloneNode(true));
-	}
-	else
-	{
-		console.log('were in aiCreation!');
-		if(aiContentDiv == null)
-		{
-			aiContentDiv = document.getElementById('aiContentDiv').cloneNode(true);
-			document.getElementById('main').innerHTML = "";
-		}
-		else
-		{
-			document.getElementById('aiContentDiv').remove();
-		}
-			document.getElementById('main').appendChild(aiContentDiv.cloneNode(true));
-	}
+	// let main = document.getElementById('main');
+	// if(document.getElementById('aiContentDiv') == null)
+	// {
+	// 	console.log('were in manual!');
+	// 	if(contentDiv == null)
+	// 	{
+	// 		console.log('first encounter!');
+	// 		contentDiv = document.getElementById('contentDiv').cloneNode(true);
+	// 		main.innerHTML = "";
+	// 	}
+	// 	else
+	// 	{
+	// 		console.log('Not the first enctouner O.o');
+	// 		document.getElementById('contentDiv').remove();
+	// 	}
+	// 	main.appendChild(contentDiv.cloneNode(true));
+	// }
+	// else
+	// {
+	// 	console.log('were in aiCreation!');
+	// 	if(aiContentDiv == null)
+	// 	{
+	// 		aiContentDiv = document.getElementById('aiContentDiv').cloneNode(true);
+	// 		main.innerHTML = "";
+	// 	}
+	// 	else
+	// 	{
+	// 		document.getElementById('aiContentDiv').remove();
+	// 	}
+
+	// 	main.appendChild(aiContentDiv.cloneNode(true));
+	// }
+
+	// if(contentDiv == null && document.getElementById('contentDiv') != null)
+	// {
+	// 	console.log('first encounter for manual!');
+	// 	contentDiv = document.getElementById('contentDiv').cloneNode(true);
+	// }
+	// else if(aiContentDiv == null && document.getElementById('aiContentDiv') != null)
+	// {
+	// 	console.log('first encounter for AI!');
+	// 	aiContentDiv = document.getElementById('aiContentDiv').cloneNode(true);
+	// 	// main.innerHTML = "";
+	// }
+
+	// if(document.getElementById('aiContentDiv') != null)
+	// {
+	// 	document.getElementById('aiContentDiv').remove();
+	// 	main.appendChild(aiContentDiv.cloneNode(true));
+	// }
+	// else if(document.getElementById('contentDiv') != null)
+	// {
+	// 	document.getElementById('contentDiv').remove();
+	// 	main.appendChild(contentDiv.cloneNode(true));
+	// }
 
 	disableEditMode = false;
 	

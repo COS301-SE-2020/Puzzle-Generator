@@ -202,7 +202,7 @@ router.post('/getPuzzleRatingsByUser', (request, response) => {
             //console.log("Here after for loop ", ratingJsonObject);
         })
         .catch( error => {
-            response.status(500).send("Server error: ", error);
+            response.status(500);//.send("Server error: ", error);
         });
     })
     .catch( error => { response.status(500).send("Server error: ", error); });

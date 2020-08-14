@@ -125,6 +125,22 @@ router.put('/stopSharingPuzzle',(request, response) => {
     } );
 });
 
+//deletePuzzle
+router.delete('/deletePuzzle/:puzzleID', (request, response) => {
+    const puzzleID = request.params.puzzleID; //req.params.userid
+    console.log("---> ", request.params);
+    Puzzle.destroy( { returning: true, raw: true, plain: true, where: { id:  puzzleID } }
+    )
+    .then( () => {
+        console.log("Worx---> ");
+        response.status(200).send("Successfully deleted");
+     })
+    .catch( error => {
+        console.log("No bueno---> ");
+        response.status(500).send("Server error");
+    } );
+})
+
 /**
  * Puzzle Ratings Endpoints
  *  */

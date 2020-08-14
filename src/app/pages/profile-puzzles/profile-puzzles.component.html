@@ -11,6 +11,7 @@
             <mat-card-actions class="puzzleActions">
               <button *ngIf="!puzzle.shared" mat-button class="btns" (click)="share(puzzle.id)">SHARE</button>
               <button *ngIf="puzzle.shared" mat-button class="btns" (click)="stopShare(puzzle.id)">STOP SHARING</button>
+              <button mat-button class="btns" (click)="deletePuzzle(puzzle.id)">DELETE</button>
             </mat-card-actions>
         </mat-card>
     </div>

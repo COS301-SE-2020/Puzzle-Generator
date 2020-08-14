@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
-<div class="container-fluid">
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1">
+<div class="container-fluid" id="main">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1" id="aiContentDiv">
     <mat-card class="">
       <mat-card-header>
         <mat-card-title>Algorithm Parameters</mat-card-title>
@@ -22,7 +22,10 @@
             <mat-radio-button class="radio-button" value="manhattan" name="distanceMetric" id="manhattanButton" > Manhattan </mat-radio-button>
           </mat-radio-group>
           <button mat-raised-button class="btns" id="nextButton">Next</button>
-          <button mat-raised-button class="btns" ng-hide='true' id="generatePuzzleAIButton">Generate Puzzle</button><br>
+          <button mat-raised-button class="btns" id="generatePuzzleAIButton">Generate Puzzle</button><br>
+        </div>
+        <div id='colorPalettes'>
+          <button mat-raised-button class="btns" id="randomizeColorsButton">Randomize Colors</button>
         </div>
       </mat-card-content>
    </mat-card>

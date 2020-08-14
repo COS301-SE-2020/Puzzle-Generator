@@ -1,4 +1,4 @@
-import { width, height, setSites, setGenerateButtonClicked, initializeData, calculateDistancesFromSitesToPoint, 
+import { width, height, setSites, setDisableEditMode, initializeData, calculateDistancesFromSitesToPoint, 
 	equidistantPointsPresent, generateSiteBoundaries, createPieces } from 'src/assets/js/manualCreation.js'
 
 ///The structure of each individual/chromosome object
@@ -14,7 +14,7 @@ let Site = {
 	surfaceArea: 0,
 }
 
-let generatePuzzleAIButton;
+let generatePuzzleAIButton, colorPalettesDiv;
 let tempWidth, tempHeight;
 let totalSurfaceArea;
 
@@ -81,6 +81,8 @@ export function initializeDataAI()
 	generatePuzzleAIButton.remove();
 
 	document.getElementById('nextButton').addEventListener('mousedown', displaySlidersCard);
+	colorPalettesDiv = document.getElementById('colorPalettes');
+	colorPalettesDiv.remove();
 }
 
 function displaySlidersCard()
@@ -111,12 +113,13 @@ function generatePuzzleAI()
 	desiredProportions.sort( function(a, b) { return b - a } );
 
 	document.getElementById('inputContainer').innerHTML = '';
+	document.getElementById('inputContainer').appendChild(colorPalettesDiv);
 
 	let sites = run();
 	sites = expandPuzzle(sites, 10);
 
 	setSites(sites);
-	setGenerateButtonClicked(true);
+	setDisableEditMode(true);
 	generateSiteBoundaries();
 	createPieces();
 }

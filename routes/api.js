@@ -25,7 +25,11 @@ app.use(cors());
 var usersRouter = require('./users');
 var puzzleRouter = require('./puzzles');
 router.use('users',usersRouter);
-router.use('puzzle',puzzleRouter)
+router.use('puzzle',puzzleRouter);
+router.use('puzzles',puzzleRouter);
+router.use('/puzzle',puzzleRouter);
+router.use('/puzzles',puzzleRouter);
+router.use('/users',usersRouter);
 /**
  * login user endpoint
  */

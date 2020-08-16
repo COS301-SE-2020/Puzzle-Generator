@@ -58,7 +58,18 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname+"/dist"));
 
 //app.use('/', indexRouter);
-app.use('/*',express.static(__dirname+"/dist"));
+app.use('/index',express.static(__dirname+"/dist"));
+app.use('/aicreate',express.static(__dirname+"/dist"));
+app.use('/create',express.static(__dirname+"/dist"));
+app.use('/login',express.static(__dirname+"/dist"));
+app.use('/profile',express.static(__dirname+"/dist"));
+app.use('/profile-puzzles',express.static(__dirname+"/dist"));
+app.use('/profile-ratings',express.static(__dirname+"/dist"));
+app.use('/ratings',express.static(__dirname+"/dist"));
+app.use('/reset-password',express.static(__dirname+"/dist"));
+app.use('/reset-success',express.static(__dirname+"/dist"));
+app.use('/signup',express.static(__dirname+"/dist"));
+
 /**
  * End Angular - Heroku stuff
  */

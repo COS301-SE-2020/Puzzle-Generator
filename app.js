@@ -51,6 +51,7 @@ app.use('/api/users', usersRouter);
 app.use('/api', apiRouter);
 //app.use('/api/login', loginRouter);
 app.use('/api/puzzle', puzzleRouter);
+app.use('/api/puzzles', puzzleRouter);
 /**
  * Angular - Heroku stuff
  * */

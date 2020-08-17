@@ -1,7 +1,7 @@
 const express = require('express');
 const { response, request } = require('express');
 const router = express.Router();
-const db = require('../config/database');
+const db = require('../config/dbConfig');
 const User = require('../models/User');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
@@ -32,7 +32,7 @@ router.post('/createUser', (request, response) => {
                 .then( data => {
                     response.status(201).json({ "token": data.token, "name": data.name});
                 })
-                .catch( error => { 
+                .catch( error => {
                     response.status(500);
                 })
             }
@@ -40,7 +40,7 @@ router.post('/createUser', (request, response) => {
                 response.status(409).send("User already exists. Create new user");
             }
         })
-        .catch( error => { 
+        .catch( error => {
             response.status(500).send("Server Error");
         })
     }
@@ -70,7 +70,7 @@ router.post('/login', (request, response) => {
                 })
             }
         })
-        .catch( error => { 
+        .catch( error => {
             response.status(500).send("Server Error");
         })
     }
@@ -95,7 +95,7 @@ router.put('/updateUsername', (request, response) => {
             { username: request.body.username },
             { returning: true, raw: true, plain: true, where: { token: request.body.token } }
         )
-        .then( data => { 
+        .then( data => {
             response.status(201).json({"username": data[1].username});
         } )
         .catch( error => {
@@ -142,12 +142,12 @@ router.put('/resetPassword', (request, response) => {
 });
 
 //get puzzles by user
-router.post('/getPuzzlesByUser', (request, response) => { 
+router.post('/getPuzzlesByUser', (request, response) => {
     let userID = null
     User.findOne({ raw: true, where: { token: {[Op.like]:  request.body.token } } })
     .then( user => {
         userID = user.id;
-           
+
         Puzzle.findAll( { raw: true, where: { creatorID: userID  } } )
         .then( puzzles => {
             if(puzzles) {
@@ -163,18 +163,18 @@ router.post('/getPuzzlesByUser', (request, response) => {
     })
     .catch( error => {
         response.status(500).send("Failed due to server error: ", error);
-    })   
+    })
 });
 
 //get ratings by user
-router.post('/getPuzzleRatingsByUser', (request, response) => { 
+router.post('/getPuzzleRatingsByUser', (request, response) => {
     let raterID = null;
     let ratingJsonObject = [];
     let ratingPlaceholder = {};
     let index = 0;
     User.findOne({ raw: true, where: { token: {[Op.like]:  request.body.token } } })
-    .then( user => { 
-        raterID = user.id;  
+    .then( user => {
+        raterID = user.id;
 
         PuzzleRating.findAll({  raw: true, where: { userID: parseInt(raterID)}, include: [Puzzle , User] })
         .then( data => {

@@ -459,7 +459,7 @@ class AICreateComponent {
     }
 }
 AICreateComponent.ɵfac = function AICreateComponent_Factory(t) { return new (t || AICreateComponent)(); };
-AICreateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AICreateComponent, selectors: [["app-aicreate"]], decls: 69, vars: 1, consts: [[1, "container-fluid"], ["fxLayout", "row", "fxLayout.xs", "column", "fxLayoutGap", "1"], [1, ""], ["id", "inputContainer"], ["type", "text", "name", "numberOfPieces", "id", "numberOfPiecesInputBox", "value", "3"], ["type", "text", "name", "numberOfPieces", "id", "numberOfPiecesInputBox1", "value", "1"], ["type", "text", "name", "numberOfPieces", "id", "numberOfPiecesInputBox2", "value", "1"], ["type", "text", "name", "numberOfPieces", "id", "numberOfPiecesInputBox3", "value", "1"], [1, "radio-group"], ["value", "euclidean", "name", "distanceMetric", "id", "euclideanButton", 1, "radio-button"], ["value", "manhattan", "name", "distanceMetric", "id", "manhattanButton", 1, "radio-button"], ["mat-raised-button", "", "id", "nextButton", 1, "btns"], ["mat-raised-button", "", "ng-hide", "true", "id", "generatePuzzleAIButton", 1, "btns"], ["id", "container"], ["id", ""], ["type", "text", "name", "puzzleName", "id", "puzzleNameInputBox"], ["type", "text", "name", "puzzleDescription", "id", "puzzleDescriptionInputBox"], ["hidden", "true", "id", "tokenLabel"], ["mat-raised-button", "", "id", "saveButton", 1, "btns"]], template: function AICreateComponent_Template(rf, ctx) { if (rf & 1) {
+AICreateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AICreateComponent, selectors: [["app-aicreate"]], decls: 72, vars: 1, consts: [[1, "container-fluid"], ["fxLayout", "row", "fxLayout.xs", "column", "fxLayoutGap", "1"], [1, ""], ["id", "inputContainer"], ["type", "text", "name", "numberOfPieces", "id", "numberOfPiecesInputBox", "value", "3"], ["type", "text", "name", "numberOfPieces", "id", "numberOfPiecesInputBox1", "value", "1"], ["type", "text", "name", "numberOfPieces", "id", "numberOfPiecesInputBox2", "value", "1"], ["type", "text", "name", "numberOfPieces", "id", "numberOfPiecesInputBox3", "value", "1"], [1, "radio-group"], ["value", "euclidean", "name", "distanceMetric", "id", "euclideanButtonAI", 1, "radio-button"], ["value", "manhattan", "name", "distanceMetric", "id", "manhattanButtonAI", 1, "radio-button"], ["mat-raised-button", "", "id", "nextButton", 1, "btns"], ["mat-raised-button", "", "id", "generatePuzzleButtonAI", 1, "btns"], ["id", "containerAI"], ["id", "colorPalettesAI"], ["mat-raised-button", "", "id", "randomizeColorsButtonAI", 1, "btns"], ["id", ""], ["type", "text", "name", "puzzleName", "id", "puzzleNameInputBox"], ["type", "text", "name", "puzzleDescription", "id", "puzzleDescriptionInputBox"], ["hidden", "true", "id", "tokenLabel"], ["mat-raised-button", "", "id", "saveButtonAI", 1, "btns"]], template: function AICreateComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-navbar");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
@@ -525,41 +525,46 @@ AICreateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "mat-card-content");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](47, "div", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "div", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "button", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](50, "Randomize Colors");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "mat-card", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "mat-card-header");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "mat-card-title");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](51, "Saving Options");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "mat-card-content");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](53, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](54, "label", 14);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](55, "Name: ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "mat-card", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "mat-card-header");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "mat-card-title");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](54, "Saving Options");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](55, "mat-card-content");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](56, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](57, "input", 15);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](58, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "label", 14);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](60, "Short Description: ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "label", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](58, "Name: ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](59, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](60, "input", 17);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](61, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](62, "input", 16);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](63, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](64, "label", 17);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](65);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](62, "label", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](63, "Short Description: ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](64, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](65, "input", 18);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](66, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](67, "button", 18);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](68, "Save");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](67, "label", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](68);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](69, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "button", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](71, "Save");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](65);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](68);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.token);
     } }, directives: [_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_2__["NavbarComponent"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_3__["DefaultLayoutDirective"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_3__["DefaultLayoutGapDirective"], _angular_material_card__WEBPACK_IMPORTED_MODULE_4__["MatCard"], _angular_material_card__WEBPACK_IMPORTED_MODULE_4__["MatCardHeader"], _angular_material_card__WEBPACK_IMPORTED_MODULE_4__["MatCardTitle"], _angular_material_card__WEBPACK_IMPORTED_MODULE_4__["MatCardContent"], _angular_material_radio__WEBPACK_IMPORTED_MODULE_5__["MatRadioGroup"], _angular_material_radio__WEBPACK_IMPORTED_MODULE_5__["MatRadioButton"], _angular_material_button__WEBPACK_IMPORTED_MODULE_6__["MatButton"]], styles: [".container-fluid[_ngcontent-%COMP%]{\r\n  background-color: whitesmoke;\r\n  padding: 3%;\r\n  \r\n  \r\n  border-radius: 0.5%;\r\n}\r\n\r\nmat-card[_ngcontent-%COMP%]{\r\n margin: 2%;\r\n}\r\n\r\n.content[_ngcontent-%COMP%]{\r\n margin-left: 10rem;\r\n}\r\n\r\n#container[_ngcontent-%COMP%] {\r\n   width: 500px;\r\n   height: 500px;\r\n   border: 1px solid black;\r\n   margin: 1rem;\r\n}\r\n\r\n.radio-group[_ngcontent-%COMP%] {\r\n   display: flex;\r\n   flex-direction: column;\r\n   \r\n   font-size: 1vw;\r\n }\r\n\r\n#label[_ngcontent-%COMP%]{\r\n   text-align: center;\r\n   padding: 0.7em 0;\r\n   font-size: 1vw;\r\n   font-family: keep-calm;\r\n   color: black;\r\n }\r\n\r\n.btns[_ngcontent-%COMP%]{\r\n   background-color: #7C593A;\r\n   color: white;\r\n   margin: 0 1.3vw;\r\n }\r\n\r\n.main-title[_ngcontent-%COMP%]{\r\n   text-align: center;\r\n   text-transform: capitalize;\r\n   padding: 0.7em 0;\r\n   margin-top: 30px;\r\n   font-size: 40px;\r\n   text-align: center;\r\n   font-family: keep-calm;\r\n   color: gray;\r\n }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvYWljcmVhdGUvYWljcmVhdGUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDRCQUE0QjtFQUM1QixXQUFXO0VBQ1gsdUJBQXVCO0VBQ3ZCLHdCQUF3QjtFQUN4QixtQkFBbUI7QUFDckI7O0FBRUE7Q0FDQyxVQUFVO0FBQ1g7O0FBRUE7Q0FDQyxrQkFBa0I7QUFDbkI7O0FBRUE7R0FDRyxZQUFZO0dBQ1osYUFBYTtHQUNiLHVCQUF1QjtHQUN2QixZQUFZO0FBQ2Y7O0FBRUE7R0FDRyxhQUFhO0dBQ2Isc0JBQXNCO0dBQ3RCLHVCQUF1QjtHQUN2QixjQUFjO0NBQ2hCOztBQUVBO0dBQ0Usa0JBQWtCO0dBQ2xCLGdCQUFnQjtHQUNoQixjQUFjO0dBQ2Qsc0JBQXNCO0dBQ3RCLFlBQVk7Q0FDZDs7QUFFQTtHQUNFLHlCQUF5QjtHQUN6QixZQUFZO0dBQ1osZUFBZTtDQUNqQjs7QUFHQTtHQUNFLGtCQUFrQjtHQUNsQiwwQkFBMEI7R0FDMUIsZ0JBQWdCO0dBQ2hCLGdCQUFnQjtHQUNoQixlQUFlO0dBQ2Ysa0JBQWtCO0dBQ2xCLHNCQUFzQjtHQUN0QixXQUFXO0NBQ2IiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9haWNyZWF0ZS9haWNyZWF0ZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbnRhaW5lci1mbHVpZHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZXNtb2tlO1xyXG4gIHBhZGRpbmc6IDMlO1xyXG4gIC8qIG1hcmdpbi1sZWZ0OiAxLjUlOyAqL1xyXG4gIC8qIG1hcmdpbi1yaWdodDogMS41JTsgKi9cclxuICBib3JkZXItcmFkaXVzOiAwLjUlO1xyXG59XHJcblxyXG5tYXQtY2FyZHtcclxuIG1hcmdpbjogMiU7XHJcbn1cclxuXHJcbi5jb250ZW50e1xyXG4gbWFyZ2luLWxlZnQ6IDEwcmVtO1xyXG59XHJcblxyXG4jY29udGFpbmVyIHtcclxuICAgd2lkdGg6IDUwMHB4O1xyXG4gICBoZWlnaHQ6IDUwMHB4O1xyXG4gICBib3JkZXI6IDFweCBzb2xpZCBibGFjaztcclxuICAgbWFyZ2luOiAxcmVtO1xyXG59XHJcblxyXG4ucmFkaW8tZ3JvdXAge1xyXG4gICBkaXNwbGF5OiBmbGV4O1xyXG4gICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG4gICAvKiBtYXJnaW4tbGVmdDogMXJlbTsgKi9cclxuICAgZm9udC1zaXplOiAxdnc7XHJcbiB9XHJcblxyXG4gI2xhYmVse1xyXG4gICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgIHBhZGRpbmc6IDAuN2VtIDA7XHJcbiAgIGZvbnQtc2l6ZTogMXZ3O1xyXG4gICBmb250LWZhbWlseToga2VlcC1jYWxtO1xyXG4gICBjb2xvcjogYmxhY2s7XHJcbiB9XHJcblxyXG4gLmJ0bnN7XHJcbiAgIGJhY2tncm91bmQtY29sb3I6ICM3QzU5M0E7XHJcbiAgIGNvbG9yOiB3aGl0ZTtcclxuICAgbWFyZ2luOiAwIDEuM3Z3O1xyXG4gfVxyXG5cclxuXHJcbiAubWFpbi10aXRsZXtcclxuICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICB0ZXh0LXRyYW5zZm9ybTogY2FwaXRhbGl6ZTtcclxuICAgcGFkZGluZzogMC43ZW0gMDtcclxuICAgbWFyZ2luLXRvcDogMzBweDtcclxuICAgZm9udC1zaXplOiA0MHB4O1xyXG4gICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgIGZvbnQtZmFtaWx5OiBrZWVwLWNhbG07XHJcbiAgIGNvbG9yOiBncmF5O1xyXG4gfVxyXG4iXX0= */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AICreateComponent, [{
@@ -590,7 +595,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/flex-layout/flex */ "./node_modules/@angular/flex-layout/__ivy_ngcc__/esm2015/flex.js");
 /* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/card */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/card.js");
 /* harmony import */ var _angular_material_radio__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/radio */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/radio.js");
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/icon.js");
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
+
 
 
 
@@ -607,7 +614,7 @@ class CreateComponent {
     }
 }
 CreateComponent.ɵfac = function CreateComponent_Factory(t) { return new (t || CreateComponent)(); };
-CreateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CreateComponent, selectors: [["app-create"]], decls: 46, vars: 1, consts: [["id", "help", "src", "../../../assets/gifHelp.mp4"], [1, "container-fluid"], ["fxLayout", "row", "fxLayout.xs", "column", "fxLayoutGap", "1"], [1, ""], [1, "radio-group"], ["value", "euclidean", "name", "distanceMetric", "id", "euclideanButton", 1, "radio-button"], ["value", "manhattan", "name", "distanceMetric", "id", "manhattanButton", 1, "radio-button"], ["id", "container"], ["mat-raised-button", "", "id", "generatePuzzleButton", 1, "btns"], ["id", ""], ["type", "text", "name", "puzzleName", "id", "puzzleNameInputBox"], ["type", "text", "name", "puzzleDescription", "id", "puzzleDescriptionInputBox"], ["hidden", "true", "id", "tokenLabel"], ["mat-raised-button", "", "id", "saveButton", 1, "btns"]], template: function CreateComponent_Template(rf, ctx) { if (rf & 1) {
+CreateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CreateComponent, selectors: [["app-create"]], decls: 51, vars: 1, consts: [["id", "help", "src", "../../../assets/gifHelp.mp4"], [1, "container-fluid"], ["fxLayout", "row", "fxLayout.xs", "column", "fxLayoutGap", "1"], [1, ""], [1, "radio-group"], ["value", "euclidean", "name", "distanceMetric", "id", "euclideanButton", 1, "radio-button"], ["value", "manhattan", "name", "distanceMetric", "id", "manhattanButton", 1, "radio-button"], ["id", "deletePointButton"], ["id", "container"], ["id", "colorPalettes"], ["mat-raised-button", "", "id", "randomizeColorsButton", 1, "btns"], ["mat-raised-button", "", "id", "generatePuzzleButton", 1, "btns"], ["id", ""], ["type", "text", "name", "puzzleName", "id", "puzzleNameInputBox"], ["type", "text", "name", "puzzleDescription", "id", "puzzleDescriptionInputBox"], ["hidden", "true", "id", "tokenLabel"], ["mat-raised-button", "", "id", "saveButton", 1, "btns"]], template: function CreateComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-navbar");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "a", 0);
@@ -640,49 +647,56 @@ CreateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "mat-card-content");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](21, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "mat-icon", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22, "delete");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "mat-card-actions");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "button", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "Generate Puzzle");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](23, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "mat-card-actions");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](25, "div", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "button", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27, "Randomize Colors");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "button", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](29, "Generate Puzzle");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "mat-card", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "mat-card-header");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "mat-card-title");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, "Saving Options");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "mat-card", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "mat-card-header");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "mat-card-title");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](33, "Saving Options");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "mat-card-content");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](30, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "label", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, "Name: ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](33, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](34, "input", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "mat-card-content");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](35, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "label", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](37, "Short Description: ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "label", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](37, "Name: ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](38, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](39, "input", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](39, "input", 13);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](40, "br");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "label", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](42, "Short Description: ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](43, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](44, "button", 13);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](45, "Save");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](44, "input", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](45, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "label", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](47);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](48, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "button", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](50, "Save");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](47);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.token);
-    } }, directives: [_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_2__["NavbarComponent"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_3__["DefaultLayoutDirective"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_3__["DefaultLayoutGapDirective"], _angular_material_card__WEBPACK_IMPORTED_MODULE_4__["MatCard"], _angular_material_card__WEBPACK_IMPORTED_MODULE_4__["MatCardHeader"], _angular_material_card__WEBPACK_IMPORTED_MODULE_4__["MatCardContent"], _angular_material_radio__WEBPACK_IMPORTED_MODULE_5__["MatRadioGroup"], _angular_material_radio__WEBPACK_IMPORTED_MODULE_5__["MatRadioButton"], _angular_material_card__WEBPACK_IMPORTED_MODULE_4__["MatCardActions"], _angular_material_button__WEBPACK_IMPORTED_MODULE_6__["MatButton"], _angular_material_card__WEBPACK_IMPORTED_MODULE_4__["MatCardTitle"]], styles: [".container-fluid[_ngcontent-%COMP%]{\r\n   background-color: whitesmoke;\r\n   padding: 3%;\r\n   \r\n   \r\n   border-radius: 0.5%;\r\n}\r\n\r\nmat-card[_ngcontent-%COMP%]{\r\n  margin: 2%;\r\n}\r\n\r\n.content[_ngcontent-%COMP%]{\r\n  margin-left: 10rem;\r\n}\r\n\r\n#container[_ngcontent-%COMP%] {\r\n    width: 500px;\r\n    height: 500px;\r\n    border: 1px solid black;\r\n    margin: 1rem;\r\n}\r\n\r\n.radio-group[_ngcontent-%COMP%] {\r\n    display: flex;\r\n    flex-direction: column;\r\n    \r\n    font-size: 1vw;\r\n  }\r\n\r\n#label[_ngcontent-%COMP%]{\r\n    text-align: center;\r\n    padding: 0.7em 0;\r\n    font-size: 1vw;\r\n    font-family: keep-calm;\r\n    color: black;\r\n  }\r\n\r\n.btns[_ngcontent-%COMP%]{\r\n    background-color: #7C593A;\r\n    color: white;\r\n    margin: 0 1.3vw;\r\n  }\r\n\r\n.main-title[_ngcontent-%COMP%]{\r\n    text-align: center;\r\n    text-transform: capitalize;\r\n    padding: 0.7em 0;\r\n    margin-top: 30px;\r\n    font-size: 40px;\r\n    text-align: center;\r\n    font-family: keep-calm;\r\n    color: gray;\r\n  }\r\n\r\n#help[_ngcontent-%COMP%]{\r\n    background-color: #7C593A;\r\n    color: white;\r\n    padding: 1vw;\r\n    float: right;\r\n    margin-right: 2vw;\r\n    cursor: pointer;\r\n\r\n  }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY3JlYXRlL2NyZWF0ZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0dBQ0csNEJBQTRCO0dBQzVCLFdBQVc7R0FDWCx1QkFBdUI7R0FDdkIsd0JBQXdCO0dBQ3hCLG1CQUFtQjtBQUN0Qjs7QUFFQTtFQUNFLFVBQVU7QUFDWjs7QUFFQTtFQUNFLGtCQUFrQjtBQUNwQjs7QUFFQTtJQUNJLFlBQVk7SUFDWixhQUFhO0lBQ2IsdUJBQXVCO0lBQ3ZCLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxhQUFhO0lBQ2Isc0JBQXNCO0lBQ3RCLHVCQUF1QjtJQUN2QixjQUFjO0VBQ2hCOztBQUVBO0lBQ0Usa0JBQWtCO0lBQ2xCLGdCQUFnQjtJQUNoQixjQUFjO0lBQ2Qsc0JBQXNCO0lBQ3RCLFlBQVk7RUFDZDs7QUFFQTtJQUNFLHlCQUF5QjtJQUN6QixZQUFZO0lBQ1osZUFBZTtFQUNqQjs7QUFHQTtJQUNFLGtCQUFrQjtJQUNsQiwwQkFBMEI7SUFDMUIsZ0JBQWdCO0lBQ2hCLGdCQUFnQjtJQUNoQixlQUFlO0lBQ2Ysa0JBQWtCO0lBQ2xCLHNCQUFzQjtJQUN0QixXQUFXO0VBQ2I7O0FBRUE7SUFDRSx5QkFBeUI7SUFDekIsWUFBWTtJQUNaLFlBQVk7SUFDWixZQUFZO0lBQ1osaUJBQWlCO0lBQ2pCLGVBQWU7O0VBRWpCIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvY3JlYXRlL2NyZWF0ZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbnRhaW5lci1mbHVpZHtcclxuICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGVzbW9rZTtcclxuICAgcGFkZGluZzogMyU7XHJcbiAgIC8qIG1hcmdpbi1sZWZ0OiAxLjUlOyAqL1xyXG4gICAvKiBtYXJnaW4tcmlnaHQ6IDEuNSU7ICovXHJcbiAgIGJvcmRlci1yYWRpdXM6IDAuNSU7XHJcbn1cclxuXHJcbm1hdC1jYXJke1xyXG4gIG1hcmdpbjogMiU7XHJcbn1cclxuXHJcbi5jb250ZW50e1xyXG4gIG1hcmdpbi1sZWZ0OiAxMHJlbTtcclxufVxyXG5cclxuI2NvbnRhaW5lciB7XHJcbiAgICB3aWR0aDogNTAwcHg7XHJcbiAgICBoZWlnaHQ6IDUwMHB4O1xyXG4gICAgYm9yZGVyOiAxcHggc29saWQgYmxhY2s7XHJcbiAgICBtYXJnaW46IDFyZW07XHJcbn1cclxuXHJcbi5yYWRpby1ncm91cCB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICAgIC8qIG1hcmdpbi1sZWZ0OiAxcmVtOyAqL1xyXG4gICAgZm9udC1zaXplOiAxdnc7XHJcbiAgfVxyXG5cclxuICAjbGFiZWx7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBwYWRkaW5nOiAwLjdlbSAwO1xyXG4gICAgZm9udC1zaXplOiAxdnc7XHJcbiAgICBmb250LWZhbWlseToga2VlcC1jYWxtO1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG4gIH1cclxuXHJcbiAgLmJ0bnN7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjN0M1OTNBO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgbWFyZ2luOiAwIDEuM3Z3O1xyXG4gIH1cclxuXHJcblxyXG4gIC5tYWluLXRpdGxle1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgdGV4dC10cmFuc2Zvcm06IGNhcGl0YWxpemU7XHJcbiAgICBwYWRkaW5nOiAwLjdlbSAwO1xyXG4gICAgbWFyZ2luLXRvcDogMzBweDtcclxuICAgIGZvbnQtc2l6ZTogNDBweDtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGZvbnQtZmFtaWx5OiBrZWVwLWNhbG07XHJcbiAgICBjb2xvcjogZ3JheTtcclxuICB9XHJcblxyXG4gICNoZWxwe1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzdDNTkzQTtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIHBhZGRpbmc6IDF2dztcclxuICAgIGZsb2F0OiByaWdodDtcclxuICAgIG1hcmdpbi1yaWdodDogMnZ3O1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG5cclxuICB9XHJcbiJdfQ== */"] });
+    } }, directives: [_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_2__["NavbarComponent"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_3__["DefaultLayoutDirective"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_3__["DefaultLayoutGapDirective"], _angular_material_card__WEBPACK_IMPORTED_MODULE_4__["MatCard"], _angular_material_card__WEBPACK_IMPORTED_MODULE_4__["MatCardHeader"], _angular_material_card__WEBPACK_IMPORTED_MODULE_4__["MatCardContent"], _angular_material_radio__WEBPACK_IMPORTED_MODULE_5__["MatRadioGroup"], _angular_material_radio__WEBPACK_IMPORTED_MODULE_5__["MatRadioButton"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__["MatIcon"], _angular_material_card__WEBPACK_IMPORTED_MODULE_4__["MatCardActions"], _angular_material_button__WEBPACK_IMPORTED_MODULE_7__["MatButton"], _angular_material_card__WEBPACK_IMPORTED_MODULE_4__["MatCardTitle"]], styles: [".container-fluid[_ngcontent-%COMP%]{\r\n   background-color: whitesmoke;\r\n   padding: 3%;\r\n   \r\n   \r\n   border-radius: 0.5%;\r\n}\r\n\r\nmat-card[_ngcontent-%COMP%]{\r\n  margin: 2%;\r\n}\r\n\r\n.content[_ngcontent-%COMP%]{\r\n  margin-left: 10rem;\r\n}\r\n\r\n#container[_ngcontent-%COMP%] {\r\n    width: 500px;\r\n    height: 500px;\r\n    border: 1px solid black;\r\n    margin: 1rem;\r\n}\r\n\r\n.radio-group[_ngcontent-%COMP%] {\r\n    display: flex;\r\n    flex-direction: column;\r\n    \r\n    font-size: 1vw;\r\n  }\r\n\r\n#label[_ngcontent-%COMP%]{\r\n    text-align: center;\r\n    padding: 0.7em 0;\r\n    font-size: 1vw;\r\n    font-family: keep-calm;\r\n    color: black;\r\n  }\r\n\r\n.btns[_ngcontent-%COMP%]{\r\n    background-color: #7C593A;\r\n    color: white;\r\n    margin: 0 1.3vw;\r\n  }\r\n\r\n.main-title[_ngcontent-%COMP%]{\r\n    text-align: center;\r\n    text-transform: capitalize;\r\n    padding: 0.7em 0;\r\n    margin-top: 30px;\r\n    font-size: 40px;\r\n    text-align: center;\r\n    font-family: keep-calm;\r\n    color: gray;\r\n  }\r\n\r\n#help[_ngcontent-%COMP%]{\r\n    background-color: #7C593A;\r\n    color: white;\r\n    padding: 1vw;\r\n    float: right;\r\n    margin-right: 2vw;\r\n    cursor: pointer;\r\n\r\n  }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY3JlYXRlL2NyZWF0ZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0dBQ0csNEJBQTRCO0dBQzVCLFdBQVc7R0FDWCx1QkFBdUI7R0FDdkIsd0JBQXdCO0dBQ3hCLG1CQUFtQjtBQUN0Qjs7QUFFQTtFQUNFLFVBQVU7QUFDWjs7QUFFQTtFQUNFLGtCQUFrQjtBQUNwQjs7QUFFQTtJQUNJLFlBQVk7SUFDWixhQUFhO0lBQ2IsdUJBQXVCO0lBQ3ZCLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxhQUFhO0lBQ2Isc0JBQXNCO0lBQ3RCLHVCQUF1QjtJQUN2QixjQUFjO0VBQ2hCOztBQUVBO0lBQ0Usa0JBQWtCO0lBQ2xCLGdCQUFnQjtJQUNoQixjQUFjO0lBQ2Qsc0JBQXNCO0lBQ3RCLFlBQVk7RUFDZDs7QUFFQTtJQUNFLHlCQUF5QjtJQUN6QixZQUFZO0lBQ1osZUFBZTtFQUNqQjs7QUFHQTtJQUNFLGtCQUFrQjtJQUNsQiwwQkFBMEI7SUFDMUIsZ0JBQWdCO0lBQ2hCLGdCQUFnQjtJQUNoQixlQUFlO0lBQ2Ysa0JBQWtCO0lBQ2xCLHNCQUFzQjtJQUN0QixXQUFXO0VBQ2I7O0FBRUE7SUFDRSx5QkFBeUI7SUFDekIsWUFBWTtJQUNaLFlBQVk7SUFDWixZQUFZO0lBQ1osaUJBQWlCO0lBQ2pCLGVBQWU7O0VBRWpCIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvY3JlYXRlL2NyZWF0ZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbnRhaW5lci1mbHVpZHtcclxuICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGVzbW9rZTtcclxuICAgcGFkZGluZzogMyU7XHJcbiAgIC8qIG1hcmdpbi1sZWZ0OiAxLjUlOyAqL1xyXG4gICAvKiBtYXJnaW4tcmlnaHQ6IDEuNSU7ICovXHJcbiAgIGJvcmRlci1yYWRpdXM6IDAuNSU7XHJcbn1cclxuXHJcbm1hdC1jYXJke1xyXG4gIG1hcmdpbjogMiU7XHJcbn1cclxuXHJcbi5jb250ZW50e1xyXG4gIG1hcmdpbi1sZWZ0OiAxMHJlbTtcclxufVxyXG5cclxuI2NvbnRhaW5lciB7XHJcbiAgICB3aWR0aDogNTAwcHg7XHJcbiAgICBoZWlnaHQ6IDUwMHB4O1xyXG4gICAgYm9yZGVyOiAxcHggc29saWQgYmxhY2s7XHJcbiAgICBtYXJnaW46IDFyZW07XHJcbn1cclxuXHJcbi5yYWRpby1ncm91cCB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICAgIC8qIG1hcmdpbi1sZWZ0OiAxcmVtOyAqL1xyXG4gICAgZm9udC1zaXplOiAxdnc7XHJcbiAgfVxyXG5cclxuICAjbGFiZWx7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBwYWRkaW5nOiAwLjdlbSAwO1xyXG4gICAgZm9udC1zaXplOiAxdnc7XHJcbiAgICBmb250LWZhbWlseToga2VlcC1jYWxtO1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG4gIH1cclxuXHJcbiAgLmJ0bnN7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjN0M1OTNBO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgbWFyZ2luOiAwIDEuM3Z3O1xyXG4gIH1cclxuXHJcblxyXG4gIC5tYWluLXRpdGxle1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgdGV4dC10cmFuc2Zvcm06IGNhcGl0YWxpemU7XHJcbiAgICBwYWRkaW5nOiAwLjdlbSAwO1xyXG4gICAgbWFyZ2luLXRvcDogMzBweDtcclxuICAgIGZvbnQtc2l6ZTogNDBweDtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGZvbnQtZmFtaWx5OiBrZWVwLWNhbG07XHJcbiAgICBjb2xvcjogZ3JheTtcclxuICB9XHJcblxyXG4gICNoZWxwe1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzdDNTkzQTtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIHBhZGRpbmc6IDF2dztcclxuICAgIGZsb2F0OiByaWdodDtcclxuICAgIG1hcmdpbi1yaWdodDogMnZ3O1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG5cclxuICB9XHJcbiJdfQ== */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CreateComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -904,14 +918,8 @@ class LoginComponent {
                 localStorage.setItem('name', data['name']);
                 localStorage.removeItem('token');
                 localStorage.setItem('token', data['token']);
-                // update api to get id as well
-                localStorage.removeItem('id');
-                localStorage.setItem('id', data['id']);
                 this.formError = "";
                 this.router.navigate(['/ratings']);
-                //var timeoutHandle = window.setTimeout(...);
-                //window.clearTimeout(timeoutHandle);
-                //timeoutHandle = window.setTimeout(...);
                 setTimeout(() => {
                     localStorage.removeItem('token');
                     this.router.navigate(['login']);
@@ -1022,15 +1030,17 @@ LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCom
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfilePuzzlesComponent", function() { return ProfilePuzzlesComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var src_app_services_api_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/services/api.service */ "./src/app/services/api.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../navbar/navbar.component */ "./src/app/navbar/navbar.component.ts");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-/* harmony import */ var _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/flex-layout/flex */ "./node_modules/@angular/flex-layout/__ivy_ngcc__/esm2015/flex.js");
-/* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/card */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/card.js");
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
-/* harmony import */ var _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/progress-spinner */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/progress-spinner.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var src_app_services_api_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/api.service */ "./src/app/services/api.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../navbar/navbar.component */ "./src/app/navbar/navbar.component.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/flex-layout/flex */ "./node_modules/@angular/flex-layout/__ivy_ngcc__/esm2015/flex.js");
+/* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/card */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/card.js");
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
+/* harmony import */ var _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/progress-spinner */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/progress-spinner.js");
+
 
 
 
@@ -1042,67 +1052,72 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function ProfilePuzzlesComponent_div_2_mat_card_4_button_7_Template(rf, ctx) { if (rf & 1) {
-    const _r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ProfilePuzzlesComponent_div_2_mat_card_4_button_7_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r9); const puzzle_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit; const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r7.share(puzzle_r4.id); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "SHARE");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    const _r9 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "button", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ProfilePuzzlesComponent_div_2_mat_card_4_button_7_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r9); const puzzle_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit; const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r7.share(puzzle_r4.id); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "SHARE");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
 function ProfilePuzzlesComponent_div_2_mat_card_4_button_8_Template(rf, ctx) { if (rf & 1) {
-    const _r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ProfilePuzzlesComponent_div_2_mat_card_4_button_8_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r12); const puzzle_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit; const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r10.stopShare(puzzle_r4.id); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "STOP SHARING");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    const _r12 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "button", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ProfilePuzzlesComponent_div_2_mat_card_4_button_8_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r12); const puzzle_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit; const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r10.stopShare(puzzle_r4.id); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "STOP SHARING");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
 function ProfilePuzzlesComponent_div_2_mat_card_4_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-card", 9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "img", 11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "mat-card-title");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "strong");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "mat-card-actions", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, ProfilePuzzlesComponent_div_2_mat_card_4_button_7_Template, 2, 0, "button", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](8, ProfilePuzzlesComponent_div_2_mat_card_4_button_8_Template, 2, 0, "button", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    const _r14 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "mat-card", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](1, "div", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "img", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "mat-card-title");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "strong");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "mat-card-actions", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](7, ProfilePuzzlesComponent_div_2_mat_card_4_button_7_Template, 2, 0, "button", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](8, ProfilePuzzlesComponent_div_2_mat_card_4_button_8_Template, 2, 0, "button", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "button", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ProfilePuzzlesComponent_div_2_mat_card_4_Template_button_click_9_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r14); const puzzle_r4 = ctx.$implicit; const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r13.deletePuzzle(puzzle_r4.id); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](10, "DELETE");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const puzzle_r4 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("src", puzzle_r4.image, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](puzzle_r4.name);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !puzzle_r4.shared);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", puzzle_r4.shared);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpropertyInterpolate"]("src", puzzle_r4.image, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](puzzle_r4.name);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !puzzle_r4.shared);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", puzzle_r4.shared);
 } }
 function ProfilePuzzlesComponent_div_2_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h1", 6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "My Puzzles");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, ProfilePuzzlesComponent_div_2_mat_card_4_Template, 9, 4, "mat-card", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "h1", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, "My Puzzles");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "div", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, ProfilePuzzlesComponent_div_2_mat_card_4_Template, 11, 4, "mat-card", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r0.userPuzzleList);
+    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r0.userPuzzleList);
 } }
 function ProfilePuzzlesComponent_div_3_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h2", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "You have not created any puzzles at the moment");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "h2", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, "You have not created any puzzles at the moment");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
 function ProfilePuzzlesComponent_mat_spinner_5_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "mat-spinner", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "mat-spinner", 16);
 } }
 class ProfilePuzzlesComponent {
     constructor(api, router) {
@@ -1128,6 +1143,15 @@ class ProfilePuzzlesComponent {
         }
         location.reload();
     }
+    deletePuzzle(puzzleID) {
+        // this.puzzle = {
+        //   "puzzleID": puzzleID
+        // }
+        if (this.api.deletePuzzle(puzzleID).subscribe()) {
+            alert("Puzzle deleted");
+        }
+        location.reload();
+    }
     stopShare(data) {
         this.puzzle = {
             "puzzleID": data
@@ -1136,6 +1160,12 @@ class ProfilePuzzlesComponent {
             alert("Stop sharing puzzle");
         }
         location.reload();
+    }
+    delay(ms) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            yield new Promise(resolve => setTimeout(() => resolve(), ms))
+                .then(() => { console.log("fired"); });
+        });
     }
     ngOnInit() {
         if (!localStorage.getItem('token')) {
@@ -1147,35 +1177,38 @@ class ProfilePuzzlesComponent {
         };
         this.show = true;
         this.text = false;
-        this.getUserPuzzles();
+        this.delay(1500).then(() => {
+            this.getUserPuzzles();
+        });
+        //this.getUserPuzzles();
     }
 }
-ProfilePuzzlesComponent.ɵfac = function ProfilePuzzlesComponent_Factory(t) { return new (t || ProfilePuzzlesComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_api_service__WEBPACK_IMPORTED_MODULE_1__["APIService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"])); };
-ProfilePuzzlesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ProfilePuzzlesComponent, selectors: [["app-profile-puzzles"]], decls: 6, vars: 3, consts: [[1, "container"], ["class", "container-fluid", 4, "ngIf"], [4, "ngIf"], [1, "spinner"], ["id", "spinner", 4, "ngIf"], [1, "container-fluid"], [1, "main-title"], ["fxLayout", "row wrap", "fxLayout.xs", "column", "fxLayoutAlign", "space-evenly center", 1, "flex-container"], ["class", "content", 4, "ngFor", "ngForOf"], [1, "content"], [1, "content-overlay"], [1, "content-image", 3, "src"], [1, "puzzleActions"], ["mat-button", "", "class", "btns", 3, "click", 4, "ngIf"], ["mat-button", "", 1, "btns", 3, "click"], ["id", "NoneText"], ["id", "spinner"]], template: function ProfilePuzzlesComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-navbar");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, ProfilePuzzlesComponent_div_2_Template, 5, 1, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, ProfilePuzzlesComponent_div_3_Template, 3, 0, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, ProfilePuzzlesComponent_mat_spinner_5_Template, 1, 0, "mat-spinner", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+ProfilePuzzlesComponent.ɵfac = function ProfilePuzzlesComponent_Factory(t) { return new (t || ProfilePuzzlesComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](src_app_services_api_service__WEBPACK_IMPORTED_MODULE_2__["APIService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"])); };
+ProfilePuzzlesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: ProfilePuzzlesComponent, selectors: [["app-profile-puzzles"]], decls: 6, vars: 3, consts: [[1, "container"], ["class", "container-fluid", 4, "ngIf"], [4, "ngIf"], [1, "spinner"], ["id", "spinner", 4, "ngIf"], [1, "container-fluid"], [1, "main-title"], ["fxLayout", "row wrap", "fxLayout.xs", "column", "fxLayoutAlign", "space-evenly center", 1, "flex-container"], ["class", "content", 4, "ngFor", "ngForOf"], [1, "content"], [1, "content-overlay"], [1, "content-image", 3, "src"], [1, "puzzleActions"], ["mat-button", "", "class", "btns", 3, "click", 4, "ngIf"], ["mat-button", "", 1, "btns", 3, "click"], ["id", "NoneText"], ["id", "spinner"]], template: function ProfilePuzzlesComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "app-navbar");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, ProfilePuzzlesComponent_div_2_Template, 5, 1, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](3, ProfilePuzzlesComponent_div_3_Template, 3, 0, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](5, ProfilePuzzlesComponent_mat_spinner_5_Template, 1, 0, "mat-spinner", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.currentUser);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.text);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.show);
-    } }, directives: [_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_3__["NavbarComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_5__["DefaultLayoutDirective"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_5__["DefaultLayoutAlignDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _angular_material_card__WEBPACK_IMPORTED_MODULE_6__["MatCard"], _angular_material_card__WEBPACK_IMPORTED_MODULE_6__["MatCardTitle"], _angular_material_card__WEBPACK_IMPORTED_MODULE_6__["MatCardActions"], _angular_material_button__WEBPACK_IMPORTED_MODULE_7__["MatButton"], _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_8__["MatSpinner"]], styles: [".container-fluid[_ngcontent-%COMP%]{\r\n  background-color: white;\r\n  margin-left: 1.5%;\r\n  margin-right: 1.5%;\r\n  border-radius: 0.5%;\r\n}\r\n\r\n.example-header-image[_ngcontent-%COMP%] {\r\n background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');\r\n background-size: cover;\r\n}\r\n\r\n.navimg[_ngcontent-%COMP%]{\r\n height: 100%;\r\n width: 50%;\r\n}\r\n\r\n.container[_ngcontent-%COMP%]{\r\n background-color: white;\r\n width: 100%;\r\n}\r\n\r\n.infoIcon[_ngcontent-%COMP%]{\r\n float: right;\r\n}\r\n\r\n.content-image[_ngcontent-%COMP%]{\r\n width: 20vw;\r\n height: 20vw;\r\n}\r\n\r\nh1[_ngcontent-%COMP%]{\r\n  padding-top: 2%;\r\n  margin-top: 1rem;\r\n  font-family: keep-calm;\r\n  color: black;\r\n  text-align: center;\r\n}\r\n\r\nmat-card[_ngcontent-%COMP%]{\r\n margin: auto;\r\n margin-bottom: 2vw;\r\n margin-top: 1vw;\r\n background-color: gainsboro;\r\n color: black;\r\n box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);\r\n}\r\n\r\nmat-card-subtitle[_ngcontent-%COMP%]{\r\n font-size: 14px;\r\n  \r\n}\r\n\r\nmat-card-title[_ngcontent-%COMP%]{\r\n  margin-top: 5px;\r\n font-family: Arial, Helvetica, sans-serif;\r\n}\r\n\r\n.btns[_ngcontent-%COMP%]{\r\n background-color: #7C593A;\r\n color: white;\r\n margin: 0.5vw;\r\n width: 50%;\r\n border: 1px solid white;\r\n text-align: center;\r\n}\r\n\r\n.puzzleActions[_ngcontent-%COMP%]{\r\n display: inline;\r\n}\r\n\r\n.puzzleDetails[_ngcontent-%COMP%]{\r\n color: #fff;\r\n}\r\n\r\n.btns[_ngcontent-%COMP%]:hover{\r\n  \r\n  background-color: white;\r\n  color: black;\r\n  border: #7C593A solid 0.1px;\r\n }\r\n\r\n.example-form-field[_ngcontent-%COMP%]{\r\n margin-left: 2vw;\r\n}\r\n\r\n#spinner[_ngcontent-%COMP%]{\r\n margin: auto ;\r\n}\r\n\r\n*[_ngcontent-%COMP%], *[_ngcontent-%COMP%]:before, *[_ngcontent-%COMP%]:after{\r\n margin: 0;\r\n padding: 0;\r\n box-sizing: border-box;\r\n}\r\n\r\n.content[_ngcontent-%COMP%] {\r\n position: relative;\r\n width: 100%;\r\n max-width: 340px;\r\n overflow: hidden;\r\n}\r\n\r\n.content-image[_ngcontent-%COMP%]{\r\n width: 100%;\r\n margin-bottom: 10px;\r\n}\r\n\r\n#NoneText[_ngcontent-%COMP%]{\r\n  text-align: center;\r\n}\r\n\r\n.spinner[_ngcontent-%COMP%]     .mat-progress-spinner circle, .mat-spinner[_ngcontent-%COMP%]   circle[_ngcontent-%COMP%] {\r\n        stroke: #7C593A;\r\n      }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcHJvZmlsZS1wdXp6bGVzL3Byb2ZpbGUtcHV6emxlcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLGtFQUFrRTs7QUFFbEU7RUFDRSx1QkFBdUI7RUFDdkIsaUJBQWlCO0VBQ2pCLGtCQUFrQjtFQUNsQixtQkFBbUI7QUFDckI7O0FBRUE7Q0FDQyxtRkFBbUY7Q0FDbkYsc0JBQXNCO0FBQ3ZCOztBQUdBO0NBQ0MsWUFBWTtDQUNaLFVBQVU7QUFDWDs7QUFHQTtDQUNDLHVCQUF1QjtDQUN2QixXQUFXO0FBQ1o7O0FBRUE7Q0FDQyxZQUFZO0FBQ2I7O0FBRUE7Q0FDQyxXQUFXO0NBQ1gsWUFBWTtBQUNiOztBQUVBO0VBQ0UsZUFBZTtFQUNmLGdCQUFnQjtFQUNoQixzQkFBc0I7RUFDdEIsWUFBWTtFQUNaLGtCQUFrQjtBQUNwQjs7QUFFQTtDQUNDLFlBQVk7Q0FDWixrQkFBa0I7Q0FDbEIsZUFBZTtDQUNmLDJCQUEyQjtDQUMzQixZQUFZO0NBQ1osdUVBQXVFO0FBQ3hFOztBQUVBO0NBQ0MsZUFBZTtFQUNkLG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLGVBQWU7Q0FDaEIseUNBQXlDO0FBQzFDOztBQUdBO0NBQ0MseUJBQXlCO0NBQ3pCLFlBQVk7Q0FDWixhQUFhO0NBQ2IsVUFBVTtDQUNWLHVCQUF1QjtDQUN2QixrQkFBa0I7QUFDbkI7O0FBRUE7Q0FDQyxlQUFlO0FBQ2hCOztBQUVBO0NBQ0MsV0FBVztBQUNaOztBQUVBO0VBQ0Usd0NBQXdDO0VBQ3hDLHVCQUF1QjtFQUN2QixZQUFZO0VBQ1osMkJBQTJCO0NBQzVCOztBQUVEO0NBQ0MsZ0JBQWdCO0FBQ2pCOztBQUVBO0NBQ0MsYUFBYTtBQUNkOztBQUVBO0NBQ0MsU0FBUztDQUNULFVBQVU7Q0FHVixzQkFBc0I7QUFDdkI7O0FBRUE7Q0FDQyxrQkFBa0I7Q0FDbEIsV0FBVztDQUNYLGdCQUFnQjtDQUNoQixnQkFBZ0I7QUFDakI7O0FBRUE7Q0FDQyxXQUFXO0NBQ1gsbUJBQW1CO0FBQ3BCOztBQUVBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBO1FBQ1EsZUFBZTtNQUNqQiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3Byb2ZpbGUtcHV6emxlcy9wcm9maWxlLXB1enpsZXMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIEBpbXBvcnQgdXJsKGh0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vY3NzP2ZhbWlseT1SYWxld2F5KTsgKi9cclxuXHJcbi5jb250YWluZXItZmx1aWR7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XHJcbiAgbWFyZ2luLWxlZnQ6IDEuNSU7XHJcbiAgbWFyZ2luLXJpZ2h0OiAxLjUlO1xyXG4gIGJvcmRlci1yYWRpdXM6IDAuNSU7XHJcbn1cclxuXHJcbi5leGFtcGxlLWhlYWRlci1pbWFnZSB7XHJcbiBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoJ2h0dHBzOi8vbWF0ZXJpYWwuYW5ndWxhci5pby9hc3NldHMvaW1nL2V4YW1wbGVzL3NoaWJhMS5qcGcnKTtcclxuIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XHJcbn1cclxuXHJcblxyXG4ubmF2aW1ne1xyXG4gaGVpZ2h0OiAxMDAlO1xyXG4gd2lkdGg6IDUwJTtcclxufVxyXG5cclxuXHJcbi5jb250YWluZXJ7XHJcbiBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG4uaW5mb0ljb257XHJcbiBmbG9hdDogcmlnaHQ7XHJcbn1cclxuXHJcbi5jb250ZW50LWltYWdle1xyXG4gd2lkdGg6IDIwdnc7XHJcbiBoZWlnaHQ6IDIwdnc7XHJcbn1cclxuXHJcbmgxe1xyXG4gIHBhZGRpbmctdG9wOiAyJTtcclxuICBtYXJnaW4tdG9wOiAxcmVtO1xyXG4gIGZvbnQtZmFtaWx5OiBrZWVwLWNhbG07XHJcbiAgY29sb3I6IGJsYWNrO1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG5cclxubWF0LWNhcmR7XHJcbiBtYXJnaW46IGF1dG87XHJcbiBtYXJnaW4tYm90dG9tOiAydnc7XHJcbiBtYXJnaW4tdG9wOiAxdnc7XHJcbiBiYWNrZ3JvdW5kLWNvbG9yOiBnYWluc2Jvcm87XHJcbiBjb2xvcjogYmxhY2s7XHJcbiBib3gtc2hhZG93OiAwIDhweCAxNnB4IDAgcmdiYSgwLDAsMCwwLjIpLCAwIDZweCAyMHB4IDAgcmdiYSgwLDAsMCwwLjE5KTtcclxufVxyXG5cclxubWF0LWNhcmQtc3VidGl0bGV7XHJcbiBmb250LXNpemU6IDE0cHg7XHJcbiAgLyogY29sb3I6IGJsYWNrOyAgKi9cclxufVxyXG5cclxubWF0LWNhcmQtdGl0bGV7XHJcbiAgbWFyZ2luLXRvcDogNXB4O1xyXG4gZm9udC1mYW1pbHk6IEFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWY7XHJcbn1cclxuXHJcblxyXG4uYnRuc3tcclxuIGJhY2tncm91bmQtY29sb3I6ICM3QzU5M0E7XHJcbiBjb2xvcjogd2hpdGU7XHJcbiBtYXJnaW46IDAuNXZ3O1xyXG4gd2lkdGg6IDUwJTtcclxuIGJvcmRlcjogMXB4IHNvbGlkIHdoaXRlO1xyXG4gdGV4dC1hbGlnbjogY2VudGVyO1xyXG59XHJcblxyXG4ucHV6emxlQWN0aW9uc3tcclxuIGRpc3BsYXk6IGlubGluZTtcclxufVxyXG5cclxuLnB1enpsZURldGFpbHN7XHJcbiBjb2xvcjogI2ZmZjtcclxufVxyXG5cclxuLmJ0bnM6aG92ZXJ7XHJcbiAgLyogYmFja2dyb3VuZC1jb2xvcjogcmdiYSgwLDAsMCwwLjcpOzsgKi9cclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICBjb2xvcjogYmxhY2s7XHJcbiAgYm9yZGVyOiAjN0M1OTNBIHNvbGlkIDAuMXB4O1xyXG4gfVxyXG5cclxuLmV4YW1wbGUtZm9ybS1maWVsZHtcclxuIG1hcmdpbi1sZWZ0OiAydnc7XHJcbn1cclxuXHJcbiNzcGlubmVye1xyXG4gbWFyZ2luOiBhdXRvIDtcclxufVxyXG5cclxuKiwgKjpiZWZvcmUsICo6YWZ0ZXJ7XHJcbiBtYXJnaW46IDA7XHJcbiBwYWRkaW5nOiAwO1xyXG4gLXdlYmtpdC1ib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG4gLW1vei1ib3gtc2l6aW5nOmJvcmRlci1ib3g7XHJcbiBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG59XHJcblxyXG4uY29udGVudCB7XHJcbiBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiB3aWR0aDogMTAwJTtcclxuIG1heC13aWR0aDogMzQwcHg7XHJcbiBvdmVyZmxvdzogaGlkZGVuO1xyXG59XHJcblxyXG4uY29udGVudC1pbWFnZXtcclxuIHdpZHRoOiAxMDAlO1xyXG4gbWFyZ2luLWJvdHRvbTogMTBweDtcclxufVxyXG5cclxuI05vbmVUZXh0e1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG5cclxuLnNwaW5uZXIgOjpuZy1kZWVwIC5tYXQtcHJvZ3Jlc3Mtc3Bpbm5lciBjaXJjbGUsIC5tYXQtc3Bpbm5lciBjaXJjbGUge1xyXG4gICAgICAgIHN0cm9rZTogIzdDNTkzQTtcclxuICAgICAgfVxyXG4iXX0= */"] });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ProfilePuzzlesComponent, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.currentUser);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.text);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.show);
+    } }, directives: [_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_4__["NavbarComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_6__["DefaultLayoutDirective"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_6__["DefaultLayoutAlignDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_material_card__WEBPACK_IMPORTED_MODULE_7__["MatCard"], _angular_material_card__WEBPACK_IMPORTED_MODULE_7__["MatCardTitle"], _angular_material_card__WEBPACK_IMPORTED_MODULE_7__["MatCardActions"], _angular_material_button__WEBPACK_IMPORTED_MODULE_8__["MatButton"], _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_9__["MatSpinner"]], styles: [".container-fluid[_ngcontent-%COMP%]{\r\n  background-color: white;\r\n  margin-left: 1.5%;\r\n  margin-right: 1.5%;\r\n  border-radius: 0.5%;\r\n}\r\n\r\n.example-header-image[_ngcontent-%COMP%] {\r\n background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');\r\n background-size: cover;\r\n}\r\n\r\n.navimg[_ngcontent-%COMP%]{\r\n height: 100%;\r\n width: 50%;\r\n}\r\n\r\n.container[_ngcontent-%COMP%]{\r\n background-color: white;\r\n width: 100%;\r\n}\r\n\r\n.infoIcon[_ngcontent-%COMP%]{\r\n float: right;\r\n}\r\n\r\n.content-image[_ngcontent-%COMP%]{\r\n width: 20vw;\r\n height: 20vw;\r\n}\r\n\r\nh1[_ngcontent-%COMP%]{\r\n  padding-top: 2%;\r\n  margin-top: 1rem;\r\n  font-family: keep-calm;\r\n  color: black;\r\n  text-align: center;\r\n}\r\n\r\nmat-card[_ngcontent-%COMP%]{\r\n margin: auto;\r\n margin-bottom: 2vw;\r\n margin-top: 1vw;\r\n background-color: gainsboro;\r\n color: black;\r\n box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);\r\n}\r\n\r\nmat-card-subtitle[_ngcontent-%COMP%]{\r\n font-size: 14px;\r\n  \r\n}\r\n\r\nmat-card-title[_ngcontent-%COMP%]{\r\n  margin-top: 5px;\r\n font-family: Arial, Helvetica, sans-serif;\r\n}\r\n\r\n.btns[_ngcontent-%COMP%]{\r\n background-color: #7C593A;\r\n color: white;\r\n margin: 0.5vw;\r\n width: 50%;\r\n border: 1px solid white;\r\n text-align: center;\r\n}\r\n\r\n.puzzleActions[_ngcontent-%COMP%]{\r\n display: inline;\r\n}\r\n\r\n.puzzleDetails[_ngcontent-%COMP%]{\r\n color: #fff;\r\n}\r\n\r\n.btns[_ngcontent-%COMP%]:hover{\r\n  \r\n  background-color: white;\r\n  color: black;\r\n  border: #7C593A solid 0.1px;\r\n }\r\n\r\n.example-form-field[_ngcontent-%COMP%]{\r\n margin-left: 2vw;\r\n}\r\n\r\n#spinner[_ngcontent-%COMP%]{\r\n margin: auto ;\r\n}\r\n\r\n*[_ngcontent-%COMP%], *[_ngcontent-%COMP%]:before, *[_ngcontent-%COMP%]:after{\r\n margin: 0;\r\n padding: 0;\r\n box-sizing: border-box;\r\n}\r\n\r\n.content[_ngcontent-%COMP%] {\r\n position: relative;\r\n width: 100%;\r\n max-width: 340px;\r\n overflow: hidden;\r\n}\r\n\r\n.content-image[_ngcontent-%COMP%]{\r\n width: 100%;\r\n margin-bottom: 10px;\r\n}\r\n\r\n#NoneText[_ngcontent-%COMP%]{\r\n  text-align: center;\r\n}\r\n\r\n.spinner[_ngcontent-%COMP%]     .mat-progress-spinner circle, .mat-spinner[_ngcontent-%COMP%]   circle[_ngcontent-%COMP%] {\r\n        stroke: #7C593A;\r\n      }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcHJvZmlsZS1wdXp6bGVzL3Byb2ZpbGUtcHV6emxlcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLGtFQUFrRTs7QUFFbEU7RUFDRSx1QkFBdUI7RUFDdkIsaUJBQWlCO0VBQ2pCLGtCQUFrQjtFQUNsQixtQkFBbUI7QUFDckI7O0FBRUE7Q0FDQyxtRkFBbUY7Q0FDbkYsc0JBQXNCO0FBQ3ZCOztBQUdBO0NBQ0MsWUFBWTtDQUNaLFVBQVU7QUFDWDs7QUFHQTtDQUNDLHVCQUF1QjtDQUN2QixXQUFXO0FBQ1o7O0FBRUE7Q0FDQyxZQUFZO0FBQ2I7O0FBRUE7Q0FDQyxXQUFXO0NBQ1gsWUFBWTtBQUNiOztBQUVBO0VBQ0UsZUFBZTtFQUNmLGdCQUFnQjtFQUNoQixzQkFBc0I7RUFDdEIsWUFBWTtFQUNaLGtCQUFrQjtBQUNwQjs7QUFFQTtDQUNDLFlBQVk7Q0FDWixrQkFBa0I7Q0FDbEIsZUFBZTtDQUNmLDJCQUEyQjtDQUMzQixZQUFZO0NBQ1osdUVBQXVFO0FBQ3hFOztBQUVBO0NBQ0MsZUFBZTtFQUNkLG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLGVBQWU7Q0FDaEIseUNBQXlDO0FBQzFDOztBQUdBO0NBQ0MseUJBQXlCO0NBQ3pCLFlBQVk7Q0FDWixhQUFhO0NBQ2IsVUFBVTtDQUNWLHVCQUF1QjtDQUN2QixrQkFBa0I7QUFDbkI7O0FBRUE7Q0FDQyxlQUFlO0FBQ2hCOztBQUVBO0NBQ0MsV0FBVztBQUNaOztBQUVBO0VBQ0Usd0NBQXdDO0VBQ3hDLHVCQUF1QjtFQUN2QixZQUFZO0VBQ1osMkJBQTJCO0NBQzVCOztBQUVEO0NBQ0MsZ0JBQWdCO0FBQ2pCOztBQUVBO0NBQ0MsYUFBYTtBQUNkOztBQUVBO0NBQ0MsU0FBUztDQUNULFVBQVU7Q0FHVixzQkFBc0I7QUFDdkI7O0FBRUE7Q0FDQyxrQkFBa0I7Q0FDbEIsV0FBVztDQUNYLGdCQUFnQjtDQUNoQixnQkFBZ0I7QUFDakI7O0FBRUE7Q0FDQyxXQUFXO0NBQ1gsbUJBQW1CO0FBQ3BCOztBQUVBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBO1FBQ1EsZUFBZTtNQUNqQiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3Byb2ZpbGUtcHV6emxlcy9wcm9maWxlLXB1enpsZXMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIEBpbXBvcnQgdXJsKGh0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vY3NzP2ZhbWlseT1SYWxld2F5KTsgKi9cclxuXHJcbi5jb250YWluZXItZmx1aWR7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XHJcbiAgbWFyZ2luLWxlZnQ6IDEuNSU7XHJcbiAgbWFyZ2luLXJpZ2h0OiAxLjUlO1xyXG4gIGJvcmRlci1yYWRpdXM6IDAuNSU7XHJcbn1cclxuXHJcbi5leGFtcGxlLWhlYWRlci1pbWFnZSB7XHJcbiBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoJ2h0dHBzOi8vbWF0ZXJpYWwuYW5ndWxhci5pby9hc3NldHMvaW1nL2V4YW1wbGVzL3NoaWJhMS5qcGcnKTtcclxuIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XHJcbn1cclxuXHJcblxyXG4ubmF2aW1ne1xyXG4gaGVpZ2h0OiAxMDAlO1xyXG4gd2lkdGg6IDUwJTtcclxufVxyXG5cclxuXHJcbi5jb250YWluZXJ7XHJcbiBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG4uaW5mb0ljb257XHJcbiBmbG9hdDogcmlnaHQ7XHJcbn1cclxuXHJcbi5jb250ZW50LWltYWdle1xyXG4gd2lkdGg6IDIwdnc7XHJcbiBoZWlnaHQ6IDIwdnc7XHJcbn1cclxuXHJcbmgxe1xyXG4gIHBhZGRpbmctdG9wOiAyJTtcclxuICBtYXJnaW4tdG9wOiAxcmVtO1xyXG4gIGZvbnQtZmFtaWx5OiBrZWVwLWNhbG07XHJcbiAgY29sb3I6IGJsYWNrO1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG5cclxubWF0LWNhcmR7XHJcbiBtYXJnaW46IGF1dG87XHJcbiBtYXJnaW4tYm90dG9tOiAydnc7XHJcbiBtYXJnaW4tdG9wOiAxdnc7XHJcbiBiYWNrZ3JvdW5kLWNvbG9yOiBnYWluc2Jvcm87XHJcbiBjb2xvcjogYmxhY2s7XHJcbiBib3gtc2hhZG93OiAwIDhweCAxNnB4IDAgcmdiYSgwLDAsMCwwLjIpLCAwIDZweCAyMHB4IDAgcmdiYSgwLDAsMCwwLjE5KTtcclxufVxyXG5cclxubWF0LWNhcmQtc3VidGl0bGV7XHJcbiBmb250LXNpemU6IDE0cHg7XHJcbiAgLyogY29sb3I6IGJsYWNrOyAgKi9cclxufVxyXG5cclxubWF0LWNhcmQtdGl0bGV7XHJcbiAgbWFyZ2luLXRvcDogNXB4O1xyXG4gZm9udC1mYW1pbHk6IEFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWY7XHJcbn1cclxuXHJcblxyXG4uYnRuc3tcclxuIGJhY2tncm91bmQtY29sb3I6ICM3QzU5M0E7XHJcbiBjb2xvcjogd2hpdGU7XHJcbiBtYXJnaW46IDAuNXZ3O1xyXG4gd2lkdGg6IDUwJTtcclxuIGJvcmRlcjogMXB4IHNvbGlkIHdoaXRlO1xyXG4gdGV4dC1hbGlnbjogY2VudGVyO1xyXG59XHJcblxyXG4ucHV6emxlQWN0aW9uc3tcclxuIGRpc3BsYXk6IGlubGluZTtcclxufVxyXG5cclxuLnB1enpsZURldGFpbHN7XHJcbiBjb2xvcjogI2ZmZjtcclxufVxyXG5cclxuLmJ0bnM6aG92ZXJ7XHJcbiAgLyogYmFja2dyb3VuZC1jb2xvcjogcmdiYSgwLDAsMCwwLjcpOzsgKi9cclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICBjb2xvcjogYmxhY2s7XHJcbiAgYm9yZGVyOiAjN0M1OTNBIHNvbGlkIDAuMXB4O1xyXG4gfVxyXG5cclxuLmV4YW1wbGUtZm9ybS1maWVsZHtcclxuIG1hcmdpbi1sZWZ0OiAydnc7XHJcbn1cclxuXHJcbiNzcGlubmVye1xyXG4gbWFyZ2luOiBhdXRvIDtcclxufVxyXG5cclxuKiwgKjpiZWZvcmUsICo6YWZ0ZXJ7XHJcbiBtYXJnaW46IDA7XHJcbiBwYWRkaW5nOiAwO1xyXG4gLXdlYmtpdC1ib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG4gLW1vei1ib3gtc2l6aW5nOmJvcmRlci1ib3g7XHJcbiBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG59XHJcblxyXG4uY29udGVudCB7XHJcbiBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiB3aWR0aDogMTAwJTtcclxuIG1heC13aWR0aDogMzQwcHg7XHJcbiBvdmVyZmxvdzogaGlkZGVuO1xyXG59XHJcblxyXG4uY29udGVudC1pbWFnZXtcclxuIHdpZHRoOiAxMDAlO1xyXG4gbWFyZ2luLWJvdHRvbTogMTBweDtcclxufVxyXG5cclxuI05vbmVUZXh0e1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG5cclxuLnNwaW5uZXIgOjpuZy1kZWVwIC5tYXQtcHJvZ3Jlc3Mtc3Bpbm5lciBjaXJjbGUsIC5tYXQtc3Bpbm5lciBjaXJjbGUge1xyXG4gICAgICAgIHN0cm9rZTogIzdDNTkzQTtcclxuICAgICAgfVxyXG4iXX0= */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ProfilePuzzlesComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
         args: [{
                 selector: 'app-profile-puzzles',
                 templateUrl: './profile-puzzles.component.html',
                 styleUrls: ['./profile-puzzles.component.css']
             }]
-    }], function () { return [{ type: src_app_services_api_service__WEBPACK_IMPORTED_MODULE_1__["APIService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }]; }, null); })();
+    }], function () { return [{ type: src_app_services_api_service__WEBPACK_IMPORTED_MODULE_2__["APIService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }]; }, null); })();
 
 
 /***/ }),
@@ -1276,18 +1309,16 @@ class ProfileRatingsComponent {
         this.dialog = dialog;
     }
     getUserPuzzleRatings() {
-        this.userRatingsList = null;
         this.api.getPuzzleRatingsByUser(this.currentUser).subscribe(data => {
             this.userRatingsList = data;
+            if (data[0] == null) {
+                this.text = true;
+            }
             this.show = false;
-            this.text = true;
         });
     }
     checkData(data) {
         this.ratePID = data;
-        //this.rateUID = localStorage.getItem('token');
-        //this.rateUID = localStorage.getItem('id');
-        //console.log(localStorage.getItem('id'));
     }
     openRateDialog() {
         this.rateDialogRef = this.dialog.open(_rate_dialog_rate_dialog_component__WEBPACK_IMPORTED_MODULE_1__["RateDialogComponent"]);
@@ -2378,7 +2409,11 @@ class SignupComponent {
             if (this.newUser != null) {
                 this.api.createUser(this.newUser).subscribe(data => {
                     console.log(data);
-                    this.router.navigate(['/login']);
+                    localStorage.removeItem('name');
+                    localStorage.setItem('name', data['name']);
+                    localStorage.removeItem('token');
+                    localStorage.setItem('token', data['token']);
+                    this.router.navigate(['/ratings']);
                 }, error => {
                     console.log('Error from API: ', error.error);
                     if (error.status >= 401) {
@@ -2707,6 +2742,9 @@ class APIService {
         const httpOptions = { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' }) };
         return this.http.put('https://prometheuspuzzles.herokuapp.com/api/puzzles/stopSharingPuzzle', puzzle, httpOptions);
     }
+    deletePuzzle(puzzle) {
+        return this.http.delete('http://localhost:3200/api/puzzles/deletePuzzle/' + puzzle);
+    }
 }
 APIService.ɵfac = function APIService_Factory(t) { return new (t || APIService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
 APIService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: APIService, factory: APIService.ɵfac, providedIn: 'root' });
@@ -2746,13 +2784,13 @@ let Site = {
 	surfaceArea: 0,
 }
 
-let generatePuzzleAIButton;
+let generatePuzzleAIButton, colorPalettesDiv;
 let tempWidth, tempHeight;
 let totalSurfaceArea;
 
 let generationSize = 10 + 1;
 let tournamentSize = 4;
-let maximumIterations = 100;
+let maximumIterations = 150;
 let seedString = 'apples';
 
 let sliders = [];
@@ -2807,12 +2845,14 @@ function expandPuzzle(sites, factor)
 
 function initializeDataAI()
 {
-	Object(src_assets_js_manualCreation_js__WEBPACK_IMPORTED_MODULE_0__["initializeData"])();
-	generatePuzzleAIButton = document.getElementById('generatePuzzleAIButton');
+	Object(src_assets_js_manualCreation_js__WEBPACK_IMPORTED_MODULE_0__["initializeData"])('AI');
+	generatePuzzleAIButton = document.getElementById('generatePuzzleButtonAI');
 	generatePuzzleAIButton.addEventListener('mousedown', generatePuzzleAI);
 	generatePuzzleAIButton.remove();
 
 	document.getElementById('nextButton').addEventListener('mousedown', displaySlidersCard);
+	colorPalettesDiv = document.getElementById('colorPalettesAI');
+	colorPalettesDiv.remove();
 }
 
 function displaySlidersCard()
@@ -2843,12 +2883,13 @@ function generatePuzzleAI()
 	desiredProportions.sort( function(a, b) { return b - a } );
 
 	document.getElementById('inputContainer').innerHTML = '';
+	document.getElementById('inputContainer').appendChild(colorPalettesDiv);
 
 	let sites = run();
 	sites = expandPuzzle(sites, 10);
 
 	Object(src_assets_js_manualCreation_js__WEBPACK_IMPORTED_MODULE_0__["setSites"])(sites);
-	Object(src_assets_js_manualCreation_js__WEBPACK_IMPORTED_MODULE_0__["setGenerateButtonClicked"])(true);
+	Object(src_assets_js_manualCreation_js__WEBPACK_IMPORTED_MODULE_0__["setDisableEditMode"])(true);
 	Object(src_assets_js_manualCreation_js__WEBPACK_IMPORTED_MODULE_0__["generateSiteBoundaries"])();
 	Object(src_assets_js_manualCreation_js__WEBPACK_IMPORTED_MODULE_0__["createPieces"])();
 }
@@ -3130,7 +3171,7 @@ function determineAndSetSiteBoundaries(chromosome)
 /*!*****************************************!*\
   !*** ./src/assets/js/manualCreation.js ***!
   \*****************************************/
-/*! exports provided: width, height, setSites, setGenerateButtonClicked, initializeData, calculateDistancesFromSitesToPoint, equidistantPointsPresent, generateSiteBoundaries, createPieces */
+/*! exports provided: width, height, setSites, setDisableEditMode, initializeData, calculateDistancesFromSitesToPoint, equidistantPointsPresent, generateSiteBoundaries, createPieces */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3138,7 +3179,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "width", function() { return width; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "height", function() { return height; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setSites", function() { return setSites; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setGenerateButtonClicked", function() { return setGenerateButtonClicked; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setDisableEditMode", function() { return setDisableEditMode; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initializeData", function() { return initializeData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calculateDistancesFromSitesToPoint", function() { return calculateDistancesFromSitesToPoint; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "equidistantPointsPresent", function() { return equidistantPointsPresent; });
@@ -3151,8 +3192,10 @@ __webpack_require__.r(__webpack_exports__);
 
 let apiURL = "http://localhost:3200/api/puzzles/createPuzzle";
 let distanceMetric = 'euclidean';
+let token;
 
-let puzzleImage;
+let contentDiv = null;
+let aiContentDiv = null;
 let canvas;
 let canvasCoords;
 let width =  500;
@@ -3163,24 +3206,111 @@ let square;
 let pointsArray = [];
 let sites = [];
 let siteBoundaries = [];
+let pieces = [];
 let precision = 0;
-let colors = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine',
-	'AntiqueWhite', 'Red', 'Green'];
-let hoverOverPoint = false;
-let generateButtonClicked = false;
-//let token = 'KQlH2g5Io_AwCwotB4TUC';
-let piecesJSONObject = {
-	'pieces' : []
-};
 
+let colorPalettes = [];
+//Default palette
+let selectedPalette;
+let paletteCounter = 0;
+let radioButtons = [];
+
+let hoverOverPoint = false;
+let disableEditMode = false;
+let deletePointButtonClicked = false;
+let piecesJSONObject;
+
+/** Tutorial for adding more color palettes: **/
+//Step 1: Make an array with desired colors - can be hex values or names
+let defaultPalette = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine', 'AntiqueWhite', 'Red', 'Green'];
+//Step 2: Add the array to the page using this function with the array as a first and the desired name as a second parameter
+addColorPalette(defaultPalette, "Default");
+//Step 3: Profit!!
+
+let shadesOfBluePalette = ['DarkBlue', 'DeepSkyBlue', 'MediumBlue', 'DodgerBlue', 'MidnightBlue', 'RoyalBlue', 'DarkSlateBlue', 'CornflowerBlue', 'SkyBlue', 'PowderBlue'];
+addColorPalette(shadesOfBluePalette, "Shades of Blue");
+
+let shadesOfGreenPalette = ['Teal', 'MediumSpringGreen', 'LimeGreen', 'ForestGreen', 'MediumSeaGreen', 'LawnGreen', 'PaleGreen', 'GreenYellow', 'Aquamarine'];
+addColorPalette(shadesOfGreenPalette, "Shades of Green");
+
+///Add a color palette to the page and needed functionality
+function addColorPalette(arrayOfColors, paletteName)
+{
+	colorPalettes.push(arrayOfColors);
+	// let radioButton = document.createElement('mat-radio-button');
+	let radioButton = document.createElement('input');
+	radioButton.type = 'radio';
+	radioButton.class = 'radio-button';
+	radioButton.value = paletteName;
+	radioButton.innerHTML = paletteName;
+	radioButton.name = 'colorPalette';
+	radioButton.paletteid = paletteCounter++;
+	radioButton.addEventListener('mousedown', function() {
+		selectedPalette = colorPalettes[this.paletteid];
+		changePuzzleColorPalette(selectedPalette);
+	});
+
+	radioButtons.push(radioButton);
+}
+
+///Changes the displayed color palette used on the puzzle and re-renders it
+function changePuzzleColorPalette(colors)
+{
+	if(pieces.length > 0)
+	{
+		layer.removeChildren();
+		for(let i = 0; i < pieces.length; i++)
+		{
+			pieces[i].attrs.stroke = colors[i % colors.length];
+			layer.add(pieces[i]);
+		}
+
+		layer.draw();
+	}
+}
+
+function randomizePuzzleColorPalette()
+{
+	if(pieces.length > 0)
+	{
+		layer.removeChildren();
+		for(let i = 0; i < pieces.length; i++)
+		{
+			pieces[i].attrs.stroke = getRandomRGB();
+			layer.add(pieces[i]);
+		}
+
+		layer.draw();
+	}
+}
+
+///Returns a random RGB value
+function getRandomRGB()
+{
+	let r = Math.floor(Math.random() * 256);
+	let g = Math.floor(Math.random() * 256);
+	let b = Math.floor(Math.random() * 256);
+	return "rgb(" + r + "," + g + "," + b + ")";
+}
 
 ///Initialize data and set functions for buttons
-
-function initializeData()
+function initializeData(appendedString) 
 {
-	canvas = document.getElementById('container');
+	if(appendedString == undefined)
+		appendedString = '';
+
+	disableEditMode = false;
+	
+	piecesJSONObject = {
+		'pieces' : []
+	};
+
+	selectedPalette = defaultPalette;
+	console.log(canvas);
+	canvas = document.getElementById('container'+appendedString);
+	console.log(canvas);
 	stage = new konva__WEBPACK_IMPORTED_MODULE_0___default.a.Stage({
-		container: 'container',
+		container: 'container'+appendedString,
 		width: width,
 		height: height,
 	});
@@ -3201,12 +3331,12 @@ function initializeData()
 	stage.add(layer);
 
 	canvas.addEventListener('mousedown', function(event){
-		if(!generateButtonClicked && !hoverOverPoint)
+		if(!disableEditMode && !hoverOverPoint)
 		{
 			canvasCoords = canvas.getBoundingClientRect();
 			let x = event.clientX - canvasCoords.x;
 			let y = event.clientY - canvasCoords.y;
-
+			
 			let point = createPoint(x, y);
 
 			layer.add(point);
@@ -3215,22 +3345,38 @@ function initializeData()
 		}
 	});
 
-	if(document.getElementById('generatePuzzleButton') != null)
-		document.getElementById('generatePuzzleButton').addEventListener('mousedown', generatePuzzle);
+	addColorPalettePicker(appendedString);
 
-	document.getElementById('euclideanButton').addEventListener('mousedown', function(){
+	document.getElementById('generatePuzzleButton'+appendedString).addEventListener('mousedown', generatePuzzle);
+
+	document.getElementById('euclideanButton'+appendedString).addEventListener('mousedown', function(){
 		setDistanceMetric('euclidean');
 	});
 
-	document.getElementById('manhattanButton').addEventListener('mousedown', function(){
+	document.getElementById('manhattanButton'+appendedString).addEventListener('mousedown', function(){
 		setDistanceMetric('manhattan');
 	});
 
-	// = token;
-
-	document.getElementById('saveButton').addEventListener('mousedown', function() {
+	document.getElementById('saveButton'+appendedString).addEventListener('mousedown', function() {
 		savePuzzle(false);
 	});
+
+	if(document.getElementById('deletePointButton') != null)
+	{
+		document.getElementById('deletePointButton').addEventListener('mousedown', function() {
+			deletePointButtonClicked = !deletePointButtonClicked;
+			if(deletePointButtonClicked)
+			{
+				disableEditMode = true;
+				this.innerHTML = 'edit';
+			}
+			else
+			{
+				disableEditMode = false;
+				this.innerHTML = 'delete';
+			}
+		});
+	}
 
 	// document.getElementById('saveAndSubmitButton').addEventListener('mousedown', function() {
 	// 	// let puzzleImage = stage.toDataURL({ pixelRatio: 0.25 });
@@ -3239,15 +3385,30 @@ function initializeData()
 	// });
 }
 
+function addColorPalettePicker(appendedString)
+{
+	let colorPaletteDiv = document.getElementById('colorPalettes'+appendedString);
+	let label;
+	for(let i = 0; i < radioButtons.length; i++)
+	{
+		label = document.createElement('label');
+		label.innerHTML = radioButtons[i].value;
+		colorPaletteDiv.appendChild(radioButtons[i]);
+		colorPaletteDiv.appendChild(label);
+	}
+	
+	document.getElementById('randomizeColorsButton'+appendedString).addEventListener('mousedown', randomizePuzzleColorPalette);
+}
+
 ///Create a post ajax request and send it to the API in order to save the user's created puzzle
 function savePuzzle(share)
 {
+	token = document.getElementById('tokenLabel').innerHTML;
+	
 	let puzzleName = document.getElementById('puzzleNameInputBox').value;
 	let puzzleDescription = document.getElementById('puzzleDescriptionInputBox').value;
 
 	let puzzleImage = stage.toDataURL({ pixelRatio: 0.25 });
-
-	let token = document.getElementById('tokenLabel').innerHTML;
 
 	let jsonData = {
 		token: token,
@@ -3261,8 +3422,8 @@ function savePuzzle(share)
 	$.ajax({
 		type: 'POST',
 		url: apiURL,
-		headers: {
-			'Access-Control-Allow-Origin' : '*'
+		headers: { 
+			'Access-Control-Allow-Origin' : '*' 
 		},
 		contentType: 'application/json',
 		data: JSON.stringify(jsonData),
@@ -3273,7 +3434,7 @@ function savePuzzle(share)
 		},
 		error: function(data, status) {
 			console.log(data);
-			console.log(status);
+			console.log(status);	
 		}
 	});
 }
@@ -3284,10 +3445,10 @@ function setDistanceMetric(metric)
 	distanceMetric = metric;
 }
 
-///Set generateButtonClicked to true to prevent user from clicking it any further
-function setGenerateButtonClicked(bool)
+///Set disableEditMode to true to prevent user from clicking it any further
+function setDisableEditMode(bool)
 {
-	generateButtonClicked = bool;
+	disableEditMode = bool;
 }
 
 ///Set the sites array
@@ -3325,20 +3486,22 @@ function createPoint(x, y)
 		document.body.style.cursor = 'default';
 	});
 
-	point.on('dblclick', function(event) {
-		console.log('double clicked!');
-		// layer.remove(point);
-		document.onmousemove = null;
-		hoverOverPoint = false;
-		document.body.style.cursor = 'default';
-		point.destroy();
-		layer.draw();
+	point.on('click', function(event) {
+		// console.log('clicked!');
+		if(deletePointButtonClicked)
+		{
+			document.onmousemove = null;
+			hoverOverPoint = false;
+			document.body.style.cursor = 'default';
+			point.destroy();
+			layer.draw();
+		}
 	});
 
 	return point;
 }
 
-///Calls the necessary functions to generate puzzle's vertiecs as well as the visual representation
+///Calls the necessary functions to generate puzzle's vertiecs as well as the visual representation 
 function generatePuzzle()
 {
 	//Testing data
@@ -3380,22 +3543,21 @@ function generatePuzzle()
 	layer.destroyChildren();
 
 	///This makes sure that the generate button will only generate once
-	generateButtonClicked = true;
+	disableEditMode = true;
 
 	generateSiteBoundaries();
 	createPieces();
 }
 
-///Creates the puzzle pieces from the siteBoundaries for each site(position selected by the user)
+///Creates the puzzle pieces from the siteBoundaries for each site(position selected by the user) 
 function createPieces()
 {
-	let colorCount = colors.length;
 	for(let i = 0; i < sites.length; i++)
 	{
 		let trimmedPoints = trimPoints(siteBoundaries[i]);
 		let piece = new konva__WEBPACK_IMPORTED_MODULE_0___default.a.Line({
 			points: trimmedPoints,
-			stroke: colors[i % colorCount],
+			stroke: selectedPalette[i % selectedPalette.length],
 			strokeWidth: 1,
 			draggable: true,
 		});
@@ -3408,6 +3570,7 @@ function createPieces()
 			document.body.style.cursor = 'default';
 		});
 
+		pieces.push(piece);
 		piecesJSONObject.pieces.push(trimmedPoints);
 		layer.add(piece);
 	}
@@ -3440,10 +3603,10 @@ function trimPoints(pointArray)
 				trimmedPoints.push(firstPointCol, currentRow);
 				crissCross - 1;
 			}
-
+			
 			firstPointCol = pointArray[index];
 			lastPointCol = pointArray[index];
-			currentRow = pointArray[index+1];
+			currentRow = pointArray[index+1];	
 		}
 		else
 		{
@@ -3536,7 +3699,6 @@ function calculateManhattanDistance(point1X, point1Y, point2X, point2Y)
 	let result = resultX + resultY;
 	return result;
 }
-
 
 /***/ }),
 

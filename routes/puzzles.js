@@ -1,7 +1,7 @@
 const express = require('express');
 const { response, request } = require('express');
 const router = express.Router();
-const db = require('../config/dbConfig');
+const db = require('../config/database');
 const User = require('../models/User');
 const Puzzle = require('../models/Puzzle');
 const PuzzleRating = require('../models/PuzzleRating')
@@ -13,7 +13,7 @@ const Op = Sequelize.Op;
  */
 
 //get all puzzles
-router.get('/getAllPuzzles', (request, response) => {
+router.get('/getAllPuzzles', (request, response) => { 
     var puzzleJsonObject = [];
     var puzzlePlaceholder = {};
     var index = 0;
@@ -44,7 +44,7 @@ router.get('/getAllPuzzles', (request, response) => {
 });
 
 //get puzzle by id
-router.get('/getPuzzleByID/:id', (request, response) => {
+router.get('/getPuzzleByID/:id', (request, response) => { 
     const theID = parseInt(request.params.id);
     Puzzle.findAll( { raw: true, where: { id: theID } } )
         .then( puzzle => {
@@ -56,7 +56,7 @@ router.get('/getPuzzleByID/:id', (request, response) => {
 });
 
 //get puzzles fitting searchbar criteria
-router.get('/getSearchedPuzzles/:term', (request, response) => {
+router.get('/getSearchedPuzzles/:term', (request, response) => { 
     const term = request.params.term;
     Puzzle.findAll( { raw: true, where: { name: {[Op.iLike]:  '%' + term + '%' } } } )
         .then( puzzle => {
@@ -99,7 +99,7 @@ router.post('/createPuzzle', (request, response) => {
 //share puzzle
 router.put('/sharePuzzle',(request, response) => {
     const puzzleID = request.body.puzzleID;
-    Puzzle.update(
+    Puzzle.update( 
         { shared: true },
         { returning: true, raw: true, plain: true, where: { id:  puzzleID } }
     )
@@ -113,7 +113,7 @@ router.put('/sharePuzzle',(request, response) => {
 //stop sharing puzzle
 router.put('/stopSharingPuzzle',(request, response) => {
     const puzzleID = request.body.puzzleID;
-    Puzzle.update(
+    Puzzle.update( 
         { shared: false },
         { returning: true, raw: true, plain: true, where: { id:  puzzleID } }
     )
@@ -145,7 +145,7 @@ router.delete('/deletePuzzle/:puzzleID', (request, response) => {
  * Puzzle Ratings Endpoints
  *  */
 //get all puzzle ratings
-router.get('/getAllPuzzleRatings', (request, response) => {
+router.get('/getAllPuzzleRatings', (request, response) => { 
     PuzzleRating.findAll()
         .then( puzzleRatings => {
             response.status(200).send(puzzleRatings);
@@ -155,7 +155,7 @@ router.get('/getAllPuzzleRatings', (request, response) => {
         })
 });
 
-//create a new rating
+//create a new rating 
 router.post('/createPuzzleRating', (request, response) => {
     const rating = request.body.rating;
     const puzzleID = request.body.puzzleID;
@@ -163,11 +163,11 @@ router.post('/createPuzzleRating', (request, response) => {
     User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
     .then( user => {
         userID = user[0].id;
-
+        
         PuzzleRating.findAll({ raw: true,
             where: { userID:  userID, puzzleID:  puzzleID }
           })
-          .then( data => {
+          .then( data => { 
               if(data.length == 0){ //rating doesnt exist so create new rating
                 PuzzleRating.create({
                       rating, puzzleID, userID

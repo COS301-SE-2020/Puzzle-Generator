@@ -1,11 +1,9 @@
 <div class="container">
-    <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center none">
-        <mat-card class="regForm">
-            <mat-card-header>
-                <mat-card-title class="cardTitle">Sign Up</mat-card-title>
-            </mat-card-header>
+  <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center none">
+      <mat-card class="regForm"><img src="assets/images/label.png">
+          <h3>Sign Up</h3>
             <mat-card-content class="regFormContent">
-                <form [formGroup]="signUpForm" (ngSubmit)="createNewUser(signUpForm.value)"> 
+                <form [formGroup]="signUpForm" (ngSubmit)="createNewUser(signUpForm.value)">
                     <div>
                     <mat-form-field appearance="fill">
                         <mat-label>Enter your full name</mat-label>
@@ -17,7 +15,7 @@
                                     {{ error.message }}
                                 </mat-error>
                             </ng-container>
-                        </div> 
+                        </div>
                     </div>
 
                     <div>
@@ -51,7 +49,7 @@
                     <mat-form-field appearance="fill">
                         <mat-label>Confirm password</mat-label>
                         <input class="input" matInput  required formControlName="confirmPassword" type="password">
-                    </mat-form-field> 
+                    </mat-form-field>
                         <div>
                             <ng-container *ngFor="let error of error_messages.confirmPassword">
                                 <mat-error class="error-message" *ngIf="signUpForm.get('confirmPassword').hasError(error.type) && (signUpForm.get('confirmPassword').dirty || signUpForm.get('confirmPassword').touched)">
@@ -59,12 +57,12 @@
                                 </mat-error>
                             </ng-container>
                             <span id="passError">{{formError}}</span>
-                        </div> 
+                        </div>
                     </div>
                     <button mat-raised-button type="submit" [disabled]="!signUpForm.valid" class="btn" id="one">Sign Up</button>
-                    
+
                     <a routerLink="/index" mat-raised-button color="accent" class="btns">Cancel</a>
-                </form>  
+                </form>
             </mat-card-content>
         </mat-card>
     </div>

@@ -1,9 +1,134 @@
-img{
+/* @import url(https://fonts.googleapis.com/css?family=Raleway); */
+
+.container-fluid{
+   background-color: white;
+   margin-left: 1.5%;
+   margin-right: 1.5%;
+   border-radius: 0.5%;
+}
+
+
+*, *:before, *:after{
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing:border-box;
+  box-sizing: border-box;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+
+.navimg{
+  height: 100%;
+  width: 50%;
+}
+
+
+.container{
+  background-color: white;
+  height: 100%;
+  width: 100%;
+}
+
+.infoIcon{
+  float: right;
+}
+
+.content-image{
   width: 20vw;
   height: 20vw;
 }
 
-h1{
+.btns{
+  background-color: black;
+  color: white;
+  margin-top: 0.5vw;
+  width: 10vw;
+  padding: 0 0;
+  text-align: center;
+  font-weight: normal;
+  font-size: 1.5vw;
+}
+
+.puzzleActions{
+  display: inline;
+}
+
+.puzzleDetails{
+  color: #fff;
+}
+
+#resetBtn:hover, .btns:hover{
+  /* background-color: rgba(0,0,0,0.7);; */
+  background-color: white;
+  color: black;
+  border: black solid 0.1px;
+}
+
+.example-form-field{
+  margin-left: 2vw;
+}
+
+#resetBtn{
+  margin-left: 2vw;
+  background-color: black;
+  color: #fff;
+}
+
+#spinner{
+  margin: auto ;
+}
+
+
+.fadeIn-bottom{
+  top: 80%;
+}
+
+.spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+        stroke: black;
+      }
+
+
+
+th{
+    font-size: 1.7vw;
+    font-weight: bold;
+    padding-left: 2vw !important;
+}
+
+td {
+  border: 1vw solid white;
+  font-size: 1.5vw;
+  border-bottom: 1.5vw solid #F1BF17 !important;
+  border-left: 1px solid #F1BF17;
+  border-right: 1px solid #F1BF17;
   text-align: center;
 
+}
+
+
+.content-image{
+  padding: 1vw 0 ;
+  width: 10vw;
+  height: 10vw;
+}
+
+table {
+  width: 95%;
+  margin-bottom: 2vw;
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+
+.nameCol {
+  padding-top: 1vw;
+  font-weight: bold;
+}
+
+.stickytop{
+  background-color: #F1BF17;
 }

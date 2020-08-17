@@ -1,14 +1,36 @@
-<div class="row">
-  <nav class="navbar justify-content-center">
-    <div class="container">
+<div class="container-fluid">
+<div class="logo">
+  <img class="navimg" src="assets/images/logo_nav.png">
+</div>
+  <mdb-navbar class="navbar navbar-expand-sm" id="navCustom">
+
+    <button class="navbar-toggler hidden-sm hidden-md hidden-lg hidden-xl" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+    aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
+        class="fa fa-bars"></i></span></button>
+
+    <span style="float:left" class="collapse navbar-collapse" id="navbarSupportedContent1">
         <ul class="nav navbar-nav mr-auto" routerLinkActive="active">
             <li class="nav-item"><a class="nav-link" routerLink="/ratings">View</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/create">Create</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="">Profile</a></li>
+            <li class="nav-item dropdown" dropdown>
+              <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>Create<div class="caret"></div></a>
+               <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                 <a class="dropdown-item waves-light" routerLink="/create" mdbWavesEffect>Manual</a><br>
+                 <a class="dropdown-item waves-light" routerLink="/aicreate" mdbWavesEffect>AI</a><br>
+               </div>
+            </li>
+            <li class="nav-item dropdown" dropdown>
+              <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>Profile<div class="caret"></div></a>
+               <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                 <a class="dropdown-item waves-light" routerLink="/profile" mdbWavesEffect>My Details</a><br>
+                 <a class="dropdown-item waves-light" routerLink="/profileRatings" mdbWavesEffect>My Ratings</a><br>
+                 <a class="dropdown-item waves-light" routerLink="/profilePuzzles" mdbWavesEffect>My Puzzles</a>
+               </div>
+            </li>
         </ul>
-        <span class="navbar-text">
-            Hello, {{name}}
-        </span>
-    </div>
-  </nav>
+    </span>
+    <span class="navbar-text">
+        Hello, {{name}}
+        <a id="logout" (click)="logout()">Logout</a>
+    </span>
+  </mdb-navbar>
 </div>

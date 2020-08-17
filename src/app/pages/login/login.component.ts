@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { APIService } from 'src/app/services/api.service';
-import { User } from 'src/app/models/User';
+import { User } from 'src/app/models/user';
 import { Router } from '@angular/router';
 
 @Component({
@@ -29,8 +29,17 @@ export class LoginComponent implements OnInit {
         data => { console.log(data);
           localStorage.removeItem('name');
           localStorage.setItem('name', data['name']);
-          this.formError = "";
+          localStorage.removeItem('token');
+          localStorage.setItem('token', data['token']);
+
+        this.formError = "";
         this.router.navigate(['/ratings']);
+
+        setTimeout(()=>{
+          localStorage.removeItem('token');
+          this.router.navigate(['login']);
+          alert("You have been logged out after 1 hour");
+        },3600000);
       },
         error => {//if status code other than in the 200 range returned, show error
           console.log('Error from API: ', error.error);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { User } from '../../models/User';
+import { User } from '../../models/user';
 import { APIService } from '../../services/api.service';
 import { Router } from '@angular/router';
 
@@ -13,6 +13,9 @@ export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
   newUser: any;
   formError: string;
+
+  token: any;
+  name: any;
 
   constructor(private formBuilder: FormBuilder, private api: APIService, private router: Router) {}
 
@@ -27,8 +30,13 @@ export class SignupComponent implements OnInit {
       }
       if(this.newUser != null){
         this.api.createUser(this.newUser).subscribe(
-          data => {console.log(data);
-              this.router.navigate(['/login']);
+            data => {
+              console.log(data);
+              localStorage.removeItem('name');
+              localStorage.setItem('name', data['name']);
+              localStorage.removeItem('token');
+              localStorage.setItem('token', data['token']);
+              this.router.navigate(['/ratings']);
             },
           error => {//if status code other than in the 200 range returned, show error
             console.log('Error from API: ', error.error);

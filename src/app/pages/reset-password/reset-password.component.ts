@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { APIService } from 'src/app/services/api.service';
-import { User } from 'src/app/models/User';
+import { User } from 'src/app/models/user';
 import { Router } from '@angular/router';
 
 @Component({
@@ -63,6 +63,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.resetPasswordForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],

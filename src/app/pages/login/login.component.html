@@ -1,9 +1,7 @@
 <div class="container">
     <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center none">
-        <mat-card class="regForm">
-            <mat-card-header>
-                <mat-card-title class="cardTitle">Login</mat-card-title>
-            </mat-card-header>
+        <mat-card class="regForm"><img src="assets/images/label.png">
+            <h3>Login</h3>
             <mat-card-content class="regFormContent">
                 <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
                     <div>

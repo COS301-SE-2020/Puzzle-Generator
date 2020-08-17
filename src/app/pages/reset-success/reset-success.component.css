@@ -1,16 +1,29 @@
 .container{
-    background-image: url('../../../assets/images/bg2.jpg');
+    background-color: black;
     height: 100%;
     width: 100%;
 }
 
 .btns{
-    background-color: #7C593A;
+    background-color: black;
+    color: white;
+}
+
+h3{
+    margin-top: 1rem;
+    font-family: keep-calm;
+    text-align: center !important;
 }
 
 .regForm{
-    width: 30%;
+    width: 20%;
     text-align: center;
+    margin-top: 10%;
+    border: 4px #F1BF17 solid;
+}
+
+#passError{
+    color: red;
 }
 
 .regFormContent{
@@ -18,6 +31,25 @@
 }
 
 .cardTitle{
-    margin-left: 1rem;
-    margin-top: 1rem;
+    margin-left: 9.5rem;
+}
+
+#passError{
+    color: red;
+}
+
+.link{
+    color: black;
+}
+
+img{
+    width: 100%;
+    height: 80px;
+}
+
+.btns:hover{
+  /* background-color: rgba(0,0,0,0.7);; */
+  background-color: white;
+  color: black;
+  border: black solid 0.1px;
 }

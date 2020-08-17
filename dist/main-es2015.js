@@ -1836,6 +1836,7 @@ class RatingsComponent {
             puzzleObj.creator = data[i].creator;
             puzzleObj.created = data[i].createdAt;
             puzzleObj.image = data[i].image;
+            console.log(puzzleObj.image);
             if (puzzleObj.creator == this.currentUser["name"]) {
                 puzzleObj.showRating = false;
             }

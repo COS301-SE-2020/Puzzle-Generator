@@ -45,6 +45,16 @@ export class ProfilePuzzlesComponent implements OnInit {
     location.reload();
   }
 
+  deletePuzzle(puzzleID: any){
+    // this.puzzle = {
+    //   "puzzleID": puzzleID
+    // }
+    if(this.api.deletePuzzle(puzzleID).subscribe()){
+        alert("Puzzle deleted");
+    }
+    location.reload();
+  }
+
   stopShare(data: any){
     this.puzzle = {
       "puzzleID": data
@@ -53,6 +63,11 @@ export class ProfilePuzzlesComponent implements OnInit {
         alert("Stop sharing puzzle");
     }
     location.reload();
+  }
+
+  async delay(ms: number) {
+    await new Promise(resolve => setTimeout(()=>resolve(), ms))
+    .then( () => { console.log("fired"); });
   }
 
   ngOnInit(): void {
@@ -68,7 +83,11 @@ export class ProfilePuzzlesComponent implements OnInit {
     this.show = true;
     this.text = false;
 
-    this.getUserPuzzles();
+    this.delay(1500).then( () =>{
+      this.getUserPuzzles();
+    });
+
+    //this.getUserPuzzles();
   }
 
 }

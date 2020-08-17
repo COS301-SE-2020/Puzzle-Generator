@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container">
 <div class="container-fluid" *ngIf="currentUser" >
-    <h1 class="main-title">My Ratings</h1>
+    <h1 class="main-title" >My Ratings</h1>
     <div class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
         <mat-card class="content" *ngFor="let rating of userRatingsList">
           <div class="content-overlay"></div>

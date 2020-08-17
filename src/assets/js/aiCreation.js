@@ -1,4 +1,4 @@
-import { width, height, setSites, setGenerateButtonClicked, initializeData, calculateDistancesFromSitesToPoint, 
+import { width, height, setSites, setDisableEditMode, initializeData, calculateDistancesFromSitesToPoint, 
 	equidistantPointsPresent, generateSiteBoundaries, createPieces } from 'src/assets/js/manualCreation.js'
 
 ///The structure of each individual/chromosome object
@@ -14,13 +14,13 @@ let Site = {
 	surfaceArea: 0,
 }
 
-let generatePuzzleAIButton;
+let generatePuzzleAIButton, colorPalettesDiv;
 let tempWidth, tempHeight;
 let totalSurfaceArea;
 
 let generationSize = 10 + 1;
 let tournamentSize = 4;
-let maximumIterations = 100;
+let maximumIterations = 150;
 let seedString = 'apples';
 
 let sliders = [];
@@ -75,12 +75,14 @@ function expandPuzzle(sites, factor)
 
 export function initializeDataAI()
 {
-	initializeData();
-	generatePuzzleAIButton = document.getElementById('generatePuzzleAIButton');
+	initializeData('AI');
+	generatePuzzleAIButton = document.getElementById('generatePuzzleButtonAI');
 	generatePuzzleAIButton.addEventListener('mousedown', generatePuzzleAI);
 	generatePuzzleAIButton.remove();
 
 	document.getElementById('nextButton').addEventListener('mousedown', displaySlidersCard);
+	colorPalettesDiv = document.getElementById('colorPalettesAI');
+	colorPalettesDiv.remove();
 }
 
 function displaySlidersCard()
@@ -111,12 +113,13 @@ function generatePuzzleAI()
 	desiredProportions.sort( function(a, b) { return b - a } );
 
 	document.getElementById('inputContainer').innerHTML = '';
+	document.getElementById('inputContainer').appendChild(colorPalettesDiv);
 
 	let sites = run();
 	sites = expandPuzzle(sites, 10);
 
 	setSites(sites);
-	setGenerateButtonClicked(true);
+	setDisableEditMode(true);
 	generateSiteBoundaries();
 	createPieces();
 }

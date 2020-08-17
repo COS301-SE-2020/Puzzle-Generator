@@ -101,6 +101,11 @@ stopSharingPuzzle(puzzle: any){
   return this.http.put('https://prometheuspuzzles.herokuapp.com/api/puzzles/stopSharingPuzzle', puzzle, httpOptions);
 }
 
+deletePuzzle(puzzle:number):Observable<number>    
+{ 
+  return this.http.delete<number>('http://localhost:3200/api/puzzles/deletePuzzle/'+puzzle);    
+} 
+
 /**
 * Puzzle endpoints end here
 */

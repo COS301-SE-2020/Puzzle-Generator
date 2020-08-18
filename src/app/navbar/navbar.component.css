@@ -1,4 +1,4 @@
-::ng-deep #navCustom nav{
+nav{
   background-color: #7C593A;
 }
 
@@ -44,10 +44,6 @@ span{
   color: white !important;
 }
 
-.dropdown {
-  background-color: #7C593A;
-}
-
 .navimg{
   height: 13vw;
 }
@@ -73,4 +69,18 @@ i{
 
 #burger {
   background-color: #7C593A !important;
+}
+
+.dropdown-menu{
+  background-color: #7C593A !important;
+  padding: 1vw;
+}
+
+@media only screen and (max-width:768px){
+
+  .dropdown-menu{
+    background-color: #7C593A !important;
+    padding-left: 4vw;
+  }
+
 }

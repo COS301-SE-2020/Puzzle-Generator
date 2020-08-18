@@ -8,11 +8,14 @@ var logger = require('morgan');
 const Sequelize = require('sequelize');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
+/*
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var puzzleRouter = require('./routes/puzzles');
-var apiRouter = require('./routes/api');
+
+ */
+
+//var apiRouter = require('./routes/api');
 
 const db = require('./config/dbConfig');
 
@@ -24,6 +27,14 @@ db.authenticate()
 var app = express();
 app.use(express.json());
 app.use(cors());
+
+//all requests associated with the user must make use of this route
+app.use('/api/users', require('./routes/users'));
+
+
+//all requests associated with the user must make use of this route
+app.use('/api/puzzles', require('./routes/puzzles'));
+
 
 app.all("/*", function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -47,11 +58,12 @@ app.set("views",path.join(__dirname,"views"));
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-app.use('/api/users', usersRouter);
-app.use('/api', apiRouter);
+//app.use('/api/users', usersRouter);
+//app.use('/api', apiRouter);
+
 //app.use('/api/login', loginRouter);
-app.use('/api/puzzle', puzzleRouter);
-app.use('/api/puzzles', puzzleRouter);
+//app.use('/api/puzzle', puzzleRouter);
+//app.use('/api/puzzles', puzzleRouter);
 /**
  * Angular - Heroku stuff
  * */

@@ -24,12 +24,22 @@ app.use(cors());
  */
 var usersRouter = require('./users');
 var puzzleRouter = require('./puzzles');
+/*
 router.use('users',usersRouter);
 router.use('puzzle',puzzleRouter);
 router.use('puzzles',puzzleRouter);
 router.use('/puzzle',puzzleRouter);
 router.use('/puzzles',puzzleRouter);
 router.use('/users',usersRouter);
+*/
+
+//app.get('/', (request, response) => {response.send("Sequelize API test");});
+
+//all requests associated with the user must make use of this route
+app.use('/users', require('./users'));
+//all requests associated with the user must make use of this route
+app.use('/puzzles', require('./puzzles'));
+
 /**
  * login user endpoint
  */

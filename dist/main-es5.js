@@ -5366,7 +5366,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               'Content-Type': 'application/json'
             })
           };
-          return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/createUser', newUser, httpOptions);
+          return this.http.post('http://localhost:3200/api/users/createUser', newUser, httpOptions);
         }
       }, {
         key: "loginUser",
@@ -5376,7 +5376,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               'Content-Type': 'application/json'
             })
           };
-          return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/login', currentUser, httpOptions);
+          return this.http.post('http://localhost:3200/api/users/login', currentUser, httpOptions);
         }
       }, {
         key: "resetPassword",
@@ -5386,7 +5386,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               'Content-Type': 'application/json'
             })
           };
-          return this.http.put('https://prometheuspuzzles.herokuapp.com/api/users/resetPassword', currentUser, httpOptions);
+          return this.http.put('http://localhost:3200/api/users/resetPassword', currentUser, httpOptions);
         }
       }, {
         key: "getUser",
@@ -5396,7 +5396,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               'Content-Type': 'application/json'
             })
           };
-          return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/getUser', token, httpOptions);
+          return this.http.post('http://localhost:3200/api/users/getUser', token, httpOptions);
         }
       }, {
         key: "updateName",
@@ -5406,7 +5406,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               'Content-Type': 'application/json'
             })
           };
-          return this.http.put('https://prometheuspuzzles.herokuapp.com/api/users/updateName', currentUser, httpOptions);
+          return this.http.put('http://localhost:3200/api/users/updateName', currentUser, httpOptions);
         }
       }, {
         key: "updateUsername",
@@ -5416,7 +5416,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               'Content-Type': 'application/json'
             })
           };
-          return this.http.put('https://prometheuspuzzles.herokuapp.com/api/users/updateUsername', currentUser, httpOptions);
+          return this.http.put('http://localhost:3200/api/users/updateUsername', currentUser, httpOptions);
         }
       }, {
         key: "getPuzzlesByUser",
@@ -5426,7 +5426,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               'Content-Type': 'application/json'
             })
           };
-          return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/getPuzzlesByUser', token, httpOptions);
+          return this.http.post('http://localhost:3200/api/users/getPuzzlesByUser', token, httpOptions);
         }
       }, {
         key: "getPuzzleRatingsByUser",
@@ -5436,7 +5436,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               'Content-Type': 'application/json'
             })
           };
-          return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/getPuzzleRatingsByUser', token, httpOptions);
+          return this.http.post('http://localhost:3200/api/users/getPuzzleRatingsByUser', token, httpOptions);
         }
         /**
          * User endpoints end here
@@ -5449,12 +5449,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAllPuzzles",
         value: function getAllPuzzles() {
-          return this.http.get('https://prometheuspuzzles.herokuapp.com/api/puzzles/getAllPuzzles');
+          return this.http.get('http://localhost:3200/api/puzzles/getAllPuzzles');
         }
       }, {
         key: "getAllPuzzleByID",
         value: function getAllPuzzleByID(puzzleID) {
-          return this.http.get('https://prometheuspuzzles.herokuapp.com/api/puzzles/getPuzzleByID?Id=' + puzzleID);
+          return this.http.get('http://localhost:3200/api/puzzles/getPuzzleByID?Id=' + puzzleID);
         }
       }, {
         key: "createNewPuzzle",
@@ -5464,7 +5464,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               'Content-Type': 'application/json'
             })
           };
-          return this.http.post('https://prometheuspuzzles.herokuapp.com/api/puzzles/createPuzzle', puzzle, httpOptions);
+          return this.http.post('http://localhost:3200/api/puzzles/createPuzzle', puzzle, httpOptions);
         }
       }, {
         key: "createNewPuzzleRating",
@@ -5474,17 +5474,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               'Content-Type': 'application/json'
             })
           };
-          return this.http.post('https://prometheuspuzzles.herokuapp.com/api/puzzles/createPuzzleRating', rating, httpOptions);
+          return this.http.post('http://localhost:3200/api/puzzles/createPuzzleRating', rating, httpOptions);
         }
       }, {
         key: "getAllPuzzleRatings",
         value: function getAllPuzzleRatings() {
-          return this.http.get('https://prometheuspuzzles.herokuapp.com/api/puzzles/getAllPuzzleRatings');
+          return this.http.get('http://localhost:3200/api/puzzles/getAllPuzzleRatings');
         }
       }, {
         key: "getSearchedPuzzles",
         value: function getSearchedPuzzles(term) {
-          return this.http.get('https://prometheuspuzzles.herokuapp.com/api/puzzles/getSearchedPuzzles/' + term);
+          return this.http.get('http://localhost:3200/api/puzzles/getSearchedPuzzles/' + term);
         }
       }, {
         key: "sharePuzzle",
@@ -5494,7 +5494,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               'Content-Type': 'application/json'
             })
           };
-          return this.http.put('https://prometheuspuzzles.herokuapp.com/api/puzzles/sharePuzzle', puzzle, httpOptions);
+          return this.http.put('http://localhost:3200/api/puzzles/sharePuzzle', puzzle, httpOptions);
         }
       }, {
         key: "stopSharingPuzzle",
@@ -5504,7 +5504,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               'Content-Type': 'application/json'
             })
           };
-          return this.http.put('https://prometheuspuzzles.herokuapp.com/api/puzzles/stopSharingPuzzle', puzzle, httpOptions);
+          return this.http.put('http://localhost:3200/api/puzzles/stopSharingPuzzle', puzzle, httpOptions);
         }
       }, {
         key: "deletePuzzle",

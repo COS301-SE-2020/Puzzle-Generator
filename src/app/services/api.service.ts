@@ -101,10 +101,20 @@ stopSharingPuzzle(puzzle: any){
   return this.http.put('http://localhost:3200/api/puzzles/stopSharingPuzzle', puzzle, httpOptions);
 }
 
-deletePuzzle(puzzle:number):Observable<number>    
-{ 
-  return this.http.delete<number>('http://localhost:3200/api/puzzles/deletePuzzle/'+puzzle);    
-} 
+deletePuzzle(puzzle:number):Observable<number>
+{
+  return this.http.delete<number>('http://localhost:3200/api/puzzles/deletePuzzle/'+puzzle);
+}
+
+findRatingID(rating: any){
+  const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
+  return this.http.post('http://localhost:3200/api/puzzles/findRatingID', rating, httpOptions);
+}
+
+deleteRating(rating:number):Observable<number>
+{
+  return this.http.delete<number>('http://localhost:3200/api/puzzles/deleteRating/'+rating);
+}
 
 /**
 * Puzzle endpoints end here

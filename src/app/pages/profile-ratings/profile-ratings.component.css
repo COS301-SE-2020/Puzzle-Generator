@@ -70,6 +70,16 @@ mat-card-title{
  text-align: center;
 }
 
+#delete {
+  background-color: #7C593A;
+  color: white;
+  margin-left: 25%;
+  margin-top: 2%;
+  width: 50%;
+  border: 1px solid white;
+  text-align: center;
+}
+
 .puzzleActions{
  display: inline;
 }
@@ -78,7 +88,7 @@ mat-card-title{
  color: #fff;
 }
 
-.btns:hover{
+.btns:hover, #delete:hover{
  /* background-color: rgba(0,0,0,0.7);; */
  background-color: white;
  color: black;

@@ -91,7 +91,13 @@ h1{
 #resetBtn{
   margin-left: 2vw;
   background-color: #7C593A;
-  color: #fff;
+  color: white;
+  margin: 0.5vw;
+  text-align: center;
+  font-weight: normal;
+  padding: 0.5vw;
+  border-radius: 0.5vw;
+
 }
 
 #spinner{

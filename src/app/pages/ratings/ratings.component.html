@@ -4,7 +4,7 @@
     <mat-label>Search</mat-label>
     <input matInput (keyup)="applyFilter($event.target.value)">
 </mat-form-field>
-<button mat-button id="resetBtn" (click)="reload()">RESET SEARCH CRITERIA</button>
+<button type="button" id="resetBtn" (click)="reload()">RESET SEARCH CRITERIA</button>
 <div class="spinner">
   <mat-spinner *ngIf="show" id="spinner"></mat-spinner>
 </div>

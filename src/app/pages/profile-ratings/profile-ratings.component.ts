@@ -22,6 +22,7 @@ export class ProfileRatingsComponent implements OnInit {
   ratingEntry: any;
   rateDialogRef: MatDialogRef<RateDialogComponent>;
   show: boolean;
+  deleteVal: any;
 
   constructor(private api: APIService, private router: Router, private dialog: MatDialog) { }
 
@@ -69,6 +70,18 @@ export class ProfileRatingsComponent implements OnInit {
   openAndCheck(rateP: any){
     this.checkData(rateP);
     this.openRateDialog();
+  }
+
+  delete(ratePID: any){
+    this.deleteVal = {
+      "puzzleID" : ratePID,
+      "token" : localStorage.getItem('token')
+    }
+
+  this.api.findRatingID(this.deleteVal).subscribe( (result) => {
+    this.api.deleteRating(result["id"]).subscribe(); 
+  });
+
   }
 
   ngOnInit(): void {

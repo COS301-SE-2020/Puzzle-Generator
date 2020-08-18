@@ -24,7 +24,7 @@ span{
   margin-left: 2vw;
   background-color: #7C593A;
   color: white;
-  padding: 1vw;
+  padding: 0.9vw;
   font-size: 2rem;
 }
 
@@ -39,18 +39,18 @@ span{
   color: white !important;
 }
 
-.logo{
-  height: 14rem;
-}
-
 .dropdown {
   background-color: #7C593A;
 }
 
-.navimg{ 
-  height: 13rem;
+.navimg{
+  height: 13vw;
 }
 
 .caret{
-  margin-left: 0.5vw !important;
+  margin-left: 0.7vw !important;
+}
+
+.left {
+  float: left;
 }

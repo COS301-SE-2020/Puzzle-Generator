@@ -10,6 +10,7 @@ import { RateDialogComponent } from '../../rate-dialog/rate-dialog.component';
 import { PuzzleRating } from 'src/app/models/PuzzleRating';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableDataSource} from '@angular/material/table';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-ratings',
@@ -35,8 +36,135 @@ export class RatingsComponent implements OnInit {
   currentUser: any;
   datasource: any;
 
+  totalNumberOfPuzzles: number;
+  ratingsLSize: number;
+
+  //pagination
+  pageSize: number = 8;
+  startIndex:number = 0;
+  endIndex: number = 8;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+
+  // MatPaginator Output
+  pageEvent: PageEvent;
+
   constructor(private api: APIService, private cdr: ChangeDetectorRef, private dialog: MatDialog, private router: Router) {
   }
+
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  }
+
+  changeEvent(event: PageEvent)
+  {
+    console.log("Event: ", event);
+    this.startIndex = event.pageIndex * event.pageSize;
+    this.endIndex = this.startIndex + this.pageSize;
+    if(this.endIndex > this.totalNumberOfPuzzles){
+      this.endIndex = this.totalNumberOfPuzzles
+    }
+    this.puzzles.slice(this.startIndex, this.endIndex);
+    return event;
+  }
+
+
+  //sorting functions start here
+  puzzleDescending()
+  {
+    return this.puzzles.sort( (a,b) => {
+      let paramA = a.name.toLowerCase();
+      let paramB = b.name.toLowerCase();
+
+      if(paramA > paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+  }
+
+  puzzleAscending()
+  {
+    return this.puzzles.sort( (a,b) => {
+      let paramA = a.name.toLowerCase();
+      let paramB = b.name.toLowerCase();
+
+      if(paramA < paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+  }
+
+  creatorDescending()
+  {
+    return this.puzzles.sort( (a,b) => {
+      let paramA = a.creator.toLowerCase();
+      let paramB = b.creator.toLowerCase();
+
+      if(paramA > paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+  }
+
+  creatorAscending()
+  {
+    return this.puzzles.sort( (a,b) => {
+      let paramA = a.creator.toLowerCase();
+      let paramB = b.creator.toLowerCase();
+
+      if(paramA < paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+  }
+
+  dateDescending()
+  {
+    return this.puzzles.sort( (a,b) => {
+      let paramA = a.created;//.toLowerCase();
+      let paramB = b.creator;//.toLowerCase();
+
+      if(paramA > paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+  }
+
+  dateAscending()
+  {
+    return this.puzzles.sort( (a,b) => {
+      let paramA = a.created;//.toLowerCase();
+      let paramB = b.creator;//.toLowerCase();
+
+      if(paramA < paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+  }
+
+  ratingDescending()
+  {
+    return this.puzzles.sort( (a,b) => {
+      let paramA = a.rating;
+      let paramB = b.rating;
+
+      if(paramA > paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+  }
+
+  ratingAscending()
+  {
+    return this.puzzles.sort( (a,b) => {
+      let paramA = a.rating;
+      let paramB = b.rating;
+
+      if(paramA < paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+  }
+  //sorting functions end here
 
   populate(populatePuz: any)
   {
@@ -64,6 +192,7 @@ export class RatingsComponent implements OnInit {
     {
       this.api.getAllPuzzles().subscribe(
         data => {
+          this.totalNumberOfPuzzles = Object.keys(data).length;
           this.getPuzzles(data);
       },
         error => {//if status code other than in the 200 range returned, show error
@@ -119,7 +248,6 @@ export class RatingsComponent implements OnInit {
         if (this.ratings[k].puzzleID == data[i].id)
         {
           //********* ERROR HERE - THIS LOOP IS NOT ENTERED WHEN THE RATINGS VALUE IS 0  ************
-          console.log(this.ratings[k]);
           total = total + this.ratings[k].rating;
           j = j+1;
         }
@@ -146,22 +274,17 @@ export class RatingsComponent implements OnInit {
       return data.name.toLowerCase().includes(filter)
     };
     this.datasource.filter = filterValue.trim().toLowerCase();
+    this.totalNumberOfPuzzles = this.datasource.filteredData.length;
   }
 
   checkData(data: any){
     this.ratePID = data;
-    //this.rateUID = localStorage.getItem('token');
-    //this.rateUID = localStorage.getItem('id');
-    //console.log(localStorage.getItem('id'));
   }
 
   openRateDialog(){
     this.rateDialogRef = this.dialog.open(RateDialogComponent);
 
     this.rateDialogRef.afterClosed().subscribe( result => {
-      //console.log(result);
-      //console.log(this.ratePID);
-      //console.log(this.rateUID);
 
       if (result != ""){
 

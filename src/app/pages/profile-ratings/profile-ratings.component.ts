@@ -108,6 +108,10 @@ export class ProfileRatingsComponent implements OnInit {
       this.totalNumberOfPuzzles = Object.keys(data).length;
       this.userRatingsList = data;
       this.show = false;
+      this.text = false;
+      if (this.totalNumberOfPuzzles == 0){
+        this.text = true;
+      }
     });
   }
 
@@ -127,8 +131,6 @@ export class ProfileRatingsComponent implements OnInit {
           "rating":result,
           "token": localStorage.getItem('token')
         }
-
-        console.log(this.ratingEntry);
 
         if(this.api.createNewPuzzleRating(this.ratingEntry).subscribe())
         {
@@ -153,7 +155,10 @@ export class ProfileRatingsComponent implements OnInit {
     }
 
   this.api.findRatingID(this.deleteVal).subscribe( (result) => {
-    this.api.deleteRating(result["id"]).subscribe(); 
+    if(this.api.deleteRating(result["id"]).subscribe()){
+        alert("Rating deleted");
+        location.reload(); 
+    }
   });
 
   }

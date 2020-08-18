@@ -247,7 +247,6 @@ export class RatingsComponent implements OnInit {
         if (this.ratings[k].puzzleID == data[i].id)
         {
           //********* ERROR HERE - THIS LOOP IS NOT ENTERED WHEN THE RATINGS VALUE IS 0  ************
-          console.log(this.ratings[k]);
           total = total + this.ratings[k].rating;
           j = j+1;
         }
@@ -274,6 +273,7 @@ export class RatingsComponent implements OnInit {
       return data.name.toLowerCase().includes(filter)
     };
     this.datasource.filter = filterValue.trim().toLowerCase();
+    this.totalNumberOfPuzzles = this.datasource.filteredData.length;
   }
 
   checkData(data: any){

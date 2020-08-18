@@ -5,7 +5,7 @@
 .nav-link{
   color: white;
   margin-right: 1.5vw;
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 
 .navbar-text{
@@ -16,7 +16,10 @@
   margin-top: 2rem;
 }
 
-ul.nav li:hover > a { color: #7C593A !important; }
+ul.nav li:hover > a {
+  color: #7C593A !important;
+  cursor: pointer;
+}
 
 span{
   float: right;
@@ -27,7 +30,7 @@ span{
   background-color: #7C593A;
   color: white;
   padding: 0.9vw;
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 
 #logout:hover{
@@ -60,4 +63,14 @@ span{
 .nav{
   font-family: keep-calm;
   margin: 0.8rem;
+}
+
+i{
+  background-color: #7C593A;
+  color: white;
+  margin-top: 1vw;
+}
+
+#burger {
+  background-color: #7C593A !important;
 }

@@ -4,7 +4,6 @@
     <mat-label>Search</mat-label>
     <input matInput (keyup)="applyFilter($event.target.value)">
 </mat-form-field>
-<button type="button" id="resetBtn" (click)="reload()">RESET SEARCH CRITERIA</button>
 
 <button mat-button class="sortBtns">Puzzle
   <mat-icon (click)="puzzleAscending()" class="arrow">arrow_upwardward</mat-icon> |
@@ -32,7 +31,7 @@
 
 <div class="container-fluid" *ngIf="dataAvailable" >
     <div class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
-        <mat-card class="content"  *ngFor="let puzzle of puzzles | slice: startIndex:endIndex">
+        <mat-card class="content"  *ngFor="let puzzle of this.datasource.filteredData | slice: startIndex:endIndex">
           <div class="content-overlay"></div>
           <!-- <mat-icon aria-hidden="false" class="infoIcon">info_outline</mat-icon> -->
           <img class="content-image" src="{{puzzle.image}}">
@@ -53,7 +52,7 @@
     </div>
 </div>
 
-<mat-paginator class="paginator" [length]="totalNumberOfPuzzles" [pageSize]="pageSize" 
+<mat-paginator class="paginator" [length]="totalNumberOfPuzzles" [pageSize]="pageSize"
                   [pageSizeOptions]="pageSizeOptions"
                   (page)="pageEvent = changeEvent($event)">
 </mat-paginator>

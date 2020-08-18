@@ -35,4 +35,6 @@ workspace.xml
 #ignore old structure
 OLD structure
 
+#ignore node modules
+node_modules/
 

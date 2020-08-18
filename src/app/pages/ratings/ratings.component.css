@@ -1,5 +1,3 @@
-/* @import url(https://fonts.googleapis.com/css?family=Raleway); */
-
 .container-fluid{
    background-color: white;
    margin-left: 1.5%;
@@ -7,31 +5,17 @@
    border-radius: 0.5%;
 }
 
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-}
-
-
-.navimg{
-  height: 100%;
-  width: 50%;
-}
-
-
 .container{
   background-color: white;
   height: 100%;
   width: 100%;
 }
 
-.infoIcon{
-  float: right;
-}
-
 .content-image{
   width: 20vw;
   height: 20vw;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 h1{
@@ -48,16 +32,12 @@ h1{
   background-color: gainsboro;
   color: black;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
-
- mat-card-subtitle{
-  font-size: 14px;
-   /* color: black;  */
+  font-family: keep-calm;
 }
 
  mat-card-title{
    margin-top: 5px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: keep-calm;
 }
 
 
@@ -70,6 +50,20 @@ h1{
   font-weight: normal;
 }
 
+.sortBtns{
+  background-color: #7C593A;
+  color: white;
+  margin-left: 3.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid white;
+  text-align: center;
+  font-family: keep-calm;
+ }
+ 
+ .arrow{
+   margin: 1rem;
+ }
+
 .puzzleActions{
   display: inline;
 }
@@ -79,13 +73,14 @@ h1{
 }
 
 #resetBtn:hover, .btns:hover{
-  /* background-color: rgba(0,0,0,0.7);; */
   background-color: white;
   color: #7C593A;
 }
 
-.example-form-field{
+.searchArea{
   margin-left: 2vw;
+  font-family: keep-calm;
+  font-size:1.8rem;
 }
 
 #resetBtn{
@@ -103,14 +98,6 @@ h1{
 #spinner{
   margin: auto ;
   color: black;
-}
-
-*, *:before, *:after{
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing:border-box;
-  box-sizing: border-box;
 }
 
 .content {
@@ -137,12 +124,10 @@ h1{
 
 .content:hover .content-overlay{
   opacity: 1;
-  /* height: 87%; */
 }
 
 .content-image{
-  width: 100%;
-  margin-bottom: 10px;
+  
 }
 
 .content-details {
@@ -174,11 +159,6 @@ h1{
   letter-spacing: 0.15em;
   margin-bottom: 0.5em;
   text-transform: uppercase;
-}
-
-.content-details p{
-  color: #fff;
-  font-size: 0.8em;
 }
 
 .fadeIn-bottom{

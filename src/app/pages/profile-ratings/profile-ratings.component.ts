@@ -5,6 +5,7 @@ import { APIService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RateDialogComponent } from '../../rate-dialog/rate-dialog.component';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-profile-ratings',
@@ -24,15 +25,88 @@ export class ProfileRatingsComponent implements OnInit {
   show: boolean;
   deleteVal: any;
 
+  totalNumberOfPuzzles: number;
+  ratingsLSize: number;
+
+  //pagination
+  pageSize: number = 4;
+  startIndex:number = 0;
+  endIndex: number = 4;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+
+  // MatPaginator Output
+  pageEvent: PageEvent;
+
   constructor(private api: APIService, private router: Router, private dialog: MatDialog) { }
+
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  }
+
+  changeEvent(event: PageEvent)
+  {
+    console.log("Event: ", event);
+    this.startIndex = event.pageIndex * event.pageSize;
+    this.endIndex = this.startIndex + this.pageSize;
+    if(this.endIndex > this.totalNumberOfPuzzles){
+      this.endIndex = this.totalNumberOfPuzzles
+    }
+    this.userRatingsList.slice(this.startIndex, this.endIndex);
+    return event;
+  }
+
+  nameDescending()
+  {
+    return this.userRatingsList.sort( (a,b) => {
+      let paramA = a.puzzleName.toLowerCase();
+      let paramB = b.puzzleName.toLowerCase();
+
+      if(paramA > paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+  }
+
+  nameAscending()
+  {
+    return this.userRatingsList.sort( (a,b) => {
+      let paramA = a.puzzleName.toLowerCase();
+      let paramB = b.puzzleName.toLowerCase();
+
+      if(paramA < paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+  }
+
+  ratingDescending()
+  {
+    return this.userRatingsList.sort( (a,b) => {
+      let paramA = a.rating;//.toLowerCase();
+      let paramB = b.rating;//.toLowerCase();
+
+      if(paramA > paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+  }
+
+  ratingAscending()
+  {
+    return this.userRatingsList.sort( (a,b) => {
+      let paramA = a.rating;//.toLowerCase();
+      let paramB = b.rating;//.toLowerCase();
+
+      if(paramA < paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+  }
 
   getUserPuzzleRatings(){
     this.api.getPuzzleRatingsByUser(this.currentUser).subscribe( data => {
+      this.totalNumberOfPuzzles = Object.keys(data).length;
       this.userRatingsList = data;
-      if (data[0]==null)
-      {
-        this.text = true;
-      }
       this.show = false;
     });
   }

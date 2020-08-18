@@ -1,9 +1,15 @@
 <app-navbar></app-navbar>
+
+<button mat-button class="sortBtns">Name
+  <mat-icon (click)="nameAscending()" class="arrow">arrow_upwardward</mat-icon> |
+  <mat-icon (click)="nameDescending()" class="arrow">arrow_downward</mat-icon>
+</button>
+
 <div class="container">
 <div class="container-fluid" *ngIf="currentUser" >
     <h1 class="main-title" >My Puzzles</h1>
     <div class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
-        <mat-card class="content" *ngFor="let puzzle of userPuzzleList">
+        <mat-card class="content" *ngFor="let puzzle of (userPuzzleList | slice: startIndex:endIndex)">
           <div class="content-overlay"></div>
           <img class="content-image" src="{{puzzle.image}}">
             <mat-card-title><strong>{{puzzle.name}}</strong></mat-card-title>
@@ -16,6 +22,11 @@
         </mat-card>
     </div>
 </div>
+
+<mat-paginator [length]="totalNumberOfPuzzles" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+                  (page)="pageEvent = changeEvent($event)">
+</mat-paginator>
+
 </div>
 
   <div *ngIf="text">

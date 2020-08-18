@@ -12,6 +12,8 @@
   color: white;
   text-align: left;
   font-size: 1.5rem;
+  font-family: keep-calm;
+  margin-top: 2rem;
 }
 
 ul.nav li:hover > a { color: #7C593A !important; }
@@ -53,4 +55,9 @@ span{
 
 .left {
   float: left;
+}
+
+.nav{
+  font-family: keep-calm;
+  margin: 0.8rem;
 }

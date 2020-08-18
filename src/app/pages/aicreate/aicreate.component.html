@@ -34,9 +34,9 @@
     <mat-card-content>
       <div id="containerAI">
       </div>
-      <div id='colorPalettesAI'>
+      <!-- <div id='colorPalettesAI'>
         <button mat-raised-button class="btns" id="randomizeColorsButtonAI">Randomize Colors</button>
-      </div>
+      </div> -->
     </mat-card-content>
   </mat-card>
   <mat-card class="">
@@ -44,11 +44,19 @@
       <mat-card-title>Saving Options</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-       <br >
-        <label id="">Name: </label><br><input type="text" name="puzzleName" id="puzzleNameInputBox"><br>
-        <label id="">Short Description: </label><br><input type="text" name="puzzleDescription" id="puzzleDescriptionInputBox"><br>
-        <label hidden="true" id="tokenLabel">{{token}}</label><br>
-        <button mat-raised-button class="btns" id="saveButtonAI">Save</button>
+      <label>Select a color-palette:</label><br>
+      <mat-radio-group>
+        <mat-radio-button class="radio-button colorPalettes" paletteid=0 value="default" name="colorPalettes">Default</mat-radio-button><br>
+        <mat-radio-button class="radio-button colorPalettes" paletteid=1 value="shadesOfRed" name="colorPalettes">Shades Of Red</mat-radio-button><br>
+        <mat-radio-button class="radio-button colorPalettes" paletteid=2 value="shadesOfGreen" name="colorPalettes">Shades Of Green</mat-radio-button><br>
+        <mat-radio-button class="radio-button colorPalettes" paletteid=3 value="shadesOfBlue" name="colorPalettes">Shades of Blue</mat-radio-button><br>
+      </mat-radio-group>
+      <button mat-raised-button class="btns" id="randomizeColorsButtonAI">Randomize Colors</button>
+      <br><br>
+      <label id="">Name: </label><br><input type="text" name="puzzleName" id="puzzleNameInputBoxAI"><br>
+      <label id="">Short Description: </label><br><input type="text" name="puzzleDescription" id="puzzleDescriptionInputBoxAI"><br>
+      <label hidden="true" id="tokenLabel">{{token}}</label><br>
+      <button mat-raised-button class="btns" id="saveButtonAI">Save</button>
     </mat-card-content>
   </mat-card>
   </div>

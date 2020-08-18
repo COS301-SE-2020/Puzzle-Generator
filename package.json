@@ -2,9 +2,8 @@
   "name": "workspace",
   "version": "1.0.0",
   "description": "",
-  "main": "loginAPI.js",
   "scripts": {
-    "test": "mocha"
+    "test": "basic"
   },
   "author": "team_prometheus",
   "license": "ISC",

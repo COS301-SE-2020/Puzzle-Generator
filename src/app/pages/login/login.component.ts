@@ -14,9 +14,16 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   verifyUser: any;
   formError: string;
+  fieldTextType: boolean;
 
   constructor(private formBuilder: FormBuilder, private api: APIService, private router: Router) {}
   //method for logging in user and getting the token associated with the said user
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
+
+
   loginUser(currentUser: User){
     this.formError = '';
     if(currentUser !== null){

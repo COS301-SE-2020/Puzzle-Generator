@@ -26,8 +26,10 @@ h1{
 }
 
 .regForm{
-    width: 30%;
+    width: 100%;
+    max-width: 300px;
     text-align: center;
+    margin-top: 10%;
 }
 
 .regFormContent{
@@ -42,8 +44,13 @@ h1{
     color: red;
 }
 
+h3{
+    margin-top: 1rem;
+    font-family: keep-calm;
+    padding-left: 78px;
+}
 
 img{
     width: 100%;
-    height: 100%;
+    height: 80px;
 }

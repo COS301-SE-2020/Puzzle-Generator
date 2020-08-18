@@ -1,3 +1,5 @@
+/* @import url(https://fonts.googleapis.com/css?family=Raleway); */
+
 .container-fluid{
    background-color: white;
    margin-left: 1.5%;
@@ -5,15 +7,31 @@
    border-radius: 0.5%;
 }
 
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+
+.navimg{
+  height: 100%;
+  width: 50%;
+}
+
+
 .container{
   background-color: white;
   height: 100%;
   width: 100%;
 }
 
+.infoIcon{
+  float: right;
+}
+
 .content-image{
-  width: 100%;
-  margin-bottom: 1rem;
+  width: 20vw;
+  height: 20vw;
 }
 
 h1{
@@ -25,16 +43,21 @@ h1{
 
  mat-card{
   margin: auto;
+  margin-bottom: 2vw;
   margin-top: 2vw;
   background-color: gainsboro;
   color: black;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  font-family: keep-calm;
+}
+
+ mat-card-subtitle{
+  font-size: 14px;
+   /* color: black;  */
 }
 
  mat-card-title{
-   margin: 2rem 0 !important;
-  font-family: keep-calm;
+   margin-top: 5px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 
@@ -44,23 +67,8 @@ h1{
   margin: 0.5vw;
   width: 50%;
   text-align: center;
-  font-size: 2rem;
   font-weight: normal;
 }
-
-.sortBtns{
-  background-color: #7C593A;
-  color: white;
-  margin-left: 3.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid white;
-  text-align: center;
-  font-family: keep-calm;
- }
-
- .arrow{
-   margin: 1rem;
- }
 
 .puzzleActions{
   display: inline;
@@ -71,26 +79,19 @@ h1{
 }
 
 #resetBtn:hover, .btns:hover{
+  /* background-color: rgba(0,0,0,0.7);; */
   background-color: white;
   color: #7C593A;
 }
 
-.searchArea{
+.example-form-field{
   margin-left: 2vw;
-  font-family: keep-calm;
-  font-size:1.8rem;
 }
 
 #resetBtn{
   margin-left: 2vw;
   background-color: #7C593A;
-  color: white;
-  margin: 0.5vw;
-  text-align: center;
-  font-weight: normal;
-  padding: 0.5vw;
-  border-radius: 0.5vw;
-
+  color: #fff;
 }
 
 #spinner{
@@ -98,10 +99,18 @@ h1{
   color: black;
 }
 
+*, *:before, *:after{
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing:border-box;
+  box-sizing: border-box;
+}
+
 .content {
   position: relative;
   width: 100%;
-  max-width: 370px;
+  max-width: 340px;
   overflow: hidden;
 }
 
@@ -122,10 +131,12 @@ h1{
 
 .content:hover .content-overlay{
   opacity: 1;
+  /* height: 87%; */
 }
 
 .content-image{
-
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .content-details {
@@ -157,6 +168,11 @@ h1{
   letter-spacing: 0.15em;
   margin-bottom: 0.5em;
   text-transform: uppercase;
+}
+
+.content-details p{
+  color: #fff;
+  font-size: 0.8em;
 }
 
 .fadeIn-bottom{

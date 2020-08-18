@@ -26,7 +26,6 @@ import { MatGridListModule } from '@angular/material/grid-list'
 import { MatRadioModule } from '@angular/material/radio';
 import { MatListModule } from '@angular/material/list';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 //pages
@@ -43,7 +42,6 @@ import { RateDialogComponent } from './rate-dialog/rate-dialog.component';
 import { ProfilePuzzlesComponent } from './pages/profile-puzzles/profile-puzzles.component';
 import { ProfileRatingsComponent } from './pages/profile-ratings/profile-ratings.component';
 import { AICreateComponent } from './pages/aicreate/aicreate.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +74,7 @@ import { AICreateComponent } from './pages/aicreate/aicreate.component';
     MatTableModule,
     HttpClientModule,
     FormsModule,
-    MatInputModule, MatListModule, MatPaginatorModule,
+    MatInputModule, MatListModule,
     MatCardModule, MatFormFieldModule, MatDialogModule, MatGridListModule, MatRadioModule, ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
   ],

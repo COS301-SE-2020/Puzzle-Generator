@@ -5,21 +5,16 @@
 .nav-link{
   color: white;
   margin-right: 1.5vw;
-  font-size: 1.7rem;
+  font-size: 2rem;
 }
 
 .navbar-text{
   color: white;
   text-align: left;
   font-size: 1.5rem;
-  font-family: keep-calm;
-  margin-top: 2rem;
 }
 
-ul.nav li:hover > a {
-  color: #7C593A !important;
-  cursor: pointer;
-}
+ul.nav li:hover > a { color: #7C593A !important; }
 
 span{
   float: right;
@@ -29,8 +24,8 @@ span{
   margin-left: 2vw;
   background-color: #7C593A;
   color: white;
-  padding: 0.9vw;
-  font-size: 1.7rem;
+  padding: 1vw;
+  font-size: 2rem;
 }
 
 #logout:hover{
@@ -44,33 +39,18 @@ span{
   color: white !important;
 }
 
+.logo{
+  height: 14rem;
+}
+
 .dropdown {
   background-color: #7C593A;
 }
 
-.navimg{
-  height: 13vw;
+.navimg{ 
+  height: 13rem;
 }
 
 .caret{
-  margin-left: 0.7vw !important;
-}
-
-.left {
-  float: left;
-}
-
-.nav{
-  font-family: keep-calm;
-  margin: 0.8rem;
-}
-
-i{
-  background-color: #7C593A;
-  color: white;
-  margin-top: 1vw;
-}
-
-#burger {
-  background-color: #7C593A !important;
+  margin-left: 0.5vw !important;
 }

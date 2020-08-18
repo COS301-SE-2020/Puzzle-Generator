@@ -3,7 +3,6 @@ import { APIService } from 'src/app/services/api.service';
 import { Puzzle } from 'src/app/models/Puzzle';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-profile-puzzles',
@@ -23,69 +22,10 @@ export class ProfilePuzzlesComponent implements OnInit {
   temp: boolean = false;
   tee: any;
 
-  totalNumberOfPuzzles: number;
-  ratingsLSize: number;
-
-  //pagination
-  pageSize: number = 4;
-  startIndex:number = 0;
-  endIndex: number = 4;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
-
-  // MatPaginator Output
-  pageEvent: PageEvent;
-
   constructor(private api: APIService, private router: Router) { }
-
-  setPageSizeOptions(setPageSizeOptionsInput: string) {
-    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
-  }
-
-  changeEvent(event: PageEvent)
-  {
-    console.log("Event: ", event);
-    this.startIndex = event.pageIndex * event.pageSize;
-    this.endIndex = this.startIndex + this.pageSize;
-    if(this.endIndex > this.totalNumberOfPuzzles){
-      this.endIndex = this.totalNumberOfPuzzles
-    }
-    this.userPuzzleList.slice(this.startIndex, this.endIndex);
-    return event;
-  }
-
-  nameDescending()
-  {
-    return this.userPuzzleList.sort( (a,b) => {
-      console.log("values: ", this.userPuzzleList);
-      //console.log("args: ", args);
-      let paramA = a.name.toLowerCase();
-      let paramB = b.name.toLowerCase();
-
-      if(paramA > paramB ){ return -1; }
-      else { return 1; }
-      return 0;
-    });
-  }
-
-  nameAscending()
-  {
-    return this.userPuzzleList.sort( (a,b) => {
-      console.log("values: ", this.userPuzzleList);
-      //console.log("args: ", args);
-      let paramA = a.name.toLowerCase();
-      let paramB = b.name.toLowerCase();
-
-      if(paramA < paramB ){ return -1; }
-      else { return 1; }
-      return 0;
-    });
-  }
-
-
 
   getUserPuzzles(){
     this.api.getPuzzlesByUser(this.currentUser).subscribe( data => {
-      this.totalNumberOfPuzzles = Object.keys(data).length;
       this.userPuzzleList = data;
       if (data[0]==null)
       {

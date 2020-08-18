@@ -1,3 +1,5 @@
+/* @import url(https://fonts.googleapis.com/css?family=Raleway); */
+
 .container-fluid{
   background-color: white;
   margin-left: 1.5%;
@@ -5,15 +7,30 @@
   border-radius: 0.5%;
 }
 
+.example-header-image {
+ background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+ background-size: cover;
+}
+
+
+.navimg{
+ height: 100%;
+ width: 50%;
+}
+
+
 .container{
  background-color: white;
  width: 100%;
 }
 
+.infoIcon{
+ float: right;
+}
 
 .content-image{
- width: 100%;
- margin-bottom: 10px;
+ width: 20vw;
+ height: 20vw;
 }
 
 h1{
@@ -26,17 +43,23 @@ h1{
 
 mat-card{
  margin: auto;
- margin-top: 2vw;
+ margin-bottom: 2vw;
+ margin-top: 1vw;
  background-color: gainsboro;
  color: black;
  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
- font-family:keep-calm;
+}
+
+mat-card-subtitle{
+ font-size: 14px;
+  /* color: black;  */
 }
 
 mat-card-title{
-  margin: 2rem 0 !important;
- font-family: keep-calm;
+  margin-top: 5px;
+ font-family: Arial, Helvetica, sans-serif;
 }
+
 
 .btns{
  background-color: #7C593A;
@@ -45,21 +68,7 @@ mat-card-title{
  width: 50%;
  border: 1px solid white;
  text-align: center;
- font-size: 1.5rem;
 }
-
-.sortBtns{
-  background-color: #7C593A;
-  color: white;
-  margin-left: 3.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid white;
-  text-align: center;
- }
-
- .arrow{
-   margin: 1rem;
- }
 
 .puzzleActions{
  display: inline;
@@ -84,11 +93,24 @@ mat-card-title{
  margin: auto ;
 }
 
+*, *:before, *:after{
+ margin: 0;
+ padding: 0;
+ -webkit-box-sizing: border-box;
+ -moz-box-sizing:border-box;
+ box-sizing: border-box;
+}
+
 .content {
  position: relative;
  width: 100%;
- max-width: 370px;
+ max-width: 340px;
  overflow: hidden;
+}
+
+.content-image{
+ width: 100%;
+ margin-bottom: 10px;
 }
 
 #NoneText{
@@ -97,16 +119,4 @@ mat-card-title{
 
 .spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
         stroke: #7C593A;
-}
-
-@media only screen and (max-width:350px){
-  .btns{
-     background-color: #7C593A;
-     color: white;
-     margin: 0.5vw;
-     width: 50%;
-     border: 1px solid white;
-     text-align: center;
-     font-size: 1rem;
-   }
- }
+      }

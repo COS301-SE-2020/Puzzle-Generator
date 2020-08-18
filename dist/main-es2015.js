@@ -2679,35 +2679,35 @@ class APIService {
     //create new user
     createUser(newUser) {
         const httpOptions = { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' }) };
-        return this.http.post('http://localhost:3200/api/users/createUser', newUser, httpOptions);
+        return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/createUser', newUser, httpOptions);
     }
     loginUser(currentUser) {
         const httpOptions = { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' }) };
-        return this.http.post('http://localhost:3200/api/users/login', currentUser, httpOptions);
+        return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/login', currentUser, httpOptions);
     }
     resetPassword(currentUser) {
         const httpOptions = { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' }) };
-        return this.http.put('http://localhost:3200/api/users/resetPassword', currentUser, httpOptions);
+        return this.http.put('https://prometheuspuzzles.herokuapp.com/api/users/resetPassword', currentUser, httpOptions);
     }
     getUser(token) {
         const httpOptions = { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' }) };
-        return this.http.post('http://localhost:3200/api/users/getUser', token, httpOptions);
+        return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/getUser', token, httpOptions);
     }
     updateName(currentUser) {
         const httpOptions = { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' }) };
-        return this.http.put('http://localhost:3200/api/users/updateName', currentUser, httpOptions);
+        return this.http.put('https://prometheuspuzzles.herokuapp.com/api/users/updateName', currentUser, httpOptions);
     }
     updateUsername(currentUser) {
         const httpOptions = { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' }) };
-        return this.http.put('http://localhost:3200/api/users/updateUsername', currentUser, httpOptions);
+        return this.http.put('https://prometheuspuzzles.herokuapp.com/api/users/updateUsername', currentUser, httpOptions);
     }
     getPuzzlesByUser(token) {
         const httpOptions = { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' }) };
-        return this.http.post('http://localhost:3200/api/users/getPuzzlesByUser', token, httpOptions);
+        return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/getPuzzlesByUser', token, httpOptions);
     }
     getPuzzleRatingsByUser(token) {
         const httpOptions = { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' }) };
-        return this.http.post('http://localhost:3200/api/users/getPuzzleRatingsByUser', token, httpOptions);
+        return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/getPuzzleRatingsByUser', token, httpOptions);
     }
     /**
      * User endpoints end here
@@ -2716,35 +2716,35 @@ class APIService {
     * Puzzle endpoints start here
     */
     getAllPuzzles() {
-        return this.http.get('http://localhost:3200/api/puzzles/getAllPuzzles');
+        return this.http.get('https://prometheuspuzzles.herokuapp.com/api/puzzles/getAllPuzzles');
     }
     getAllPuzzleByID(puzzleID) {
-        return this.http.get('http://localhost:3200/api/puzzles/getPuzzleByID?Id=' + puzzleID);
+        return this.http.get('https://prometheuspuzzles.herokuapp.com/api/puzzles/getPuzzleByID?Id=' + puzzleID);
     }
     createNewPuzzle(puzzle) {
         const httpOptions = { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' }) };
-        return this.http.post('http://localhost:3200/api/puzzles/createPuzzle', puzzle, httpOptions);
+        return this.http.post('https://prometheuspuzzles.herokuapp.com/api/puzzles/createPuzzle', puzzle, httpOptions);
     }
     createNewPuzzleRating(rating) {
         const httpOptions = { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' }) };
-        return this.http.post('http://localhost:3200/api/puzzles/createPuzzleRating', rating, httpOptions);
+        return this.http.post('https://prometheuspuzzles.herokuapp.com/api/puzzles/createPuzzleRating', rating, httpOptions);
     }
     getAllPuzzleRatings() {
-        return this.http.get('http://localhost:3200/api/puzzles/getAllPuzzleRatings');
+        return this.http.get('https://prometheuspuzzles.herokuapp.com/api/puzzles/getAllPuzzleRatings');
     }
     getSearchedPuzzles(term) {
-        return this.http.get('http://localhost:3200/api/puzzles/getSearchedPuzzles/' + term);
+        return this.http.get('https://prometheuspuzzles.herokuapp.com/api/puzzles/getSearchedPuzzles/' + term);
     }
     sharePuzzle(puzzle) {
         const httpOptions = { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' }) };
-        return this.http.put('http://localhost:3200/api/puzzles/sharePuzzle', puzzle, httpOptions);
+        return this.http.put('https://prometheuspuzzles.herokuapp.com/api/puzzles/sharePuzzle', puzzle, httpOptions);
     }
     stopSharingPuzzle(puzzle) {
         const httpOptions = { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' }) };
-        return this.http.put('http://localhost:3200/api/puzzles/stopSharingPuzzle', puzzle, httpOptions);
+        return this.http.put('https://prometheuspuzzles.herokuapp.com/api/puzzles/stopSharingPuzzle', puzzle, httpOptions);
     }
     deletePuzzle(puzzle) {
-        return this.http.delete('http://localhost:3200/api/puzzles/deletePuzzle/' + puzzle);
+        return this.http.delete('https://prometheuspuzzles.herokuapp.com/api/puzzles/deletePuzzle/' + puzzle);
     }
 }
 APIService.ɵfac = function APIService_Factory(t) { return new (t || APIService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };

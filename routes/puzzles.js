@@ -1,7 +1,8 @@
 const express = require('express');
 const { response, request } = require('express');
 const router = express.Router();
-const db = require('../config/database');
+//const db = require('../config/database');
+const db = require('../config/dbConfig');
 const User = require('../models/User');
 const Puzzle = require('../models/Puzzle');
 const PuzzleRating = require('../models/PuzzleRating')

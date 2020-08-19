@@ -56,10 +56,10 @@
       </mat-radio-group>
       <button mat-raised-button class="btns" id="randomizeColorsButtonAI">Randomize Colors</button>
       <br><br>
-      <label id="">Name: </label><br><input type="text" name="puzzleName" id="puzzleNameInputBoxAI"><br>
-      <label id="">Short Description: </label><br><input type="text" name="puzzleDescription" id="puzzleDescriptionInputBoxAI"><br>
+      <label id="">Name: </label><br><input [(ngModel)]="name" type="text" name="puzzleName" id="puzzleNameInputBoxAI"><br>
+      <label id="">Short Description: </label><br><input [(ngModel)]="description" type="text" name="puzzleDescription" id="puzzleDescriptionInputBoxAI"><br>
       <label hidden="true" id="tokenLabel">{{token}}</label><br>
-      <button mat-raised-button class="btns" id="saveButtonAI" routerLink="/profilePuzzles">Save</button>
+      <button mat-raised-button class="btns" [disabled]="(!name) || (!description)" id="saveButtonAI" routerLink="/profilePuzzles">Save</button>
     </mat-card-content>
   </mat-card>
   </div>

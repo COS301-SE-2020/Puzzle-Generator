@@ -1,29 +1,51 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
 .container{
-    background-image: url('../../../assets/images/bg2.jpg');
+    background-color: #7C593A;
     height: 100%;
     width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
 }
 
 .btns{
     background-color: #7C593A;
+    color:white;
 }
 
 #one{
     margin: 5%;
 }
 
+#two{
+    color: white;
+}
+
 .regForm{
-    width: 30%;
+    width: 100%;
+    max-width: 300px;
     text-align: center;
+    margin-top: 10%;
+}
+
+#passError{
+    color: red;
 }
 
 .regFormContent{
     margin-top: 1rem;
 }
 
-.cardTitle{
-    margin-left: 1rem;
+h3{
     margin-top: 1rem;
+    font-family: keep-calm;
+    padding-left: 78px;
+}
+
+.cardTitle{
+    margin-left: 9.5rem;
 }
 
 #passError{
@@ -31,5 +53,10 @@
 }
 
 .link{
-     color: black;
-   }
+    color: black;
+}
+
+img{
+    width: 100%;
+    height: 80px;
+}

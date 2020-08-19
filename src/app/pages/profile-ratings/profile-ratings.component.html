@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+
+<button mat-button class="sortBtns">Name
+    <mat-icon (click)="nameAscending()" class="arrow">arrow_upwardward</mat-icon> |
+    <mat-icon (click)="nameDescending()" class="arrow">arrow_downward</mat-icon>
+  </button>
+
+  <button mat-button class="sortBtns">Rating
+    <mat-icon (click)="ratingAscending()" class="arrow">arrow_upwardward</mat-icon> |
+    <mat-icon (click)="ratingDescending()" class="arrow">arrow_downward</mat-icon>
+  </button>
+
+<div class="container">
+<div class="container-fluid" *ngIf="currentUser" >
+    <h1 class="main-title" >My Ratings</h1>
+    <div class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
+        <mat-card class="content" *ngFor="let rating of userRatingsList | slice: startIndex:endIndex">
+          <div class="content-overlay"></div>
+          <img class="content-image" src="{{rating.image}}">
+            <mat-card-title><strong>{{rating.puzzleName}}</strong></mat-card-title>
+            <mat-card-subtitle>Rating: {{rating.rating}}/5</mat-card-subtitle>
+            <mat-card-actions class="puzzleActions">
+                <button mat-button class="btns">SOLVE</button>
+                <button mat-button class="btns" (click)="openAndCheck(rating.puzzleID)">UPDATE RATING</button>
+            </mat-card-actions>
+            <br>
+            <mat-card-actions class="puzzleActions">
+                <button mat-button id="delete" (click)="delete(rating.puzzleID)">DELETE RATING</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
+
+<mat-paginator *ngIf="!show" [length]="totalNumberOfPuzzles" [pageSize]="pageSize" 
+                  (page)="pageEvent = changeEvent($event)">
+</mat-paginator>
+
+</div>
+
+<div id="NoneText" *ngIf="text">
+    <h2>You have not made any ratings at the moment</h2>
+</div>
+<div class="spinner">
+<mat-spinner *ngIf="show" id="spinner"></mat-spinner>
+</div>

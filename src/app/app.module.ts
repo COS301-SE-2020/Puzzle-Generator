@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,10 +24,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatRadioModule } from '@angular/material/radio';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
-//import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 
 //pages
 import { IndexComponent } from './pages/index/index.component';
@@ -37,8 +38,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RatingsComponent } from './pages/ratings/ratings.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ResetSuccessComponent } from './pages/reset-success/reset-success.component';
-import { RateFormComponent } from './pages/rate-form/rate-form.component';
 import { CreateComponent } from './pages/create/create.component';
+import { RateDialogComponent } from './rate-dialog/rate-dialog.component';
+import { ProfilePuzzlesComponent } from './pages/profile-puzzles/profile-puzzles.component';
+import { ProfileRatingsComponent } from './pages/profile-ratings/profile-ratings.component';
+import { AICreateComponent } from './pages/aicreate/aicreate.component';
 
 @NgModule({
   declarations: [
@@ -51,8 +55,11 @@ import { CreateComponent } from './pages/create/create.component';
     NavbarComponent,
     ResetPasswordComponent,
     ResetSuccessComponent,
-    RateFormComponent,
     CreateComponent,
+    RateDialogComponent,
+    ProfilePuzzlesComponent,
+    ProfileRatingsComponent,
+    AICreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,11 +75,12 @@ import { CreateComponent } from './pages/create/create.component';
     MatToolbarModule,
     MatTableModule,
     HttpClientModule,
-    HttpModule,
     FormsModule,
-    MatInputModule, MatListModule,
-    MatCardModule, MatFormFieldModule, MatDialogModule, MatGridListModule, MatRadioModule, ReactiveFormsModule
+    MatInputModule, MatListModule, MatPaginatorModule,
+    MatCardModule, MatFormFieldModule, MatDialogModule, MatGridListModule, MatRadioModule, ReactiveFormsModule,
+    MDBBootstrapModule.forRoot(),
   ],
+  entryComponents: [RateDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

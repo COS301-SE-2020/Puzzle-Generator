@@ -52,9 +52,9 @@ export class APIService {
     return this.http.post<any[]>('https://prometheuspuzzles.herokuapp.com/api/users/getPuzzlesByUser', token, httpOptions);
   }
 
-  getPuzzleRatingssByUser(token: any){
+  getPuzzleRatingsByUser(token: any): Observable<any[]>{
     const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
-    return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/getPuzzleRatingsByUser', token, httpOptions);
+    return this.http.post<any[]>('https://prometheuspuzzles.herokuapp.com/api/users/getPuzzleRatingsByUser', token, httpOptions);
   }
 
   /**
@@ -89,6 +89,31 @@ getAllPuzzleRatings(){
 
 getSearchedPuzzles(term: any){
   return this.http.get('https://prometheuspuzzles.herokuapp.com/api/puzzles/getSearchedPuzzles/' + term);
+}
+
+sharePuzzle(puzzle: any){
+  const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
+  return this.http.put('https://prometheuspuzzles.herokuapp.com/api/puzzles/sharePuzzle', puzzle, httpOptions);
+}
+
+stopSharingPuzzle(puzzle: any){
+  const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
+  return this.http.put('https://prometheuspuzzles.herokuapp.com/api/puzzles/stopSharingPuzzle', puzzle, httpOptions);
+}
+
+deletePuzzle(puzzle:number):Observable<number>
+{
+  return this.http.delete<number>('https://prometheuspuzzles.herokuapp.com/api/puzzles/deletePuzzle/'+puzzle);
+}
+
+findRatingID(rating: any){
+  const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
+  return this.http.post('https://prometheuspuzzles.herokuapp.com/api/puzzles/findRatingID', rating, httpOptions);
+}
+
+deleteRating(rating:number):Observable<number>
+{
+  return this.http.delete<number>('https://prometheuspuzzles.herokuapp.com/api/puzzles/deleteRating/'+rating);
 }
 
 /**

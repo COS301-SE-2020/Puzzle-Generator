@@ -1,0 +1,122 @@
+.container-fluid{
+   /* background-color: whitesmoke; */
+   padding: 3%;
+   border-radius: 0.5%;
+}
+
+.content{
+  margin-left: 10rem;
+}
+
+#container {
+    width: 50.2rem;
+    height: 50.2rem;
+    border: 1px solid black;
+    margin: 1rem;
+}
+
+  mat-radio-group{
+    font-size: 1.5rem;
+    padding:0.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #label{
+    text-align: center;
+    padding: 0.7em 0;
+    font-size: 1vw;
+    /* font-family: keep-calm; */
+    color: black;
+  }
+
+  .names{
+    font-size: 1.5rem;
+  }
+
+  .btns{
+    background-color: #7C593A;
+    color: white;
+    margin: 0 1.3vw;
+    margin-bottom: 1rem;
+  }
+
+  mat-card-actions{
+    margin-top: -1rem;
+    margin-left: 1rem;
+  }
+
+  #help{
+    background-color: #7C593A;
+    color: white;
+    padding: 0.5rem;
+    float: right;
+    margin-right: 2vw;
+    cursor: pointer;
+    height: 5rem;
+    width: 7rem;
+  }
+
+  .titleLabel{
+    margin-left: -2rem;
+  }
+
+  .puzzleType{
+    margin: 1rem;
+    padding-left: 3rem;
+    padding-right: 5rem;
+    padding-top: 4rem;
+    width: 30rem;
+    background-color: gainsboro;
+  }
+
+  .puzzleType{
+    margin-left: 5rem;
+  }
+
+  .creationCard{
+    margin: 1rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 4rem;
+    margin-bottom: 1rem;
+    background-color: gainsboro;
+  }
+
+  .saveOptions{
+    margin: 1rem;
+    padding-left: 2rem;
+    padding-top: 4rem;
+    width: 30rem;
+    max-width: 50rem;
+    background-color: gainsboro;
+  }
+
+  .matContentC{
+    margin-left: 4.5rem;
+  }
+
+  @media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
+    #container {
+      width: 23rem;
+      height: 35rem;
+      border: 1px solid black;
+      margin-left: -3.5rem;
+  }
+
+  .puzzleType{
+    margin-left: .8rem;
+    width: 25rem;
+  }
+
+  .saveOptions{
+    /* margin: 1rem; */
+    /* padding-left: 2rem; */
+    /* padding-top: 4rem; */
+    width: 25rem;
+  } 
+
+  #help{
+    visibility: hidden;
+  }
+  }

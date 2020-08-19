@@ -1,7 +1,7 @@
 const internetPage = require("./pages/internet_page")
 
 describe('interacting with elements', function() {
-  it("Get text for element", () => {
+  it("Get text for element", function() => {
     browser.url('https://prometheuspuzzles.herokuapp.com/index')
     let text = $("h2").getText()
     console.log(text)

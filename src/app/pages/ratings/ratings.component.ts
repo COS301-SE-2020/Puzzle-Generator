@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { APIService } from 'src/app/services/api.service';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/models/User';
 import { Router } from '@angular/router';
 import { PuzzleArr } from './puzzleArr';
 import { RatingsArr } from './RatingsArr';

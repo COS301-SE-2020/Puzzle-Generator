@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { User } from '../../models/User';
+import { User } from '../../models/user';
 import { APIService } from '../../services/api.service';
 import { Router } from '@angular/router';
 

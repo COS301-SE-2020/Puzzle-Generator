@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { User } from '../models/User';
+import { User } from '../models/user';
 import { Puzzle } from '../models/Puzzle';
 import { PuzzleRating } from '../models/PuzzleRating';
 import {HttpHeaders} from '@angular/common/http';
@@ -19,7 +19,7 @@ export class APIService {
   //create new user
   createUser(newUser: User){
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'} ) };
-    return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/createUser', newUser, httpOptions);
+    return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/createUser',newUser, httpOptions);
   }
 
   loginUser(currentUser: User){
@@ -104,6 +104,16 @@ stopSharingPuzzle(puzzle: any){
 deletePuzzle(puzzle:number):Observable<number>
 {
   return this.http.delete<number>('https://prometheuspuzzles.herokuapp.com/api/puzzles/deletePuzzle/'+puzzle);
+}
+
+findRatingID(rating: any){
+  const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
+  return this.http.post('https://prometheuspuzzles.herokuapp.com/api/puzzles/findRatingID', rating, httpOptions);
+}
+
+deleteRating(rating:number):Observable<number>
+{
+  return this.http.delete<number>('https://prometheuspuzzles.herokuapp.com/api/puzzles/deleteRating/'+rating);
 }
 
 /**

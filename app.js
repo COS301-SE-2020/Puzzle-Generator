@@ -77,10 +77,14 @@ app.use('/create',express.static(__dirname+"/dist"));
 app.use('/login',express.static(__dirname+"/dist"));
 app.use('/profile',express.static(__dirname+"/dist"));
 app.use('/profile-puzzles',express.static(__dirname+"/dist"));
+app.use('/profilePuzzles',express.static(__dirname+"/dist"));
 app.use('/profile-ratings',express.static(__dirname+"/dist"));
+app.use('/profileRatings',express.static(__dirname+"/dist"));
 app.use('/ratings',express.static(__dirname+"/dist"));
 app.use('/reset-password',express.static(__dirname+"/dist"));
 app.use('/reset-success',express.static(__dirname+"/dist"));
+app.use('/resetPassword',express.static(__dirname+"/dist"));
+app.use('/resetSuccess',express.static(__dirname+"/dist"));
 app.use('/signup',express.static(__dirname+"/dist"));
 
 /**

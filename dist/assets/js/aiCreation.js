@@ -1,4 +1,4 @@
-import { width, height, setSites, setDisableEditMode, initializeData, calculateDistancesFromSitesToPoint, 
+import { width, height, setSites, setDisableEditMode, initializeData, calculateDistancesFromSitesToPoint,
 	equidistantPointsPresent, generateSiteBoundaries, createPieces, clearBoard } from 'src/assets/js/manualCreation.js'
 
 ///The structure of each individual/chromosome object
@@ -94,7 +94,7 @@ function displaySlidersCard()
 	groupDistribution.push(document.getElementById('numberOfPiecesInputBox3').value);
 
 	generateSliders(3);
-	
+
 	document.getElementById('inputContainer').appendChild(generatePuzzleAIButton);
 }
 
@@ -142,7 +142,7 @@ function generateSliders(numberOfSliders)
 		slider.previousValue = defaultValue;
 		slider.sliderid = i;
 		slider.step = 0.01;
-		
+
 		slider.addEventListener('input', function() {
 			let difference = this.previousValue - this.value;
 			let distributedValue = (difference/( numberOfSliders - 1 )).toFixed(2);
@@ -192,7 +192,7 @@ function generateSliders(numberOfSliders)
 		});
 
 		let headerLabel = document.createElement('label');
-		headerLabel.innerHTML = 'Group ' + (i+1);
+		headerLabel.innerHTML = 'Size ' + (i+1);
 
 		let valueLabel = document.createElement('label');
 		valueLabel.innerHTML = defaultValue.toFixed(0);
@@ -210,7 +210,7 @@ function generateSliders(numberOfSliders)
 	}
 }
 
-///Executes the genetic algorithm and returns the resulting site array 
+///Executes the genetic algorithm and returns the resulting site array
 function run()
 {
 	let currentGeneration = [], nextGeneration = [];
@@ -300,7 +300,7 @@ function mutate(chromosome)
 }
 
 /**
-	Crossover operation; randomly select a site index and swap the sites located on said index. 
+	Crossover operation; randomly select a site index and swap the sites located on said index.
 	This function will create two new children, swap their sites and return an array containing them.
 **/
 function crossover(chromosomeX, chromosomeY)
@@ -383,7 +383,7 @@ function determineAndSetSiteBoundaries(chromosome)
 {
 	for(let i = 0; i < numberOfSites; i++)
 		chromosome.sites[i].surfaceArea = 0;
-	
+
 	for(let row = 0; row < tempHeight; row++)
 	{
 		for(let col = 0; col < tempWidth; col++)

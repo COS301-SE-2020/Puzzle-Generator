@@ -11,8 +11,10 @@ https://www.overleaf.com/read/mwgctytsqcvq
 https://www.overleaf.com/read/qqzbxwhmwvxf
 * Demo Three SRS Document:
 https://www.overleaf.com/read/ckqdjjskrhpr
-* User manual for the website
+* User manual for the website:
 https://www.overleaf.com/read/hkvxmjmcfhcq 
+* Technical Installation Manual:
+ https://www.overleaf.com/read/zhgbzhfdwmbt
 
 
 ## Project Management Tool
@@ -125,4 +127,4 @@ The services folder consists of our the service that interacts with our API.
 ### pages folder 
 
 We use the pages folder for all the pages components of our website. Each folder inside the pages folder uses the same file structure - we have the .html file for all the html of the page, then we have the .css file that consists of the styles for that specific page, we also have the .ts file that consists of the functions and we have the spec.ts file that will be used for unit testing. 
->>>>>>> test
+

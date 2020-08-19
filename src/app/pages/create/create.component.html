@@ -1,7 +1,24 @@
 <app-navbar></app-navbar>
 <div>
- <a mat-raised-button id="help" src="../../../assets/gifHelp.mp4">Tutorial</a>
+ <a mat-raised-button id="help" (click)="videoModal1.show()">Tutorial</a>
 </div>
+
+<div mdbModal #videoModal1="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myVideoModal1Label"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body mb-0 p-0">
+        <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+          <iframe class="embed-responsive-item" src="../../assets/ManualCreation.mp4" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button class="btns" (click)="videoModal1.hide()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container-fluid">
   <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1">
     <mat-card class="puzzleType">
@@ -39,7 +56,7 @@
     <mat-card-header>
       <mat-card-title>Saving Options</mat-card-title>
     </mat-card-header>
-    
+
     <mat-card-content class="matContentC">
       <label class="titleLabel">Select a color-palette:</label><br>
       <mat-radio-group>
@@ -62,6 +79,3 @@
   </mat-card>
   </div>
 </div>
-
-
-

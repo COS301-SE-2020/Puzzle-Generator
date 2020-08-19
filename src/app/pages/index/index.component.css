@@ -278,7 +278,7 @@ img{
 
 .container{
   max-width: 100%;
-  height: auto
+  height: auto;
 }
 
 @media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {

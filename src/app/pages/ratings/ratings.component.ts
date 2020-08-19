@@ -294,8 +294,6 @@ export class RatingsComponent implements OnInit {
           "token": localStorage.getItem('token')
         }
 
-        console.log(this.ratingEntry);
-
         if(this.api.createNewPuzzleRating(this.ratingEntry).subscribe())
         {
           alert("Rating added");

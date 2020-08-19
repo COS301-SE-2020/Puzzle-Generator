@@ -22,7 +22,7 @@ export class RateDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      rating: ['', Validators.pattern("[1-5]")]
+      rating: ['', Validators.pattern("^([1-5])$")]
     })
   }
 

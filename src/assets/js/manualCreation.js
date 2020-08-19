@@ -1,5 +1,5 @@
 import Konva from 'konva';
-export { width, height, setSites, setDisableEditMode, initializeData, calculateDistancesFromSitesToPoint, 
+export { width, height, setSites, setDisableEditMode, initializeData, calculateDistancesFromSitesToPoint,
 	equidistantPointsPresent, generateSiteBoundaries, createPieces, clearBoard };
 
 let apiURL = "http://localhost:3200/api/puzzles/createPuzzle";
@@ -109,7 +109,7 @@ function getRandomRGB()
 }
 
 ///Initialize data and set functions for buttons
-function initializeData(appendedString) 
+function initializeData(appendedString)
 {
 	if(appendedString == undefined)
 		appendedString = '';
@@ -148,7 +148,7 @@ function initializeData(appendedString)
 			canvasCoords = canvas.getBoundingClientRect();
 			let x = event.clientX - canvasCoords.x;
 			let y = event.clientY - canvasCoords.y;
-			
+
 			let point = createPoint(x, y);
 
 			layer.add(point);
@@ -237,7 +237,7 @@ function addColorPalettePicker(appendedString)
 function savePuzzle(appendedString)
 {
 	token = document.getElementById('tokenLabel').innerHTML;
-	
+
 	let puzzleName = document.getElementById('puzzleNameInputBox'+appendedString).value;
 	let puzzleDescription = document.getElementById('puzzleDescriptionInputBox'+appendedString).value;
 
@@ -255,8 +255,8 @@ function savePuzzle(appendedString)
 	$.ajax({
 		type: 'POST',
 		url: apiURL,
-		headers: { 
-			'Access-Control-Allow-Origin' : '*' 
+		headers: {
+			'Access-Control-Allow-Origin' : '*'
 		},
 		contentType: 'application/json',
 		data: JSON.stringify(jsonData),
@@ -267,7 +267,7 @@ function savePuzzle(appendedString)
 		},
 		error: function(data, status) {
 			console.log(data);
-			console.log(status);	
+			console.log(status);
 		}
 	});
 }
@@ -345,7 +345,7 @@ function createPoint(x, y)
 	return point;
 }
 
-///Calls the necessary functions to generate puzzle's vertiecs as well as the visual representation 
+///Calls the necessary functions to generate puzzle's vertiecs as well as the visual representation
 function generatePuzzle()
 {
 	//Testing data
@@ -393,7 +393,7 @@ function generatePuzzle()
 	createPieces();
 }
 
-///Creates the puzzle pieces from the siteBoundaries for each site(position selected by the user) 
+///Creates the puzzle pieces from the siteBoundaries for each site(position selected by the user)
 function createPieces()
 {
 	for(let i = 0; i < sites.length; i++)
@@ -447,10 +447,10 @@ function trimPoints(pointArray)
 				trimmedPoints.push(firstPointCol, currentRow);
 				crissCross - 1;
 			}
-			
+
 			firstPointCol = pointArray[index];
 			lastPointCol = pointArray[index];
-			currentRow = pointArray[index+1];	
+			currentRow = pointArray[index+1];
 		}
 		else
 		{

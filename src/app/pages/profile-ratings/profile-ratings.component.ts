@@ -29,9 +29,9 @@ export class ProfileRatingsComponent implements OnInit {
   ratingsLSize: number;
 
   //pagination
-  pageSize: number = 4;
+  pageSize: number = 6;
   startIndex:number = 0;
-  endIndex: number = 4;
+  endIndex: number = 6;
   pageSizeOptions: number[] = [5, 10, 25, 100];
 
   // MatPaginator Output

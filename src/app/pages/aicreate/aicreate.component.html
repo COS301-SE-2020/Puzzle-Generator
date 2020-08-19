@@ -11,14 +11,31 @@
       </mat-card-header>
       <mat-card-content>
         <div id="inputContainer">
-          <label>Number of puzzle pieces(20 max):</label><br>
+          <label>Maximum of puzzle pieces - 20</label><br>
+          <mat-form-field class="names" appearance="outline">
+            <mat-label>Number of puzzle pieces</mat-label>
+            <input class="input" type="number" matInput placeholder="3" name="numberOfPieces" id="numberOfPiecesInputBox">
+          </mat-form-field>
+          <mat-form-field class="names" appearance="outline">
+            <mat-label>Number of Group 1 pieces:</mat-label>
+            <input class="input" type="number" matInput placeholder="1" name="numberOfPieces" id="numberOfPiecesInputBox1">
+          </mat-form-field>
+          <mat-form-field class="names" appearance="outline">
+            <mat-label>Number of Group 2 pieces:</mat-label>
+            <input class="input" type="number" matInput placeholder="1" name="numberOfPieces" id="numberOfPiecesInputBox2">
+          </mat-form-field>
+          <mat-form-field class="names" appearance="outline">
+            <mat-label>Number of Group 2 pieces:</mat-label>
+            <input class="input" type="number" matInput placeholder="1" name="numberOfPieces" id="numberOfPiecesInputBox3">
+          </mat-form-field>
+          <!-- <label>Number of puzzle pieces(20 max):</label><br>
           <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox" value="3"><br>
           <label>Number of Group 1 pieces:</label><br>
           <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox1" value="1"><br>
           <label>Number of Group 2 pieces:</label><br>
           <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox2" value="1"><br>
-          <label>Number of Group 3 pieces:</label><br>
-          <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox3" value="1"><br>
+          <label>Number of Group 2 pieces:</label><br>
+          <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox3" value="1"><br> -->
           <label>Select Puzzle Type</label><br>
           <mat-radio-group class="radio-group">
             <mat-radio-button class="radio-button" value="euclidean" name="distanceMetric" id="euclideanButtonAI" > Euclidian </mat-radio-button>
@@ -56,8 +73,19 @@
       </mat-radio-group>
       <button mat-raised-button class="btns" id="randomizeColorsButtonAI">Randomize Colors</button>
       <br><br>
-      <label id="">Name: </label><br><input [(ngModel)]="name" type="text" name="puzzleName" id="puzzleNameInputBoxAI"><br>
-      <label id="">Short Description: </label><br><input [(ngModel)]="description" type="text" name="puzzleDescription" id="puzzleDescriptionInputBoxAI"><br>
+
+      <mat-form-field class="names" appearance="outline">
+        <mat-label>Puzzle Name</mat-label>
+        <input class="input" matInput placeholder="New Puzzle" [(ngModel)]="name" name="puzzleName" id="puzzleNameInputBoxAI">
+      </mat-form-field>
+
+      <mat-form-field class="names" appearance="outline">
+        <mat-label>Short description</mat-label>
+        <input class="input" matInput placeholder="For my cat" [(ngModel)]="description" name="puzzleDescription" id="puzzleDescriptionInputBoxAI">
+      </mat-form-field>
+
+      <!-- <label id="">Name: </label><br><input [(ngModel)]="name" type="text" name="puzzleName" id="puzzleNameInputBoxAI"><br> -->
+      <!-- <label id="">Short Description: </label><br><input [(ngModel)]="description" type="text" name="puzzleDescription" id="puzzleDescriptionInputBoxAI"><br> -->
       <label hidden="true" id="tokenLabel">{{token}}</label><br>
       <button mat-raised-button class="btns" [disabled]="(!name) || (!description)" id="saveButtonAI" routerLink="/profilePuzzles">Save</button>
     </mat-card-content>

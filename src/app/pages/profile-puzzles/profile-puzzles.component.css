@@ -24,6 +24,10 @@ h1{
   text-align: center;
 }
 
+.paginator{
+  bottom: 0;
+}
+
 mat-card{
  margin: auto;
  margin-top: 2vw;

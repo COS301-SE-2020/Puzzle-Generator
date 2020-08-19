@@ -40,9 +40,9 @@ export class RatingsComponent implements OnInit {
   ratingsLSize: number;
 
   //pagination
-  pageSize: number = 8;
+  pageSize: number = 6;
   startIndex:number = 0;
-  endIndex: number = 8;
+  endIndex: number = 6;
   pageSizeOptions: number[] = [5, 10, 25, 100];
 
   // MatPaginator Output

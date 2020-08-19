@@ -1,11 +1,24 @@
 .container{
-    background-image: url('../../../assets/images/bg2.jpg');
+    /*background-image: url('../../../assets/images/back/teo-duldulao-4op9_2Bt2Eg-unsplash.jpg');*/
+    background-color: #7C593A;
     height: 100%;
     width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
 }
+
+
+h1{
+    margin-top: 1rem;
+    font-family: keep-calm;
+}
+
 
 .btns{
     background-color: #7C593A;
+    color:white
 }
 
 #one{
@@ -13,8 +26,10 @@
 }
 
 .regForm{
-    width: 30%;
+    width: 100%;
+    max-width: 300px;
     text-align: center;
+    margin-top: 5%;
 }
 
 .regFormContent{
@@ -27,4 +42,15 @@
 }
 #passError{
     color: red;
+}
+
+h3{
+    margin-top: 1rem;
+    font-family: keep-calm;
+    padding-left: 78px;
+}
+
+img{
+    width: 100%;
+    height: 80px;
 }

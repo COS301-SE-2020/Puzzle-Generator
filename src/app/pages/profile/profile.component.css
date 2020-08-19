@@ -4,21 +4,34 @@
 }
 
 #profileImage{
-    border-radius: 220rem;
-    background-position: left top;
+    height: 20vw;
+    width: 20vw;
+    border-radius: 100rem;
     padding: 2rem;
-    width: 23rem;
 }
 
-.profile{
-    margin: 3rem;
-    padding: 2rem;
-    width: 25rem;
-    background-color:  #7C593A;
+h1{
+    margin-top: 1rem;
+    font-family: keep-calm;
+    color: black;
+    margin-left: 5vw;
 }
 
-.flex-container{
-    margin: 0.9rem;
+.profileText{
+  margin-left: 35%;
+}
+
+.abc{
+  display: inline;
+}
+
+.profileText, .profileImageCard{
+  margin-bottom: 2vw;
+  margin-top: 2vw;
+  background-color: gainsboro;
+  color: black;
+  width: 30%;
+  text-align: center !important;
 }
 
 .userPuzzles{
@@ -27,11 +40,40 @@
 }
 
 .btns{
-    background-color: whitesmoke;
-    margin: 0.3rem;
-    height: 3rem;
+  background-color: #7C593A;
+  color: white;
+  margin-bottom: 1rem;
 }
 
-.content{
-    background-image: url('../../../assets/images/bg2.jpg');
-}
+.container-fluid{
+     background-color: white;
+     margin-left: 1.5%;
+     margin-right: 1.5%;
+     border-radius: 0.5%;
+  }
+
+  .move{
+    border: 1px gainsboro solid;
+    border-radius: 10px;
+    padding: 0.5vw;
+    margin-bottom: 1vw;
+    background-color: white;
+  }
+
+  mat-card {
+    width: 100%;
+    max-width: 570px;
+    min-width: 300px;
+    position: relative;
+    overflow: hidden;
+    height: 39rem;
+    text-align: center !important;
+  }
+
+
+  @media only screen and (max-width:576px){
+    .profileImageCard, .profileText{
+      margin: auto;
+    }
+
+  }

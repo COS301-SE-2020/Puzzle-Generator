@@ -14,8 +14,18 @@ export class ResetPasswordComponent implements OnInit {
   verifyUser: any;
   formError: string;
   resetDone: string;
+  fieldTextType: boolean;
+  fieldTextType2: boolean;
 
   constructor(private formBuilder: FormBuilder, private api: APIService, private router: Router ) {}
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
+
+  toggleFieldTextType2() {
+    this.fieldTextType2 = !this.fieldTextType2;
+  }
 
   //method for logging in user and getting the token associated with the said user
   resetPassword(currentUser: User){
@@ -63,6 +73,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.resetPasswordForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],

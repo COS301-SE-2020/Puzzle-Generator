@@ -1,0 +1,106 @@
+.container-fluid{
+  /* background-color: whitesmoke; */
+  padding: 3%;
+  border-radius: 0.5%;
+}
+
+#help{
+  background-color: #7C593A;
+  color: white;
+  padding: 0.5rem;
+  float: right;
+  margin-right: 2vw;
+  cursor: pointer;
+  height: 5rem;
+  width: 7rem;
+}
+
+.content{
+ margin-left: 10rem;
+}
+
+.titleLabel{
+  margin-left: -2rem;
+}
+
+mat-radio-group{
+  font-size: 1.5rem;
+  padding:0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#container {
+   width: 500px;
+   height: 500px;
+   border: 1px solid black;
+   margin: 1rem;
+}
+
+.radio-group {
+   display: flex;
+   flex-direction: column;
+   /* margin-left: 1rem; */
+   font-size: 1vw;
+ }
+
+ #label{
+   text-align: center;
+   padding: 0.7em 0;
+   font-size: 1vw;
+   font-family: keep-calm;
+   color: black;
+ }
+
+ .btns{
+   background-color: #7C593A;
+   color: white;
+   margin: 0 1.3vw;
+ }
+
+
+ .main-title{
+   text-align: center;
+   text-transform: capitalize;
+   padding: 0.7em 0;
+   margin-top: 30px;
+   font-size: 40px;
+   text-align: center;
+   font-family: keep-calm;
+   color: gray;
+ }
+
+ .puzzleOptions{
+  margin: 1rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top: 4rem;
+  width: 40rem;
+  background-color: gainsboro;
+}
+
+.puzzleOptions{
+  margin-left: 3rem;
+}
+
+.creationCard{
+  margin: 1rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top: 4rem;
+  margin-bottom: 1rem;
+  background-color: gainsboro;
+}
+
+.saveOptions{
+  margin: 1rem;
+  padding-left: 2rem;
+  padding-top: 4rem;
+  width: 30rem;
+  max-width: 50rem;
+  background-color: gainsboro;
+}
+
+.matContentC{
+  margin-left: 1rem;
+}

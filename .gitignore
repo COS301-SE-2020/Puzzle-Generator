@@ -6,9 +6,10 @@ database.js
 
 # Ignore node_modules folder
 node_modules
+npm-debug.log
 
 # Ignore local dist folder, needs to create a new one
-dist
+#dist
 
 # Ignore all text files
 *.txt
@@ -31,3 +32,6 @@ OLD structure
 
 #Ignore current directory's Readme from overwriting existing
 readme.md
+
+#report files
+report.*.json

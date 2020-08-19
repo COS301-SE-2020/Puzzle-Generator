@@ -14,10 +14,11 @@ h1{
     margin-top: 1rem;
     font-family: keep-calm;
     color: black;
+    margin-left: 5vw;
 }
 
-.profileImageCard{
-  margin-left: 25%; 
+.profileText{
+  margin-left: 35%;
 }
 
 .abc{
@@ -29,8 +30,8 @@ h1{
   margin-top: 2vw;
   background-color: gainsboro;
   color: black;
-  width: 25%;
-  text-align: center;
+  width: 30%;
+  text-align: center !important;
 }
 
 .userPuzzles{
@@ -61,8 +62,18 @@ h1{
 
   mat-card {
     width: 100%;
-    max-width: 370px;
+    max-width: 570px;
+    min-width: 300px;
     position: relative;
     overflow: hidden;
     height: 39rem;
+    text-align: center !important;
+  }
+
+
+  @media only screen and (max-width:576px){
+    .profileImageCard, .profileText{
+      margin: auto;
+    }
+
   }

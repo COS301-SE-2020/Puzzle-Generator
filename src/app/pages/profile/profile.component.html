@@ -3,16 +3,7 @@
 
 
 <div class="container-fluid" >
-    <div fxLayout="row">
-    <mat-card class="profileImageCard">
-        <mat-card-header>
-            <h1>Profile</h1>
-        </mat-card-header>
-        <mat-card-content>
-        <div><img src="assets/images/profile.jpg" id="profileImage"></div>
-        </mat-card-content>
-    </mat-card>
-
+    <div fxLayout="row" fxLayout.xs="col wrap">
     <mat-card class="profileText">
         <mat-card-header>
             <h1>Edit Details</h1>
@@ -21,6 +12,7 @@
         <div *ngIf="currentUserObject">
             <form [formGroup]="updateNameForm" (ngSubmit)="updateName()">
                 <mat-form-field appearance="standard">
+                    <label for="name">Your Name: </label>
                     <input matInput formControlName="name"  value="{{currentUserObject.name}}" (input)="nameTextboxValue=$event.target.value">
                 </mat-form-field>
                 <div>
@@ -35,6 +27,7 @@
 
             <form [formGroup]="updateUsernameForm" (ngSubmit)="updateUsername()">
                 <mat-form-field appearance="standard">
+                    <label for="username">Your Email: </label>
                     <input matInput formControlName="username"  value="{{currentUserObject.username}}" (input)="usernameTextboxValue=$event.target.value">
                 </mat-form-field>
                 <div>
@@ -49,3 +42,6 @@
         </div>
         </mat-card-content>
     </mat-card>
+
+  </div>
+</div>

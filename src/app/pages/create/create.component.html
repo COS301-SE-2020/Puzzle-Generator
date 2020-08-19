@@ -50,10 +50,14 @@
       </mat-radio-group>
       <button mat-raised-button class="btns" id="randomizeColorsButton">Randomize Colors</button>
       <br><br>
-      <label id="">Name: </label><br><input type="text" name="puzzleName" id="puzzleNameInputBox"><br>
-      <label id="">Short Description: </label><br><input type="text" name="puzzleDescription" id="puzzleDescriptionInputBox"><br>
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input class="input" matInput placeholder="john@doe.com" formControlName="email" required>
+    </mat-form-field> -->
+      <label id="">Name: </label><br><input type="text" [(ngModel)]="name" name="puzzleName" id="puzzleNameInputBox"><br>
+      <label id="">Short Description: </label><br><input type="text" [(ngModel)]="description" name="puzzleDescription" id="puzzleDescriptionInputBox"><br>
       <label hidden="true" id="tokenLabel">{{token}}</label><br>
-      <button mat-raised-button class="btns" id="saveButton" routerLink="/profilePuzzles">Save</button>
+      <button mat-raised-button class="btns" [disabled]="(!name) || (!description)" id="saveButton" routerLink="/profilePuzzles">Save</button>
     </mat-card-content>
   </mat-card>
   </div>

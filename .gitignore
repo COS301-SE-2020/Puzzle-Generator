@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 #Ignore database file
 database.js
 
@@ -10,8 +9,7 @@ database.js
 # Ignore node_modules folder
 node_modules
 
-<<<<<<< HEAD
-=======
+
 # Ignore local dist folder, needs to create a new one
 dist
 
@@ -34,6 +32,5 @@ workspace.xml
 
 #ignore old structure
 OLD structure
-
 
 

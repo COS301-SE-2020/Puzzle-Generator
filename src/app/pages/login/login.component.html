@@ -24,20 +24,13 @@
                     <mat-form-field appearance="fill">
                         <mat-label>Enter your password</mat-label><br>
                         <input matInput required
-                  [type]="fieldTextType ? 'text' : 'password'"
-                  class="form-control input"
-                  formControlName="password"
-                />
+                            [type]="fieldTextType ? 'text' : 'password'" class="form-control input" formControlName="password"/>
                     </mat-form-field>
 
-                    <span><i
-                      class="fa"
-                      [ngClass]="{
-                        'fa-eye-slash': !fieldTextType,
-                        'fa-eye': fieldTextType
-                      }"
-                      (click)="toggleFieldTextType()"
-                    ></i></span>
+                    <span>
+                        <i class="fa" [ngClass]="{ 'fa-eye-slash': !fieldTextType,'fa-eye': fieldTextType }" (click)="toggleFieldTextType()"> 
+                        </i>
+                    </span>
 
                         <div>
                             <ng-container *ngFor="let error of error_messages.password">

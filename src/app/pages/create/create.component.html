@@ -67,12 +67,19 @@
       </mat-radio-group>
       <button mat-raised-button class="btns" id="randomizeColorsButton">Randomize Colors</button>
       <br><br>
-      <!-- <mat-form-field appearance="fill">
-        <mat-label>Enter your email</mat-label>
-        <input class="input" matInput placeholder="john@doe.com" formControlName="email" required>
-    </mat-form-field> -->
-      <label id="">Name: </label><br><input type="text" [(ngModel)]="name" name="puzzleName" id="puzzleNameInputBox"><br>
-      <label id="">Short Description: </label><br><input type="text" [(ngModel)]="description" name="puzzleDescription" id="puzzleDescriptionInputBox"><br>
+      
+      <mat-form-field class="names" appearance="outline">
+        <mat-label>Puzzle Name</mat-label>
+        <input class="input" matInput placeholder="New Puzzle" [(ngModel)]="name" name="puzzleName" id="puzzleNameInputBox">
+      </mat-form-field>
+
+      <mat-form-field class="names" appearance="outline">
+        <mat-label>Short description</mat-label>
+        <input class="input" matInput placeholder="For my cat" [(ngModel)]="description" name="puzzleDescription" id="puzzleDescriptionInputBox">
+      </mat-form-field>
+
+      <!-- <label id="">Name: </label><br><input type="text" [(ngModel)]="name" name="puzzleName" id="puzzleNameInputBox"><br> -->
+      <!-- <label id="">Short Description: </label><br><input type="text" [(ngModel)]="description" name="puzzleDescription" id="puzzleDescriptionInputBox"><br> -->
       <label hidden="true" id="tokenLabel">{{token}}</label><br>
       <button mat-raised-button class="btns" [disabled]="(!name) || (!description)" id="saveButton" routerLink="/profilePuzzles">Save</button>
     </mat-card-content>

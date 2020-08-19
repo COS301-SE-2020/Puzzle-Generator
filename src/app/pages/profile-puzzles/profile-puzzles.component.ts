@@ -27,10 +27,10 @@ export class ProfilePuzzlesComponent implements OnInit {
   ratingsLSize: number;
 
   //pagination
-  pageSize: number = 4;
+  pageSize: number = 6;
   startIndex:number = 0;
-  endIndex: number = 4;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
+  endIndex: number = 6;
+  // pageSizeOptions: number[] = [5, 10, 25, 100];
 
   // MatPaginator Output
   pageEvent: PageEvent;
@@ -38,7 +38,7 @@ export class ProfilePuzzlesComponent implements OnInit {
   constructor(private api: APIService, private router: Router) { }
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
-    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+    // this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
   }
 
   changeEvent(event: PageEvent)
@@ -143,7 +143,7 @@ export class ProfilePuzzlesComponent implements OnInit {
     this.show = true;
     this.text = false;
 
-    this.delay(2100).then( () =>{
+    this.delay(2500).then( () =>{
       this.getUserPuzzles();
     });
 

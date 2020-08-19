@@ -30,6 +30,10 @@
     color: black;
   }
 
+  .names{
+    font-size: 1.5rem;
+  }
+
   .btns{
     background-color: #7C593A;
     color: white;
@@ -86,8 +90,33 @@
     width: 30rem;
     max-width: 50rem;
     background-color: gainsboro;
-  } 
+  }
 
   .matContentC{
     margin-left: 4.5rem;
+  }
+
+  @media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
+    #container {
+      width: 23rem;
+      height: 35rem;
+      border: 1px solid black;
+      margin-left: -3.5rem;
+  }
+
+  .puzzleType{
+    margin-left: .8rem;
+    width: 25rem;
+  }
+
+  .saveOptions{
+    /* margin: 1rem; */
+    /* padding-left: 2rem; */
+    /* padding-top: 4rem; */
+    width: 25rem;
+  } 
+
+  #help{
+    visibility: hidden;
+  }
   }

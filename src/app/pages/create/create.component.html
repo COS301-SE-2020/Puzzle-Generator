@@ -1,7 +1,24 @@
 <app-navbar></app-navbar>
 <div>
- <a mat-raised-button id="help" src="../../../assets/gifHelp.mp4">Tutorial</a>
+ <a mat-raised-button id="help" (click)="videoModal1.show()">Tutorial</a>
 </div>
+
+<div mdbModal #videoModal1="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myVideoModal1Label"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body mb-0 p-0">
+        <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+          <iframe class="embed-responsive-item" src="../../assets/ManualCreation.mp4" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button class="btns" (click)="videoModal1.hide()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container-fluid">
   <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1">
     <mat-card class="puzzleType">
@@ -39,7 +56,7 @@
     <mat-card-header>
       <mat-card-title>Saving Options</mat-card-title>
     </mat-card-header>
-    
+
     <mat-card-content class="matContentC">
       <label class="titleLabel">Select a color-palette:</label><br>
       <mat-radio-group>
@@ -50,18 +67,22 @@
       </mat-radio-group>
       <button mat-raised-button class="btns" id="randomizeColorsButton">Randomize Colors</button>
       <br><br>
-      <!-- <mat-form-field appearance="fill">
-        <mat-label>Enter your email</mat-label>
-        <input class="input" matInput placeholder="john@doe.com" formControlName="email" required>
-    </mat-form-field> -->
-      <label id="">Name: </label><br><input type="text" [(ngModel)]="name" name="puzzleName" id="puzzleNameInputBox"><br>
-      <label id="">Short Description: </label><br><input type="text" [(ngModel)]="description" name="puzzleDescription" id="puzzleDescriptionInputBox"><br>
+      
+      <mat-form-field class="names" appearance="outline">
+        <mat-label>Puzzle Name</mat-label>
+        <input class="input" matInput placeholder="New Puzzle" [(ngModel)]="name" name="puzzleName" id="puzzleNameInputBox">
+      </mat-form-field>
+
+      <mat-form-field class="names" appearance="outline">
+        <mat-label>Short description</mat-label>
+        <input class="input" matInput placeholder="For my cat" [(ngModel)]="description" name="puzzleDescription" id="puzzleDescriptionInputBox">
+      </mat-form-field>
+
+      <!-- <label id="">Name: </label><br><input type="text" [(ngModel)]="name" name="puzzleName" id="puzzleNameInputBox"><br> -->
+      <!-- <label id="">Short Description: </label><br><input type="text" [(ngModel)]="description" name="puzzleDescription" id="puzzleDescriptionInputBox"><br> -->
       <label hidden="true" id="tokenLabel">{{token}}</label><br>
       <button mat-raised-button class="btns" [disabled]="(!name) || (!description)" id="saveButton" routerLink="/profilePuzzles">Save</button>
     </mat-card-content>
   </mat-card>
   </div>
 </div>
-
-
-

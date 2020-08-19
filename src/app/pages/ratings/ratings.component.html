@@ -43,7 +43,7 @@
               </mat-card-header>
             </div>
             <mat-card-title><strong>{{puzzle.name}}</strong></mat-card-title>
-            <mat-card-subtitle>Rating: {{puzzle.rating}}/5.00 <span *ngIf="puzzle.rating == '0'">- Not yet rated</span> </mat-card-subtitle>
+            <mat-card-subtitle>Rating: {{puzzle.rating}}/5 <span *ngIf="puzzle.rating == '0'">- Not yet rated</span> </mat-card-subtitle>
 
             <mat-card-actions class="puzzleActions">
               <button mat-button class="btns">SOLVE</button>
@@ -53,8 +53,7 @@
     </div>
 </div>
 
-<mat-paginator class="paginator" [length]="totalNumberOfPuzzles" [pageSize]="pageSize"
-                  [pageSizeOptions]="pageSizeOptions"
+<mat-paginator *ngIf="!show" class="paginator" [length]="totalNumberOfPuzzles" [pageSize]="pageSize"
                   (page)="pageEvent = changeEvent($event)">
 </mat-paginator>
 

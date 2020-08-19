@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx wdio wdio.conf.js"
+    "test": "mocha -- exit integration --timeout 10000"
   },
   "author": "team_prometheus",
   "license": "ISC",

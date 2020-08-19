@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm update"
+    "test": "npx wdio wdio.conf.js"
   },
   "author": "team_prometheus",
   "license": "ISC",

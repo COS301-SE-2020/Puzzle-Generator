@@ -1,17 +1,33 @@
 .container-fluid{
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
   padding: 3%;
-  /* margin-left: 1.5%; */
-  /* margin-right: 1.5%; */
   border-radius: 0.5%;
 }
 
-mat-card{
- margin: 2%;
+#help{
+  background-color: #7C593A;
+  color: white;
+  padding: 0.5rem;
+  float: right;
+  margin-right: 2vw;
+  cursor: pointer;
+  height: 5rem;
+  width: 7rem;
 }
 
 .content{
  margin-left: 10rem;
+}
+
+.titleLabel{
+  margin-left: -2rem;
+}
+
+mat-radio-group{
+  font-size: 1.5rem;
+  padding:0.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 #container {
@@ -53,3 +69,38 @@ mat-card{
    font-family: keep-calm;
    color: gray;
  }
+
+ .puzzleOptions{
+  margin: 1rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top: 4rem;
+  width: 40rem;
+  background-color: gainsboro;
+}
+
+.puzzleOptions{
+  margin-left: 3rem;
+}
+
+.creationCard{
+  margin: 1rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top: 4rem;
+  margin-bottom: 1rem;
+  background-color: gainsboro;
+}
+
+.saveOptions{
+  margin: 1rem;
+  padding-left: 2rem;
+  padding-top: 4rem;
+  width: 30rem;
+  max-width: 50rem;
+  background-color: gainsboro;
+}
+
+.matContentC{
+  margin-left: 1rem;
+}

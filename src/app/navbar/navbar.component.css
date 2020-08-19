@@ -1,20 +1,25 @@
-::ng-deep #navCustom nav{
+nav{
   background-color: #7C593A;
 }
 
 .nav-link{
   color: white;
   margin-right: 1.5vw;
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 
 .navbar-text{
   color: white;
   text-align: left;
   font-size: 1.5rem;
+  font-family: keep-calm;
+  margin-top: 2rem;
 }
 
-ul.nav li:hover > a { color: #7C593A !important; }
+ul.nav li:hover > a {
+  color: #7C593A !important;
+  cursor: pointer;
+}
 
 span{
   float: right;
@@ -24,8 +29,8 @@ span{
   margin-left: 2vw;
   background-color: #7C593A;
   color: white;
-  padding: 1vw;
-  font-size: 2rem;
+  padding: 0.9vw;
+  font-size: 1.7rem;
 }
 
 #logout:hover{
@@ -39,18 +44,43 @@ span{
   color: white !important;
 }
 
-.logo{
-  height: 14rem;
-}
-
-.dropdown {
-  background-color: #7C593A;
-}
-
-.navimg{ 
-  height: 13rem;
+.navimg{
+  height: 13vw;
 }
 
 .caret{
-  margin-left: 0.5vw !important;
+  margin-left: 0.7vw !important;
+}
+
+.left {
+  float: left;
+}
+
+.nav{
+  font-family: keep-calm;
+  margin: 0.8rem;
+}
+
+i{
+  background-color: #7C593A;
+  color: white;
+  margin-top: 1vw;
+}
+
+#burger {
+  background-color: #7C593A !important;
+}
+
+.dropdown-menu{
+  background-color: #7C593A !important;
+  padding: 1vw;
+}
+
+@media only screen and (max-width:768px){
+
+  .dropdown-menu{
+    background-color: #7C593A !important;
+    padding-left: 4vw;
+  }
+
 }

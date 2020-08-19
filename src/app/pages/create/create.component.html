@@ -1,12 +1,12 @@
 <app-navbar></app-navbar>
 <div>
- <a id="help" src="../../../assets/gifHelp.mp4">Help</a>
+ <a mat-raised-button id="help" src="../../../assets/gifHelp.mp4">Tutorial</a>
 </div>
 <div class="container-fluid">
   <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1">
-    <mat-card class="">
+    <mat-card class="puzzleType">
       <mat-card-header>
-        <label>Select Puzzle Type</label>
+        <mat-card-title class="titleLabel">Select Puzzle Type</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <mat-radio-group class="radio-group">
@@ -16,58 +16,52 @@
       </mat-card-content>
    </mat-card>
 
-   <mat-card class="">
+   <mat-card class="creationCard">
     <mat-card-header>
-      <label>Create puzzle by selecting points on the canvas</label>
+      <mat-card-title class="titleLabel">Create puzzle by selecting points on the canvas</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <mat-icon id="deletePointButton">delete</mat-icon>
+      <button mat-raised-button class="btns" id="deletePointButton">
+        <mat-icon id="deletePointButtonIcon">delete</mat-icon><mat-icon id="editPointButtonIcon">edit</mat-icon> Delete Mode
+      </button>
       <div id="container">
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <div id='colorPalettes'>
-      </div>
-      <button mat-raised-button class="btns" id="randomizeColorsButton">Randomize Colors</button>
+      <!-- <div id='colorPalettes'>
+      </div> -->
       <!-- <button mat-raised-button class="btns" id="deletePointButton">Delete Mode</button> -->
       <button mat-raised-button class="btns" id="generatePuzzleButton">Generate Puzzle</button>
     </mat-card-actions>
   </mat-card>
 
-  <mat-card class="">
+  <mat-card class="saveOptions">
     <mat-card-header>
       <mat-card-title>Saving Options</mat-card-title>
     </mat-card-header>
-    <mat-card-content>
-       <br >
-        <label id="">Name: </label><br><input type="text" name="puzzleName" id="puzzleNameInputBox"><br>
-        <label id="">Short Description: </label><br><input type="text" name="puzzleDescription" id="puzzleDescriptionInputBox"><br>
-        <label hidden="true" id="tokenLabel">{{token}}</label><br>
-        <button mat-raised-button class="btns" id="saveButton">Save</button>
+    
+    <mat-card-content class="matContentC">
+      <label class="titleLabel">Select a color-palette:</label><br>
+      <mat-radio-group>
+        <mat-radio-button class="radio-button colorPalettes" paletteid=0 value="default" name="colorPalettes">Default</mat-radio-button>
+        <mat-radio-button class="radio-button colorPalettes" paletteid=1 value="shadesOfRed" name="colorPalettes">Shades Of Red</mat-radio-button>
+        <mat-radio-button class="radio-button colorPalettes" paletteid=2 value="shadesOfGreen" name="colorPalettes">Shades Of Green</mat-radio-button>
+        <mat-radio-button class="radio-button colorPalettes" paletteid=3 value="shadesOfBlue" name="colorPalettes">Shades of Blue</mat-radio-button>
+      </mat-radio-group>
+      <button mat-raised-button class="btns" id="randomizeColorsButton">Randomize Colors</button>
+      <br><br>
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input class="input" matInput placeholder="john@doe.com" formControlName="email" required>
+    </mat-form-field> -->
+      <label id="">Name: </label><br><input type="text" [(ngModel)]="name" name="puzzleName" id="puzzleNameInputBox"><br>
+      <label id="">Short Description: </label><br><input type="text" [(ngModel)]="description" name="puzzleDescription" id="puzzleDescriptionInputBox"><br>
+      <label hidden="true" id="tokenLabel">{{token}}</label><br>
+      <button mat-raised-button class="btns" [disabled]="(!name) || (!description)" id="saveButton" routerLink="/profilePuzzles">Save</button>
     </mat-card-content>
   </mat-card>
   </div>
 </div>
 
 
-<!-- <label id="label">What puzzle type would you like to generate?</label>
-    <mat-radio-group class="radio-group">
-      <mat-radio-button class="radio-button" value="euclidean" name="distanceMetric" id="euclideanButton" > Euclidian </mat-radio-button>
-      <mat-radio-button class="radio-button" value="manhattan" name="distanceMetric" id="manhattanButton" > Manhattan </mat-radio-button>
-    </mat-radio-group>
-    <br> -->
-    <!-- <label id="label">Create puzzle by selecting points on the canvas</label>
 
-    <br>
-    <div id="container">
-    </div>
-    <br> -->
-
-    <!-- <button mat-raised-button class="btns" id="generatePuzzleButton">Generate Puzzle</button> <br >
-      <label id="label">Name: </label><input type="text" name="puzzleName" id="puzzleNameInputBox"><br>
-      <label id="label">Short Description: </label><input type="text" name="puzzleDescription" id="puzzleDescriptionInputBox"><br>
-      <label hidden="true" id="tokenLabel">{{token}}</label>
-
-
-    <button mat-raised-button class="btns" id="saveButton">Save</button> -->
-    <!-- <button mat-raised-button class="btns" id="saveAndSubmitButton">Save and Submit</button> -->

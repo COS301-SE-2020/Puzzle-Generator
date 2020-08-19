@@ -13,11 +13,22 @@ export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
   newUser: any;
   formError: string;
+  fieldTextType: boolean;
+  fieldTextType2: boolean;
 
   token: any;
   name: any;
 
   constructor(private formBuilder: FormBuilder, private api: APIService, private router: Router) {}
+
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
+
+  toggleFieldTextType2() {
+    this.fieldTextType2 = !this.fieldTextType2;
+  }
 
   //method for creating a new user. A new JSON object is created and sent to the node api
   createNewUser(createUser: any){

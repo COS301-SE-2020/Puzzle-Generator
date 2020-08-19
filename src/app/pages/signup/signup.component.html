@@ -1,9 +1,9 @@
 <div class="container">
-    <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center none">
-        <mat-card class="regForm">
-            <mat-card-header>
-                <h1>Sign Up</h1>
-            </mat-card-header>
+    <div class="flex-container" fxLayout="row" fxLayoutAlign="center none">
+      <mat-card class="regForm"><img src="assets/images/label.png">
+          <mat-card-header>
+              <h3>Sign Up</h3>
+          </mat-card-header>
             <mat-card-content class="regFormContent">
                 <form [formGroup]="signUpForm" (ngSubmit)="createNewUser(signUpForm.value)">
                     <div>
@@ -37,8 +37,20 @@
                     <div>
                     <mat-form-field appearance="fill">
                         <mat-label>Enter your password</mat-label>
-                        <input class="input" matInput required formControlName="password" type="password">
+                        <input matInput required
+                  [type]="fieldTextType ? 'text' : 'password'"
+                  class="input"
+                  formControlName="password"
+                />
                     </mat-form-field>
+                    <span><i
+                      class="fa"
+                      [ngClass]="{
+                        'fa-eye-slash': !fieldTextType,
+                        'fa-eye': fieldTextType
+                      }"
+                      (click)="toggleFieldTextType()"
+                    ></i></span>
                         <div>
                             <ng-container *ngFor="let error of error_messages.password">
                                 <mat-error class="error-message" *ngIf="signUpForm.get('password').hasError(error.type) && (signUpForm.get('password').dirty || signUpForm.get('password').touched)">
@@ -50,8 +62,20 @@
                     <div>
                     <mat-form-field appearance="fill">
                         <mat-label>Confirm password</mat-label>
-                        <input class="input" matInput  required formControlName="confirmPassword" type="password">
+                        <input matInput required
+                  [type]="fieldTextType2 ? 'text' : 'password'"
+                  class="input"
+                  formControlName="confirmPassword"
+                />
                     </mat-form-field>
+                    <span><i
+                      class="fa"
+                      [ngClass]="{
+                        'fa-eye-slash': !fieldTextType2,
+                        'fa-eye': fieldTextType2
+                      }"
+                      (click)="toggleFieldTextType2()"
+                    ></i></span>
                         <div>
                             <ng-container *ngFor="let error of error_messages.confirmPassword">
                                 <mat-error class="error-message" *ngIf="signUpForm.get('confirmPassword').hasError(error.type) && (signUpForm.get('confirmPassword').dirty || signUpForm.get('confirmPassword').touched)">

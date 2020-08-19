@@ -1,5 +1,5 @@
 import { width, height, setSites, setDisableEditMode, initializeData, calculateDistancesFromSitesToPoint, 
-	equidistantPointsPresent, generateSiteBoundaries, createPieces } from 'src/assets/js/manualCreation.js'
+	equidistantPointsPresent, generateSiteBoundaries, createPieces, clearBoard } from 'src/assets/js/manualCreation.js'
 
 ///The structure of each individual/chromosome object
 let Chromosome = {
@@ -81,8 +81,8 @@ export function initializeDataAI()
 	generatePuzzleAIButton.remove();
 
 	document.getElementById('nextButton').addEventListener('mousedown', displaySlidersCard);
-	colorPalettesDiv = document.getElementById('colorPalettesAI');
-	colorPalettesDiv.remove();
+	// colorPalettesDiv = document.getElementById('colorPalettesAI');
+	// colorPalettesDiv.remove();
 }
 
 function displaySlidersCard()
@@ -113,13 +113,14 @@ function generatePuzzleAI()
 	desiredProportions.sort( function(a, b) { return b - a } );
 
 	document.getElementById('inputContainer').innerHTML = '';
-	document.getElementById('inputContainer').appendChild(colorPalettesDiv);
+	// document.getElementById('inputContainer').appendChild(colorPalettesDiv);
 
 	let sites = run();
 	sites = expandPuzzle(sites, 10);
 
 	setSites(sites);
 	setDisableEditMode(true);
+	clearBoard();
 	generateSiteBoundaries();
 	createPieces();
 }

@@ -83,7 +83,7 @@ export class ProfilePuzzlesComponent implements OnInit {
     this.show = true;
     this.text = false;
 
-    this.delay(1500).then( () =>{
+    this.delay(2100).then( () =>{
       this.getUserPuzzles();
     });
 

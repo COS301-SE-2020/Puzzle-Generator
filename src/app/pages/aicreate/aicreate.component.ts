@@ -8,8 +8,10 @@ import { initializeDataAI } from 'src/assets/js/aiCreation.js';
 })
 export class AICreateComponent implements OnInit {
 
-  
   token: any;
+
+  name: any;
+  description: any;
 
   constructor() { }
 

@@ -1,20 +1,4 @@
-# Ignore Mac system files
-.DS_store
 
-# Ignore node_modules folder
-node_modules
-
-# Ignore all text files
-*.txt
-
-# Ignore files related to API keys
-.env
-
-# Ignore SASS config files
-.sass-cache
-
-# Ignore JetBrains files
-.idea
 <<<<<<< HEAD
 =======
 #Ignore database file
@@ -25,7 +9,7 @@ database.js
 .DS_store
 
 # Ignore node_modules folder
-node_modules
+node_modules/
 
 <<<<<<< HEAD
 =======
@@ -52,5 +36,3 @@ workspace.xml
 #ignore old structure
 OLD structure
 
-#ignore node modules
-node_modules/

@@ -40,27 +40,27 @@ https://www.linkedin.com/in/yuval-langa-27ab251ab/
 # Profile Descriptions
 ### Charlotte Jacobs 
 u15165622
-* Charlotte was responsible for the html and css of the website as well as some database functionality.
+* Charlotte was responsible for the Angular website functionality.
 * https://charley817.github.io
 
 ### Jaynill Gopal 
 u15175295
-* Jaynill was responsible for the web server as well as backend functionality and github branching.
+* Jaynill was responsible for the deployment of the website and github branching.
 * https://jaynillg.github.io
 
 ### Tapiwa Mazibuko 
 u18203541
-* Tapiwa was responsible for the database and github.
+* Tapiwa was responsible for integration and unit testing
 * https://tapiwamazibuko.github.io
 
 ### Tsholofelo Gomba
 u17391718
-* Tsholofelo was responsible for the user management and github.
+* Tsholofelo was responsible for the Angular website and Node API functionality
 * https://u173Tsh.github.io
 
 ### Yuval Langa
 u18174142
-* Yval was responsible for the team management and integration.
+* Yuval is our team leader responsible for manual and AI puzzle functionality.
 * https://glasses-kun.github.io/online-cv/
 
 

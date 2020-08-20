@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-@@ -1,60 +0,0 @@
 # Puzzle-Generator
 
 # Links
@@ -66,8 +64,6 @@ u18174142
 
 
 
-
-=======
 # PrometheusPuzzles
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.

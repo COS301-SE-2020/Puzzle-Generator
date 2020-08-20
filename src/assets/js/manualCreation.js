@@ -129,16 +129,6 @@ function initializeData(appendedString)
 
 	layer = new Konva.Layer();
 
-	square = new Konva.Rect({
-		x: 0,
-		y: 0,
-		width: width,
-		height: height,
-		stroke: 'black',
-		strokeWidth: 2,
-
-	});
-
 	layer.add(square);
 	stage.add(layer);
 

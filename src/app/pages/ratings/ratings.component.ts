@@ -253,10 +253,10 @@ export class RatingsComponent implements OnInit {
       }
 
       if (j == 0){
-        puzzleObj.rating = (0).toString();
+        puzzleObj.rating = 0;
       }
       else{
-        puzzleObj.rating = (total/j).toFixed(2);
+        puzzleObj.rating = (total/j);
       }
       this.puzzles.push(puzzleObj);
     }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
@@ -10,13 +10,16 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 export class RateDialogComponent implements OnInit {
 
   form: FormGroup;
+  input: any;
 
   constructor(private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<RateDialogComponent>) { }
 
+    @Input() OnlyNumber: boolean;
+
     error_messages = {
       'rating': [
-        { type: 'pattern', message: 'Number must be between 1 and 5' }
+        { type: 'pattern', message: 'Must be a number between 1 and 5' }
       ]
     }
 
@@ -27,7 +30,8 @@ export class RateDialogComponent implements OnInit {
   }
 
   submit(form){
-    this.dialogRef.close(`${form.rating}`);
+    this.input = form.rating;
+      this.dialogRef.close(`${form.rating}`);
   }
 
 }

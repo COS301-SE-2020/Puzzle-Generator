@@ -54,7 +54,7 @@ u18203541
 ### Tsholofelo Gomba
 u17391718
 * Tsholofelo was responsible for the Angular website and Node API functionality
-* https://u173Tsh.github.io
+* https://u173Tsholo.github.io
 
 ### Yuval Langa
 u18174142

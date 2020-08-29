@@ -14,7 +14,6 @@ let width =  500;
 let height = 500;
 let stage;
 let layer;
-let square;
 let pointsArray = [];
 let sites = [];
 let siteBoundaries;
@@ -115,7 +114,6 @@ function initializeData(appendedString)
 
 	layer = new Konva.Layer();
 
-	layer.add(square);
 	stage.add(layer);
 
 	canvas.addEventListener('mousedown', function(event){

@@ -31,7 +31,7 @@ describe('POST /users/login', () => {
         'password': 'demouser'
       })
       .end((err, res) => {
-        //should(res).have.status(201);
+        should(res).have.status(201);
         expect(res.body).to.deep.equal(userLoginMock);
         done();
       });
@@ -48,7 +48,7 @@ describe('PUT /users/resetPassword', () => {
         'password': 'demouser'
       })
       .end((err, res) => {
-        //should(res).have.status(200);
+        should(res).have.status(200);
         done();
       });
   });
@@ -63,7 +63,7 @@ describe('POST /users/getUser', () => {
         "token": "CgOOiUKmqqPyOlhFjDZth",
       })
       .end((err, res) => {
-        //should(res).have.status(200);
+        should(res).have.status(200);
         expect(res.body).to.deep.equal(userOneMock);
         done();
       });

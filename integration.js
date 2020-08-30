@@ -2,7 +2,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 //const app = require('./app');
-const should = require(chai.should());
+const should = chai.should();
 //const should = require('should');
 const expect = chai.expect;
 const puzzleListMock = require('./mocks/puzzles/puzzle_list.json');

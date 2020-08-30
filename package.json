@@ -32,6 +32,7 @@
     "mocha": "^8.0.1",
     "mocha-jsdom": "~2.0.0",
     "mongoose": "^5.9.18",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "should": "^13.2.3"
   }
 }

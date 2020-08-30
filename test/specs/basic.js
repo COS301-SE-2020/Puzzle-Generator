@@ -1,5 +1,5 @@
 const internetPage = require("./pages/internet_page")
-//const User = require('./models/User')
+const User = require('./models/User')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 
@@ -55,10 +55,11 @@ describe('element actions', () => {
       $('#mat-input-2').setValue('jennydoe')
       $('#mat-input-3').setValue('jennydoe')
       $('#one').click()
-      /*User.findAll( { raw: true, where: { username: {[Op.like]: 'jenny@doe.com'  } } } )
+      User.findAll( { raw: true, where: { username: {[Op.like]: 'jenny@doe.com'  } } } )
       .then( user => {
+        assert.equal('Jenny Doe', user[0].name)
       })
-      assert.equal('Jenny Doe', user[0].name)*/
+
     })
 
     it('should enter password', () => {
@@ -86,7 +87,7 @@ describe('Webdriver API actions', () => {
 
 })
 
-describe('Scroll to element', () => {
+/*describe('Scroll to element', () => {
     it('should scroll to the heading', () => {
         browser.url('http://localhost:4200')
         internetPage.pageHeadline.waitForDisplayed()
@@ -120,4 +121,4 @@ describe('Dropdown Menu', () => {
         assert.equal(true, internetPagedropDownMenuOption1.isSelected())
     })
 
-})
+})*/

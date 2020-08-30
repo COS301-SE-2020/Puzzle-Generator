@@ -2,7 +2,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 //const app = require('./app');
-//const should = chai.should();
+const should = require(chai.should());
 const should = require('should');
 const expect = chai.expect;
 const puzzleListMock = require('./mocks/puzzles/puzzle_list.json');
@@ -24,14 +24,14 @@ const Puzzle = require('./models/Puzzle');
 describe('POST /users/login', () => {
   it('should login a user when called', done => {
     chai
-      .request('http://localhost:3200')
+      .request('https://prometheuspuzzles.herokuapp.com')
       .post('/api/users/login')
       .send({
         'username': 'demo@user.com',
         'password': 'demouser'
       })
       .end((err, res) => {
-        should(res).have.status(201);
+        res.should.have.status(201);
         expect(res.body).to.deep.equal(userLoginMock);
         done();
       });
@@ -41,14 +41,14 @@ describe('POST /users/login', () => {
 describe('PUT /users/resetPassword', () => {
   it('should reset a users password', done => {
     chai
-      .request('http://localhost:3200')
+      .request('https://prometheuspuzzles.herokuapp.com')
       .put('/api/users/resetPassword')
       .send({
         'username': 'demo@user.com',
         'password': 'demouser'
       })
       .end((err, res) => {
-        should(res).have.status(200);
+        res.should.have.status(200);
         done();
       });
   });
@@ -57,13 +57,13 @@ describe('PUT /users/resetPassword', () => {
 describe('POST /users/getUser', () => {
   it('should return a user', done => {
     chai
-      .request('http://localhost:3200')
+      .request('https://prometheuspuzzles.herokuapp.com')
       .post('/api/users/getUser')
       .send({
         "token": "CgOOiUKmqqPyOlhFjDZth",
       })
       .end((err, res) => {
-        should(res).have.status(200);
+        res.should.have.status(200);
         expect(res.body).to.deep.equal(userOneMock);
         done();
       });
@@ -73,7 +73,7 @@ describe('POST /users/getUser', () => {
 describe('PUT /users/updateName', () => {
   it('should update a users name', done => {
     chai
-      .request('http://localhost:3200')
+      .request('https://prometheuspuzzles.herokuapp.com')
       .put('/api/users/updateName')
       .send({
         "name": "First User",
@@ -90,7 +90,7 @@ describe('PUT /users/updateName', () => {
 describe('PUT /users/updateUsername', () => {
   it('should update a users username', done => {
     chai
-      .request('http://localhost:3200')
+      .request('https://prometheuspuzzles.herokuapp.com')
       .put('/api/users/updateUsername')
       .send({
         "username": "demo@user.com",
@@ -107,7 +107,7 @@ describe('PUT /users/updateUsername', () => {
 describe('GET /puzzles/getAllPuzzles', () => {
   it('should return a list of puzzles when called', done => {
     chai
-      .request('http://localhost:3200')
+      .request('https://prometheuspuzzles.herokuapp.com')
       .get('/api/puzzles/getAllPuzzles')
       .end((err, res) => {
         res.should.have.status(201);
@@ -121,7 +121,7 @@ describe('GET /puzzles/getAllPuzzles', () => {
 describe('POST /users/getPuzzlesByUser', () => {
   it('should return a list of puzzles made by a user when called', done => {
     chai
-      .request('http://localhost:3200')
+      .request('https://prometheuspuzzles.herokuapp.com')
       .post('/api/users/getPuzzlesByUser')
       .send({
         "token": "CgOOiUKmqqPyOlhFjDZth"
@@ -138,7 +138,7 @@ describe('POST /users/getPuzzlesByUser', () => {
 describe('GET /puzzles/getAllPuzzleRatings', () => {
   it('should return a list of puzzle ratings when called', done => {
     chai
-      .request('http://localhost:3200')
+      .request('https://prometheuspuzzles.herokuapp.com')
       .get('/api/puzzles/getAllPuzzleRatings')
       .end((err, res) => {
         res.should.have.status(200);
@@ -151,7 +151,7 @@ describe('GET /puzzles/getAllPuzzleRatings', () => {
 describe('GET /puzzles/getPuzzleByID', () => {
   it('should return a specific puzzle when called', done => {
     chai
-      .request('http://localhost:3200')
+      .request('https://prometheuspuzzles.herokuapp.com')
       .get('/api/puzzles/getPuzzleByID/1')
       .end((err, res) => {
         res.should.have.status(201);
@@ -165,7 +165,7 @@ describe('GET /puzzles/getPuzzleByID', () => {
 describe('GET /puzzles/getSearchedPuzzles', () => {
   it('should return puzzles that match the search term when called', done => {
     chai
-      .request('http://localhost:3200')
+      .request('https://prometheuspuzzles.herokuapp.com')
       .get('/api/puzzles/getSearchedPuzzles/Puzzle')
       .end((err, res) => {
         res.should.have.status(201);
@@ -179,7 +179,7 @@ describe('GET /puzzles/getSearchedPuzzles', () => {
 describe('POST /users/getPuzzleRatingsByUser', () => {
   it('should get puzzles rated by a user', done => {
     chai
-      .request('http://localhost:3200')
+      .request('https://prometheuspuzzles.herokuapp.com')
       .post('/api/users/getPuzzleRatingsByUser')
       .send({
         "token": "N7Xp4ovUZKw_5Gbra959l"
@@ -196,7 +196,7 @@ describe('POST /users/getPuzzleRatingsByUser', () => {
 describe('POST /puzzles/createPuzzleRating', () => {
   it('should add a puzzle rating', done => {
     chai
-      .request('http://localhost:3200')
+      .request('https://prometheuspuzzles.herokuapp.com')
       .post('/api/puzzles/createPuzzleRating')
       .send({
         "puzzleID": 2,
@@ -214,7 +214,7 @@ describe('POST /puzzles/createPuzzleRating', () => {
 describe('POST /users/createUser', () => {
   it('should create a user', done => {
     chai
-      .request('http://localhost:3200')
+      .request('https://prometheuspuzzles.herokuapp.com')
       .post('/api/users/createUser')
       .send({
         "name": "Jenny Doe",
@@ -233,7 +233,7 @@ describe('POST /puzzles/createPuzzle', () => {
   it('should create a puzzle', done => {
     const httpOptions = { headers: { 'Content-Type': 'application/json' }};
     chai
-      .request('http://localhost:3200')
+      .request('https://prometheuspuzzles.herokuapp.com')
       .post('/api/puzzles/createPuzzle')
       .send({
           "name": "testPuzzle",

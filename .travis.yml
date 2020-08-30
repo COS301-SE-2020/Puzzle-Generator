@@ -4,6 +4,7 @@ node_js: 14
 sudo: required
 before_install:
   - npm install -g node-gyp
+  - npm install --save-dev should
 cache:
   npm: false
 

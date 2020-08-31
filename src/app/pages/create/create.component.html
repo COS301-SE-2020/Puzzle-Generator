@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
 <div>
  <a mat-raised-button id="help" (click)="videoModal1.show()">Tutorial</a>
+ <mat-icon id="helpXs" (click)="videoModal1.show()">info_outline</mat-icon>
 </div>
 
 <div mdbModal #videoModal1="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myVideoModal1Label"
@@ -54,12 +55,12 @@
 
   <mat-card class="saveOptions">
     <mat-card-header>
-      <mat-card-title>Saving Options</mat-card-title>
+      <mat-card-title id="saveHeading">Saving Options</mat-card-title>
     </mat-card-header>
 
     <mat-card-content class="matContentC">
-      <label class="titleLabel">Select a color-palette:</label><br>
-      <mat-radio-group>
+      <label class="titleLabel" id="colorPalleteLabel">Select a color-palette:</label><br>
+      <mat-radio-group class="colRadioBtns">
         <mat-radio-button class="radio-button colorPalettes" paletteid=0 value="default" name="colorPalettes">Default</mat-radio-button>
         <mat-radio-button class="radio-button colorPalettes" paletteid=1 value="shadesOfRed" name="colorPalettes">Shades Of Red</mat-radio-button>
         <mat-radio-button class="radio-button colorPalettes" paletteid=2 value="shadesOfGreen" name="colorPalettes">Shades Of Green</mat-radio-button>

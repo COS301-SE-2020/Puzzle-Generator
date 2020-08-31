@@ -1,15 +1,18 @@
 language: node_js
 node_js: 14
+dist: xenial
 
 sudo: required
 before_install:
   - npm install -g node-gyp
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 cache:
   npm: false
 
 env:
   - CXX=g++-4.8
 addons:
+  chrome: stable
   apt:
     sources:
       - ubuntu-toolchain-r-test

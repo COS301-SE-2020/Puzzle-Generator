@@ -57,6 +57,7 @@ exports.config = {
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
+        chromeOptions: {args: ['--headless', '--no-sandbox', '--disable-dev-shm-usage']}
     }],
     //
     // ===================
@@ -199,27 +200,7 @@ exports.config = {
        const chaiWebdriver = require('chai-webdriverio').default
        const webdriverio = require('webdriverio');
        const chromedriver = require('chromedriver');
-       ChromeOptions options = new ChromeOptions();
-       
-       options.addArguments("--no-sandbox");
-       options.addArguments("--disable-dev-shm-usage");
-
-        const PORT = 9515;
-
-        chromedriver.start([
-          '--url-base=wd/hub',
-          `--port=${PORT}`,
-          '--verbose'
-        ]);
-
-        const opts = {
-          port: PORT,
-          desiredCapabilities: {
-            browserName: 'chrome',
-            chromeOptions: {args: ['--headless']}
-          }
-        };
-
+     
         const browser = webdriverio.remote(opts).init();
 
        chai.use(chaiWebdriver(browser))

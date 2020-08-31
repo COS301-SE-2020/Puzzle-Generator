@@ -197,11 +197,28 @@ exports.config = {
      beforeTest: function () {
        const chai = require('chai')
        const chaiWebdriver = require('chai-webdriverio').default
-       const webdriver = require('selenium-webdriver');
+       const webdriverio = require('webdriverio');
        const chromedriver = require('chromedriver');
 
-        const chromeCapabilities = webdriver.Capabilities.chrome();
-        chromeCapabilities.set('chromeOptions', {args: ['--headless']});
+        const PORT = 9515;
+
+        chromedriver.start([
+          '--url-base=wd/hub',
+          `--port=${PORT}`,
+          '--verbose'
+        ]);
+
+        (async () => {
+
+        const opts = {
+          port: PORT,
+          desiredCapabilities: {
+            browserName: 'chrome',
+            chromeOptions: {args: ['--headless']}
+          }
+        };
+
+        const browser = webdriverio.remote(opts).init();
 
        chai.use(chaiWebdriver(browser))
 

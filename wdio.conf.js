@@ -197,6 +197,11 @@ exports.config = {
      beforeTest: function () {
        const chai = require('chai')
        const chaiWebdriver = require('chai-webdriverio').default
+       const webdriver = require('selenium-webdriver');
+       const chromedriver = require('chromedriver');
+
+        const chromeCapabilities = webdriver.Capabilities.chrome();
+        chromeCapabilities.set('chromeOptions', {args: ['--headless']});
 
        chai.use(chaiWebdriver(browser))
 

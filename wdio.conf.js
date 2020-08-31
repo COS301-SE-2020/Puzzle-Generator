@@ -208,8 +208,6 @@ exports.config = {
           '--verbose'
         ]);
 
-        (async () => {
-
         const opts = {
           port: PORT,
           desiredCapabilities: {

@@ -199,6 +199,10 @@ exports.config = {
        const chaiWebdriver = require('chai-webdriverio').default
        const webdriverio = require('webdriverio');
        const chromedriver = require('chromedriver');
+       ChromeOptions options = new ChromeOptions();
+       
+       options.addArguments("--no-sandbox");
+       options.addArguments("--disable-dev-shm-usage");
 
         const PORT = 9515;
 

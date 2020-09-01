@@ -23,12 +23,18 @@
 	<script src="manualCreation.js"></script>
 </head>
 <body>
+	<!-- <button mat-raised-button class="btns" id="deletePointButton">
+        Delete Mode
+    </button> -->
 	<div id="container">
 		
 	</div>
 	<input type="radio" name="distanceMetric" id="euclideanButton">Euclidean</input>
 	<input type="radio" name="distanceMetric" id="manhattanButton">Manhattan</input><br>
 	<button id="generatePuzzleButton">Generate Puzzle</button><br>
+	<div id='colorPalettes'>
+	</div>
+	<button id="randomizeColorsButton">Randomize Colors</button>
 	<label>Name: </label><input type="text" name="puzzleName" id="puzzleNameInputBox"><br>
 	<label>Short Description: </label><input type="text" name="puzzleDescription" id="puzzleDescriptionInputBox"><br>
 	<label hidden="true" id="tokenLabel">Testing</label>

@@ -1,7 +1,8 @@
 <app-navbar></app-navbar>
 <div>
-  <a mat-raised-button id="help" (click)="videoModal1.show()">Tutorial</a>
- </div>
+ <a mat-raised-button id="help" (click)="videoModal1.show()">Tutorial</a>
+ <mat-icon id="helpXs" (click)="videoModal1.show()">info_outline</mat-icon>
+</div>
 
 
  <div mdbModal #videoModal1="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myVideoModal1Label"
@@ -19,8 +20,6 @@
      </div>
    </div>
  </div>
-
-
 
  <div class="container-fluid">
    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1">

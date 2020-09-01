@@ -153,7 +153,55 @@ mat-radio-group{
 }
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {  }
+@media (min-width: 576px) and (max-width: 767.98px) { 
+  .puzzleOptions{
+    width: 32rem;
+  }
+  #container {
+    margin: unset;
+    width: 29rem;
+    height: 35rem;
+    border: 1px solid black;
+    margin-left: -2.5rem;
+  }
+
+  .puzzleType{
+    margin-left: .8rem;
+    width: 32rem;
+  }
+
+  .creationCard{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 32rem;
+  }
+
+  .saveOptions{
+    width: 32rem;
+  }
+
+  .matContentC{
+    margin-left: 3rem;
+  }
+
+  #colorPalleteLabel{
+    font-size: medium;
+  }
+
+  #help{
+    visibility: hidden;
+  }
+
+  #helpXs{
+    margin-top: 1rem;
+  }
+
+  .radio-group {
+    font-size: medium;
+  }
+ }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {  }

@@ -47,6 +47,10 @@ addColorPalette(shadesOfGreenPalette, "Shades of Green");
 let shadesOfBluePalette = ['DarkBlue', 'DeepSkyBlue', 'MediumBlue', 'DodgerBlue', 'MidnightBlue', 'RoyalBlue', 'DarkSlateBlue', 'CornflowerBlue', 'SkyBlue', 'PowderBlue'];
 addColorPalette(shadesOfBluePalette, "Shades of Blue");
 
+window.onload = function() {
+	initializeData('');
+}
+
 ///Add a color palette to the page and needed functionality
 function addColorPalette(arrayOfColors, paletteName)
 {
@@ -115,7 +119,6 @@ function initializeData(appendedString)
 
 	layer = new Konva.Layer();
 
-	layer.add(square);
 	stage.add(layer);
 
 	canvas.addEventListener('mousedown', function(event){
@@ -270,7 +273,7 @@ function createPoint(x, y)
 		y: y,
 		radius: 1,
 		stroke: 'black',
-		strokeWidth: 4,
+		strokeWidth: 10,
 		draggable: true
 	});
 
@@ -381,6 +384,7 @@ function createPieces()
 	}
 	layer.draw();
 	piecesJSONObject = JSON.stringify(piecesJSONObject);
+	console.log(piecesJSONObject);
 }
 
 ///Shortens the array of vertices for each puzzle piece

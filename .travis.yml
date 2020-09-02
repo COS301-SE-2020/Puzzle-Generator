@@ -18,6 +18,9 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
+  sauce_connect:
+    username: "tapiwamazibuko"
+    access_key: "006fc024-6fcf-4cb3-9dfd-66e546b32790"
 
 notifications:
   webhooks: https://nzvm1.cs.up.ac.za/travis

@@ -119,4 +119,22 @@ deleteRating(rating:number):Observable<number>
 /**
 * Puzzle endpoints end here
 */
+
+/**
+* Admin endpoints start here
+*/
+
+getAllUsers(){
+  return this.http.get('http://localhost:3200/api/admin/getAllUsers');
+}
+
+deleteUser(user:number): Observable<number>
+{
+  return this.http.delete<number>('http://localhost:3200/api/admin/deleteUser/'+user); 
+}
+
+/**
+* Admin endpoints end here
+*/
+
 }

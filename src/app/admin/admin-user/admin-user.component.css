@@ -57,6 +57,12 @@ mat-card-title{
    margin: 1rem;
  }
 
+ .searchArea{
+   margin-left: 2vw;
+   font-family: keep-calm;
+   font-size:1.8rem;
+ }
+
 
 @media only screen and (max-width:576.98px){
   .content{

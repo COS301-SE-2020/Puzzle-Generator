@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { APIService } from 'src/app/services/api.service';
 import { PageEvent } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-admin-user',
@@ -18,6 +19,7 @@ export class AdminUserComponent implements OnInit {
   startIndex:number = 0;
   endIndex: number = 12;
   pageSizeOptions: number[] = [5, 10, 25, 100];
+  datasource: any;
 
   pageEvent: PageEvent;
 
@@ -60,11 +62,21 @@ export class AdminUserComponent implements OnInit {
     });
   }
 
+
+  applyFilter(filterValue: string) {
+    this.datasource.filterPredicate = function(data, filter: string): boolean {
+      return data.name.toLowerCase().includes(filter)
+    };
+    this.datasource.filter = filterValue.trim().toLowerCase();
+    this.totalNumberOfUsers = this.datasource.filteredData.length;
+  }
+
   getUsers(){
     this.api.getAllUsers().subscribe( data => {
       this.totalNumberOfUsers = Object.keys(data).length;
       this.userList = data;
       this.show = false;
+      this.datasource = new MatTableDataSource(this.userList);
     })
   }
 

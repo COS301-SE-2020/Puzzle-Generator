@@ -43,6 +43,9 @@ import { RateDialogComponent } from './rate-dialog/rate-dialog.component';
 import { ProfilePuzzlesComponent } from './pages/profile-puzzles/profile-puzzles.component';
 import { ProfileRatingsComponent } from './pages/profile-ratings/profile-ratings.component';
 import { AICreateComponent } from './pages/aicreate/aicreate.component';
+import { AdminUserComponent } from './admin/admin-user/admin-user.component';
+import { AdminRatingsComponent } from './admin/admin-ratings/admin-ratings.component';
+import { AdminPuzzlesComponent } from './admin/admin-puzzles/admin-puzzles.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +63,9 @@ import { AICreateComponent } from './pages/aicreate/aicreate.component';
     ProfilePuzzlesComponent,
     ProfileRatingsComponent,
     AICreateComponent,
+    AdminUserComponent,
+    AdminRatingsComponent,
+    AdminPuzzlesComponent,
   ],
   imports: [
     BrowserModule,

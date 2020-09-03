@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   name:string;
+  admin:boolean;
+  token: any;
 
   constructor(private router: Router) { }
 
@@ -20,6 +22,11 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.name = localStorage.getItem('name');
+    this.token = localStorage.getItem('token');
+    if (this.token == "CgOOiUKmqqPyOlhFjDZth"){
+      this.admin = true; 
+    }
+
   }
 
 

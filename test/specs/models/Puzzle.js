@@ -10,6 +10,6 @@ const Puzzle = db.define('testPuzzles', {
     creatorID: { type: Sequelize.INTEGER }
 });
 
-//PuzzleRating.belongsTo(Puzzle, {foreignKey: 'puzzleID'});
+PuzzleRating.belongsTo(Puzzle, {foreignKey: 'puzzleID'});
 
 module.exports = Puzzle;

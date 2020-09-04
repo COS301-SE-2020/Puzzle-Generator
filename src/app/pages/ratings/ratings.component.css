@@ -163,3 +163,17 @@ h1{
 .spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
         stroke: #7C593A;
       }
+
+@media only screen and (min-width: 435px) and (max-width: 670px){
+  .sortBtns{
+    background-color: #7C593A;
+    color: white;
+    margin-left: 3.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid white;
+    text-align: center;
+    font-family: keep-calm;
+    width: 50%;
+    margin-left: 25%; 
+   }
+}

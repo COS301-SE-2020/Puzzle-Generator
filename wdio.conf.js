@@ -59,6 +59,9 @@ exports.config = {
         // excludeDriverLogs: ['bugreport', 'server'],
         //chromeOptions: {args: ['--headless', '--no-sandbox', '--disable-dev-shm-usage']}
         //headless: true
+        'goog:chromeOptions': { 
+           args: ["--headless", "user-agent=...","--disable-gpu","--window-size=1440,735"]
+      }
     }],
     //
     // ===================

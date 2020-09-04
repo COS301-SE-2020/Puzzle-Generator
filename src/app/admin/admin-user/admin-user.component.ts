@@ -82,8 +82,8 @@ export class AdminUserComponent implements OnInit {
 
   delete(user){
     if(this.api.deleteUser(user).subscribe()){
-      location.reload();
       alert("User deleted");
+      location.reload();
     }
   }
 

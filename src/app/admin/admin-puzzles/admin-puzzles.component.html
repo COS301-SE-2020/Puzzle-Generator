@@ -1,1 +1,60 @@
-<p>admin-puzzles works!</p>
+<app-navbar></app-navbar>
+<div class="container">
+<mat-form-field class="searchArea">
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event.target.value)">
+</mat-form-field>
+
+<button mat-button class="sortBtns">Name
+  <mat-icon (click)="puzzleAscending()" class="arrow">arrow_upwardward</mat-icon> |
+  <mat-icon (click)="puzzleDescending()" class="arrow">arrow_downward</mat-icon>
+</button>
+
+<button mat-button class="sortBtns">Rating
+  <mat-icon (click)="ratingAscending()" class="arrow">arrow_upwardward</mat-icon> |
+  <mat-icon (click)="ratingDescending()" class="arrow">arrow_downward</mat-icon>
+</button>
+
+<button mat-button class="sortBtns">Creator
+  <mat-icon (click)="creatorAscending()" class="arrow">arrow_upwardward</mat-icon> |
+  <mat-icon (click)="creatorDescending()" class="arrow">arrow_downward</mat-icon>
+</button>
+
+<button mat-button class="sortBtns">Date
+  <mat-icon (click)="dateAscending()" class="arrow">arrow_upwardward</mat-icon> |
+  <mat-icon (click)="dateDescending()" class="arrow">arrow_downward</mat-icon>
+</button>
+
+<div class="spinner">
+  <mat-spinner *ngIf="show" id="spinner"></mat-spinner>
+</div>
+
+<div class="container-fluid" *ngIf="dataAvailable" >
+    <div class="flex-container" fxLayout="row wrap" fxLayout.xs="row wrap" fxLayoutAlign="space-evenly center">
+        <mat-card class="content"  *ngFor="let puzzle of this.datasource.filteredData | slice: startIndex:endIndex">
+          <div class="content-overlay"></div>
+          <!-- <mat-icon aria-hidden="false" class="infoIcon">info_outline</mat-icon> -->
+          <img class="content-image" src="{{puzzle.image}}">
+            <div class="content-details fadeIn-bottom">
+              <mat-card-header>
+               <mat-card-subtitle class="puzzleDetails"><strong>Created by:</strong> {{puzzle.creator}}</mat-card-subtitle>
+                <mat-card-subtitle class="puzzleDetails"><strong>Created on:</strong> {{puzzle.created}}</mat-card-subtitle>
+                <mat-card-subtitle class="puzzleDetails"><strong>Description:</strong> {{puzzle.description}}</mat-card-subtitle>
+                <mat-card-subtitle class="puzzleDetails"><strong>Shared:</strong> {{puzzle.shared}}</mat-card-subtitle>
+              </mat-card-header>
+            </div>
+            <mat-card-title><strong>{{puzzle.name}}</strong></mat-card-title>
+            <mat-card-subtitle>Rating: {{puzzle.rating}}/5 <span *ngIf="puzzle.rating == '0'">- Not yet rated</span> </mat-card-subtitle>
+
+            <mat-card-actions class="puzzleActions">
+              <button mat-button class="btns" (click)="delete(puzzle.id)">DELETE</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
+
+<mat-paginator *ngIf="!show" class="paginator" [length]="totalNumberOfPuzzles" [pageSize]="pageSize"
+                  (page)="pageEvent = changeEvent($event)">
+</mat-paginator>
+
+</div>

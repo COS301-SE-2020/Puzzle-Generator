@@ -7,4 +7,5 @@ export class PuzzleArr{
   created: any;
   showRating: boolean;
   image: any;
+  shared: boolean = false; 
 }

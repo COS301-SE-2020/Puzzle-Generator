@@ -12,7 +12,7 @@ const User = db.define('testUsers', {
 });
 
 //User.hasMany(PuzzleRating);
-PuzzleRating.belongsTo(User, {foreignKey: 'userID'});
-Puzzle.belongsTo(User, {foreignKey: 'creatorID'});
+//PuzzleRating.belongsTo(User, {foreignKey: 'userID'});
+//Puzzle.belongsTo(User, {foreignKey: 'creatorID'});
 
 module.exports = User;

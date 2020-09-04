@@ -1,4 +1,4 @@
-const sequelize = require('sequelize');
+/*const sequelize = require('sequelize');
 const db = require('../config/dbConfig');
 const { Sequelize } = require('sequelize');
 const PuzzleRating = require('./PuzzleRating');
@@ -12,4 +12,4 @@ const Puzzle = db.define('testPuzzles', {
 
 PuzzleRating.belongsTo(Puzzle, {foreignKey: 'puzzleID'});
 
-module.exports = Puzzle;
+module.exports = Puzzle;*/

@@ -18,7 +18,7 @@ app.all("/*", function(req, res, next) {
 const db = require('./config/database');
 
 //test db connection
-  db.authenticate() 
+  db.authenticate()
     .then( () => {console.log("Successfully connected to db");} )
     .catch( error => {console.log("Error: ", error);})
 
@@ -33,6 +33,8 @@ app.use('/api/users', require('./routes/users'));
 
 //all requests associated with the user must make use of this route
 app.use('/api/puzzles', require('./routes/puzzles'));
+
+app.use('/api/admin', require('./routes/admin'))
 
 const PORT = process.env.PORT || 3200;
 

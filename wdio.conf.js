@@ -204,9 +204,6 @@ exports.config = {
        const chaiWebdriver = require('chai-webdriverio').default
        const webdriverio = require('webdriverio');
        const chromedriver = require('chromedriver');
-     
-        const browser = webdriverio.remote(opts).init();
-
        chai.use(chaiWebdriver(browser))
 
        global.assert = chai.assert

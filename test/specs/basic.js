@@ -5,7 +5,7 @@ const Op = Sequelize.Op
 
 describe('interacting with elements', function() {
   it("Get text for element", () => {
-    browser.url('http://localhost:4200/index')
+    browser.url('https://prometheuspuzzles.herokuapp.com/index')
     let text = $("h2").getText()
     console.log(text)
     internetPage.getDivText()
@@ -26,29 +26,29 @@ describe('interacting with elements', function() {
 
 describe('element actions', () => {
     it('should click element', () => {
-        browser.url('http://localhost:4200/index')
+        browser.url('https://prometheuspuzzles.herokuapp.com/index')
         if($('li#btnLink a').isDisplayed() === true){
           $(`li#btnLink:nth-child(${2}) a`).click()
-          expect(browser.getUrl()).equals('http://localhost:4200/login');
+          expect(browser.getUrl()).equals('https://prometheuspuzzles.herokuapp.com/login');
         }
         browser.pause(5000)
 
     })
     it('should get text', () => {
-      browser.url('http://localhost:4200/index')
+      browser.url('https://prometheuspuzzles.herokuapp.com/index')
       $(`div.flex-container:nth-child(${3}) div`).waitForDisplayed()
       //console.log($(`div.flex-container:nth-child(${3}) div`).getText())
       //expect($(`div.flex-container:nth-child(${3}) div`).getText().equals(' '))
     })
     it('should enter username', () => {
-      browser.url('http://localhost:4200/login')
+      browser.url('https://prometheuspuzzles.herokuapp.com/login')
       $('#mat-input-0').waitForDisplayed()
       $('#mat-input-0').setValue('charo@test.com')
       assert.equal('charo@test.com', $('#mat-input-0').getValue())
     })
 
     it('should create a user', () => {
-      browser.url('http://localhost:4200/signup')
+      browser.url('https://prometheuspuzzles.herokuapp.com/signup')
       $('#mat-input-1').waitForDisplayed()
       $('#mat-input-0').setValue('Jenny Doe')
       $('#mat-input-1').setValue('jenny@doe.com')
@@ -63,7 +63,7 @@ describe('element actions', () => {
     })
 
     it('should enter password', () => {
-      browser.url('http://localhost:4200/login')
+      browser.url('https://prometheuspuzzles.herokuapp.com/login')
       $('#mat-input-1').waitForDisplayed()
       $('#mat-input-0').setValue('charo@test.com')
       $('#mat-input-1').setValue('charotest')
@@ -79,7 +79,7 @@ describe('element actions', () => {
 
 describe('Webdriver API actions', () => {
     it('should hover on figure', () => {
-        browser.url('http://localhost:4200/index')
+        browser.url('https://prometheuspuzzles.herokuapp.com/index')
         $(`div.flex-container div.one:nth-child(${1}) div img`).waitForDisplayed()
         assert.equal("", $(`div.flex-container div.one:nth-child(1) div h3`).getText())
         browser.pause(2000)

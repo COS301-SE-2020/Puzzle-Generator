@@ -141,6 +141,14 @@ getAllPuzzlesAdmin()
 deletePuzzleAdmin(puzzle:number): Observable<number>{
   return this.http.delete<number>('http://localhost:3200/api/admin/deletePuzzle/'+puzzle);
 }
+
+getAllRatingsAdmin(){
+  return this.http.get('http://localhost:3200/api/admin/getAllRatings');
+}
+
+deleteRatingAdmin(rateID:number): Observable<number>{
+  return this.http.delete<number>('http://localhost:3200/api/admin/deleteRatingAdmin/'+rateID);
+}
 /**
 * Admin endpoints end here
 */

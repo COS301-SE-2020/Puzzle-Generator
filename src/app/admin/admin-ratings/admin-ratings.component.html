@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+
+<mat-form-field class="searchArea">
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event.target.value)">
+</mat-form-field>
+
+<button mat-button class="sortBtns">Name
+    <mat-icon (click)="nameAscending()" class="arrow">arrow_upwardward</mat-icon> |
+    <mat-icon (click)="nameDescending()" class="arrow">arrow_downward</mat-icon>
+  </button>
+
+  <button mat-button class="sortBtns">Rating
+    <mat-icon (click)="ratingAscending()" class="arrow">arrow_upwardward</mat-icon> |
+    <mat-icon (click)="ratingDescending()" class="arrow">arrow_downward</mat-icon>
+  </button>
+
+  <button mat-button class="sortBtns">Rater
+    <mat-icon (click)="creatorAscending()" class="arrow">arrow_upwardward</mat-icon> |
+    <mat-icon (click)="creatorDescending()" class="arrow">arrow_downward</mat-icon>
+  </button>
+
+<div class="container">
+<div class="container-fluid" >
+    <h1 class="main-title" >All Ratings</h1>
+    <div class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
+        <mat-card class="content" *ngFor="let rating of this.datasource.filteredData | slice: startIndex:endIndex">
+          <img class="content-image" src="{{rating.testPuzzle.image}}">
+            <mat-card-title><strong>{{rating.testPuzzle.name}}</strong></mat-card-title>
+            <mat-card-subtitle>Rating: {{rating.rating}}/5</mat-card-subtitle>
+            <mat-card-subtitle>Rater: {{rating.testUser.name}}</mat-card-subtitle>
+            <mat-card-actions class="puzzleActions">
+                <button mat-button class="btns" (click)="delete(rating.id)">DELETE RATING</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
+
+<mat-paginator *ngIf="!show" [length]="totalNumberOfPuzzles" [pageSize]="pageSize"
+                  (page)="pageEvent = changeEvent($event)">
+</mat-paginator>
+
+</div>
+
+<div class="spinner">
+<mat-spinner *ngIf="show" id="spinner"></mat-spinner>
+</div>

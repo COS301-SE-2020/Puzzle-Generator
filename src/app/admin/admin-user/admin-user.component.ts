@@ -65,7 +65,7 @@ export class AdminUserComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.datasource.filterPredicate = function(data, filter: string): boolean {
-      return data.name.toLowerCase().includes(filter)
+      return data.name.toLowerCase().includes(filter) 
     };
     this.datasource.filter = filterValue.trim().toLowerCase();
     this.totalNumberOfUsers = this.datasource.filteredData.length;

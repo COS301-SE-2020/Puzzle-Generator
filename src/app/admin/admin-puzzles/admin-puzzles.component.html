@@ -30,6 +30,7 @@
 </div>
 
 <div class="container-fluid" *ngIf="dataAvailable" >
+  <h1 class="main-title" >All Puzzles</h1>
     <div class="flex-container" fxLayout="row wrap" fxLayout.xs="row wrap" fxLayoutAlign="space-evenly center">
         <mat-card class="content"  *ngFor="let puzzle of this.datasource.filteredData | slice: startIndex:endIndex">
           <div class="content-overlay"></div>
@@ -47,7 +48,7 @@
             <mat-card-subtitle>Rating: {{puzzle.rating}}/5 <span *ngIf="puzzle.rating == '0'">- Not yet rated</span> </mat-card-subtitle>
 
             <mat-card-actions class="puzzleActions">
-              <button mat-button class="btns" (click)="delete(puzzle.id)">DELETE</button>
+              <button mat-button class="btns" (click)="delete(puzzle.id)">DELETE PUZZLE</button>
             </mat-card-actions>
         </mat-card>
     </div>

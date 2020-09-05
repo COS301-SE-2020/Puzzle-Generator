@@ -452,8 +452,8 @@ function equidistantPointsPresent(distances)
 	let returnArray = [];
 	let minimumDistance = Math.min(...distances);
 
-	if(distanceMetric === 'euclidean')
-		minimumDistance = minimumDistance.toFixed(precision) + '';
+	// if(distanceMetric === 'euclidean')
+		// minimumDistance = minimumDistance + '';
 
 	let index = 0, counter = 0;
 
@@ -494,7 +494,7 @@ function calculateDistance(point1X, point1Y, point2X, point2Y)
 function calculateEuclideanDistance(point1X, point1Y, point2X, point2Y)
 {
 	let result = Math.pow( Math.pow( point1X - point2X, 2 ) + Math.pow( point1Y - point2Y, 2 ), 0.5 );
-	return result.toFixed(precision);
+	return result;
 }
 
 ///Calculates and returns the Manhattan distance

@@ -81,10 +81,31 @@ router.delete('/deletePuzzle/:puzzleID', (request, response) => {
     .catch( error => {
         response.status(500).send("Server error");
     } );
-})
+});
+
+router.get('/getAllRatings', (request, response) => {
+    PuzzleRating.findAll({
+      include: [ User, Puzzle]
+    })
+        .then( users => {
+            response.status(200).send(users);
+        })
+        .catch( error => {
+            response.status(403).send("Failed due to: ", error);
+        })
+});
 
 
-
-
+router.delete('/deleteRatingAdmin/:rateID', (request, response) => {
+    const rateID = request.params.rateID;
+    PuzzleRating.destroy( { returning: true, raw: true, plain: true, where: { id:  rateID } }
+    )
+    .then( () => {
+        response.status(200).send("Successfully deleted");
+     })
+    .catch( error => {
+        response.status(500).send("Server error");
+    } );
+});
 
 module.exports = router;

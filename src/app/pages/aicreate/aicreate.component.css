@@ -15,6 +15,10 @@
   width: 7rem;
 }
 
+#helpXs{
+  visibility: hidden;
+}
+
 .content{
  margin-left: 10rem;
 }
@@ -90,15 +94,15 @@ mat-radio-group{
 
 .saveOptions{
   margin: 1rem;
-  padding-left: 2rem;
+  padding-left: 4rem;
   padding-top: 4rem;
-  width: 30rem;
+  width: 35rem;
   max-width: 50rem;
   background-color: gainsboro;
 }
 
-.matContentC{
-  margin-left: 1rem;
+#progressBar {
+  margin-top: -29rem;
 }
 
 /* Extra small devices (portrait phones, less than 576px) */
@@ -150,57 +154,12 @@ mat-radio-group{
   .radio-group {
     font-size: medium;
   }
+
 }
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) { 
-  .puzzleOptions{
-    width: 32rem;
-  }
-  #container {
-    margin: unset;
-    width: 29rem;
-    height: 35rem;
-    border: 1px solid black;
-    margin-left: -2.5rem;
-  }
-
-  .puzzleType{
-    margin-left: .8rem;
-    width: 32rem;
-  }
-
-  .creationCard{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    width: 32rem;
-  }
-
-  .saveOptions{
-    width: 32rem;
-  }
-
-  .matContentC{
-    margin-left: 3rem;
-  }
-
-  #colorPalleteLabel{
-    font-size: medium;
-  }
-
-  #help{
-    visibility: hidden;
-  }
-
-  #helpXs{
-    margin-top: 1rem;
-  }
-
-  .radio-group {
-    font-size: medium;
-  }
+ 
  }
 
 /* Medium devices (tablets, 768px and up) */

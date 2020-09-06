@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div>
  <a mat-raised-button id="help" (click)="videoModal1.show()">Tutorial</a>
- <mat-icon id="helpXs" (click)="videoModal1.show()">info_outline</mat-icon>
+ <mat-icon class="fish" id="helpXs" (click)="videoModal1.show()">info_outline</mat-icon>
 </div>
 
 
@@ -54,7 +54,7 @@
            <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox2" value="1"><br>
            <label>Number of Group 2 pieces:</label><br>
            <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox3" value="1"><br> -->
-           <label>Select Puzzle Type</label><br>
+           <br><label>Select Puzzle Type</label><br>
            <mat-radio-group class="radio-group">
              <mat-radio-button class="radio-button" value="euclidean" name="distanceMetric" id="euclideanButtonAI" > Euclidian </mat-radio-button>
              <mat-radio-button class="radio-button" value="manhattan" name="distanceMetric" id="manhattanButtonAI" > Manhattan </mat-radio-button>
@@ -75,8 +75,12 @@
        <!-- <div id='colorPalettesAI'>
          <button mat-raised-button class="btns" id="randomizeColorsButtonAI">Randomize Colors</button>
        </div> -->
+       <div>
+        <mat-progress-bar mode="indeterminate" id="progressBar"></mat-progress-bar>
+       </div>
      </mat-card-content>
    </mat-card>
+
    <mat-card class="saveOptions">
      <mat-card-header>
        <mat-card-title class="titleLabel">Saving Options</mat-card-title>

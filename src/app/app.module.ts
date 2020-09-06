@@ -26,7 +26,8 @@ import { MatGridListModule } from '@angular/material/grid-list'
 import { MatRadioModule } from '@angular/material/radio';
 import { MatListModule } from '@angular/material/list';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 //pages
@@ -82,7 +83,7 @@ import { AdminPuzzlesComponent } from './admin/admin-puzzles/admin-puzzles.compo
     MatTableModule,
     HttpClientModule,
     FormsModule,
-    MatInputModule, MatListModule, MatPaginatorModule,
+    MatInputModule, MatListModule, MatPaginatorModule, MatProgressBarModule,
     MatCardModule, MatFormFieldModule, MatDialogModule, MatGridListModule, MatRadioModule, ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
   ],

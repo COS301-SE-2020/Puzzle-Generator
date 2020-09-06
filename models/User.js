@@ -3,6 +3,7 @@ const db = require('../config/database');
 const { Sequelize } = require('sequelize');
 const PuzzleRating = require('./PuzzleRating');
 const Puzzle = require('./Puzzle');
+const SolvedPuzzle = require('./SolvedPuzzle');
 
 const User = db.define('testUsers', {
     name: { type: Sequelize.STRING },
@@ -14,5 +15,6 @@ const User = db.define('testUsers', {
 //User.hasMany(PuzzleRating);
 PuzzleRating.belongsTo(User, {foreignKey: 'userID'});
 Puzzle.belongsTo(User, {foreignKey: 'creatorID'});
+SolvedPuzzle.belongsTo(User, {foreignKey: 'solverID'});
 
 module.exports = User;

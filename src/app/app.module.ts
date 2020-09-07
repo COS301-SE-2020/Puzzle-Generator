@@ -47,6 +47,7 @@ import { AICreateComponent } from './pages/aicreate/aicreate.component';
 import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 import { AdminRatingsComponent } from './admin/admin-ratings/admin-ratings.component';
 import { AdminPuzzlesComponent } from './admin/admin-puzzles/admin-puzzles.component';
+import { SolveDialogComponent } from './dialogs/solve-dialog/solve-dialog.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { AdminPuzzlesComponent } from './admin/admin-puzzles/admin-puzzles.compo
     AdminUserComponent,
     AdminRatingsComponent,
     AdminPuzzlesComponent,
+    SolveDialogComponent,
   ],
   imports: [
     BrowserModule,

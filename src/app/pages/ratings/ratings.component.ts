@@ -11,6 +11,7 @@ import { PuzzleRating } from 'src/app/models/PuzzleRating';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableDataSource} from '@angular/material/table';
 import { PageEvent } from '@angular/material/paginator';
+import { SolveDialogComponent } from 'src/app/dialogs/solve-dialog/solve-dialog.component';
 
 @Component({
   selector: 'app-ratings',
@@ -47,6 +48,9 @@ export class RatingsComponent implements OnInit {
 
   // MatPaginator Output
   pageEvent: PageEvent;
+
+  //solve dialog variable
+  solveDialog: MatDialogRef<SolveDialogComponent>
 
   constructor(private api: APIService, private cdr: ChangeDetectorRef, private dialog: MatDialog, private router: Router) {
   }
@@ -312,6 +316,11 @@ export class RatingsComponent implements OnInit {
 
   reload(){
     this.populate(null);
+  }
+
+  //solve dialog
+  openSolveDialog(id){
+    this.solveDialog = this.dialog.open(SolveDialogComponent);
   }
 
   ngOnInit(): void {

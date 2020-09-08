@@ -157,7 +157,7 @@ export class ProfileRatingsComponent implements OnInit {
   this.api.findRatingID(this.deleteVal).subscribe( (result) => {
     if(this.api.deleteRating(result["id"]).subscribe()){
         alert("Rating deleted");
-        location.reload(); 
+        location.reload();
     }
   });
 

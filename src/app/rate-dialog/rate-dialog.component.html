@@ -2,7 +2,7 @@
   <h1 mat-dialog-title>Rate Puzzle (out of 5)</h1>
   <mat-dialog-content>
     <mat-form-field>
-      <input matInput type="number" min="1" max="5" formControlName="rating" placeholder="Enter Rating" ngControl="rating">
+      <input matInput type="text" formControlName="rating" placeholder="Enter Rating" ngControl="rating" OnlyNumber="true">
     </mat-form-field>
     <div>
         <ng-container *ngFor="let error of error_messages.rating">

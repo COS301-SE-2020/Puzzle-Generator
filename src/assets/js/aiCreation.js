@@ -81,8 +81,6 @@ export function initializeDataAI()
 	generatePuzzleAIButton.remove();
 
 	document.getElementById('nextButton').addEventListener('mousedown', displaySlidersCard);
-	// colorPalettesDiv = document.getElementById('colorPalettesAI');
-	// colorPalettesDiv.remove();
 }
 
 function displaySlidersCard()
@@ -113,7 +111,6 @@ function generatePuzzleAI()
 	desiredProportions.sort( function(a, b) { return b - a } );
 
 	document.getElementById('inputContainer').innerHTML = '';
-	// document.getElementById('inputContainer').appendChild(colorPalettesDiv);
 
 	let sites = run();
 	sites = expandPuzzle(sites, 10);

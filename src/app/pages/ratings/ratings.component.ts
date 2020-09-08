@@ -11,6 +11,7 @@ import { PuzzleRating } from 'src/app/models/PuzzleRating';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableDataSource} from '@angular/material/table';
 import { PageEvent } from '@angular/material/paginator';
+import { SolveDialogComponent } from 'src/app/dialogs/solve-dialog/solve-dialog.component';
 
 @Component({
   selector: 'app-ratings',
@@ -47,6 +48,9 @@ export class RatingsComponent implements OnInit {
 
   // MatPaginator Output
   pageEvent: PageEvent;
+
+  //solve dialog variable
+  solveDialog: MatDialogRef<SolveDialogComponent>
 
   constructor(private api: APIService, private cdr: ChangeDetectorRef, private dialog: MatDialog, private router: Router) {
   }
@@ -120,24 +124,24 @@ export class RatingsComponent implements OnInit {
   dateDescending()
   {
     return this.puzzles.sort( (a,b) => {
-      let paramA = a.created;//.toLowerCase();
-      let paramB = b.creator;//.toLowerCase();
+      // let paramA = a.created;//.toLowerCase();
+      // let paramB = b.creator;//.toLowerCase();
 
-      if(paramA > paramB ){ return -1; }
-      else { return 1; }
-      return 0;
+      // if(paramA > paramB ){ return -1; }
+      // else { return 1; }
+      // return 0;
+      let paramA = new Date(a.created).getTime();
+      let paramB = new Date(b.created).getTime();
+      return paramA > paramB ? 1 : -1;
     });
   }
 
   dateAscending()
   {
     return this.puzzles.sort( (a,b) => {
-      let paramA = a.created;//.toLowerCase();
-      let paramB = b.creator;//.toLowerCase();
-
-      if(paramA < paramB ){ return -1; }
-      else { return 1; }
-      return 0;
+      let paramA = new Date(a.created).getTime();
+      let paramB = new Date(b.created).getTime();
+      return paramA < paramB ? 1 : -1;
     });
   }
 
@@ -253,10 +257,10 @@ export class RatingsComponent implements OnInit {
       }
 
       if (j == 0){
-        puzzleObj.rating = (0).toString();
+        puzzleObj.rating = 0;
       }
       else{
-        puzzleObj.rating = (total/j).toFixed(2);
+        puzzleObj.rating = (total/j);
       }
       this.puzzles.push(puzzleObj);
     }
@@ -270,7 +274,7 @@ export class RatingsComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.datasource.filterPredicate = function(data, filter: string): boolean {
-      return data.name.toLowerCase().includes(filter)
+      return data.name.toLowerCase().includes(filter) || data.creator.toLowerCase().includes(filter)
     };
     this.datasource.filter = filterValue.trim().toLowerCase();
     this.totalNumberOfPuzzles = this.datasource.filteredData.length;
@@ -312,6 +316,11 @@ export class RatingsComponent implements OnInit {
 
   reload(){
     this.populate(null);
+  }
+
+  //solve dialog
+  openSolveDialog(id){
+    this.solveDialog = this.dialog.open(SolveDialogComponent);
   }
 
   ngOnInit(): void {

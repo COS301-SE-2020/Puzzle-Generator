@@ -17,9 +17,6 @@ h1{
     margin-left: 5vw;
 }
 
-.profileText{
-  margin-left: 35%;
-}
 
 .abc{
   display: inline;
@@ -64,6 +61,7 @@ h1{
     width: 100%;
     max-width: 570px;
     min-width: 300px;
+    margin:auto;
     position: relative;
     overflow: hidden;
     height: 39rem;

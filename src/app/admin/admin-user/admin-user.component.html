@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+
+<mat-form-field class="searchArea">
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event.target.value)">
+</mat-form-field>
+
+  <button mat-button class="sortBtns">Name
+    <mat-icon (click)="nameAscending()" class="arrow">arrow_upwardward</mat-icon> |
+    <mat-icon (click)="nameDescending()" class="arrow">arrow_downward</mat-icon>
+  </button>
+
+<div class="container-fluid" >
+    <h1>All Users</h1>
+    <div class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
+      <div class="content" *ngFor="let user of this.datasource.filteredData | slice: startIndex:endIndex">
+        <mat-card>
+            <mat-card-title><strong>{{user.name}}</strong></mat-card-title>
+            <mat-card-subtitle>Email: {{user.username}}</mat-card-subtitle>
+            <mat-card-actions class="puzzleActions">
+                <button mat-button id="delete" (click)="delete(user.id)">DELETE USER</button>
+            </mat-card-actions>
+        </mat-card>
+        </div>
+    </div>
+</div>
+
+<mat-paginator *ngIf="!show" [length]="totalNumberOfUsers" [pageSize]="pageSize"
+                  (page)="pageEvent = changeEvent($event)">
+</mat-paginator>
+
+<div class="spinner">
+  <mat-spinner *ngIf="show" id="spinner"></mat-spinner>
+</div>

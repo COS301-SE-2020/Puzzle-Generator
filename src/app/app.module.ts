@@ -26,7 +26,8 @@ import { MatGridListModule } from '@angular/material/grid-list'
 import { MatRadioModule } from '@angular/material/radio';
 import { MatListModule } from '@angular/material/list';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 //pages
@@ -43,6 +44,10 @@ import { RateDialogComponent } from './rate-dialog/rate-dialog.component';
 import { ProfilePuzzlesComponent } from './pages/profile-puzzles/profile-puzzles.component';
 import { ProfileRatingsComponent } from './pages/profile-ratings/profile-ratings.component';
 import { AICreateComponent } from './pages/aicreate/aicreate.component';
+import { AdminUserComponent } from './admin/admin-user/admin-user.component';
+import { AdminRatingsComponent } from './admin/admin-ratings/admin-ratings.component';
+import { AdminPuzzlesComponent } from './admin/admin-puzzles/admin-puzzles.component';
+import { SolveDialogComponent } from './dialogs/solve-dialog/solve-dialog.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +65,10 @@ import { AICreateComponent } from './pages/aicreate/aicreate.component';
     ProfilePuzzlesComponent,
     ProfileRatingsComponent,
     AICreateComponent,
+    AdminUserComponent,
+    AdminRatingsComponent,
+    AdminPuzzlesComponent,
+    SolveDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +85,7 @@ import { AICreateComponent } from './pages/aicreate/aicreate.component';
     MatTableModule,
     HttpClientModule,
     FormsModule,
-    MatInputModule, MatListModule, MatPaginatorModule,
+    MatInputModule, MatListModule, MatPaginatorModule, MatProgressBarModule,
     MatCardModule, MatFormFieldModule, MatDialogModule, MatGridListModule, MatRadioModule, ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
   ],

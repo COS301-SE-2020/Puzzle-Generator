@@ -14,7 +14,6 @@ let width =  500;
 let height = 500;
 let stage;
 let layer;
-let square;
 let pointsArray = [];
 let sites = [];
 let siteBoundaries;
@@ -22,7 +21,6 @@ let pieces = [];
 let precision = 0;
 
 let colorPalettes = [];
-//Default palette
 let selectedPalette;
 let paletteCounter = 0;
 let radioButtons = [];
@@ -47,24 +45,11 @@ addColorPalette(shadesOfGreenPalette, "Shades of Green");
 
 let shadesOfBluePalette = ['DarkBlue', 'DeepSkyBlue', 'MediumBlue', 'DodgerBlue', 'MidnightBlue', 'RoyalBlue', 'DarkSlateBlue', 'CornflowerBlue', 'SkyBlue', 'PowderBlue'];
 addColorPalette(shadesOfBluePalette, "Shades of Blue");
+
 ///Add a color palette to the page and needed functionality
 function addColorPalette(arrayOfColors, paletteName)
 {
 	colorPalettes.push(arrayOfColors);
-	// let radioButton = document.createElement('mat-radio-button');
-	// let radioButton = document.createElement('input');
-	// radioButton.type = 'radio';
-	// radioButton.class = 'radio-button';
-	// radioButton.value = paletteName;
-	// radioButton.innerHTML = paletteName;
-	// radioButton.name = 'colorPalette';
-	// radioButton.paletteid = paletteCounter++;
-	// radioButton.addEventListener('mousedown', function() {
-	// 	selectedPalette = colorPalettes[this.paletteid];
-	// 	changePuzzleColorPalette(selectedPalette);
-	// });
-
-	// radioButtons.push(radioButton);
 }
 
 ///Changes the displayed color palette used on the puzzle and re-renders it
@@ -129,17 +114,6 @@ function initializeData(appendedString)
 
 	layer = new Konva.Layer();
 
-	square = new Konva.Rect({
-		x: 0,
-		y: 0,
-		width: width,
-		height: height,
-		stroke: 'black',
-		strokeWidth: 2,
-
-	});
-
-	layer.add(square);
 	stage.add(layer);
 
 	canvas.addEventListener('mousedown', function(event){
@@ -156,8 +130,6 @@ function initializeData(appendedString)
 			console.log("X: " + x + " Y: " + y);
 		}
 	});
-
-	// addColorPalettePicker(appendedString);
 
 	if(document.getElementById('generatePuzzleButton') != null)
 		document.getElementById('generatePuzzleButton').addEventListener('mousedown', generatePuzzle);
@@ -218,19 +190,6 @@ function initializeData(appendedString)
 	// 	// document.getElementById('testingImg').src = puzzleImage;
 	// 	savePuzzle(true);
 	// });
-}
-
-function addColorPalettePicker(appendedString)
-{
-	let colorPaletteDiv = document.getElementById('colorPalettes'+appendedString);
-	let label;
-	for(let i = 0; i < radioButtons.length; i++)
-	{
-		label = document.createElement('label');
-		label.innerHTML = radioButtons[i].value;
-		colorPaletteDiv.appendChild(radioButtons[i]);
-		colorPaletteDiv.appendChild(label);
-	}
 }
 
 ///Create a post ajax request and send it to the API in order to save the user's created puzzle

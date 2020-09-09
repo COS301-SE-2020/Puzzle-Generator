@@ -313,9 +313,10 @@ export class RatingsComponent implements OnInit {
   }
 
   //solve dialog
-  openSolveDialog(id){
+  openSolveDialog(){
     this.solveDialog = this.dialog.open(SolveDialogComponent);
   }
+  //end of solve dialog
 
   ngOnInit(): void {
     this.show=true;
@@ -328,6 +329,8 @@ export class RatingsComponent implements OnInit {
     this.currentUser = {
       "token": localStorage.getItem('token')
     }
+
+    this.token = localStorage.getItem('token');
 
     this.api.getUser(this.currentUser).subscribe( data => {
       console.log(data["name"]);

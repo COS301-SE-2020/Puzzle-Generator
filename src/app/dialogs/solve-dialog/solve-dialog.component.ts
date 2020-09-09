@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
+import Konva from 'konva';
 
 @Component({
   selector: 'app-solve-dialog',

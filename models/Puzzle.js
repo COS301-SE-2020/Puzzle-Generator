@@ -4,7 +4,7 @@ const { Sequelize } = require('sequelize');
 const PuzzleRating = require('./PuzzleRating');
 const SolveAttempt = require('./SolveAttempt');
 
-const Puzzle = db.define('testPuzzles', {
+const Puzzle = db.define('testSolveAttempt', {
     name: { type: Sequelize.STRING },
     description: { type: Sequelize.STRING },
     puzzleObject: {type: Sequelize.STRING},
@@ -15,6 +15,6 @@ const Puzzle = db.define('testPuzzles', {
 
 PuzzleRating.belongsTo(Puzzle, {foreignKey: 'puzzleID'});
 //SolvedPuzzle.belongsTo(Puzzle, {foreignKey: 'puzzleID'});
-SolveAttempt.belongsTo(User, {foreignKey: 'puzzleID'});
+SolveAttempt.belongsTo(Puzzle, {foreignKey: 'puzzleID'});
 
 module.exports = Puzzle;

@@ -48,6 +48,7 @@ import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 import { AdminRatingsComponent } from './admin/admin-ratings/admin-ratings.component';
 import { AdminPuzzlesComponent } from './admin/admin-puzzles/admin-puzzles.component';
 import { SolveDialogComponent } from './dialogs/solve-dialog/solve-dialog.component';
+import { ProfileSolvedPuzzlesComponent } from './pages/profile-solved-puzzles/profile-solved-puzzles.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { SolveDialogComponent } from './dialogs/solve-dialog/solve-dialog.compon
     AdminRatingsComponent,
     AdminPuzzlesComponent,
     SolveDialogComponent,
+    ProfileSolvedPuzzlesComponent,
   ],
   imports: [
     BrowserModule,

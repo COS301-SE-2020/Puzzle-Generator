@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProfilePuzzlesComponent } from './pages/profile-puzzles/profile-puzzles.component'
 import { ProfileRatingsComponent } from './pages/profile-ratings/profile-ratings.component'
+import { ProfileSolvedPuzzlesComponent } from './pages/profile-solved-puzzles/profile-solved-puzzles.component'
 import { RatingsComponent } from './pages/ratings/ratings.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ResetSuccessComponent } from './pages/reset-success/reset-success.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'profilePuzzles', component: ProfilePuzzlesComponent},
   {path: 'profileRatings', component: ProfileRatingsComponent},
+  {path: 'profileSolvedPuzzle', component: ProfileSolvedPuzzlesComponent},
   {path: 'ratings', component: RatingsComponent},
   {path: 'resetPassword', component: ResetPasswordComponent},
   {path: 'resetSuccess', component: ResetSuccessComponent},

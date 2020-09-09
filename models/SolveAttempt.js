@@ -3,7 +3,7 @@ const db = require('../config/database');
 const { Sequelize } = require('sequelize');
 const Puzzle = require('./Puzzle');
 
-const SolveAttempt = db.define('testSolvedPuzzles', {
+const SolveAttempt = db.define('testSolveAttempt', {
     entryID: { type: Sequelize.INTEGER },
     solverID: { type: Sequelize.INTEGER },
     puzzleID: { type: Sequelize.INTEGER },

@@ -4,7 +4,7 @@ const { Sequelize } = require('sequelize');
 const PuzzleRating = require('./PuzzleRating');
 const SolveAttempt = require('./SolveAttempt');
 
-const Puzzle = db.define('testSolveAttempt', {
+const Puzzle = db.define('testPuzzle', {
     name: { type: Sequelize.STRING },
     description: { type: Sequelize.STRING },
     puzzleObject: {type: Sequelize.STRING},

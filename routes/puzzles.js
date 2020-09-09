@@ -14,6 +14,7 @@ const Op = Sequelize.Op;
  */
 
 //get all puzzles
+
 router.get('/getAllPuzzles', (request, response) => {
     var puzzleJsonObject = [];
     var puzzlePlaceholder = {};
@@ -155,7 +156,6 @@ router.post('/newSolveAttempt', (request, response) => {
         response.status(403).send("User not found due to: ", error);
     });
 });
-
 //end of solving endpoints
 
 //deletePuzzle

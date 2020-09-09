@@ -9,6 +9,7 @@ const Str = require('@supercharge/strings');
 const bcrypt = require('bcrypt');
 const PuzzleRating = require('../models/PuzzleRating');
 const Puzzle = require('../models/Puzzle');
+const SolveAttempt = require('../models/SolveAttempt');
 
 router.post('/createUser', (request, response) => {
     const username = request.body.username;
@@ -180,10 +181,6 @@ router.post('/getPuzzleRatingsByUser', (request, response) => {
         .then( data => {
             let array = data;
             var totalNumRatings = Object.keys(data).length;
-            // if(totalNumRatings == 0 )
-            // {
-            //     response.status(201).send(ratingJsonObject);
-            // }
             array.forEach(element => {
                 ratingPlaceholder = {
                     "puzzleName": element['testPuzzle.name'],
@@ -199,7 +196,6 @@ router.post('/getPuzzleRatingsByUser', (request, response) => {
                 }
             });
             response.status(201).send(ratingJsonObject);
-            //console.log("Here after for loop ", ratingJsonObject);
         })
         .catch( error => {
             response.status(500);//.send("Server error: ", error);
@@ -208,4 +204,45 @@ router.post('/getPuzzleRatingsByUser', (request, response) => {
     .catch( error => { response.status(500).send("Server error: ", error); });
 });
 
+//get list of puzzles i solved
+router.post('/getSolvedPuzzles', (request, response) => {
+    let solverID = null;
+    let solvedPuzzlesJsonObject = [];
+    let solvedPuzzlesPlaceholder = {};
+    let index = 0;
+    User.findOne({ raw: true, where: { token: {[Op.like]:  request.body.token } } })
+    .then( user => {
+        solverID = user.id;
+
+        SolveAttempt.findAll({  raw: true, where: { solverID: parseInt(solverID)}, include: [Puzzle , User] })
+        .then( data => {
+            let array = data;
+            let totalNumPuzzles = Object.keys(data).length;
+            array.forEach(element => {
+                if(element['solved'] == true)
+                {
+                    solvedPuzzlesPlaceholder = {
+                        "puzzleName": element['testPuzzle.name'],
+                        "image": element['testPuzzle.image'],
+                        "dateCreated": element['testPuzzle.createdAt'],
+                        "description": element['testPuzzle.description'],
+                        "dateSolved": element['attemptDuration'],
+                    }
+                    ++index;
+                    solvedPuzzlesJsonObject.push(solvedPuzzlesPlaceholder);
+                    if(index == totalNumPuzzles)
+                    {
+                        console.log("Sending back: ", solvedPuzzlesJsonObject);
+                        response.status(201).send(solvedPuzzlesJsonObject);
+                    }
+                }
+            });
+            response.status(201).send(solvedPuzzlesJsonObject);
+        })
+        .catch( error => {
+            response.status(500);//.send("Server error: ", error);
+        });
+    })
+    .catch( error => { response.status(500).send("Server error: ", error); });
+});
 module.exports = router;

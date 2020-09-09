@@ -284,9 +284,10 @@ function createPoint(x, y)
 	let point = new Konva.Circle({
 		x: x,
 		y: y,
-		radius: 1,
+		radius: 5,
 		stroke: 'black',
-		strokeWidth: 10,
+		fill: 'black',
+		strokeWidth: 1,
 		draggable: true
 	});
 

@@ -124,12 +124,6 @@ export class RatingsComponent implements OnInit {
   dateDescending()
   {
     return this.puzzles.sort( (a,b) => {
-      // let paramA = a.created;//.toLowerCase();
-      // let paramB = b.creator;//.toLowerCase();
-
-      // if(paramA > paramB ){ return -1; }
-      // else { return 1; }
-      // return 0;
       let paramA = new Date(a.created).getTime();
       let paramB = new Date(b.created).getTime();
       return paramA > paramB ? 1 : -1;

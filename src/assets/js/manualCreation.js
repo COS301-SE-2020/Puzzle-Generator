@@ -14,6 +14,7 @@ let width =  500;
 let height = 500;
 let stage;
 let layer;
+let square;
 let pointsArray = [];
 let sites = [];
 let siteBoundaries;
@@ -58,12 +59,16 @@ function changePuzzleColorPalette(colors)
 	if(pieces.length > 0)
 	{
 		layer.removeChildren();
+		piecesJSONObject = JSON.parse(piecesJSONObject);
+		piecesJSONObject.colors = colors;
+
 		for(let i = 0; i < pieces.length; i++)
 		{
 			pieces[i].attrs.stroke = colors[i % colors.length];
 			layer.add(pieces[i]);
 		}
-
+		
+		piecesJSONObject = JSON.stringify(piecesJSONObject);
 		layer.draw();
 	}
 }
@@ -73,13 +78,21 @@ function randomizePuzzleColorPalette()
 {
 	if(pieces.length > 0)
 	{
+		let rgbColor;
 		layer.removeChildren();
+		piecesJSONObject = JSON.parse(piecesJSONObject);
+		piecesJSONObject.colors = [];
+
 		for(let i = 0; i < pieces.length; i++)
 		{
-			pieces[i].attrs.stroke = getRandomRGB();
+			rgbColor = getRandomRGB();
+			piecesJSONObject.colors.push(rgbColor);
+			pieces[i].attrs.stroke = rgbColor;
 			layer.add(pieces[i]);
 		}
 
+		piecesJSONObject = JSON.stringify(piecesJSONObject);
+		console.log(piecesJSONObject);
 		layer.draw();
 	}
 }
@@ -253,7 +266,8 @@ function setSites(tempSites)
 function clearBoard()
 {
 	piecesJSONObject = {
-		'pieces' : []
+		'pieces' : [],
+		'colors' : []
 	};
 
 	pieces = [];
@@ -268,7 +282,7 @@ function createPoint(x, y)
 		y: y,
 		radius: 1,
 		stroke: 'black',
-		strokeWidth: 4,
+		strokeWidth: 10,
 		draggable: true
 	});
 
@@ -377,8 +391,11 @@ function createPieces()
 		piecesJSONObject.pieces.push(trimmedPoints);
 		layer.add(piece);
 	}
+
+	piecesJSONObject.colors = selectedPalette;
 	layer.draw();
 	piecesJSONObject = JSON.stringify(piecesJSONObject);
+	console.log(piecesJSONObject);
 }
 
 ///Shortens the array of vertices for each puzzle piece
@@ -446,8 +463,8 @@ function equidistantPointsPresent(distances)
 	let returnArray = [];
 	let minimumDistance = Math.min(...distances);
 
-	if(distanceMetric === 'euclidean')
-		minimumDistance = minimumDistance.toFixed(precision) + '';
+	// if(distanceMetric === 'euclidean')
+		// minimumDistance = minimumDistance + '';
 
 	let index = 0, counter = 0;
 
@@ -488,7 +505,7 @@ function calculateDistance(point1X, point1Y, point2X, point2Y)
 function calculateEuclideanDistance(point1X, point1Y, point2X, point2Y)
 {
 	let result = Math.pow( Math.pow( point1X - point2X, 2 ) + Math.pow( point1Y - point2Y, 2 ), 0.5 );
-	return result.toFixed(precision);
+	return result;
 }
 
 ///Calculates and returns the Manhattan distance

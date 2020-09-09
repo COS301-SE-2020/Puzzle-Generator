@@ -63,12 +63,16 @@ function changePuzzleColorPalette(colors)
 	if(pieces.length > 0)
 	{
 		layer.removeChildren();
+		piecesJSONObject = JSON.parse(piecesJSONObject);
+		piecesJSONObject.colors = colors;
+
 		for(let i = 0; i < pieces.length; i++)
 		{
 			pieces[i].attrs.stroke = colors[i % colors.length];
 			layer.add(pieces[i]);
 		}
-
+		
+		piecesJSONObject = JSON.stringify(piecesJSONObject);
 		layer.draw();
 	}
 }
@@ -78,13 +82,21 @@ function randomizePuzzleColorPalette()
 {
 	if(pieces.length > 0)
 	{
+		let rgbColor;
 		layer.removeChildren();
+		piecesJSONObject = JSON.parse(piecesJSONObject);
+		piecesJSONObject.colors = [];
+
 		for(let i = 0; i < pieces.length; i++)
 		{
-			pieces[i].attrs.stroke = getRandomRGB();
+			rgbColor = getRandomRGB();
+			piecesJSONObject.colors.push(rgbColor);
+			pieces[i].attrs.stroke = rgbColor;
 			layer.add(pieces[i]);
 		}
 
+		piecesJSONObject = JSON.stringify(piecesJSONObject);
+		console.log(piecesJSONObject);
 		layer.draw();
 	}
 }
@@ -258,7 +270,8 @@ function setSites(tempSites)
 function clearBoard()
 {
 	piecesJSONObject = {
-		'pieces' : []
+		'pieces' : [],
+		'colors' : []
 	};
 
 	pieces = [];
@@ -382,6 +395,8 @@ function createPieces()
 		piecesJSONObject.pieces.push(trimmedPoints);
 		layer.add(piece);
 	}
+
+	piecesJSONObject.colors = selectedPalette;
 	layer.draw();
 	piecesJSONObject = JSON.stringify(piecesJSONObject);
 	console.log(piecesJSONObject);

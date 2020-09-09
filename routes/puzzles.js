@@ -6,6 +6,7 @@ const User = require('../models/User');
 const Puzzle = require('../models/Puzzle');
 const PuzzleRating = require('../models/PuzzleRating')
 const Sequelize = require('sequelize');
+const SolveAttempt = require('../models/SolveAttempt');
 const Op = Sequelize.Op;
 
 /**
@@ -110,6 +111,7 @@ router.put('/sharePuzzle',(request, response) => {
         response.status(500).send("Server error");
     } );
 });
+
 //stop sharing puzzle
 router.put('/stopSharingPuzzle',(request, response) => {
     const puzzleID = request.body.puzzleID;
@@ -124,6 +126,37 @@ router.put('/stopSharingPuzzle',(request, response) => {
         response.status(500).send("Server error");
     } );
 });
+
+//start of solving endpoints
+//new solve attempt record
+router.post('/newSolveAttempt', (request, response) => {
+    console.log("the body *---> ", request.body);
+    const token = request.body.token;
+    const puzzleID = request.body.puzzleID;
+    const solved = request.body.solved;
+    const attemptDuration = request.body.attemptDuration;
+    let attempted = true;
+    let solverID = null;
+    User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
+    .then( user => {
+        solverID = user[0].id;
+        console.log("Just before creation to check values to be inserted: ", solverID, puzzleID, attemptDuration, solved, attempted);
+        SolveAttempt.create({
+            solverID, puzzleID, attemptDuration, solved, attempted
+        })
+        .then( () => {
+            response.status(200).send("Attempt successfully created")
+        })
+        .catch( error => {
+            response.status(403).send("Solve attempt creation failed due to: ", error);
+        })
+    })
+    .catch(error => {
+        response.status(403).send("User not found due to: ", error);
+    });
+});
+
+//end of solving endpoints
 
 //deletePuzzle
 router.delete('/deletePuzzle/:puzzleID', (request, response) => {

@@ -46,7 +46,7 @@
 
             <mat-card-actions class="puzzleActions">
               <label hidden="true" id="tokenLabel">{{token}}</label>
-              <label hidden="true" id="puzzleID">{{puzzle.id}}</label>
+              <!-- <label hidden="true" id="puzzleID">{{puzzle.id}}</label> -->
               <button mat-button class="btns" id="solveButton" (click)="openSolveDialog(puzzle.id)">SOLVE</button>
               <button *ngIf="puzzle.showRating" mat-button class="btns" (click)="openAndCheck(puzzle.id)">RATE</button>
             </mat-card-actions>

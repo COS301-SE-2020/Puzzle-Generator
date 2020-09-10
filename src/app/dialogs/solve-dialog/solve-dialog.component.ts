@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { APIService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
 import Konva from 'konva';
+import { initializeDataSolve } from 'src/assets/js/solvePuzzle.js';
 
 @Component({
   selector: 'app-solve-dialog',
@@ -20,7 +21,8 @@ export class SolveDialogComponent implements OnInit {
       alert("You are not logged in");
     }
 
-    this.token =  localStorage.getItem('token')
+    this.token =  localStorage.getItem('token');
+    initializeDataSolve();
   }
 
 }

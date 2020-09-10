@@ -36,6 +36,7 @@ export class RatingsComponent implements OnInit {
   token: any;
   currentUser: any;
   datasource: any;
+  solvingPuzzleID: any;
 
   totalNumberOfPuzzles: number;
   ratingsLSize: number;
@@ -313,7 +314,8 @@ export class RatingsComponent implements OnInit {
   }
 
   //solve dialog
-  openSolveDialog(){
+  openSolveDialog(puzzleID: any){
+    localStorage.setItem('solvingPuzzleID', puzzleID);
     this.solveDialog = this.dialog.open(SolveDialogComponent);
   }
   //end of solve dialog

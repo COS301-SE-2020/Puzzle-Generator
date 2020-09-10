@@ -23,7 +23,7 @@
     </div>
 </div>
 
-<mat-paginator class="paginator" *ngIf="!show" [length]="totalNumberOfPuzzles" [pageSize]="pageSize"
+<mat-paginator class="paginator" *ngIf="!text && !show" [length]="totalNumberOfPuzzles" [pageSize]="pageSize"
                   (page)="pageEvent = changeEvent($event)">
 </mat-paginator>
 

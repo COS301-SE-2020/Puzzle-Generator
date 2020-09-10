@@ -21,7 +21,6 @@ export class ProfilePuzzlesComponent implements OnInit {
   text: boolean;
   imageList: any;
   temp: boolean = false;
-  tee: any;
 
   totalNumberOfPuzzles: number;
   ratingsLSize: number;
@@ -147,7 +146,6 @@ export class ProfilePuzzlesComponent implements OnInit {
       this.getUserPuzzles();
     });
 
-    //this.getUserPuzzles();
   }
 
 }

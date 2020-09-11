@@ -311,8 +311,8 @@ function createPoint(x, y)
 		document.body.style.cursor = 'default';
 	});
 
-	point.on('click', function(event) {
-		// console.log('clicked!');
+	point.on('mousedown', function(event) {
+		console.log('clicked!');
 		if(deletePointButtonClicked)
 		{
 			document.onmousemove = null;

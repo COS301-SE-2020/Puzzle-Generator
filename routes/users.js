@@ -217,32 +217,36 @@ router.post('/getSolvedPuzzles', (request, response) => {
         SolveAttempt.findAll({  raw: true, where: { solverID: parseInt(solverID)}, include: [Puzzle , User] })
         .then( data => {
             let array = data;
+            console.log(data);
             let totalNumPuzzles = Object.keys(data).length;
             array.forEach(element => {
                 if(element['solved'] == true)
                 {
                     solvedPuzzlesPlaceholder = {
                         "puzzleName": element['testPuzzle.name'],
+                        "creator": element['testUser.name'],
                         "image": element['testPuzzle.image'],
                         "dateCreated": element['testPuzzle.createdAt'],
                         "description": element['testPuzzle.description'],
-                        "dateSolved": element['attemptDuration'],
+                        "attemptDuration": element['attemptDuration'],
                     }
                     ++index;
                     solvedPuzzlesJsonObject.push(solvedPuzzlesPlaceholder);
                     if(index == totalNumPuzzles)
                     {
-                        console.log("Sending back: ", solvedPuzzlesJsonObject);
+                        //console.log("Sending back: ", solvedPuzzlesJsonObject);
                         response.status(201).send(solvedPuzzlesJsonObject);
                     }
                 }
             });
-            response.status(201).send(solvedPuzzlesJsonObject);
+            response.status(200).send(solvedPuzzlesJsonObject);
         })
         .catch( error => {
-            response.status(500);//.send("Server error: ", error);
+            response.status(403);//.send("Server error: ", error);
         });
     })
-    .catch( error => { response.status(500).send("Server error: ", error); });
+    .catch( error => { response.status(500);
+        //.send("Server error: ", error); 
+    });
 });
 module.exports = router;

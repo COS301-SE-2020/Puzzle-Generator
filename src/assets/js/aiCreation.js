@@ -59,7 +59,8 @@ let rand = mulberry32(seed());
 
 function random(max)
 {
-    return Math.ceil(rand() * max) - 1;
+    // return Math.ceil(rand() * max) - 1;
+    return Math.floor(Math.random() * max);
 }
 
 function expandPuzzle(sites, factor)
@@ -259,7 +260,7 @@ function mutate(chromosome)
 {
 	// let siteIndex = random(numberOfSites);
 	let selectedSite = chromosome.sites[random(numberOfSites)];
-	let offset = random(5);
+	let offset = random(5 + 1);
 	let movementDirection = random(4);
 
 	///Move site to the right by offset (increment x by offset), or move to the left if at board edge

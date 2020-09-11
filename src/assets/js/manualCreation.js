@@ -398,7 +398,7 @@ function createPieces()
 	piecesJSONObject.colors = selectedPalette;
 	layer.draw();
 	piecesJSONObject = JSON.stringify(piecesJSONObject);
-	console.log(piecesJSONObject);
+	// console.log(piecesJSONObject);
 }
 
 ///Shortens the array of vertices for each puzzle piece

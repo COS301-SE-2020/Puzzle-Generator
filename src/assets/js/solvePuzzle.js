@@ -65,6 +65,7 @@ function saveSolveAttempt(solved, solvePuzzleID, solveStartTime)
 	let token = document.getElementById('tokenLabel').innerHTML;
 	let timeTaken = performance.now();
 	timeTaken = (timeTaken - solveStartTime).toFixed(0);
+	timeTaken = Math.floor(timeTaken / 1000);
 
 	let jsonData = {
 		token: token,
@@ -72,8 +73,6 @@ function saveSolveAttempt(solved, solvePuzzleID, solveStartTime)
 		attemptDuration: timeTaken,
 		solved: solved
 	};
-
-	console.log(jsonData);
 
 	$.ajax({
 		type: 'POST',
@@ -86,13 +85,9 @@ function saveSolveAttempt(solved, solvePuzzleID, solveStartTime)
 		dataType: 'json',
 		success: function(data, status){
 			console.log('success!');
-			console.log(data);
-			console.log(status);
 		},
 		error: function(data, status){
-			console.log('error? o.O');
-			console.log(data);
-			console.log(status);
+			
 		}
 	});
 }

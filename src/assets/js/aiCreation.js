@@ -14,10 +14,12 @@ let Site = {
 	surfaceArea: 0,
 }
 
-let generatePuzzleAIButton, colorPalettesDiv;
+let generatePuzzleAIButton, nextPuzzleButton, previousPuzzleButton;
+let generatedPuzzles;
 let tempWidth, tempHeight;
 let totalSurfaceArea;
 
+//Genetic Algorithm parameters
 let generationSize = 10 + 1;
 let tournamentSize = 4;
 let maximumIterations = 150;
@@ -77,11 +79,25 @@ function expandPuzzle(sites, factor)
 export function initializeDataAI()
 {
 	initializeData('AI');
+	generatedPuzzles = [];
 	generatePuzzleAIButton = document.getElementById('generatePuzzleButtonAI');
 	generatePuzzleAIButton.addEventListener('mousedown', generatePuzzleAI);
 	generatePuzzleAIButton.remove();
 
+	nextPuzzleButton = document.getElementById('nextPuzzleButton');
+	previousPuzzleButton = document.getElementById('previousPuzzleButton');
+	nextPuzzleButton.remove();
+	previousPuzzleButton.remove();
+
 	document.getElementById('nextButton').addEventListener('mousedown', displaySlidersCard);
+
+	nextPuzzleButton.addEventListener('mousedown', function(){
+
+	});
+
+	previousPuzzleButton.addEventListener('mousedown', function(){
+
+	});
 }
 
 function displaySlidersCard()
@@ -113,10 +129,22 @@ function generatePuzzleAI()
 
 	document.getElementById('inputContainer').innerHTML = '';
 
-	let sites = run();
-	sites = expandPuzzle(sites, 10);
+	let lastGeneration = run();
+	for(let index = 0; index < lastGeneration.length; index++)
+	{
+		generatedPuzzles.push(lastGeneration[index].sites);
+	}
 
-	setSites(sites);
+	renderPuzzle(lastGeneration[0].sites);
+
+	document.getElementById('puzzleControlsDiv').appendChild(previousPuzzleButton);
+	document.getElementById('puzzleControlsDiv').appendChild(nextPuzzleButton);
+}
+
+function renderPuzzle(sites)
+{
+	let expandedSites = expandPuzzle(sites, 10);
+	setSites(expandedSites);
 	setDisableEditMode(true);
 	clearBoard();
 	generateSiteBoundaries();
@@ -239,7 +267,7 @@ function run()
 
 	console.log(nextGeneration);
 	console.log('done!');
-	return getFittest(nextGeneration).sites;
+	return nextGeneration;
 }
 
 ///Returns the fittest chromosome from generation

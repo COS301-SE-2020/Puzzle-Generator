@@ -1,5 +1,5 @@
 import { width, height, setSites, setDisableEditMode, initializeData, calculateDistancesFromSitesToPoint,
-	equidistantPointsPresent, generateSiteBoundaries, createPieces, clearBoard } from 'src/assets/js/manualCreation.js'
+	equidistantPointsPresent, generateSiteBoundaries, createPieces, clearBoard } from 'src/assets/js/manualCreation.js';
 
 ///The structure of each individual/chromosome object
 let Chromosome = {
@@ -16,6 +16,7 @@ let Site = {
 
 let generatePuzzleAIButton, nextPuzzleButton, previousPuzzleButton;
 let generatedPuzzles;
+let renderedPuzzleIndex;
 let tempWidth, tempHeight;
 let totalSurfaceArea;
 
@@ -67,19 +68,26 @@ function random(max)
 
 function expandPuzzle(sites, factor)
 {
+	let tempSites = [];
+
 	for(let i = 0; i < sites.length; i++)
 	{
-		sites[i].x = sites[i].x * factor;
-		sites[i].y = sites[i].y * factor;
+		tempSites[i] = {
+			x: 0,
+			y: 0
+		}
+		tempSites[i].x = sites[i].x * factor;
+		tempSites[i].y = sites[i].y * factor;
 	}
 
-	return sites;
+	return tempSites;
 }
 
 export function initializeDataAI()
 {
 	initializeData('AI');
 	generatedPuzzles = [];
+	renderedPuzzleIndex = 0;
 	generatePuzzleAIButton = document.getElementById('generatePuzzleButtonAI');
 	generatePuzzleAIButton.addEventListener('mousedown', generatePuzzleAI);
 	generatePuzzleAIButton.remove();
@@ -92,11 +100,26 @@ export function initializeDataAI()
 	document.getElementById('nextButton').addEventListener('mousedown', displaySlidersCard);
 
 	nextPuzzleButton.addEventListener('mousedown', function(){
+		renderedPuzzleIndex++;
+		if(renderedPuzzleIndex == generatedPuzzles.length)
+		{
+			let newGeneration = run();
+			for(let index = 0; index < newGeneration.length; index++)
+			{
+				generatedPuzzles.push(newGeneration[index].sites);
+			}
+			console.log('reached maximum :<');
+		}
 
+		renderPuzzle(generatedPuzzles[renderedPuzzleIndex]);
 	});
 
 	previousPuzzleButton.addEventListener('mousedown', function(){
-
+		if(renderedPuzzleIndex != 0)
+		{
+			renderedPuzzleIndex--;
+			renderPuzzle(generatedPuzzles[renderedPuzzleIndex]);
+		}
 	});
 }
 

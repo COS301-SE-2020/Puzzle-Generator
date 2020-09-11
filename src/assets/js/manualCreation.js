@@ -92,7 +92,7 @@ function randomizePuzzleColorPalette()
 		}
 
 		piecesJSONObject = JSON.stringify(piecesJSONObject);
-		console.log(piecesJSONObject);
+		// console.log(piecesJSONObject);
 		layer.draw();
 	}
 }

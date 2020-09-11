@@ -277,15 +277,17 @@ function clearBoard()
 ///Create a visual representation of where the user clicks
 function createPoint(x, y)
 {
-	let point = new Konva.Circle({
+	let point = new Konva.Ring({
 		x: x,
 		y: y,
-		radius: 5,
+		innerRadius: 3,
+        outerRadius: 15,
 		stroke: 'black',
-		fill: 'black',
+		fill: '#7C593A',
 		strokeWidth: 1,
-		draggable: true
 	});
+
+	point.draggable(true);
 
 	point.on('mouseover', function (event){
 		document.onmousemove = function(event) {

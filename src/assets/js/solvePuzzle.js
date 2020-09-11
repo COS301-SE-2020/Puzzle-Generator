@@ -155,12 +155,11 @@ function generatePieces()
 			stroke: colors[pieceIndex % colors.length],
 			strokeWidth: 2,
 			perfectDrawEnabled: false,
-			hitBox: hitBox,
 		});
 
 		piece.on('mouseover', function (){
 			document.body.style.cursor = 'pointer';
-			this.scale({x: 1, y: 1});
+			// this.scale({x: 1, y: 1});
 			group.moveToTop();
 			layer.draw();
 		});

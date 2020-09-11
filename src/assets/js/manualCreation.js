@@ -16,7 +16,7 @@ let stage;
 let layer;
 let square;
 let pointsArray = [];
-let sites = [];
+let sites;
 let siteBoundaries;
 let pieces = [];
 let precision = 0;
@@ -76,23 +76,23 @@ function changePuzzleColorPalette(colors)
 ///Randomizes the color palette used on the puzzle
 function randomizePuzzleColorPalette()
 {
+	selectedPalette = [];
 	if(pieces.length > 0)
 	{
 		let rgbColor;
 		layer.removeChildren();
-		piecesJSONObject = JSON.parse(piecesJSONObject);
-		piecesJSONObject.colors = [];
 
 		for(let i = 0; i < pieces.length; i++)
 		{
 			rgbColor = getRandomRGB();
-			piecesJSONObject.colors.push(rgbColor);
+			selectedPalette.push(rgbColor);
 			pieces[i].attrs.stroke = rgbColor;
 			layer.add(pieces[i]);
 		}
 
+		piecesJSONObject = JSON.parse(piecesJSONObject);
+		piecesJSONObject.colors = selectedPalette;
 		piecesJSONObject = JSON.stringify(piecesJSONObject);
-		// console.log(piecesJSONObject);
 		layer.draw();
 	}
 }
@@ -116,6 +116,11 @@ function initializeData(appendedString)
 	siteBoundaries = [];
 
 	disableEditMode = false;
+
+	if(selectedPalette === undefined)
+		console.log('no palette!');
+	else
+		console.log('palette');
 
 	selectedPalette = defaultPalette;
 	canvas = document.getElementById('container'+appendedString);
@@ -324,35 +329,11 @@ function createPoint(x, y)
 ///Calls the necessary functions to generate puzzle's vertiecs as well as the visual representation
 function generatePuzzle()
 {
-	//Testing data
-	// {"sites":[78,108,300,102,100,247,333,281,184,331],"queries":[]}
-	// sites = [
-	// {
-	// 	x:78,
-	// 	y:108,
-	// },
-	// {
-	// 	x:300,
-	// 	y:102,
-	// },
-	// {
-	// 	x:100,
-	// 	y:247,
-	// },
-	// {
-	// 	x:333,
-	// 	y:281,
-	// },
-	// {
-	// 	x:184,
-	// 	y:331,
-	// }
-	// ];
-
 	pointsArray = layer.getChildren(function(node) {
-		return node.getClassName() === 'Circle';
+		return node.getClassName() === 'Ring';
 	});
 
+	sites = [];
 	for (let i = pointsArray.length - 1; i >= 0; i--) {
 		sites.push({
 			x: pointsArray[i].attrs.x,

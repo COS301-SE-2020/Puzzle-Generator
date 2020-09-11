@@ -116,6 +116,11 @@ deleteRating(rating:number):Observable<number>
   return this.http.delete<number>('http://localhost:3200/api/puzzles/deleteRating/'+rating);
 }
 
+retrieveAllSolveAttempts(currentUser: any){
+  const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
+  return this.http.post('http://localhost:3200/api/users/getSolvedPuzzles', currentUser, httpOptions);
+}
+
 /**
 * Puzzle endpoints end here
 */

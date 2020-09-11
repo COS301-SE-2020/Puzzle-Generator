@@ -2,17 +2,25 @@
 
 <div class="container">
     <div class="container-fluid" *ngIf="currentUser" >
-        <h1 class="main-title" >Solved Puzzles</h1>
+        <h1 class="main-title">Solved Puzzles</h1>
         <div class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
-            <mat-card class="content" *ngFor="let puzzle of (userPuzzleList | slice: startIndex:endIndex)">
-              <div class="content-overlay"></div>
-              <img class="content-image" src="{{puzzle.image}}">
-                <mat-card-title><strong>{{puzzle.name}}</strong></mat-card-title>
-                <!-- <mat-card-subtitle>Description: {{puzzle.description}}</mat-card-subtitle> -->
-                <mat-card-actions class="puzzleActions">
-                    
-                </mat-card-actions>
-            </mat-card>
+          <mat-card class="content"  *ngFor="let puzzle of userPuzzleList | slice: startIndex:endIndex">
+            <div class="content-overlay"></div>
+            <img class="content-image" src="{{puzzle.image}}">
+              <div class="content-details fadeIn-bottom">
+                <mat-card-header>
+                 <mat-card-subtitle class="puzzleDetails"><strong>Created by:</strong> {{puzzle.creator}}</mat-card-subtitle>
+                  <mat-card-subtitle class="puzzleDetails"><strong>Created on:</strong> {{puzzle.dateCreated}}</mat-card-subtitle>
+                  <mat-card-subtitle class="puzzleDetails"><strong>Description:</strong> {{puzzle.description}}</mat-card-subtitle>
+                  <mat-card-subtitle class="puzzleDetails"><strong>Solve attempts duration:</strong> {{puzzle.attemptDuration}} seconds</mat-card-subtitle>
+                </mat-card-header>
+              </div>
+              <mat-card-title><strong>{{puzzle.name}}</strong></mat-card-title>
+              <mat-card-actions class="puzzleActions">
+                <button mat-button class="btns" id="solveButton" >SOLVE AGAIN</button>
+                <button  mat-button class="btns">RATE</button>
+              </mat-card-actions>
+          </mat-card>
         </div>
     </div>
     

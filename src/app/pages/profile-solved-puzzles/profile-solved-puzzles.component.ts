@@ -77,7 +77,7 @@ export class ProfileSolvedPuzzlesComponent implements OnInit {
   }
 
   getUserPuzzles(){
-    this.api.getPuzzlesByUser(this.currentUser).subscribe( data => {
+    this.api.retrieveAllSolveAttempts(this.currentUser).subscribe( data => {
       this.totalNumberOfPuzzles = Object.keys(data).length;
       this.userPuzzleList = data;
       if (data[0]==null)

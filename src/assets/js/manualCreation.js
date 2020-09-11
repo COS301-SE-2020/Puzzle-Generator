@@ -312,7 +312,7 @@ function createPoint(x, y)
 	});
 
 	point.on('mousedown', function(event) {
-		console.log('clicked!');
+		// console.log('clicked!');
 		if(deletePointButtonClicked)
 		{
 			document.onmousemove = null;

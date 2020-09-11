@@ -173,6 +173,7 @@ function generatePieces()
 			if(checkPosition(hitBoxCoordinates, correctPositions[pieceIndex]))
 			{
 				snapPieceIntoPlace(hitBoxCoordinates, correctPositions[pieceIndex], this);
+				group.draggable(false);
 				console.log('nailed it!!');
 				pieceInCorrectPosition[pieceIndex] = true;
 				checkIfPuzzleSolved();

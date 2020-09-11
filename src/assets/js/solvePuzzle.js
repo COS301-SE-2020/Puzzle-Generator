@@ -178,6 +178,7 @@ function generatePieces()
 
 			if(checkPosition(hitBoxCoordinates, correctPositions[pieceIndex]))
 			{
+				snapPieceIntoPlace(hitBoxCoordinates, correctPositions[pieceIndex], this);
 				console.log('nailed it!!');
 				pieceInCorrectPosition[pieceIndex] = true;
 				checkIfPuzzleSolved();
@@ -269,7 +270,7 @@ function checkPosition(coords1, coords2)
 	if(yDifference < 0)
 		yDifference *= -1;
 
-	if(xDifference <= 5 && yDifference <= 5)
+	if(xDifference <= 15 && yDifference <= 15)
 		return true;
 	else
 		return false;
@@ -286,4 +287,13 @@ function checkIfPuzzleSolved()
 	alert('Puzzle Solved!');
 	puzzleSolved = true;
 	saveSolveAttempt(puzzleSolved, puzzleID, startTime);
+}
+
+function snapPieceIntoPlace(currentCoords, targetCoords, piece)
+{
+	let xDifference = currentCoords.x - targetCoords.x;
+	let yDifference = currentCoords.y - targetCoords.y;
+	piece.x(piece.x() - xDifference);
+	piece.y(piece.y() - yDifference);
+	layer.draw();
 }

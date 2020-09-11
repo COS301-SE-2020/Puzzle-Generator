@@ -17,7 +17,7 @@ let defaultPalette = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGr
 let shadesOfBluePalette = ['DarkBlue', 'DeepSkyBlue', 'MediumBlue', 'DodgerBlue', 'MidnightBlue', 'RoyalBlue', 'DarkSlateBlue', 'CornflowerBlue', 'SkyBlue', 'PowderBlue'];
 let canvas, stage, layer, outline, board, puzzleID;
 let width = 1000, height = 500;
-let startTime;
+let startTime, puzzleSolved;
 
 // window.onload = function(){
 // 	initializeDataSolve();
@@ -58,14 +58,18 @@ function initializeDataSolve()
 	layer = new Konva.Layer();
 	stage.add(layer);
 	layer.add(outline);
+
+	document.getElementById('closeSolverDialogButton').addEventListener('mousedown', function(){
+		if(!puzzleSolved)
+			saveSolveAttempt(false, puzzleID, startTime);
+	});
 }
 
-function saveSolveAttempt(solved, solvePuzzleID, startTime)
+function saveSolveAttempt(solved, solvePuzzleID, solveStartTime)
 {
 	let token = document.getElementById('tokenLabel').innerHTML;
-	console.log(token);
 	let timeTaken = performance.now();
-	timeTaken = (timeTaken - startTime).toFixed(0);
+	timeTaken = (timeTaken - solveStartTime).toFixed(0);
 
 	let jsonData = {
 		token: token,
@@ -89,10 +93,7 @@ function getPuzzleData(puzzleID)
 			colors = piecesJSONObject.colors;
 			if(colors === undefined)
 				colors = defaultPalette;
-			let t1 = performance.now();
 			generatePieces();
-			let t2 = performance.now();
-			console.log('Time taken: ' + (t2 - t1) + 'milliseconds');
 		},
 		error: function(data, status){
 			console.log(status);
@@ -185,6 +186,7 @@ function generatePieces()
 
 	layer.add(board);
 	layer.draw();
+	startTime = performance.now();
 }
 
 function getMax(pointsArray, coordinate)
@@ -267,4 +269,6 @@ function checkIfPuzzleSolved()
 	}
 
 	alert('Puzzle Solved!');
+	puzzleSolved = true;
+	saveSolveAttempt(puzzleSolved, puzzleID, startTime);
 }

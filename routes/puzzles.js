@@ -149,7 +149,8 @@ router.post('/newSolveAttempt', (request, response) => {
             response.status(200).send("Attempt successfully created")
         })
         .catch( error => {
-            response.status(403).send("Solve attempt creation failed due to: ", error);
+            console.log("---> ", error);
+            // response.status(403).send("Solve attempt creation failed due to: ", error);
         })
     })
     .catch(error => {

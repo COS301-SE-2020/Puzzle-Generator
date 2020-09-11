@@ -14,10 +14,12 @@
           <img class="content-image" src="{{puzzle.image}}">
             <mat-card-title><strong>{{puzzle.name}}</strong></mat-card-title>
             <!-- <mat-card-subtitle>Description: {{puzzle.description}}</mat-card-subtitle> -->
-            <mat-card-actions class="puzzleActions">
+            <label hidden="true" id="tokenLabel">{{token}}</label>
+            <mat-card-actions class="puzzleActions" >
               <button *ngIf="!puzzle.shared" mat-button class="btns" (click)="share(puzzle.id)">SHARE</button>
               <button *ngIf="puzzle.shared" mat-button class="btns" (click)="stopShare(puzzle.id)">STOP SHARING</button>
               <button mat-button class="btns" (click)="deletePuzzle(puzzle.id)">DELETE</button>
+              <button mat-button class="btns" id="solveButton" (click)="openSolveDialog(puzzle.id)">SOLVE</button>
             </mat-card-actions>
         </mat-card>
     </div>

@@ -4,6 +4,8 @@ import { Puzzle } from 'src/app/models/Puzzle';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { SolveDialogComponent } from 'src/app/dialogs/solve-dialog/solve-dialog.component';
 
 @Component({
   selector: 'app-profile-puzzles',
@@ -14,13 +16,13 @@ export class ProfilePuzzlesComponent implements OnInit {
 
   currentUser: any;
   //user  puzzle variables
-  //puzzleList: Observable <Puzzle[]> ;
   userPuzzleList: any;
   puzzle: any;
   show: boolean;
   text: boolean;
   imageList: any;
   temp: boolean = false;
+  token: any;
 
   totalNumberOfPuzzles: number;
   ratingsLSize: number;
@@ -29,12 +31,13 @@ export class ProfilePuzzlesComponent implements OnInit {
   pageSize: number = 6;
   startIndex:number = 0;
   endIndex: number = 6;
-  // pageSizeOptions: number[] = [5, 10, 25, 100];
 
   // MatPaginator Output
   pageEvent: PageEvent;
 
-  constructor(private api: APIService, private router: Router) { }
+  solveDialog: MatDialogRef<SolveDialogComponent>
+
+  constructor(private api: APIService, private router: Router, private dialog: MatDialog) { }
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
     // this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
@@ -129,6 +132,11 @@ export class ProfilePuzzlesComponent implements OnInit {
     .then( () => { console.log("fired"); });
   }
 
+  openSolveDialog(puzzleID: any){
+    localStorage.setItem('solvingPuzzleID', puzzleID);
+    this.solveDialog = this.dialog.open(SolveDialogComponent);
+  }
+
   ngOnInit(): void {
 
     if(!localStorage.getItem('token')){
@@ -139,6 +147,9 @@ export class ProfilePuzzlesComponent implements OnInit {
     this.currentUser = {
       "token": localStorage.getItem('token')
     }
+
+    this.token = localStorage.getItem('token');
+
     this.show = true;
     this.text = false;
 

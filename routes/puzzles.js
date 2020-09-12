@@ -7,6 +7,7 @@ const User = require('../models/User');
 const Puzzle = require('../models/Puzzle');
 const PuzzleRating = require('../models/PuzzleRating')
 const Sequelize = require('sequelize');
+const SolveAttempt = require('../models/SolveAttempt');
 const Op = Sequelize.Op;
 
 /**
@@ -14,6 +15,7 @@ const Op = Sequelize.Op;
  */
 
 //get all puzzles
+
 router.get('/getAllPuzzles', (request, response) => {
     var puzzleJsonObject = [];
     var puzzlePlaceholder = {};
@@ -111,6 +113,7 @@ router.put('/sharePuzzle',(request, response) => {
         response.status(500).send("Server error");
     } );
 });
+
 //stop sharing puzzle
 router.put('/stopSharingPuzzle',(request, response) => {
     const puzzleID = request.body.puzzleID;
@@ -125,6 +128,63 @@ router.put('/stopSharingPuzzle',(request, response) => {
         response.status(500).send("Server error");
     } );
 });
+
+//start of solving endpoints
+//new solve attempt record
+router.post('/newSolveAttempt', (request, response) => {
+    console.log("the body *---> ", request.body);
+    const token = request.body.token;
+    const puzzleID = request.body.puzzleID;
+    const solved = request.body.solved;
+    const attemptDuration = request.body.attemptDuration;
+    let attempted = true;
+    let solverID = null;
+    User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
+    .then( user => {
+        solverID = user[0].id;
+        console.log("Just before creation to check values to be inserted: ", solverID, puzzleID, attemptDuration, solved, attempted);
+        
+        SolveAttempt.findAll({ raw: true,
+            where: { solverID:  solverID, puzzleID:  puzzleID }
+          })
+          .then( data => {
+              if(data.length == 0){ //solve attempt doesnt exist so create new rating
+                    SolveAttempt.create({
+                        solverID, puzzleID, attemptDuration, solved, attempted
+                    })
+                    .then( () => {
+                        response.status(200).send("Attempt successfully created")
+                    })
+                    .catch( error => {
+                        response.status(403).send("Solve attempt creation failed due to: ", error);
+                    })
+                }
+                else
+                {
+                    //console.log("---data--- ", data[0].attemptDuration);
+                    let newAttemptDuration = parseInt(data[0].attemptDuration) + parseInt(attemptDuration);
+                    //console.log("new time ", newAttemptDuration);
+                    SolveAttempt.update( //solve attempt exists so update current rating
+                        { solved: solved, attemptDuration: newAttemptDuration },
+                        { returning: true, raw: true, plain: true, where: { solverID: solverID, puzzleID:  puzzleID } }
+                    )
+                    .then( () => {
+                        response.status(200).send("Solve attempt successfully updated");
+                     })
+                    .catch( error => {
+                        response.status(500).send("Server error");
+                    } );
+                }
+            })
+            .catch(error => {
+                response.status(403).send("Attempt record not found due to: ", error);
+            });
+    })
+    .catch(error => {
+        response.status(403).send("User not found due to: ", error);
+    });
+});
+//end of solving endpoints
 
 //deletePuzzle
 router.delete('/deletePuzzle/:puzzleID', (request, response) => {

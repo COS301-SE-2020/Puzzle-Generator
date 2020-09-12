@@ -25,19 +25,27 @@ var message = "Dear user\n" +
     "Regards\n" +
     "Team Prometheus";
 
-var mailOptions = {
-    from: 'team.prometheus@willowmoore.co.za',
-    to: 'u15175295@tuks.co.za',
-    subject: 'Reset password',
-    text: message
-};
 
-transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-        console.log(error);
-    } else {
-        console.log('Email sent: ' + info.response);
-    }
+router.post('/mailer', (request, response) => {
+  var subject = request.body.subject;
+  var recipient = request.body.user;
+
+  let mailOptions = {
+    from: emailUname,
+    to: recipient,
+    subject: subject,
+    text: message
+  };
+
+  
+
 });
 
+transporter.sendMail(mailOptions, function (error, info) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
 module.exports = router;

@@ -30,7 +30,7 @@ http://www.linkedin.com/in/jaynill-gopal-5b32381a4
 https://www.linkedin.com/in/tapiwa-m-066326120
 
 * Tsholofelo Gomba:
-https://www.linkedin.com/in/tsholofelo-gomba-8
+https://www.linkedin.com/in/tsholofelo-gomba-8189b712b
 
 * Yuval Langa:
 https://www.linkedin.com/in/yuval-langa-27ab251ab/

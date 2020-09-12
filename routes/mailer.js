@@ -29,6 +29,7 @@ var message = "Dear user\n" +
 router.post('/mailer', (request, response) => {
   var subject = request.body.subject;
   var recipient = request.body.user;
+  var username = request.body.username;
 
   let mailOptions = {
     from: emailUname,
@@ -37,7 +38,21 @@ router.post('/mailer', (request, response) => {
     text: message
   };
 
-  
+  switch (subject) {
+    case "welcome": {
+      subject = "Welcome to Prometheus Puzzles";
+      message = "<h1>Welcome " + username +" to Prometheus puzzles</h1> <i>Share, Create, Rate</i>\n  " +
+        "You are now part of a whole community of puzzle makers, creating new and facinating puzzles.\n\n" +
+        "To start creating and sharing your new designs, please verify your account" +
+        "Please click here to verify <button href='https://prometheuspuzzles.herokuapp.com/api/verify:'"+emailUname+
+        " style='background-color: limegreen; height:20px; width: 50px;font-size: 120%;border-radius: 3px'>Verify</button>"
+
+    }
+    case "reset password":{
+
+    }
+
+  }
 
 });
 

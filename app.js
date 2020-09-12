@@ -35,6 +35,8 @@ app.use('/api/users', require('./routes/users'));
 //all requests associated with the user must make use of this route
 app.use('/api/puzzles', require('./routes/puzzles'));
 
+//all requests associated with the user must make use of this route
+app.use('/api/mailer', require('./routes/mailer'));
 
 app.all("/*", function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

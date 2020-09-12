@@ -1,11 +1,18 @@
+const express = require('express');
+const { response, request } = require('express');
+const router = express.Router();
+
 var nodemailer = require('nodemailer');
+
+let emailUname = process.env.emailUname;
+let emailPassword = process.env.emailPassword;
 
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     secure:true,
     auth: {
-        user: 'team.prometheus@willowmoore.co.za',
-        pass: 'password1'
+        user: emailUname,
+        pass: emailPassword
     }
 });
 
@@ -32,3 +39,5 @@ transporter.sendMail(mailOptions, function(error, info){
         console.log('Email sent: ' + info.response);
     }
 });
+
+module.exports = router;

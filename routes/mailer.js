@@ -37,18 +37,36 @@ router.post('/mailer', (request, response) => {
     case "reset password":{
       subject = "Reset your email";
       message = resetEmail.generateResetEmail(username,emailUname);
+      attachments = [
+        {   // filename and content type is derived from path
+          cid:"../Emails to user/reset password/images/logo_nav.png"
+        },
+        {   // filename and content type is derived from path
+          cid:"../Emails to user/reset password/images/img2.jpg"
+        }
+      ];
+
 
     }
 
   }
 
 });
+function sendmail(subject,message,attach) {
+  let mailOptions = {
+    from: emailUname,
+    to: recipient,
+    subject: subject,
+    html: message,
+    attachments: attach
+  };
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+}
 
-transporter.sendMail(mailOptions, function (error, info) {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
-});
 module.exports = router;

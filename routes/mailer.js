@@ -1,6 +1,7 @@
 const express = require('express');
 const { response, request } = require('express');
 const router = express.Router();
+const resetEmail = require("./resetPasswordEmailTemplate")
 
 var nodemailer = require('nodemailer');
 
@@ -15,16 +16,6 @@ var transporter = nodemailer.createTransport({
         pass: emailPassword
     }
 });
-
-var message = "Dear user\n" +
-    "\n" +
-    "Please click the following link to reset your password https://prometheuspuzzles.herokuapp.com/reset-password\n" +
-    "\n" +
-    "If you did not request a change in password, please ignore this message.\n" +
-    "\n" +
-    "Regards\n" +
-    "Team Prometheus";
-
 
 router.post('/mailer', (request, response) => {
   var subject = request.body.subject;
@@ -41,14 +32,11 @@ router.post('/mailer', (request, response) => {
   switch (subject) {
     case "welcome": {
       subject = "Welcome to Prometheus Puzzles";
-      message = "<h1>Welcome " + username +" to Prometheus puzzles</h1> <i>Share, Create, Rate</i>\n  " +
-        "You are now part of a whole community of puzzle makers, creating new and facinating puzzles.\n\n" +
-        "To start creating and sharing your new designs, please verify your account" +
-        "Please click here to verify <button href='https://prometheuspuzzles.herokuapp.com/api/verify:'"+emailUname+
-        " style='background-color: limegreen; height:20px; width: 50px;font-size: 120%;border-radius: 3px'>Verify</button>"
-
+      message = resetEmail.generateResetEmail(username,emailUname);
     }
     case "reset password":{
+      subject = "Reset your email";
+      message = resetEmail.generateResetEmail(username,emailUname);
 
     }
 

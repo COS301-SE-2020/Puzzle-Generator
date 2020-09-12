@@ -114,7 +114,7 @@ app.use(function(err, req, res, next) {
 app.get('/', (request, response) => {response.send("Sequelize API test");});
 
 module.exports = app;
-console.log(process.env.dbPass)
+//console.log(process.env.dbPass)
 /*
 //all requests associated with the user must make use of this route
 app.use('/api/users', require('./routes/users'));
@@ -127,4 +127,4 @@ app.use('/api/admin', require('./routes/admin'))
 
 const PORT = process.env.PORT || 3200;
 
-app.listen(PORT, console.log(`Server running at: ${PORT}`));
+app.listen(PORT, console.log(`Server running at: ${PORT}`));*/

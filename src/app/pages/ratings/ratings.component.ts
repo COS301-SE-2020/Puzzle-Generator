@@ -56,6 +56,9 @@ export class RatingsComponent implements OnInit {
   solveDialog: MatDialogRef<SolveDialogComponent>;
   sortedBy: any;
 
+  ratingSavedDialog: any;
+  loginDialog: any; 
+
   constructor(private api: APIService, private cdr: ChangeDetectorRef, private dialog: MatDialog, private router: Router) {
   }
 

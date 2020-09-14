@@ -7,6 +7,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RateDialogComponent } from '../../rate-dialog/rate-dialog.component';
 import { PageEvent } from '@angular/material/paginator';
 import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-profile-ratings',

@@ -43,9 +43,9 @@ mat-card-title{
  background-color: #7C593A;
  color: white;
  margin: 0.5vw;
- width: 50%;
+ /* width: 50%; */
  text-align: center;
- font-size: 2rem;
+ font-size: 1.7rem;
  font-weight: normal;
 }
 

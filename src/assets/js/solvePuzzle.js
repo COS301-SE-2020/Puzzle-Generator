@@ -146,8 +146,6 @@ function generatePieces()
 			height: 5	
 		});
 
-
-
 		let piece = new Konva.Line({
 			points: selectedPiece,
 			stroke: colors[pieceIndex % colors.length],
@@ -177,6 +175,8 @@ function generatePieces()
 			{
 				snapPieceIntoPlace(hitBoxCoordinates, correctPositions[pieceIndex], this);
 				group.draggable(false);
+				piece.on('mouseover', null);
+				piece.on('mouseout', null);
 				console.log('nailed it!!');
 				pieceInCorrectPosition[pieceIndex] = true;
 				checkIfPuzzleSolved();
@@ -189,7 +189,6 @@ function generatePieces()
 				pieceInCorrectPosition[pieceIndex] = false;
 			}
 		});
-
 
 		// piece.scale({x: 0.75, y: 0.75});
 		group.add(piece);

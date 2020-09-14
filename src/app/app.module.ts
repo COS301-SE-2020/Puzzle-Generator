@@ -52,6 +52,7 @@ import { ProfileSolvedPuzzlesComponent } from './pages/profile-solved-puzzles/pr
 import { MenuComponent } from './dialogs/menu/menu.component';
 import { CreateDialogComponent } from './dialogs/create-dialog/create-dialog.component';
 import { LoginDialogComponent } from './dialogs/login-dialog/login-dialog.component';
+import { ProfileUpdateDialogComponent } from './dialogs/profile-update-dialog/profile-update-dialog.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { LoginDialogComponent } from './dialogs/login-dialog/login-dialog.compon
     MenuComponent,
     CreateDialogComponent,
     LoginDialogComponent,
+    ProfileUpdateDialogComponent,
   ],
   imports: [
     BrowserModule,

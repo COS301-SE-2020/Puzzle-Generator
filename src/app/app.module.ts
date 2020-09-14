@@ -50,6 +50,7 @@ import { AdminPuzzlesComponent } from './admin/admin-puzzles/admin-puzzles.compo
 import { SolveDialogComponent } from './dialogs/solve-dialog/solve-dialog.component';
 import { ProfileSolvedPuzzlesComponent } from './pages/profile-solved-puzzles/profile-solved-puzzles.component';
 import { MenuComponent } from './dialogs/menu/menu.component';
+import { CreateDialogComponent } from './dialogs/create-dialog/create-dialog.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { MenuComponent } from './dialogs/menu/menu.component';
     SolveDialogComponent,
     ProfileSolvedPuzzlesComponent,
     MenuComponent,
+    CreateDialogComponent,
   ],
   imports: [
     BrowserModule,

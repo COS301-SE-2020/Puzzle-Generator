@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { initializeDataAI } from 'src/assets/js/aiCreation.js';
 import { Router } from '@angular/router';
 import { Colors, Color } from 'angular-bootstrap-md';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { CreateDialogComponent } from 'src/app/dialogs/create-dialog/create-dialog.component';
 
 @Component({
   selector: 'app-aicreate',
@@ -15,8 +17,13 @@ export class AICreateComponent implements OnInit {
   color: Colors;
   name: any;
   description: any;
+  createDialog: MatDialogRef<CreateDialogComponent>;
+  
+  constructor(private router: Router, private dialog: MatDialog) { }
 
-  constructor(private router: Router) { }
+  success(){
+    this.createDialog = this.dialog.open(CreateDialogComponent);
+  }
 
   ngOnInit(): void {
     if(!localStorage.getItem('token')){

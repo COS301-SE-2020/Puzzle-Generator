@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { initializeData } from 'src/assets/js/manualCreation.js';
 import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { CreateDialogComponent } from 'src/app/dialogs/create-dialog/create-dialog.component';
 
 @Component({
   selector: 'app-create',
@@ -11,11 +13,14 @@ import { Router } from '@angular/router';
 export class CreateComponent implements OnInit {
 
   token: any;
-
   name: any;
   description: any;
+  createDialog: MatDialogRef<CreateDialogComponent>;
+  constructor(private router: Router, private dialog: MatDialog) { }
 
-  constructor(private router: Router) { }
+  success(){
+    this.createDialog = this.dialog.open(CreateDialogComponent);
+  }
 
   ngOnInit(): void {
 

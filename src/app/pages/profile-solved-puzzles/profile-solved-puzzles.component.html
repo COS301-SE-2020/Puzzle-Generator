@@ -29,17 +29,16 @@
           </mat-card>
         </div>
     </div>
-    
+
     <mat-paginator class="paginator" *ngIf="!text && !show" [length]="totalNumberOfPuzzles" [pageSize]="pageSize"
                       (page)="pageEvent = changeEvent($event)">
     </mat-paginator>
-    
+
     </div>
-    
+
       <div *ngIf="text">
         <h2 id="NoneText" >You have not solved any puzzles at the moment</h2>
       </div>
     <div class="spinner">
       <mat-spinner *ngIf="show" id="spinner"></mat-spinner>
-    </div> 
-    
+    </div>

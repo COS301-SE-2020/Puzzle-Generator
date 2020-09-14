@@ -5,24 +5,36 @@
     <input matInput (keyup)="applyFilter($event.target.value)">
 </mat-form-field>
 
-<button mat-button class="sortBtns">Name
-  <mat-icon (click)="puzzleAscending()" class="arrow">arrow_upwardward</mat-icon> |
-  <mat-icon (click)="puzzleDescending()" class="arrow">arrow_downward</mat-icon>
+<button mat-button [ngClass]="{
+  inUse: sortedBy=='puzzleAsc' || sortedBy=='puzzleDesc',
+  sortBtns: sortedBy!='puzzleAsc' || sortedBy!='puzzleDesc'
+}">Name
+  <mat-icon *ngIf='sortedBy!="puzzleAsc"' (click)="puzzleAscending()" class="arrow">arrow_upwardward</mat-icon> |
+  <mat-icon *ngIf='sortedBy!="puzzleDesc"' (click)="puzzleDescending()" class="arrow">arrow_downward</mat-icon>
 </button>
 
-<button mat-button class="sortBtns">Rating
-  <mat-icon (click)="ratingAscending()" class="arrow">arrow_upwardward</mat-icon> |
-  <mat-icon (click)="ratingDescending()" class="arrow">arrow_downward</mat-icon>
+<button mat-button [ngClass]="{
+  inUse: sortedBy=='ratingAsc' || sortedBy=='ratingDesc',
+  sortBtns: sortedBy!='ratingAsc' || sortedBy!='ratingDesc'
+}">Rating
+  <mat-icon *ngIf='sortedBy!="ratingAsc"' (click)="ratingAscending()" class="arrow">arrow_upwardward</mat-icon> |
+  <mat-icon *ngIf='sortedBy!="ratingDesc"' (click)="ratingDescending()" class="arrow">arrow_downward</mat-icon>
 </button>
 
-<button mat-button class="sortBtns">Creator
-  <mat-icon (click)="creatorAscending()" class="arrow">arrow_upwardward</mat-icon> |
-  <mat-icon (click)="creatorDescending()" class="arrow">arrow_downward</mat-icon>
+<button mat-button [ngClass]="{
+  inUse: sortedBy=='creatorAsc' || sortedBy=='creatorDesc',
+  sortBtns: sortedBy!='creatorAsc' || sortedBy!='creatorDesc'
+}">Creator
+  <mat-icon *ngIf='sortedBy!="creatorAsc"' (click)="creatorAscending()" class="arrow">arrow_upwardward</mat-icon> |
+  <mat-icon *ngIf='sortedBy!="creatorDesc"' (click)="creatorDescending()" class="arrow">arrow_downward</mat-icon>
 </button>
 
-<button mat-button class="sortBtns">Date
-  <mat-icon (click)="dateAscending()" class="arrow">arrow_upwardward</mat-icon> |
-  <mat-icon (click)="dateDescending()" class="arrow">arrow_downward</mat-icon>
+<button mat-button [ngClass]="{
+  inUse: sortedBy=='dateAsc' || sortedBy=='dateDesc',
+  sortBtns: sortedBy!='dateAsc' || sortedBy!='dateDesc'
+}">Date
+  <mat-icon *ngIf='sortedBy!="dateAsc"' (click)="dateAscending()" class="arrow">arrow_upwardward</mat-icon> |
+  <mat-icon *ngIf='sortedBy!="dateDesc"' (click)="dateDescending()" class="arrow">arrow_downward</mat-icon>
 </button>
 
 <div class="spinner">
@@ -43,7 +55,7 @@
             </div>
             <mat-card-title><strong>{{puzzle.name}}</strong></mat-card-title>
             <mat-card-subtitle>Rating: {{puzzle.rating}}/5 <span *ngIf="puzzle.rating == '0'">- Not yet rated</span> </mat-card-subtitle>
-            
+
             <label hidden="true" id="tokenLabel">{{token}}</label>
             <mat-card-actions class="puzzleActions">
               <button mat-button class="btns" id="solveButton" (click)="openSolveDialog(puzzle.id)">Solve</button>

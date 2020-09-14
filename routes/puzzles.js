@@ -134,7 +134,7 @@ router.post('/newSolveAttempt', (request, response) => {
     console.log("the body *---> ", request.body);
     const token = request.body.token;
     const puzzleID = request.body.puzzleID;
-    const solved = request.body.solved;
+    let solved = request.body.solved;
     const attemptDuration = request.body.attemptDuration;
     let attempted = true;
     let solverID = null;
@@ -160,9 +160,9 @@ router.post('/newSolveAttempt', (request, response) => {
                 }
                 else
                 {
-                    //console.log("---data--- ", data[0].attemptDuration);
                     let newAttemptDuration = parseInt(data[0].attemptDuration) + parseInt(attemptDuration);
-                    //console.log("new time ", newAttemptDuration);
+                    if(data[0].solved == true){solved = data[0].solved; }
+                    else {solved = request.body.solved; }
                     SolveAttempt.update( //solve attempt exists so update current rating
                         { solved: solved, attemptDuration: newAttemptDuration },
                         { returning: true, raw: true, plain: true, where: { solverID: solverID, puzzleID:  puzzleID } }

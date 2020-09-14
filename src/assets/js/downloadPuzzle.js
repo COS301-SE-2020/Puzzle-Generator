@@ -1,4 +1,15 @@
+import JSZip from 'src/assets/js/jszip.min.js';
+import saveAs from 'src/assets/js/FileSaver.js';
+export { downloadPuzzle };
+
 let getPuzzleDataURL = 'http://localhost:3200/api/puzzles/getPuzzleByID/';
+let piecesJSONObject, pieces;
+
+function downloadPuzzle()
+{
+	puzzleID = localStorage.getItem('solvingPuzzleID');
+	getPuzzleData(puzzleID);
+}
 
 function getPuzzleData(puzzleID)
 {
@@ -9,7 +20,7 @@ function getPuzzleData(puzzleID)
 		success: function(data, status){
 			piecesJSONObject = JSON.parse(data[0].puzzleObject);
 			pieces = piecesJSONObject.pieces;
-			generateSTLFile();
+			generateSTLFiles();
 		},
 		error: function(data, status){
 			console.log(status);
@@ -18,7 +29,7 @@ function getPuzzleData(puzzleID)
 	});
 }
 
-function generateSTLFile()
+function generateSTLFiles()
 {
 	let zip = new JSZip();
 	let currentPiece;

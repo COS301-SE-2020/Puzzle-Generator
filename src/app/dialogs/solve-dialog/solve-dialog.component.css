@@ -1,7 +1,8 @@
-/* .solver{
+.solver{
     width: 75vw;
-    height: 65rem;
-} */
+    height: 60rem;
+    background-color: gainsboro;
+}
 
 #solverContainer{
 	width: 70vw;
@@ -11,6 +12,7 @@
 .btns{
     background-color: #7C593A;
     color: white;
+    margin-top: 1rem;
     margin: 0.5vw;
     /* width: 50%; */
     border: 1px solid white;

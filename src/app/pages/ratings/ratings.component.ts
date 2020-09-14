@@ -12,6 +12,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTableDataSource} from '@angular/material/table';
 import { PageEvent } from '@angular/material/paginator';
 import { SolveDialogComponent } from 'src/app/dialogs/solve-dialog/solve-dialog.component';
+import { MenuComponent } from 'src/app/dialogs/menu/menu.component';
+import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
 
 @Component({
   selector: 'app-ratings',
@@ -304,10 +306,9 @@ export class RatingsComponent implements OnInit {
 
         if(this.api.createNewPuzzleRating(this.ratingEntry).subscribe())
         {
-          alert("Rating added");
+          this.ratingSavedDialog = this.dialog.open(MenuComponent);
+          //alert("Rating added");
         }
-
-        location.reload();
       }
 
     });
@@ -334,7 +335,9 @@ export class RatingsComponent implements OnInit {
     this.dataAvailable = false;
     if(!localStorage.getItem('token')){
       this.router.navigate(['/index']);
-      alert("You are not logged in");
+      this.loginDialog = this.dialog.open(LoginDialogComponent);
+      //this.router.navigate(['/index']);
+      //alert("You are not logged in");
     }
 
     this.currentUser = {

@@ -154,7 +154,8 @@ function generatePieces()
 		});
 
 		piece.on('mouseover', function (){
-			document.body.style.cursor = 'pointer';
+			if(!pieceInCorrectPosition[pieceIndex])
+				document.body.style.cursor = 'pointer';
 			// this.scale({x: 1, y: 1});
 			group.moveToTop();
 			layer.draw();
@@ -163,7 +164,7 @@ function generatePieces()
 		piece.on('mouseout', function() {
 			document.body.style.cursor = 'default';
 			// this.scale({x: 0.5, y: 0.5});
-			layer.draw();
+			// layer.draw();
 		});
 
 		group.on('dragend', function(){
@@ -175,8 +176,6 @@ function generatePieces()
 			{
 				snapPieceIntoPlace(hitBoxCoordinates, correctPositions[pieceIndex], this);
 				group.draggable(false);
-				piece.on('mouseover', null);
-				piece.on('mouseout', null);
 				console.log('nailed it!!');
 				pieceInCorrectPosition[pieceIndex] = true;
 				checkIfPuzzleSolved();

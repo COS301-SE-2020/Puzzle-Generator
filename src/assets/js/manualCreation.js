@@ -117,11 +117,6 @@ function initializeData(appendedString)
 
 	disableEditMode = false;
 
-	if(selectedPalette === undefined)
-		console.log('no palette!');
-	else
-		console.log('palette');
-
 	selectedPalette = defaultPalette;
 	canvas = document.getElementById('container'+appendedString);
 	stage = new Konva.Stage({
@@ -197,7 +192,6 @@ function initializeData(appendedString)
 	for(let paletteIndex = 0; paletteIndex < palettes.length; paletteIndex++)
 	{
 		palettes[paletteIndex].addEventListener('mousedown', function(){
-			// console.log(this.getAttribute('paletteid'));
 			selectedPalette = colorPalettes[this.getAttribute('paletteid')];
 			changePuzzleColorPalette(selectedPalette);
 		});
@@ -424,7 +418,6 @@ function trimPoints(pointArray)
 ///Generate the boundaries around the sites
 function generateSiteBoundaries()
 {
-	// console.log(sites);
 	for(let i = 0; i < sites.length; i++)
 		siteBoundaries[i] = [];
 

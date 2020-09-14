@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RateDialogComponent } from '../../rate-dialog/rate-dialog.component';
 import { PageEvent } from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-profile-ratings',
@@ -36,6 +37,8 @@ export class ProfileRatingsComponent implements OnInit {
 
   // MatPaginator Output
   pageEvent: PageEvent;
+  sortedBy: any;
+  datasource: any;
 
   constructor(private api: APIService, private router: Router, private dialog: MatDialog) { }
 
@@ -55,9 +58,18 @@ export class ProfileRatingsComponent implements OnInit {
     return event;
   }
 
+  applyFilter(filterValue: string) {
+    this.datasource.filterPredicate = function(data, filter: string): boolean {
+      return data.puzzleName.toLowerCase().includes(filter)
+    };
+    this.datasource.filter = filterValue.trim().toLowerCase();
+    this.totalNumberOfPuzzles = this.datasource.filteredData.length;
+  }
+
   nameDescending()
   {
     return this.userRatingsList.sort( (a,b) => {
+      this.sortedBy = "puzzleDesc";
       let paramA = a.puzzleName.toLowerCase();
       let paramB = b.puzzleName.toLowerCase();
 
@@ -70,6 +82,7 @@ export class ProfileRatingsComponent implements OnInit {
   nameAscending()
   {
     return this.userRatingsList.sort( (a,b) => {
+      this.sortedBy = "puzzleAsc";
       let paramA = a.puzzleName.toLowerCase();
       let paramB = b.puzzleName.toLowerCase();
 
@@ -82,8 +95,9 @@ export class ProfileRatingsComponent implements OnInit {
   ratingDescending()
   {
     return this.userRatingsList.sort( (a,b) => {
-      let paramA = a.rating;//.toLowerCase();
-      let paramB = b.rating;//.toLowerCase();
+      this.sortedBy = "ratingDesc";
+      let paramA = a.rating;
+      let paramB = b.rating;
 
       if(paramA > paramB ){ return -1; }
       else { return 1; }
@@ -94,12 +108,33 @@ export class ProfileRatingsComponent implements OnInit {
   ratingAscending()
   {
     return this.userRatingsList.sort( (a,b) => {
-      let paramA = a.rating;//.toLowerCase();
-      let paramB = b.rating;//.toLowerCase();
+      this.sortedBy = "ratingAsc";
+      let paramA = a.rating;
+      let paramB = b.rating;
 
       if(paramA < paramB ){ return -1; }
       else { return 1; }
       return 0;
+    });
+  }
+
+  dateDescending()
+  {
+    return this.userRatingsList.sort( (a,b) => {
+      this.sortedBy = "dateDesc";
+      let paramA = new Date(a.created).getTime();
+      let paramB = new Date(b.created).getTime();
+      return paramA > paramB ? 1 : -1;
+    });
+  }
+
+  dateAscending()
+  {
+    return this.userRatingsList.sort( (a,b) => {
+      this.sortedBy = "dateAsc";
+      let paramA = new Date(a.created).getTime();
+      let paramB = new Date(b.created).getTime();
+      return paramA < paramB ? 1 : -1;
     });
   }
 
@@ -112,6 +147,8 @@ export class ProfileRatingsComponent implements OnInit {
       if (this.totalNumberOfPuzzles == 0){
         this.text = true;
       }
+      this.datasource = new MatTableDataSource(this.userRatingsList);
+      this.nameAscending();
     });
   }
 

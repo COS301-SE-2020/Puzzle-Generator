@@ -51,7 +51,8 @@ export class RatingsComponent implements OnInit {
   pageEvent: PageEvent;
 
   //solve dialog variable
-  solveDialog: MatDialogRef<SolveDialogComponent>
+  solveDialog: MatDialogRef<SolveDialogComponent>;
+  sortedBy: any;
 
   constructor(private api: APIService, private cdr: ChangeDetectorRef, private dialog: MatDialog, private router: Router) {
   }
@@ -77,6 +78,7 @@ export class RatingsComponent implements OnInit {
   puzzleDescending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "puzzleDesc";
       let paramA = a.name.toLowerCase();
       let paramB = b.name.toLowerCase();
 
@@ -89,6 +91,7 @@ export class RatingsComponent implements OnInit {
   puzzleAscending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "puzzleAsc";
       let paramA = a.name.toLowerCase();
       let paramB = b.name.toLowerCase();
 
@@ -101,6 +104,7 @@ export class RatingsComponent implements OnInit {
   creatorDescending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "creatorDesc";
       let paramA = a.creator.toLowerCase();
       let paramB = b.creator.toLowerCase();
 
@@ -113,6 +117,7 @@ export class RatingsComponent implements OnInit {
   creatorAscending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "creatorAsc";
       let paramA = a.creator.toLowerCase();
       let paramB = b.creator.toLowerCase();
 
@@ -125,6 +130,7 @@ export class RatingsComponent implements OnInit {
   dateDescending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "dateDesc";
       let paramA = new Date(a.created).getTime();
       let paramB = new Date(b.created).getTime();
       return paramA > paramB ? 1 : -1;
@@ -134,6 +140,7 @@ export class RatingsComponent implements OnInit {
   dateAscending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "dateAsc";
       let paramA = new Date(a.created).getTime();
       let paramB = new Date(b.created).getTime();
       return paramA < paramB ? 1 : -1;
@@ -143,6 +150,7 @@ export class RatingsComponent implements OnInit {
   ratingDescending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "ratingDesc";
       let paramA = a.rating;
       let paramB = b.rating;
 
@@ -155,6 +163,7 @@ export class RatingsComponent implements OnInit {
   ratingAscending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "ratingAsc";
       let paramA = a.rating;
       let paramB = b.rating;
 
@@ -245,7 +254,6 @@ export class RatingsComponent implements OnInit {
       for (let k=0; this.ratings[k]!=null; k++){
         if (this.ratings[k].puzzleID == data[i].id)
         {
-          //********* ERROR HERE - THIS LOOP IS NOT ENTERED WHEN THE RATINGS VALUE IS 0  ************
           total = total + this.ratings[k].rating;
           j = j+1;
         }
@@ -261,6 +269,7 @@ export class RatingsComponent implements OnInit {
     }
 
     this.datasource = new MatTableDataSource(this.puzzles);
+    this.puzzleAscending();
 
     this.dataAvailable = true;
     this.show= false;
@@ -341,7 +350,7 @@ export class RatingsComponent implements OnInit {
         "name": data["name"]
       }
     });
-
+    this.sortedBy = "";
     this.populate(null);
 
   }

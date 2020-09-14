@@ -12,7 +12,7 @@ let Site = {
 	x: 0,
 	y: 0,
 	surfaceArea: 0,
-}
+};
 
 let generatePuzzleAIButton, nextPuzzleButton, previousPuzzleButton;
 let generatedPuzzles;

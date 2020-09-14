@@ -5,7 +5,7 @@ export { initializeDataSolve };
 
 let getPuzzleDataURL = 'http://localhost:3200/api/puzzles/getPuzzleByID/';
 let saveSolveAttemptURL = 'http://localhost:3200/api/puzzles/newSolveAttempt';
-let piecesJSONObject, pieces, colors;
+let piecesJSONObject, pieces, colors, base64Image;
 let correctPositions, pieceInCorrectPosition;
 let defaultPalette = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine', 'AntiqueWhite', 'Red', 'Green'];
 let shadesOfBluePalette = ['DarkBlue', 'DeepSkyBlue', 'MediumBlue', 'DodgerBlue', 'MidnightBlue', 'RoyalBlue', 'DarkSlateBlue', 'CornflowerBlue', 'SkyBlue', 'PowderBlue'];
@@ -39,7 +39,7 @@ function initializeDataSolve()
 		height: height,
 		stroke: 'black',
 		fill: 'white',
-		strokeWidth: 1
+		strokeWidth: 2
 	});
 
 	outline = new Konva.Rect({
@@ -48,7 +48,7 @@ function initializeDataSolve()
 		width: width,
 		height: height,
 		stroke: 'grey',
-		fill: '#dcdcdc',
+		// fill: '#dcdcdc',
 		strokeWidth: 1
 	});
 
@@ -101,12 +101,13 @@ function getPuzzleData(puzzleID)
 		type: 'GET',
 		url: url,
 		success: function(data, status){
-			piecesJSONObject = JSON.parse(data[0].puzzleObject);
+			piecesJSONObject = JSON.parse(data[0].puzzleObject);			
+			base64Image = data[0].image;
 			pieces = piecesJSONObject.pieces;
 			colors = piecesJSONObject.colors;
 			if(colors === undefined)
 				colors = defaultPalette;
-			// generateSTLFile();
+			// generateSTLFiles();
 			generatePieces();
 		},
 		error: function(data, status){
@@ -294,7 +295,7 @@ function snapPieceIntoPlace(currentCoords, targetCoords, piece)
 	layer.draw();
 }
 
-function generateSTLFile()
+function generateSTLFiles()
 {
 	let zip = new JSZip();
 	let currentPiece;
@@ -336,7 +337,11 @@ function generateSTLFile()
 		stlFile += "endsolid puzzle";
 		zip.file("piece_number_" + pieceIndex + ".stl", stlFile);
 	}
-
+	base64Image = base64Image.split(",");
+	base64Image = base64Image[1];
+	let img = zip.folder("images");
+	img.file("puzzle.jpeg", base64Image, {base64: true});
+	
 	zip.generateAsync({type:"blob"}).then(function(blob){
 		saveAs(blob, "puzzle.zip");
 	}, function(error){

@@ -1,12 +1,21 @@
 import JSZip from 'src/assets/js/jszip.min.js';
 import saveAs from 'src/assets/js/FileSaver.js';
-export { downloadPuzzle };
+export { downloadPuzzle3D, downloadPuzzle2D };
 
 let getPuzzleDataURL = 'http://localhost:3200/api/puzzles/getPuzzleByID/';
-let piecesJSONObject, pieces;
+let piecesJSONObject, pieces, base64Image;
+let desiredFile;
 
-function downloadPuzzle()
+function downloadPuzzle3D()
 {
+	desiredFile = '3D';
+	puzzleID = localStorage.getItem('solvingPuzzleID');
+	getPuzzleData(puzzleID);
+}
+
+function downloadPuzzle2D()
+{
+	desiredFile = '2D';
 	puzzleID = localStorage.getItem('solvingPuzzleID');
 	getPuzzleData(puzzleID);
 }
@@ -20,7 +29,14 @@ function getPuzzleData(puzzleID)
 		success: function(data, status){
 			piecesJSONObject = JSON.parse(data[0].puzzleObject);
 			pieces = piecesJSONObject.pieces;
-			generateSTLFiles();
+
+			base64Image = data[0].image;
+			base64Image = base64Image.split(",");
+			base64Image = base64Image[1];
+			if(desiredFile == '3D')
+				generateSTLFiles();
+			else
+				generateImageFile();
 		},
 		error: function(data, status){
 			console.log(status);
@@ -32,6 +48,7 @@ function getPuzzleData(puzzleID)
 function generateSTLFiles()
 {
 	let zip = new JSZip();
+	let img = zip.folder("images");
 	let currentPiece;
 	let topRight, topLeft, bottomRight, bottomLeft;
 	let stlFile;
@@ -72,6 +89,8 @@ function generateSTLFiles()
 		zip.file("piece_number_" + pieceIndex + ".stl", stlFile);
 	}
 
+	img.file("puzzle.jpeg", base64Image, {base64: true});
+
 	zip.generateAsync({type:"blob"}).then(function(blob){
 		saveAs(blob, "puzzle.zip");
 	}, function(error){
@@ -90,4 +109,17 @@ function addVertexToFile(vertexA, vertexB, vertexC, stlFile)
 	stlFile += "endfacet\n";
 
 	return stlFile;
+}
+
+function generateImageFile()
+{
+	let zip = new JSZip();
+	let img = zip.folder("images");
+	img.file("puzzle.jpeg", base64Image, {base64: true});
+
+	zip.generateAsync({type:"blob"}).then(function(blob){
+		saveAs(blob, "puzzle.zip");
+	}, function(error){
+		console.log(error);
+	});
 }

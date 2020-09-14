@@ -186,7 +186,9 @@ router.post('/getPuzzleRatingsByUser', (request, response) => {
                     "puzzleName": element['testPuzzle.name'],
                     "rating":element.rating,
                     "puzzleID":element.puzzleID,
-                    "image": element['testPuzzle.image']
+                    "image": element['testPuzzle.image'],
+                    "created": element['testPuzzle.createdAt'],
+                    "description": element['testPuzzle.description']
                 }
                 ++index;
                 ratingJsonObject.push(ratingPlaceholder);
@@ -246,7 +248,7 @@ router.post('/getSolvedPuzzles', (request, response) => {
         });
     })
     .catch( error => { response.status(500);
-        //.send("Server error: ", error); 
+        //.send("Server error: ", error);
     });
 });
 module.exports = router;

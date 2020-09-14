@@ -339,8 +339,6 @@ function generateSTLFile()
 		zip.file("piece_number_" + pieceIndex + ".stl", stlFile);
 	}
 
-	console.log(zip);
-
 	zip.generateAsync({type:"blob"}).then(function(blob){
 		saveAs(blob, "puzzle.zip");
 	}, function(error){

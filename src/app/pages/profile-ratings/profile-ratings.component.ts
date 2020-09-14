@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RateDialogComponent } from '../../rate-dialog/rate-dialog.component';
 import { PageEvent } from '@angular/material/paginator';
+import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
 
 @Component({
   selector: 'app-profile-ratings',
@@ -36,6 +37,8 @@ export class ProfileRatingsComponent implements OnInit {
 
   // MatPaginator Output
   pageEvent: PageEvent;
+
+  loginDialog: MatDialogRef<LoginDialogComponent>;
 
   constructor(private api: APIService, private router: Router, private dialog: MatDialog) { }
 
@@ -167,7 +170,8 @@ export class ProfileRatingsComponent implements OnInit {
 
     if(!localStorage.getItem('token')){
       this.router.navigate(['/index']);
-      alert("You are not logged in");
+      this.loginDialog = this.dialog.open(LoginDialogComponent);
+      // alert("You are not logged in");
     }
 
     this.currentUser = {

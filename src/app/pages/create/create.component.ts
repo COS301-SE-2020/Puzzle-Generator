@@ -4,6 +4,7 @@ import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CreateDialogComponent } from 'src/app/dialogs/create-dialog/create-dialog.component';
+import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
 
 @Component({
   selector: 'app-create',
@@ -16,6 +17,8 @@ export class CreateComponent implements OnInit {
   name: any;
   description: any;
   createDialog: MatDialogRef<CreateDialogComponent>;
+  loginDialog: MatDialogRef<LoginDialogComponent>;
+
   constructor(private router: Router, private dialog: MatDialog) { }
 
   success(){
@@ -26,7 +29,8 @@ export class CreateComponent implements OnInit {
 
     if(!localStorage.getItem('token')){
       this.router.navigate(['/index']);
-      alert("You are not logged in");
+      this.loginDialog = this.dialog.open(LoginDialogComponent);
+      // alert("You are not logged in");
     }
 
     initializeData();

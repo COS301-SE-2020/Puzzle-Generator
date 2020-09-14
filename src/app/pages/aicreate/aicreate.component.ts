@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Colors, Color } from 'angular-bootstrap-md';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CreateDialogComponent } from 'src/app/dialogs/create-dialog/create-dialog.component';
+import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
 
 @Component({
   selector: 'app-aicreate',
@@ -18,6 +19,7 @@ export class AICreateComponent implements OnInit {
   name: any;
   description: any;
   createDialog: MatDialogRef<CreateDialogComponent>;
+  loginDialog: MatDialogRef<LoginDialogComponent>
   
   constructor(private router: Router, private dialog: MatDialog) { }
 
@@ -28,7 +30,8 @@ export class AICreateComponent implements OnInit {
   ngOnInit(): void {
     if(!localStorage.getItem('token')){
       this.router.navigate(['/index']);
-      alert("You are not logged in");
+      this.loginDialog = this.dialog.open(LoginDialogComponent);
+      //alert("You are not logged in");
     }
   	initializeDataAI();
     this.token = localStorage.getItem('token');

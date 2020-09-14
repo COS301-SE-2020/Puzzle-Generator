@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SolveDialogComponent } from 'src/app/dialogs/solve-dialog/solve-dialog.component';
+import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
 
 @Component({
   selector: 'app-profile-puzzles',
@@ -36,6 +37,7 @@ export class ProfilePuzzlesComponent implements OnInit {
   pageEvent: PageEvent;
 
   solveDialog: MatDialogRef<SolveDialogComponent>
+  loginDialog: MatDialogRef<LoginDialogComponent>;
 
   constructor(private api: APIService, private router: Router, private dialog: MatDialog) { }
 
@@ -141,7 +143,8 @@ export class ProfilePuzzlesComponent implements OnInit {
 
     if(!localStorage.getItem('token')){
       this.router.navigate(['/index']);
-      alert("You are not logged in");
+      this.loginDialog = this.dialog.open(LoginDialogComponent);
+      // alert("You are not logged in");
     }
 
     this.currentUser = {

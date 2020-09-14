@@ -51,6 +51,7 @@ import { SolveDialogComponent } from './dialogs/solve-dialog/solve-dialog.compon
 import { ProfileSolvedPuzzlesComponent } from './pages/profile-solved-puzzles/profile-solved-puzzles.component';
 import { MenuComponent } from './dialogs/menu/menu.component';
 import { CreateDialogComponent } from './dialogs/create-dialog/create-dialog.component';
+import { LoginDialogComponent } from './dialogs/login-dialog/login-dialog.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { CreateDialogComponent } from './dialogs/create-dialog/create-dialog.com
     ProfileSolvedPuzzlesComponent,
     MenuComponent,
     CreateDialogComponent,
+    LoginDialogComponent,
   ],
   imports: [
     BrowserModule,

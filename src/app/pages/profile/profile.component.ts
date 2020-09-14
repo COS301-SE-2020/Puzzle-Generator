@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { APIService } from 'src/app/services/api.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
 
 @Component({
   selector: 'app-profile',
@@ -16,8 +18,9 @@ export class ProfileComponent implements OnInit {
   currentUser: any;
   updateNameForm: FormGroup;
   updateUsernameForm: FormGroup;
+  loginDialog: MatDialogRef<LoginDialogComponent>;
 
-  constructor(private api: APIService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private api: APIService, private formBuilder: FormBuilder, private router: Router, private dialog: MatDialog) { }
 
   updateName(){
     this.currentUser = null;
@@ -66,7 +69,8 @@ export class ProfileComponent implements OnInit {
 
     if(!localStorage.getItem('token')){
       this.router.navigate(['/index']);
-      alert("You are not logged in");
+      this.loginDialog = this.dialog.open(LoginDialogComponent);
+      //alert("You are not logged in");
     }
 
     this.currentUser = {

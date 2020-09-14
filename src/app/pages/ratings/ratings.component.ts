@@ -14,6 +14,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { SolveDialogComponent } from 'src/app/dialogs/solve-dialog/solve-dialog.component';
 import { MenuComponent } from 'src/app/dialogs/menu/menu.component';
 import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
+import { downloadPuzzle2D, downloadPuzzle3D } from 'src/assets/js/downloadPuzzle.js';
 
 @Component({
   selector: 'app-ratings',
@@ -322,6 +323,15 @@ export class RatingsComponent implements OnInit {
     this.solveDialog = this.dialog.open(SolveDialogComponent);
   }
   //end of solve dialog
+  //start of download methods
+  twoDDownload(puzzleID: any){
+    downloadPuzzle2D(puzzleID);
+  }
+
+  threeDDownload(puzzleID: any){
+    downloadPuzzle3D(puzzleID);
+  }
+  //end of download methods
 
   ngOnInit(): void {
     this.show=true;

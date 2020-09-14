@@ -6,17 +6,17 @@ let getPuzzleDataURL = 'http://localhost:3200/api/puzzles/getPuzzleByID/';
 let piecesJSONObject, pieces, base64Image;
 let desiredFile;
 
-function downloadPuzzle3D()
+function downloadPuzzle3D(puzzleID)
 {
 	desiredFile = '3D';
-	puzzleID = localStorage.getItem('solvingPuzzleID');
+	//puzzleID = localStorage.getItem('solvingPuzzleID');
 	getPuzzleData(puzzleID);
 }
 
-function downloadPuzzle2D()
+function downloadPuzzle2D(puzzleID)
 {
 	desiredFile = '2D';
-	puzzleID = localStorage.getItem('solvingPuzzleID');
+	//puzzleID = localStorage.getItem('solvingPuzzleID');
 	getPuzzleData(puzzleID);
 }
 

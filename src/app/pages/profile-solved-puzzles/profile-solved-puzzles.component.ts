@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SolveDialogComponent } from 'src/app/dialogs/solve-dialog/solve-dialog.component';
 import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
+import { downloadPuzzle2D, downloadPuzzle3D } from 'src/assets/js/downloadPuzzle.js';
 
 @Component({
   selector: 'app-profile-solved-puzzles',
@@ -99,6 +100,14 @@ export class ProfileSolvedPuzzlesComponent implements OnInit {
   openSolveDialog(puzzleID: any){
     localStorage.setItem('solvingPuzzleID', puzzleID);
     this.solveDialog = this.dialog.open(SolveDialogComponent);
+  }
+
+  twoDDownload(puzzleID: any){
+    downloadPuzzle2D(puzzleID);
+  }
+
+  threeDDownload(puzzleID: any){
+    downloadPuzzle3D(puzzleID);
   }
 
   ngOnInit(): void {

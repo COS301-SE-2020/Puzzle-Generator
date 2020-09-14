@@ -48,10 +48,10 @@
             <mat-card-actions class="puzzleActions">
               <button mat-button class="btns" id="solveButton" (click)="openSolveDialog(puzzle.id)">Solve</button>
               <button *ngIf="puzzle.showRating" mat-button class="btns" (click)="openAndCheck(puzzle.id)">Rate</button>
-              <button mat-button class="btns" id="2dDownload" >2D
+              <button mat-button class="btns" id="2dDownload" (click)="twoDDownload(puzzle.id)" >2D
                 <mat-icon>save_alt</mat-icon>
               </button>
-              <button mat-button class="btns" id="3dDownload">3D
+              <button mat-button class="btns" id="3dDownload" (click)="threeDDownload(puzzle.id)">3D
                 <mat-icon>save_alt</mat-icon>
               </button>
             </mat-card-actions>

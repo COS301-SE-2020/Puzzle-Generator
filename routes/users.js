@@ -225,6 +225,7 @@ router.post('/getSolvedPuzzles', (request, response) => {
                 if(element['solved'] == true)
                 {
                     solvedPuzzlesPlaceholder = {
+                        "puzzleID": element['testPuzzle.id'],
                         "puzzleName": element['testPuzzle.name'],
                         "creator": element['testUser.name'],
                         "image": element['testPuzzle.image'],

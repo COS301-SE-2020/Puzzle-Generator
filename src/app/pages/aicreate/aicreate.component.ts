@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { initializeDataAI } from 'src/assets/js/aiCreation.js';
 import { Router } from '@angular/router';
-import { ThemePalette } from '@angular/material/core';
 import { Colors, Color } from 'angular-bootstrap-md';
 
 @Component({

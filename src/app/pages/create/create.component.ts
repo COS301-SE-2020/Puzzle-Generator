@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { initializeData } from 'src/assets/js/manualCreation.js';
-import Konva from 'konva';
 import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 

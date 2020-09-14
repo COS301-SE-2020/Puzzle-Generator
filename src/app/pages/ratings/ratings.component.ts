@@ -12,6 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTableDataSource} from '@angular/material/table';
 import { PageEvent } from '@angular/material/paginator';
 import { SolveDialogComponent } from 'src/app/dialogs/solve-dialog/solve-dialog.component';
+import { MenuComponent } from 'src/app/dialogs/menu/menu.component';
 
 @Component({
   selector: 'app-ratings',
@@ -51,7 +52,8 @@ export class RatingsComponent implements OnInit {
   pageEvent: PageEvent;
 
   //solve dialog variable
-  solveDialog: MatDialogRef<SolveDialogComponent>
+  solveDialog: MatDialogRef<SolveDialogComponent>;
+  ratingSavedDialog: MatDialogRef<MenuComponent>;
 
   constructor(private api: APIService, private cdr: ChangeDetectorRef, private dialog: MatDialog, private router: Router) {
   }
@@ -295,10 +297,9 @@ export class RatingsComponent implements OnInit {
 
         if(this.api.createNewPuzzleRating(this.ratingEntry).subscribe())
         {
-          alert("Rating added");
+          this.ratingSavedDialog = this.dialog.open(MenuComponent);
+          //alert("Rating added");
         }
-
-        location.reload();
       }
 
     });

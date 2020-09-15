@@ -477,7 +477,7 @@ module.exports = {
       "        <h1 style=\"Margin-top: 0;Margin-bottom: 0;font-style: normal;font-weight: normal;color: #363f48;font-size: 32px;line-height: 40px;font-family: Montserrat,DejaVu Sans,Verdana,sans-serif;text-align: center;\"><strong>Reset your Password.</strong></h1>\n" +
       "        <p style=\"Margin-top: 20px;Margin-bottom: 0;\">Hi there,</p>\n" +
       "        <p style=\"Margin-top: 20px;Margin-bottom: 0;\">You recently requested to reset your password for Prometheus Puzzles.</p>\n" +
-      "        <p style=\"Margin-top: 20px;Margin-bottom: 20px;\">Click here to reset your password</p>\n" +
+      "        <p style=\"Margin-top: 20px;Margin-bottom: 20px;\">Click here to reset your password. This link will expire in 3 hours</p>\n" +
       "        <div style=\"Margin-left: 20px;Margin-right: 20px;\">\n" +
       "          <div class=\"btn btn--flat btn--large\" style=\"Margin-bottom: 20px;text-align: center;\">\n" +
       "            <![if !mso]><a style=\"border-radius: 4px;display: inline-block;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;text-align: center;text-decoration: none !important;transition: opacity 0.1s ease-in;color: #ffffff !important;background-color: #15b05e;font-family: Karla, Calibri, Geneva, sans-serif;\" href=\"https://prometheuspuzzles.herokuapp.com/resetPassword\">RESET</a><![endif]>\n" +

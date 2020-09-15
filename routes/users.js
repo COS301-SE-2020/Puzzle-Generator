@@ -79,7 +79,7 @@ router.post('/login', (request, response) => {
   }
 });
 
-router.get('/verify/', (request, response) => {
+router.post('/verify', (request, response) => {
   const user = request.params.usr;
 
     User.findAll( { raw: true, where: { username: {[Op.like]:  user } } } )
@@ -141,27 +141,31 @@ router.put('/updateName', (request, response) => {
 });
 
 router.put('/resetPassword', (request, response) => {
-  User.findAll( { raw: true, where: { username: {[Op.like]:  request.body.username } } } )
-    .then( user => {
-      if(user.length == 0){
-        response.status(404).send("Failed to retrieve user with given username");
-      }
-      else{
-        User.update(
-          { password: bcrypt.hashSync(request.body.password, 10) },
-          { returning: true, raw: true, plain: true, where: { username: request.body.username }}
-        )
-          .then( () => {
-            response.status(200).send("Password reset. Please login");
-          })
-          .catch( error => {
-            response.status(500).send("Server error");
-          } );
-      }
-    })
-    .catch( error => {
-      response.status(500).send("Server Error");
-    })
+  if(mailer.getResetList(request.body.username ))
+  {
+    User.findAll({raw: true, where: {username: {[Op.like]: request.body.username}}})
+      .then(user => {
+        if (user.length == 0) {
+          response.status(404).send("Failed to retrieve user with given username");
+        } else {
+          User.update(
+            {password: bcrypt.hashSync(request.body.password, 10)},
+            {returning: true, raw: true, plain: true, where: {username: request.body.username}}
+          )
+            .then(() => {
+              response.status(200).send("Password reset. Please login");
+            })
+            .catch(error => {
+              response.status(500).send("Server error");
+            });
+        }
+      })
+      .catch(error => {
+        response.status(500).send("Server Error");
+      })
+  }else{
+    response.status(404).send("Failed to retrieve user with given username");
+  }
 });
 
 router.put('/requestPasswordChange', (request, response)=>{
@@ -172,12 +176,26 @@ router.put('/requestPasswordChange', (request, response)=>{
     response.status(403).send("Invalid username, must be a valid email address");
   }
   else{
-    mailer.mail("resetPassword",email);
+    User.findAll( { raw: true, where: { username: {[Op.like]:  user } } } )
+      .then( user => {
+        if(user.length == 0){
+          response.status(404).send("User not found");
+        }
+        else {
+          mailer.addResetList(email);
+          mailer.mail("resetPassword",email);
+        }
+      })
+      .catch( error => {
+        response.status(500).send("Server Error");
+      })
+
     response.status(200).send("You have successfully requested to change your password. Please check your email for the reset password link.")
   }
 
 
 });
+
 //get puzzles by user
 router.post('/getPuzzlesByUser', (request, response) => {
   let userID = null

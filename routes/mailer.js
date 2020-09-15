@@ -8,6 +8,7 @@ var nodemailer = require('nodemailer');
 
 let emailUname = process.env.emailUname;
 let emailPassword = process.env.emailPassword;
+let requestedPassChanges = [];
 
 module.exports = {
   mail : function(subject, recipient){
@@ -28,6 +29,33 @@ module.exports = {
         break;
       }
     }
+  },
+  addResetList:function (user){
+    var currTime = Date.now();
+    requestedPassChanges.push({"email":user,"time":currTime});
+    return true;
+  },
+  getResetList: function(user){
+    var isThere = false;
+    var usr = 0;
+    for( var x=0; x<requestedPassChanges.length;x++){
+      if(requestedPassChanges[x].email === user){
+        usr = requestedPassChanges[x];
+        requestedPassChanges[x].email = null;
+        isThere = true;
+        break;
+      }
+    }
+    if(isThere){
+      time = new Date();
+      time.setHours(3);
+      time.getMilliseconds();
+      if(Date.now() < usr.time){
+        isThere = false;
+      }
+    }
+    return isThere;
+
   }
 };
 function sendmail(subject,message,recipient) {

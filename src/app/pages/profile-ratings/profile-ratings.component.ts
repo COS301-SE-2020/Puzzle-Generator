@@ -160,7 +160,7 @@ export class ProfileRatingsComponent implements OnInit {
   }
 
   openRateDialog(){
-    this.rateDialogRef = this.dialog.open(RateDialogComponent);
+    this.rateDialogRef = this.dialog.open(RateDialogComponent, { disableClose: true, hasBackdrop: true });
 
     this.rateDialogRef.afterClosed().subscribe( result => {
       if (result != ""){
@@ -207,7 +207,7 @@ export class ProfileRatingsComponent implements OnInit {
 
     if(!localStorage.getItem('token')){
       this.router.navigate(['/index']);
-      this.loginDialog = this.dialog.open(LoginDialogComponent);
+      this.loginDialog = this.dialog.open(LoginDialogComponent, { disableClose: true, hasBackdrop: true });
       // alert("You are not logged in");
     }
 

@@ -48,7 +48,7 @@ function initializeDataSolve()
 		width: width,
 		height: height,
 		stroke: 'grey',
-		// fill: '#dcdcdc',
+		fill: '#fff',
 		strokeWidth: 1
 	});
 

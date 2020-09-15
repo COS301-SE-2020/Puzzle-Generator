@@ -295,7 +295,7 @@ export class RatingsComponent implements OnInit {
   }
 
   openRateDialog(){
-    this.rateDialogRef = this.dialog.open(RateDialogComponent);
+    this.rateDialogRef = this.dialog.open(RateDialogComponent, { disableClose: true, hasBackdrop: true });
 
     this.rateDialogRef.afterClosed().subscribe( result => {
 
@@ -310,7 +310,7 @@ export class RatingsComponent implements OnInit {
 
         if(this.api.createNewPuzzleRating(this.ratingEntry).subscribe())
         {
-          this.ratingSavedDialog = this.dialog.open(MenuComponent);
+          this.ratingSavedDialog = this.dialog.open(MenuComponent, { disableClose: true, hasBackdrop: true });
           //alert("Rating added");
         }
       }
@@ -330,7 +330,7 @@ export class RatingsComponent implements OnInit {
   //solve dialog
   openSolveDialog(puzzleID: any){
     localStorage.setItem('solvingPuzzleID', puzzleID);
-    this.solveDialog = this.dialog.open(SolveDialogComponent);
+    this.solveDialog = this.dialog.open(SolveDialogComponent, { disableClose: true, hasBackdrop: true });
   }
   //end of solve dialog
   //start of download methods
@@ -348,7 +348,7 @@ export class RatingsComponent implements OnInit {
     this.dataAvailable = false;
     if(!localStorage.getItem('token')){
       this.router.navigate(['/index']);
-      this.loginDialog = this.dialog.open(LoginDialogComponent);
+      this.loginDialog = this.dialog.open(LoginDialogComponent, { disableClose: true, hasBackdrop: true });
       //this.router.navigate(['/index']);
       //alert("You are not logged in");
     }

@@ -22,14 +22,14 @@ export class CreateComponent implements OnInit {
   constructor(private router: Router, private dialog: MatDialog) { }
 
   success(){
-    this.createDialog = this.dialog.open(CreateDialogComponent);
+    this.createDialog = this.dialog.open(CreateDialogComponent, { disableClose: true, hasBackdrop: true });
   }
 
   ngOnInit(): void {
 
     if(!localStorage.getItem('token')){
       this.router.navigate(['/index']);
-      this.loginDialog = this.dialog.open(LoginDialogComponent);
+      this.loginDialog = this.dialog.open(LoginDialogComponent, { disableClose: true, hasBackdrop: true });
       // alert("You are not logged in");
     }
 

@@ -136,14 +136,14 @@ export class ProfilePuzzlesComponent implements OnInit {
 
   openSolveDialog(puzzleID: any){
     localStorage.setItem('solvingPuzzleID', puzzleID);
-    this.solveDialog = this.dialog.open(SolveDialogComponent);
+    this.solveDialog = this.dialog.open(SolveDialogComponent, { disableClose: true, hasBackdrop: true });
   }
 
   ngOnInit(): void {
 
     if(!localStorage.getItem('token')){
       this.router.navigate(['/index']);
-      this.loginDialog = this.dialog.open(LoginDialogComponent);
+      this.loginDialog = this.dialog.open(LoginDialogComponent, { disableClose: true, hasBackdrop: true });
       // alert("You are not logged in");
     }
 

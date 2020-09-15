@@ -36,7 +36,7 @@ export class ProfileComponent implements OnInit {
       this.api.updateName(this.currentUser).subscribe( data => {
         this.currentUserObject['name'] = data['name'];
       });
-      this.updatePorfileDialog = this.dialog.open(ProfileUpdateDialogComponent);
+      this.updatePorfileDialog = this.dialog.open(ProfileUpdateDialogComponent, { disableClose: true, hasBackdrop: true });
       //---------open dialog to say "Profile Updated"
       //alert("Name updated");
     }
@@ -73,7 +73,7 @@ export class ProfileComponent implements OnInit {
 
     if(!localStorage.getItem('token')){
       this.router.navigate(['/index']);
-      this.loginDialog = this.dialog.open(LoginDialogComponent);
+      this.loginDialog = this.dialog.open(LoginDialogComponent, { disableClose: true, hasBackdrop: true });
       //alert("You are not logged in");
     }
 

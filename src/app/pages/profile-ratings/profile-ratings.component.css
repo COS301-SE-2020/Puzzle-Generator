@@ -48,8 +48,18 @@ mat-card-title{
  width: 50%;
  border: 1px solid white;
  text-align: center;
- font-size: 1.5rem;
+ font-size: 1.7rem;
 }
+
+.btnsA{
+  background-color: #7C593A;
+  color: white;
+  margin: 0.5vw;
+  width: 30%;
+  border: 1px solid white;
+  text-align: center;
+  font-size: 1.7rem;
+ }
 
 .sortBtns{
   background-color: #7C593A;
@@ -76,7 +86,7 @@ mat-card-title{
    margin: 1rem;
  }
 
-#delete {
+/* #delete {
   background-color: #7C593A;
   color: white;
   margin-left: 25%;
@@ -85,11 +95,15 @@ mat-card-title{
   border: 1px solid white;
   text-align: center;
   font-size: 1.5rem;
-}
+} */
 
 .puzzleActions{
  display: inline;
 }
+
+.puzzleActionsA{
+  /* display: inline; */
+ }
 
 .puzzleDetails{
  color: #fff;

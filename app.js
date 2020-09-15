@@ -8,6 +8,7 @@ var logger = require('morgan');
 const Sequelize = require('sequelize');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const mailer = require('./routes/mailer');
 /*
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -36,7 +37,7 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/puzzles', require('./routes/puzzles'));
 
 //all requests associated with the user must make use of this route
-app.use('/api/mailer', require('./routes/mailer'));
+//app.use('/api/mailer', require('./routes/mailer'));
 
 app.all("/*", function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -114,6 +115,8 @@ app.use(function(err, req, res, next) {
 
 //import  db
 app.get('/', (request, response) => {response.send("Sequelize API test");});
+
+//mailer.mail("welcome","jaynillg@gmail.com");
 
 module.exports = app;
 //console.log(process.env.dbPass)

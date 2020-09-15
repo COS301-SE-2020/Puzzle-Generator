@@ -9,29 +9,13 @@ var nodemailer = require('nodemailer');
 let emailUname = process.env.emailUname;
 let emailPassword = process.env.emailPassword;
 
-var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    secure:true,
-    auth: {
-        user: emailUname,
-        pass: emailPassword
-    }
-});
-
 module.exports = {
   mail : function(subject, recipient){
-    let mailOptions = {
-      from: emailUname,
-      to: recipient,
-      subject: subject,
-      text: message
-    };
-
     switch(subject) {
     case"welcome":
       {
         subject = "Welcome to Prometheus Puzzles";
-        message = welcomeEmail.generateWelcomeEmail();
+        message = welcomeEmail.generateWelcomeEmail(recipient);
         sendmail(subject,message,recipient)
         break;
       }
@@ -47,6 +31,16 @@ module.exports = {
   }
 };
 function sendmail(subject,message,recipient) {
+  //console.log(emailUname);
+  //console.log(emailPassword);
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    secure:true,
+    auth: {
+      user: emailUname,
+      pass: emailPassword
+    }
+  });
   let mailOptions = {
     from: emailUname,
     to: recipient,

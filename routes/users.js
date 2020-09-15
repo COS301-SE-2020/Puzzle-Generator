@@ -79,6 +79,25 @@ router.post('/login', (request, response) => {
   }
 });
 
+router.post('/verify/:usr', (request, response) => {
+  const term = request.params.term;
+
+    User.findAll( { raw: true, where: { username: {[Op.like]:  user } } } )
+      .then( user => {
+        if(user.length == 0){
+          response.status(404).send("User not found");
+        }
+        else {
+          user.verified = true;
+
+        }
+      })
+      .catch( error => {
+        response.status(500).send("Server Error");
+      })
+
+});
+
 router.post('/getUser', (request, response) => {
   User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
     .then( user => {

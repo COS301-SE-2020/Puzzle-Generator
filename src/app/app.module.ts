@@ -48,6 +48,12 @@ import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 import { AdminRatingsComponent } from './admin/admin-ratings/admin-ratings.component';
 import { AdminPuzzlesComponent } from './admin/admin-puzzles/admin-puzzles.component';
 import { SolveDialogComponent } from './dialogs/solve-dialog/solve-dialog.component';
+import { ProfileSolvedPuzzlesComponent } from './pages/profile-solved-puzzles/profile-solved-puzzles.component';
+import { MenuComponent } from './dialogs/menu/menu.component';
+import { CreateDialogComponent } from './dialogs/create-dialog/create-dialog.component';
+import { LoginDialogComponent } from './dialogs/login-dialog/login-dialog.component';
+import { ProfileUpdateDialogComponent } from './dialogs/profile-update-dialog/profile-update-dialog.component';
+import { SuccessfulSolveComponent } from './dialogs/successful-solve/successful-solve.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +75,12 @@ import { SolveDialogComponent } from './dialogs/solve-dialog/solve-dialog.compon
     AdminRatingsComponent,
     AdminPuzzlesComponent,
     SolveDialogComponent,
+    ProfileSolvedPuzzlesComponent,
+    MenuComponent,
+    CreateDialogComponent,
+    LoginDialogComponent,
+    ProfileUpdateDialogComponent,
+    SuccessfulSolveComponent,
   ],
   imports: [
     BrowserModule,

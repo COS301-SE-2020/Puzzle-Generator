@@ -12,6 +12,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTableDataSource} from '@angular/material/table';
 import { PageEvent } from '@angular/material/paginator';
 import { SolveDialogComponent } from 'src/app/dialogs/solve-dialog/solve-dialog.component';
+import { MenuComponent } from 'src/app/dialogs/menu/menu.component';
+import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
+import { downloadPuzzle2D, downloadPuzzle3D } from 'src/assets/js/downloadPuzzle.js';
 
 @Component({
   selector: 'app-ratings',
@@ -36,6 +39,7 @@ export class RatingsComponent implements OnInit {
   token: any;
   currentUser: any;
   datasource: any;
+  solvingPuzzleID: any;
 
   totalNumberOfPuzzles: number;
   ratingsLSize: number;
@@ -50,7 +54,11 @@ export class RatingsComponent implements OnInit {
   pageEvent: PageEvent;
 
   //solve dialog variable
-  solveDialog: MatDialogRef<SolveDialogComponent>
+  solveDialog: MatDialogRef<SolveDialogComponent>;
+  sortedBy: any;
+
+  ratingSavedDialog: any;
+  loginDialog: any; 
 
   constructor(private api: APIService, private cdr: ChangeDetectorRef, private dialog: MatDialog, private router: Router) {
   }
@@ -76,6 +84,7 @@ export class RatingsComponent implements OnInit {
   puzzleDescending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "puzzleDesc";
       let paramA = a.name.toLowerCase();
       let paramB = b.name.toLowerCase();
 
@@ -88,6 +97,7 @@ export class RatingsComponent implements OnInit {
   puzzleAscending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "puzzleAsc";
       let paramA = a.name.toLowerCase();
       let paramB = b.name.toLowerCase();
 
@@ -100,6 +110,7 @@ export class RatingsComponent implements OnInit {
   creatorDescending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "creatorDesc";
       let paramA = a.creator.toLowerCase();
       let paramB = b.creator.toLowerCase();
 
@@ -112,6 +123,7 @@ export class RatingsComponent implements OnInit {
   creatorAscending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "creatorAsc";
       let paramA = a.creator.toLowerCase();
       let paramB = b.creator.toLowerCase();
 
@@ -124,12 +136,7 @@ export class RatingsComponent implements OnInit {
   dateDescending()
   {
     return this.puzzles.sort( (a,b) => {
-      // let paramA = a.created;//.toLowerCase();
-      // let paramB = b.creator;//.toLowerCase();
-
-      // if(paramA > paramB ){ return -1; }
-      // else { return 1; }
-      // return 0;
+      this.sortedBy = "dateDesc";
       let paramA = new Date(a.created).getTime();
       let paramB = new Date(b.created).getTime();
       return paramA > paramB ? 1 : -1;
@@ -139,6 +146,7 @@ export class RatingsComponent implements OnInit {
   dateAscending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "dateAsc";
       let paramA = new Date(a.created).getTime();
       let paramB = new Date(b.created).getTime();
       return paramA < paramB ? 1 : -1;
@@ -148,6 +156,7 @@ export class RatingsComponent implements OnInit {
   ratingDescending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "ratingDesc";
       let paramA = a.rating;
       let paramB = b.rating;
 
@@ -160,6 +169,7 @@ export class RatingsComponent implements OnInit {
   ratingAscending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "ratingAsc";
       let paramA = a.rating;
       let paramB = b.rating;
 
@@ -250,7 +260,6 @@ export class RatingsComponent implements OnInit {
       for (let k=0; this.ratings[k]!=null; k++){
         if (this.ratings[k].puzzleID == data[i].id)
         {
-          //********* ERROR HERE - THIS LOOP IS NOT ENTERED WHEN THE RATINGS VALUE IS 0  ************
           total = total + this.ratings[k].rating;
           j = j+1;
         }
@@ -266,6 +275,7 @@ export class RatingsComponent implements OnInit {
     }
 
     this.datasource = new MatTableDataSource(this.puzzles);
+    this.puzzleAscending();
 
     this.dataAvailable = true;
     this.show= false;
@@ -285,7 +295,7 @@ export class RatingsComponent implements OnInit {
   }
 
   openRateDialog(){
-    this.rateDialogRef = this.dialog.open(RateDialogComponent);
+    this.rateDialogRef = this.dialog.open(RateDialogComponent, { disableClose: true, hasBackdrop: true });
 
     this.rateDialogRef.afterClosed().subscribe( result => {
 
@@ -300,10 +310,9 @@ export class RatingsComponent implements OnInit {
 
         if(this.api.createNewPuzzleRating(this.ratingEntry).subscribe())
         {
-          alert("Rating added");
+          this.ratingSavedDialog = this.dialog.open(MenuComponent, { disableClose: true, hasBackdrop: true });
+          //alert("Rating added");
         }
-
-        location.reload();
       }
 
     });
@@ -319,21 +328,36 @@ export class RatingsComponent implements OnInit {
   }
 
   //solve dialog
-  openSolveDialog(id){
-    this.solveDialog = this.dialog.open(SolveDialogComponent);
+  openSolveDialog(puzzleID: any){
+    localStorage.setItem('solvingPuzzleID', puzzleID);
+    this.solveDialog = this.dialog.open(SolveDialogComponent, { disableClose: true, hasBackdrop: true });
   }
+  //end of solve dialog
+  //start of download methods
+  twoDDownload(puzzleID: any){
+    downloadPuzzle2D(puzzleID);
+  }
+
+  threeDDownload(puzzleID: any){
+    downloadPuzzle3D(puzzleID);
+  }
+  //end of download methods
 
   ngOnInit(): void {
     this.show=true;
     this.dataAvailable = false;
     if(!localStorage.getItem('token')){
       this.router.navigate(['/index']);
-      alert("You are not logged in");
+      this.loginDialog = this.dialog.open(LoginDialogComponent, { disableClose: true, hasBackdrop: true });
+      //this.router.navigate(['/index']);
+      //alert("You are not logged in");
     }
 
     this.currentUser = {
       "token": localStorage.getItem('token')
     }
+
+    this.token = localStorage.getItem('token');
 
     this.api.getUser(this.currentUser).subscribe( data => {
       console.log(data["name"]);
@@ -342,7 +366,7 @@ export class RatingsComponent implements OnInit {
         "name": data["name"]
       }
     });
-
+    this.sortedBy = "";
     this.populate(null);
 
   }

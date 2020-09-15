@@ -5,24 +5,36 @@
     <input matInput (keyup)="applyFilter($event.target.value)">
 </mat-form-field>
 
-<button mat-button class="sortBtns">Name
-  <mat-icon (click)="puzzleAscending()" class="arrow">arrow_upwardward</mat-icon> |
-  <mat-icon (click)="puzzleDescending()" class="arrow">arrow_downward</mat-icon>
+<button mat-button [ngClass]="{
+  inUse: sortedBy=='puzzleAsc' || sortedBy=='puzzleDesc',
+  sortBtns: sortedBy!='puzzleAsc' || sortedBy!='puzzleDesc'
+}">Name
+  <mat-icon *ngIf='sortedBy!="puzzleAsc"' (click)="puzzleAscending()" class="arrow">arrow_upwardward</mat-icon> |
+  <mat-icon *ngIf='sortedBy!="puzzleDesc"' (click)="puzzleDescending()" class="arrow">arrow_downward</mat-icon>
 </button>
 
-<button mat-button class="sortBtns">Rating
-  <mat-icon (click)="ratingAscending()" class="arrow">arrow_upwardward</mat-icon> |
-  <mat-icon (click)="ratingDescending()" class="arrow">arrow_downward</mat-icon>
+<button mat-button [ngClass]="{
+  inUse: sortedBy=='ratingAsc' || sortedBy=='ratingDesc',
+  sortBtns: sortedBy!='ratingAsc' || sortedBy!='ratingDesc'
+}">Rating
+  <mat-icon *ngIf='sortedBy!="ratingAsc"' (click)="ratingAscending()" class="arrow">arrow_upwardward</mat-icon> |
+  <mat-icon *ngIf='sortedBy!="ratingDesc"' (click)="ratingDescending()" class="arrow">arrow_downward</mat-icon>
 </button>
 
-<button mat-button class="sortBtns">Creator
-  <mat-icon (click)="creatorAscending()" class="arrow">arrow_upwardward</mat-icon> |
-  <mat-icon (click)="creatorDescending()" class="arrow">arrow_downward</mat-icon>
+<button mat-button [ngClass]="{
+  inUse: sortedBy=='creatorAsc' || sortedBy=='creatorDesc',
+  sortBtns: sortedBy!='creatorAsc' || sortedBy!='creatorDesc'
+}">Creator
+  <mat-icon *ngIf='sortedBy!="creatorAsc"' (click)="creatorAscending()" class="arrow">arrow_upwardward</mat-icon> |
+  <mat-icon *ngIf='sortedBy!="creatorDesc"' (click)="creatorDescending()" class="arrow">arrow_downward</mat-icon>
 </button>
 
-<button mat-button class="sortBtns">Date
-  <mat-icon (click)="dateAscending()" class="arrow">arrow_upwardward</mat-icon> |
-  <mat-icon (click)="dateDescending()" class="arrow">arrow_downward</mat-icon>
+<button mat-button [ngClass]="{
+  inUse: sortedBy=='dateAsc' || sortedBy=='dateDesc',
+  sortBtns: sortedBy!='dateAsc' || sortedBy!='dateDesc'
+}">Date
+  <mat-icon *ngIf='sortedBy!="dateAsc"' (click)="dateAscending()" class="arrow">arrow_upwardward</mat-icon> |
+  <mat-icon *ngIf='sortedBy!="dateDesc"' (click)="dateDescending()" class="arrow">arrow_downward</mat-icon>
 </button>
 
 <div class="spinner">
@@ -33,21 +45,27 @@
     <div class="flex-container" fxLayout="row wrap" fxLayout.xs="row wrap" fxLayoutAlign="space-evenly center">
         <mat-card class="content"  *ngFor="let puzzle of this.datasource.filteredData | slice: startIndex:endIndex">
           <div class="content-overlay"></div>
-          <!-- <mat-icon aria-hidden="false" class="infoIcon">info_outline</mat-icon> -->
           <img class="content-image" src="{{puzzle.image}}">
             <div class="content-details fadeIn-bottom">
               <mat-card-header>
-               <mat-card-subtitle class="puzzleDetails"><strong>Created by:</strong> {{puzzle.creator}}</mat-card-subtitle>
-                <mat-card-subtitle class="puzzleDetails"><strong>Created on:</strong> {{puzzle.created}}</mat-card-subtitle>
-                <mat-card-subtitle class="puzzleDetails"><strong>Description:</strong> {{puzzle.description}}</mat-card-subtitle>
+               <mat-card-subtitle class="puzzleDetails">Created by: {{puzzle.creator}}</mat-card-subtitle>
+                <mat-card-subtitle class="puzzleDetails">Created on: {{puzzle.created}}</mat-card-subtitle>
+                <mat-card-subtitle class="puzzleDetails">Description: {{puzzle.description}}</mat-card-subtitle>
               </mat-card-header>
             </div>
             <mat-card-title><strong>{{puzzle.name}}</strong></mat-card-title>
             <mat-card-subtitle>Rating: {{puzzle.rating}}/5 <span *ngIf="puzzle.rating == '0'">- Not yet rated</span> </mat-card-subtitle>
 
+            <label hidden="true" id="tokenLabel">{{token}}</label>
             <mat-card-actions class="puzzleActions">
-              <button mat-button class="btns" (click)="openSolveDialog(puzzle.id)">SOLVE</button>
-              <button *ngIf="puzzle.showRating" mat-button class="btns" (click)="openAndCheck(puzzle.id)">RATE</button>
+              <button mat-button class="btns" id="solveButton" (click)="openSolveDialog(puzzle.id)">Solve</button>
+              <button *ngIf="puzzle.showRating" mat-button class="btns" (click)="openAndCheck(puzzle.id)">Rate</button>
+              <button mat-button class="btns" id="2dDownload" (click)="twoDDownload(puzzle.id)" >2D
+                <mat-icon>save_alt</mat-icon>
+              </button>
+              <button mat-button class="btns" id="3dDownload" (click)="threeDDownload(puzzle.id)">3D
+                <mat-icon>save_alt</mat-icon>
+              </button>
             </mat-card-actions>
         </mat-card>
     </div>

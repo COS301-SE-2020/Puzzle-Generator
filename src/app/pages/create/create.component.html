@@ -82,7 +82,8 @@
       <!-- <label id="">Name: </label><br><input type="text" [(ngModel)]="name" name="puzzleName" id="puzzleNameInputBox"><br> -->
       <!-- <label id="">Short Description: </label><br><input type="text" [(ngModel)]="description" name="puzzleDescription" id="puzzleDescriptionInputBox"><br> -->
       <label hidden="true" id="tokenLabel">{{token}}</label><br>
-      <button mat-raised-button class="btns" [disabled]="(!name) || (!description)" id="saveButton" routerLink="/profilePuzzles">Save</button>
+      <button mat-raised-button class="btns" [disabled]="(!name) || (!description)" id="saveButton" (click)="success()">Save</button>
+      <!-- <button mat-raised-button class="btns" [disabled]="(!name) || (!description)" id="saveButton" routerLink="/profilePuzzles">Save</button> -->
     </mat-card-content>
   </mat-card>
   </div>

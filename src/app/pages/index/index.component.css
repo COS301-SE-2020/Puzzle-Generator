@@ -117,7 +117,7 @@ img {
 
 
 #second, .one{
-    background-color: #7C593A;
+    /* background-color: #7C593A; */
     width:100%;
     background-repeat: no-repeat;
     background-attachment: fixed;

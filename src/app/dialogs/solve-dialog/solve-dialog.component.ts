@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { APIService } from 'src/app/services/api.service';
+import { Router } from '@angular/router';
+import { initializeDataSolve } from 'src/assets/js/solvePuzzle.js';
 
 @Component({
   selector: 'app-solve-dialog',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SolveDialogComponent implements OnInit {
 
-  constructor() { }
+  token: any;
+
+  constructor(private api: APIService, private router: Router) { }
 
   ngOnInit(): void {
+    if(!localStorage.getItem('token')){
+      this.router.navigate(['/index']);
+      alert("You are not logged in");
+    }
+
+    this.token =  localStorage.getItem('token');
+    initializeDataSolve();
   }
 
 }

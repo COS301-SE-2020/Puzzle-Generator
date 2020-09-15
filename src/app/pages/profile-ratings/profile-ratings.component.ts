@@ -8,6 +8,7 @@ import { RateDialogComponent } from '../../rate-dialog/rate-dialog.component';
 import { PageEvent } from '@angular/material/paginator';
 import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
 import {MatTableDataSource} from '@angular/material/table';
+import { downloadPuzzle2D, downloadPuzzle3D } from 'src/assets/js/downloadPuzzle.js';
 
 @Component({
   selector: 'app-profile-ratings',
@@ -198,9 +199,16 @@ export class ProfileRatingsComponent implements OnInit {
     if(this.api.deleteRating(result["id"]).subscribe()){
         alert("Rating deleted");
         location.reload();
-    }
-  });
+      }
+    });
+  }
 
+  twoDDownload(puzzleID: any){
+    downloadPuzzle2D(puzzleID);
+  }
+
+  threeDDownload(puzzleID: any){
+    downloadPuzzle3D(puzzleID);
   }
 
   ngOnInit(): void {

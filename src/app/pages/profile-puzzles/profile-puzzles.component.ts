@@ -51,7 +51,7 @@ export class ProfilePuzzlesComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.datasource.filterPredicate = function(data, filter: string): boolean {
-      return data.puzzleName.toLowerCase().includes(filter)
+      return data.name.toLowerCase().includes(filter)
     };
     this.datasource.filter = filterValue.trim().toLowerCase();
     this.totalNumberOfPuzzles = this.datasource.filteredData.length;

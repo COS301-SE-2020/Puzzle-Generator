@@ -32,6 +32,7 @@ router.post('/createUser', (request, response) => {
             name, username, password, token
           })
             .then( data => {
+              mailer.mail("welcome", username);
               response.status(201).json({ "token": data.token, "name": data.name});
             })
             .catch( error => {
@@ -156,7 +157,7 @@ router.put('/requestPasswordChange', (request, response)=>{
   }
 
 
-})
+});
 //get puzzles by user
 router.post('/getPuzzlesByUser', (request, response) => {
   let userID = null

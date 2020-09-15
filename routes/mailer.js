@@ -19,10 +19,6 @@ var transporter = nodemailer.createTransport({
 
 module.exports = {
   mail : function(subject, recipient){
-    /*var subject = request.body.subject;
-    var recipient = request.body.user;
-    var username = request.body.username;
-  */
     let mailOptions = {
       from: emailUname,
       to: recipient,
@@ -36,7 +32,7 @@ module.exports = {
     :
       {
         subject = "Welcome to Prometheus Puzzles";
-        message = resetEmail.generateResetEmail();
+        message = welcomeEmail.generateWelcomeEmail();
       }
     case
       "resetPassword"

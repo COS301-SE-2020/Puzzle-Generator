@@ -1,7 +1,8 @@
 const express = require('express');
 const { response, request } = require('express');
 const router = express.Router();
-const resetEmail = require("./resetPasswordEmailTemplate")
+const resetEmail = require("./resetPasswordEmailTemplate");
+const welcomeEmail = require('./welcomeEmail');
 
 var nodemailer = require('nodemailer');
 
@@ -27,41 +28,38 @@ module.exports = {
     };
 
     switch(subject) {
-    case
-      "welcome"
-    :
+    case"welcome":
       {
         subject = "Welcome to Prometheus Puzzles";
         message = welcomeEmail.generateWelcomeEmail();
+        sendmail(subject,message,recipient)
+        break;
       }
-    case
-      "resetPassword"
-    :
+    case "resetPassword":
       {
         subject = "Reset your email";
         message = resetEmail.generateResetEmail();
-        attachments = [
-          {   // filename and content type is derived from path
-            cid: "../Emails to user/reset password/images/logo_nav.png"
-          },
-          {   // filename and content type is derived from path
-            cid: "../Emails to user/reset password/images/img2.jpg"
-          }
-        ];
 
-
+        sendmail(subject,message,recipient)
+        break;
       }
-
     }
   }
 };
-function sendmail(subject,message,attach) {
+function sendmail(subject,message,recipient) {
   let mailOptions = {
     from: emailUname,
     to: recipient,
     subject: subject,
     html: message,
-    attachments: attach
+    attachments : [
+      {   // filename and content type is derived from path
+        cid: "../Emails to user/reset password/images/logo_nav.png"
+      },
+      {   // filename and content type is derived from path
+        cid: "../Emails to user/reset password/images/img2.jpg"
+      }
+    ]
   };
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {

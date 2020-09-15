@@ -31,6 +31,7 @@ export class AdminPuzzlesComponent implements OnInit {
 
   // MatPaginator Output
   pageEvent: PageEvent;
+  sortedBy: any;
 
   constructor(private api: APIService, private router: Router) { }
 
@@ -53,11 +54,10 @@ export class AdminPuzzlesComponent implements OnInit {
     this.totalNumberOfPuzzles = this.datasource.filteredData.length;
   }
 
-
-
   puzzleDescending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "puzzleDesc";
       let paramA = a.name.toLowerCase();
       let paramB = b.name.toLowerCase();
 
@@ -70,6 +70,7 @@ export class AdminPuzzlesComponent implements OnInit {
   puzzleAscending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "puzzleAsc";
       let paramA = a.name.toLowerCase();
       let paramB = b.name.toLowerCase();
 
@@ -82,6 +83,7 @@ export class AdminPuzzlesComponent implements OnInit {
   creatorDescending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "creatorDesc";
       let paramA = a.creator.toLowerCase();
       let paramB = b.creator.toLowerCase();
 
@@ -94,6 +96,7 @@ export class AdminPuzzlesComponent implements OnInit {
   creatorAscending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "creatorAsc";
       let paramA = a.creator.toLowerCase();
       let paramB = b.creator.toLowerCase();
 
@@ -106,12 +109,7 @@ export class AdminPuzzlesComponent implements OnInit {
   dateDescending()
   {
     return this.puzzles.sort( (a,b) => {
-      // let paramA = a.created;//.toLowerCase();
-      // let paramB = b.creator;//.toLowerCase();
-
-      // if(paramA > paramB ){ return -1; }
-      // else { return 1; }
-      // return 0;
+      this.sortedBy = "dateDesc";
       let paramA = new Date(a.created).getTime();
       let paramB = new Date(b.created).getTime();
       return paramA > paramB ? 1 : -1;
@@ -121,6 +119,7 @@ export class AdminPuzzlesComponent implements OnInit {
   dateAscending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "dateAsc";
       let paramA = new Date(a.created).getTime();
       let paramB = new Date(b.created).getTime();
       return paramA < paramB ? 1 : -1;
@@ -130,6 +129,7 @@ export class AdminPuzzlesComponent implements OnInit {
   ratingDescending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "ratingDesc";
       let paramA = a.rating;
       let paramB = b.rating;
 
@@ -142,6 +142,7 @@ export class AdminPuzzlesComponent implements OnInit {
   ratingAscending()
   {
     return this.puzzles.sort( (a,b) => {
+      this.sortedBy = "ratingAsc";
       let paramA = a.rating;
       let paramB = b.rating;
 
@@ -150,7 +151,6 @@ export class AdminPuzzlesComponent implements OnInit {
       return 0;
     });
   }
-
 
   getPuzzles(data: any){
     this.puzzles.length = 0;
@@ -185,6 +185,7 @@ export class AdminPuzzlesComponent implements OnInit {
       }
       this.puzzles.push(puzzleObj);
     }
+    this.puzzleAscending();
 
     this.datasource = new MatTableDataSource(this.puzzles);
 
@@ -243,6 +244,7 @@ export class AdminPuzzlesComponent implements OnInit {
     }
     this.show = true;
     this.dataAvailable = false;
+    this.sortedBy = "";
     this.populate(null);
   }
 

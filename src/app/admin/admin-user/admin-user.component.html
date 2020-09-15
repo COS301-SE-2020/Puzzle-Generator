@@ -5,10 +5,13 @@
     <input matInput (keyup)="applyFilter($event.target.value)">
 </mat-form-field>
 
-  <button mat-button class="sortBtns">Name
-    <mat-icon (click)="nameAscending()" class="arrow">arrow_upwardward</mat-icon> |
-    <mat-icon (click)="nameDescending()" class="arrow">arrow_downward</mat-icon>
-  </button>
+<button mat-button [ngClass]="{
+  inUse: sortedBy=='puzzleAsc' || sortedBy=='puzzleDesc',
+  sortBtns: sortedBy!='puzzleAsc' || sortedBy!='puzzleDesc'
+}">Name
+  <mat-icon *ngIf='sortedBy!="puzzleAsc"' (click)="puzzleAscending()" class="arrow">arrow_upwardward</mat-icon> |
+  <mat-icon *ngIf='sortedBy!="puzzleDesc"' (click)="puzzleDescending()" class="arrow">arrow_downward</mat-icon>
+</button>
 
 <div class="container-fluid" >
     <h1>All Users</h1>

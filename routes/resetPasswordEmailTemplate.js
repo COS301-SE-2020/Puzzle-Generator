@@ -2,7 +2,7 @@ const express = require('express');
 const { response, request } = require('express');
 const router = express.Router();
 module.exports = {
-  generateResetEmail: function (username, email) {
+  generateResetEmail: function () {
     message = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><!--[if IE]><html xmlns=\"http://www.w3.org/1999/xhtml\" class=\"ie\"><![endif]--><!--[if !IE]><!--><html style=\"margin: 0;padding: 0;\" xmlns=\"http://www.w3.org/1999/xhtml\"><!--<![endif]--><head>\n" +
       "    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n" +
       "    <title></title>\n" +
@@ -475,12 +475,12 @@ module.exports = {
       "              <div style=\"Margin-left: 20px;Margin-right: 20px;\">\n" +
       "      <div style=\"mso-line-height-rule: exactly;mso-text-raise: 11px;vertical-align: middle;\">\n" +
       "        <h1 style=\"Margin-top: 0;Margin-bottom: 0;font-style: normal;font-weight: normal;color: #363f48;font-size: 32px;line-height: 40px;font-family: Montserrat,DejaVu Sans,Verdana,sans-serif;text-align: center;\"><strong>Reset your Password.</strong></h1>\n" +
-      "        <p style=\"Margin-top: 20px;Margin-bottom: 0;\">Hi " + username + ",</p>\n" +
+      "        <p style=\"Margin-top: 20px;Margin-bottom: 0;\">Hi there,</p>\n" +
       "        <p style=\"Margin-top: 20px;Margin-bottom: 0;\">You recently requested to reset your password for Prometheus Puzzles.</p>\n" +
       "        <p style=\"Margin-top: 20px;Margin-bottom: 20px;\">Click here to reset your password</p>\n" +
       "        <div style=\"Margin-left: 20px;Margin-right: 20px;\">\n" +
       "          <div class=\"btn btn--flat btn--large\" style=\"Margin-bottom: 20px;text-align: center;\">\n" +
-      "            <![if !mso]><a style=\"border-radius: 4px;display: inline-block;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;text-align: center;text-decoration: none !important;transition: opacity 0.1s ease-in;color: #ffffff !important;background-color: #15b05e;font-family: Karla, Calibri, Geneva, sans-serif;\" href=\"https://prometheuspuzzles.herokuapp.com/resetPassword\">RESET</a><![endif]>\n" +
+      "            <![if !mso]><a style=\"border-radius: 4px;display: inline-block;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;text-align: center;text-decoration: none !important;transition: opacity 0.1s ease-in;color: #ffffff !important;background-color: #15b05e;font-family: Karla, Calibri, Geneva, sans-serif;\" href=\"https://prometheuspuzzles.herokuapp.com/resetPassword">RESET</a><![endif]>\n" +
       "            <!--[if mso]><p style=\"line-height:0;margin:0;\">&nbsp;</p><v:roundrect xmlns:v=\"urn:schemas-microsoft-com:vml\" href=\"https://prometheuspuzzles.herokuapp.com/resetPassword\" style=\"width:94px\" arcsize=\"9%\" fillcolor=\"#15B05E\" stroke=\"f\"><v:textbox style=\"mso-fit-shape-to-text:t\" inset=\"0px,11px,0px,11px\"><center style=\"font-size:14px;line-height:24px;color:#FFFFFF;font-family:Karla,Calibri,Geneva,sans-serif;font-weight:bold;mso-line-height-rule:exactly;mso-text-raise:4px\">VERIFY</center></v:textbox></v:roundrect><![endif]--></div>\n" +
       "        </div>\n" +
       "        <p style=\"Margin-top: 20px;Margin-bottom: 0;\">If you did not request a password reset, please ignore this email.</p>\n" +

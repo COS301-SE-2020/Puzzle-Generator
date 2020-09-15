@@ -17,41 +17,48 @@ var transporter = nodemailer.createTransport({
     }
 });
 
-router.post('/mailer', (request, response) => {
-  var subject = request.body.subject;
-  var recipient = request.body.user;
-  var username = request.body.username;
+module.exports = {
+  mail : function(subject, recipient){
+    /*var subject = request.body.subject;
+    var recipient = request.body.user;
+    var username = request.body.username;
+  */
+    let mailOptions = {
+      from: emailUname,
+      to: recipient,
+      subject: subject,
+      text: message
+    };
 
-  let mailOptions = {
-    from: emailUname,
-    to: recipient,
-    subject: subject,
-    text: message
-  };
+    switch(subject) {
+    case
+      "welcome"
+    :
+      {
+        subject = "Welcome to Prometheus Puzzles";
+        message = resetEmail.generateResetEmail();
+      }
+    case
+      "resetPassword"
+    :
+      {
+        subject = "Reset your email";
+        message = resetEmail.generateResetEmail();
+        attachments = [
+          {   // filename and content type is derived from path
+            cid: "../Emails to user/reset password/images/logo_nav.png"
+          },
+          {   // filename and content type is derived from path
+            cid: "../Emails to user/reset password/images/img2.jpg"
+          }
+        ];
 
-  switch (subject) {
-    case "welcome": {
-      subject = "Welcome to Prometheus Puzzles";
-      message = resetEmail.generateResetEmail(username,emailUname);
+
+      }
+
     }
-    case "reset password":{
-      subject = "Reset your email";
-      message = resetEmail.generateResetEmail(username,emailUname);
-      attachments = [
-        {   // filename and content type is derived from path
-          cid:"../Emails to user/reset password/images/logo_nav.png"
-        },
-        {   // filename and content type is derived from path
-          cid:"../Emails to user/reset password/images/img2.jpg"
-        }
-      ];
-
-
-    }
-
   }
-
-});
+};
 function sendmail(subject,message,attach) {
   let mailOptions = {
     from: emailUname,
@@ -69,4 +76,5 @@ function sendmail(subject,message,attach) {
   });
 }
 
-module.exports = router;
+
+

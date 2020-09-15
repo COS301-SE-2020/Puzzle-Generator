@@ -10,6 +10,7 @@ const bcrypt = require('bcrypt');
 const PuzzleRating = require('../models/PuzzleRating');
 const Puzzle = require('../models/Puzzle');
 const SolveAttempt = require('../models/SolveAttempt');
+const mailer = require('./mailer');
 
 router.post('/createUser', (request, response) => {
   const username = request.body.username;
@@ -142,6 +143,20 @@ router.put('/resetPassword', (request, response) => {
     })
 });
 
+router.put('/requestPasswordChange', (request, response)=>{
+  let email = request.body.username;
+  var regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if(!regex.test(request.body.username))
+  {
+    response.status(403).send("Invalid username, must be a valid email address");
+  }
+  else{
+    mailer.mail("resetPassword",email);
+    response.status(200).send("You have successfully requested to change your password. Please check your email for the reset password link.")
+  }
+
+
+})
 //get puzzles by user
 router.post('/getPuzzlesByUser', (request, response) => {
   let userID = null

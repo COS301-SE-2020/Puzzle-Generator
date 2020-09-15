@@ -89,6 +89,7 @@ router.post('/verify/:usr', (request, response) => {
         }
         else {
           user.verified = true;
+          response.status(201).send("User successfully verified");
 
         }
       })

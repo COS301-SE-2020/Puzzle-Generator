@@ -79,8 +79,8 @@ router.post('/login', (request, response) => {
   }
 });
 
-router.post('/verify/:usr', (request, response) => {
-  const term = request.params.term;
+router.get('/verify/', (request, response) => {
+  const user = request.params.usr;
 
     User.findAll( { raw: true, where: { username: {[Op.like]:  user } } } )
       .then( user => {

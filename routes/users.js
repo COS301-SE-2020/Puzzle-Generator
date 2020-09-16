@@ -292,7 +292,6 @@ router.post('/getSolvedPuzzles', (request, response) => {
                         "dateCreated": element['testPuzzle.createdAt'],
                         "description": element['testPuzzle.description'],
                         "attemptDuration": element['attemptDuration'],
-                        "bestTime":element['bestTime']
                     }
                     ++index;
                     solvedPuzzlesJsonObject.push(solvedPuzzlesPlaceholder);

@@ -7,7 +7,17 @@
 #solverContainer{
 	width: 70vw;
 	height: 50rem;
-} 
+}
+
+#solvedDiv{
+    position: relative;
+    border: 1px solid black;
+    width: 200px;
+    height: 200px;
+    /*background-color: white;*/
+    align-content: center;
+    z-index: 1;
+}
 
 .btns{
     background-color: #7C593A;

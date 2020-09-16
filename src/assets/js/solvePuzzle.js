@@ -12,13 +12,15 @@ let shadesOfBluePalette = ['DarkBlue', 'DeepSkyBlue', 'MediumBlue', 'DodgerBlue'
 let canvas, stage, layer, outline, board, puzzleID;
 let width = 1000, height = 500;
 let startTime, puzzleSolved;
-
+let solvedDiv;
 // window.onload = function(){
 // 	initializeDataSolve();
 // }
 
 function initializeDataSolve()
 {
+	solvedDiv = document.getElementById('solvedDiv');
+	solvedDiv.remove();
 	correctPositions = [];
 	pieceInCorrectPosition = [];
 	puzzleID = localStorage.getItem('solvingPuzzleID');
@@ -281,7 +283,8 @@ function checkIfPuzzleSolved()
 			return false;
 	}
 
-	alert('Puzzle Solved!');
+	// alert('Puzzle Solved!');
+	document.getElementById('solverDialogDiv').appendChild(solvedDiv);
 	puzzleSolved = true;
 	saveSolveAttempt(puzzleSolved, puzzleID, startTime);
 }

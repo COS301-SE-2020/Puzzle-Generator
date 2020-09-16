@@ -19,8 +19,8 @@ addons:
 notifications:
   webhooks: https://nzvm1.cs.up.ac.za/travis
   
-language: python
-install:
-    - pip3 install --upgrade njsscan
-script:
-    - njsscan .
+#language: python
+#install:
+   # - pip3 install --upgrade njsscan
+#script:
+   # - njsscan .

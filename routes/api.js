@@ -58,7 +58,7 @@ router.put('/requestPasswordChange', (request, response)=>{
   }
   else{
     console.log(email);
-    User.findAll( { raw: true, where: { username: {[Op.like]:  user } } } )
+    User.findAll( { raw: true, where: { username: {[Op.like]:  email } } } )
       .then( user => {
         if(user.length == 0){
           response.status(404).send("User not found");

@@ -1,11 +1,25 @@
 language: node_js
 node_js: 14
 
+branches:
+  only:
+  - node/integrationTesting
+
 sudo: required
 before_install:
   - npm install -g node-gyp
+  - npm update
 cache:
   npm: false
+  directories:
+  - node_modules
+  
+install:
+- npm install
+
+script:
+- npm test
+- npm run coveralls
 
 env:
   - CXX=g++-4.8

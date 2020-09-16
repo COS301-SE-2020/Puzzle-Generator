@@ -29,11 +29,11 @@
        </mat-card-header>
        <mat-card-content>
          <div id="inputContainer">
-           <label>Maximum of puzzle pieces - 20</label><br>
+           <!-- <label>Maximum of puzzle pieces - 20</label><br>
            <mat-form-field class="names" appearance="outline">
              <mat-label>Number of puzzle pieces</mat-label>
              <input class="input" type="number" matInput placeholder="3" name="numberOfPieces" id="numberOfPiecesInputBox">
-           </mat-form-field>
+           </mat-form-field> -->
            <mat-form-field class="names" appearance="outline">
              <mat-label>Number of Group 1 pieces:</mat-label>
              <input class="input" type="number" matInput placeholder="1" name="numberOfPieces" id="numberOfPiecesInputBox1">
@@ -43,17 +43,9 @@
              <input class="input" type="number" matInput placeholder="1" name="numberOfPieces" id="numberOfPiecesInputBox2">
            </mat-form-field>
            <mat-form-field class="names" appearance="outline">
-             <mat-label>Number of Group 2 pieces:</mat-label>
+             <mat-label>Number of Group 3 pieces:</mat-label>
              <input class="input" type="number" matInput placeholder="1" name="numberOfPieces" id="numberOfPiecesInputBox3">
            </mat-form-field>
-           <!-- <label>Number of puzzle pieces(20 max):</label><br>
-           <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox" value="3"><br>
-           <label>Number of Group 1 pieces:</label><br>
-           <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox1" value="1"><br>
-           <label>Number of Group 2 pieces:</label><br>
-           <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox2" value="1"><br>
-           <label>Number of Group 2 pieces:</label><br>
-           <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox3" value="1"><br> -->
            <br><label>Select Puzzle Type</label><br>
            <mat-radio-group class="radio-group">
              <mat-radio-button class="radio-button" value="euclidean" name="distanceMetric" id="euclideanButtonAI" > Euclidian </mat-radio-button>
@@ -72,9 +64,9 @@
      <mat-card-content>
        <div id="containerAI">
        </div>
-       <!-- <div>
+       <div id="progressBarDiv">
         <mat-progress-bar mode="indeterminate" id="progressBar"></mat-progress-bar>
-       </div> -->
+       </div>
        <br>
        <div id="puzzleControlsDiv">
         <button mat-raised-button class="btns" id="previousPuzzleButton">Previous Puzzle</button>

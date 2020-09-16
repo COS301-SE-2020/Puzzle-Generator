@@ -25,6 +25,7 @@ router.get('/verify', (request, response) => {
       else {
         user.verified = true;
         response.status(201).send("User successfully verified");
+        response.redirect('https://prometheuspuzzles.herokuapp.com/login/');
       }
     })
     .catch( error => {

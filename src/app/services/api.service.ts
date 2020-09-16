@@ -158,4 +158,9 @@ deleteRatingAdmin(rateID:number): Observable<number>{
 * Admin endpoints end here
 */
 
+requestPasswordChange(email: any){
+  const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
+  return this.http.put('http://localhost:3200/api/api/requestPasswordChange', email, httpOptions);
+}
+
 }

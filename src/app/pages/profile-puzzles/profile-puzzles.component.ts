@@ -8,6 +8,8 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SolveDialogComponent } from 'src/app/dialogs/solve-dialog/solve-dialog.component';
 import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
 import {MatTableDataSource} from '@angular/material/table';
+import { ProfilePuzzlesDialogComponent } from 'src/app/dialogs/profile-puzzles-dialog/profile-puzzles-dialog.component';
+import { downloadPuzzle2D, downloadPuzzle3D } from 'src/assets/js/downloadPuzzle.js';
 
 @Component({
   selector: 'app-profile-puzzles',
@@ -37,8 +39,9 @@ export class ProfilePuzzlesComponent implements OnInit {
   // MatPaginator Output
   pageEvent: PageEvent;
 
-  solveDialog: MatDialogRef<SolveDialogComponent>
+  solveDialog: MatDialogRef<SolveDialogComponent>;
   loginDialog: MatDialogRef<LoginDialogComponent>;
+  profileDialog: MatDialogRef<ProfilePuzzlesDialogComponent>;
 
   datasource: any = "";
   sortedBy: any;
@@ -162,9 +165,14 @@ export class ProfilePuzzlesComponent implements OnInit {
       "puzzleID": data
     }
     if(this.api.sharePuzzle(this.puzzle).subscribe()){
-        alert("Puzzle shared");
+        //alert("Puzzle shared");
+        this.profileDialog = this.dialog.open(ProfilePuzzlesDialogComponent, 
+          { 
+            disableClose: true, hasBackdrop: true,
+            data: { pageValue: "Puzzle shared" } 
+          });
     }
-    location.reload();
+    //location.reload();
   }
 
   deletePuzzle(puzzleID: any){
@@ -172,9 +180,14 @@ export class ProfilePuzzlesComponent implements OnInit {
     //   "puzzleID": puzzleID
     // }
     if(this.api.deletePuzzle(puzzleID).subscribe()){
-        alert("Puzzle deleted");
+        //alert("Puzzle deleted");
+        this.profileDialog = this.dialog.open(ProfilePuzzlesDialogComponent, 
+          { 
+            disableClose: true, hasBackdrop: true,
+            data: { pageValue: "Puzzle deleted" } 
+          });
     }
-    location.reload();
+    //location.reload();
   }
 
   stopShare(data: any){
@@ -182,9 +195,14 @@ export class ProfilePuzzlesComponent implements OnInit {
       "puzzleID": data
     }
     if(this.api.stopSharingPuzzle(this.puzzle).subscribe()){
-        alert("Stop sharing puzzle");
+        //alert("Stop sharing puzzle");
+        this.profileDialog = this.dialog.open(ProfilePuzzlesDialogComponent, 
+          { 
+            disableClose: true, hasBackdrop: true,
+            data: { pageValue: "Stopped sharing shared" } 
+          });
     }
-    location.reload();
+    //location.reload();
   }
 
   async delay(ms: number) {
@@ -195,6 +213,14 @@ export class ProfilePuzzlesComponent implements OnInit {
   openSolveDialog(puzzleID: any){
     localStorage.setItem('solvingPuzzleID', puzzleID);
     this.solveDialog = this.dialog.open(SolveDialogComponent, { disableClose: true, hasBackdrop: true });
+  }
+
+  twoDDownload(puzzleID: any){
+    downloadPuzzle2D(puzzleID);
+  }
+
+  threeDDownload(puzzleID: any){
+    downloadPuzzle3D(puzzleID);
   }
 
   ngOnInit(): void {

@@ -38,11 +38,28 @@
             <!-- <mat-card-subtitle>Description: {{puzzle.description}}</mat-card-subtitle> -->
             <label hidden="true" id="tokenLabel">{{token}}</label>
             <mat-card-actions class="puzzleActions" >
-              <button *ngIf="!puzzle.shared" mat-button class="btns" (click)="share(puzzle.id)">SHARE</button>
-              <button *ngIf="puzzle.shared" mat-button class="btns" (click)="stopShare(puzzle.id)">STOP SHARING</button>
-              <button mat-button class="btns" (click)="deletePuzzle(puzzle.id)">DELETE</button>
-              <button mat-button class="btns" id="solveButton" (click)="openSolveDialog(puzzle.id)">SOLVE</button>
+              <button *ngIf="!puzzle.shared" mat-button class="btns" (click)="share(puzzle.id)">Share</button>
+              <button *ngIf="puzzle.shared" mat-button class="btns" (click)="stopShare(puzzle.id)">Stop Sharing</button>
+              <button mat-button class="btns" (click)="deletePuzzle(puzzle.id)">Delete</button>
+              <!-- <button mat-button class="btns" id="solveButton" (click)="openSolveDialog(puzzle.id)">SOLVE</button> -->
             </mat-card-actions>
+
+            <!-- <mat-card-actions class="puzzleActions">
+              <button mat-button class="btns" (click)="openAndCheck(rating.puzzleID)">Update Rating</button>
+              <button mat-button class="btns" id="delete" (click)="delete(rating.puzzleID)">Delete Rating</button>
+          </mat-card-actions> -->
+          <br>
+          <mat-card-actions class="puzzleActionsA">
+            <button mat-button class="btnsA" id="solveButton" (click)="openSolveDialog(puzzle.id)">Solve</button>
+              <button mat-button class="btnsA" id="2dDownload" (click)="twoDDownload(puzzle.id)" >2D
+                <mat-icon>save_alt</mat-icon>
+              </button>
+              <button mat-button class="btnsA" id="3dDownload" (click)="threeDDownload(puzzle.id)">3D
+                <mat-icon>save_alt</mat-icon>
+              </button>
+          </mat-card-actions>
+
+
         </mat-card>
     </div>
 </div>

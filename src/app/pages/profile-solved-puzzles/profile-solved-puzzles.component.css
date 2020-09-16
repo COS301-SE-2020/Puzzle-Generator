@@ -176,6 +176,13 @@ mat-card-title{
        stroke: #7C593A;
      }
 
+.footer {
+      /* height: 50px; */
+      background-color: #7C593A;
+      line-height: 3rem;
+      /* padding: 0 5rem; */
+}
+
 @media only screen and (min-width: 435px) and (max-width: 670px){
  .sortBtns{
    background-color: #7C593A;

@@ -58,10 +58,11 @@
     <div *ngIf="text">
       <h2 id="NoneText" >You have not solved any puzzles at the moment</h2>
     </div>
-  <div class="spinner">
-    <mat-spinner *ngIf="show" id="spinner"></mat-spinner>
-  </div>
+    <div class="spinner">
+      <mat-spinner *ngIf="show" id="spinner"></mat-spinner>
+    </div>
 
+    <app-footer class="footer" *ngIf="!show"></app-footer>
     </div>
 
 <!-- Button trigger modal -->
@@ -83,3 +84,5 @@
     </div>
   </div>
 </div>
+
+

@@ -58,6 +58,10 @@ export class LoginComponent implements OnInit {
 
   }
 
+  sendMail(){
+    // ************** ENTER SEND MAIL API HERE **************
+  }
+
   //error messages used during login/register validation
   error_messages = {
     'email': [

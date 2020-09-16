@@ -23,14 +23,14 @@ router.get('/verify/:usr', (request, response) => {
         response.status(404).send("User not found");
       }
       else {
-        if(user.verified!==true) {
+        if(user.verified==false) {
           user.verified = true;
 
           response.status(201).send(verificationMessage.success());
-          window.location.href = "https://prometheuspuzzles.herokuapp.com/login/";
+         // window.location.href = "https://prometheuspuzzles.herokuapp.com/login/";
         }
         else{
-
+          response.status(201).send(verificationMessage.alreadyVerified());
         }
         //response.writeHead(301,{Location: 'https://prometheuspuzzles.herokuapp.com/login/' + pathname});
        /* wait(4*1000).then(() => {
@@ -57,6 +57,7 @@ router.put('/requestPasswordChange', (request, response)=>{
     response.status(403).send("Invalid username, must be a valid email address");
   }
   else{
+    console.log(email);
     User.findAll( { raw: true, where: { username: {[Op.like]:  user } } } )
       .then( user => {
         if(user.length == 0){

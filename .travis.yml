@@ -22,7 +22,7 @@ script:
 
 after_success:
   - npm run coverage
-  #- npm run coveralls
+  - npm run coveralls
 
 env:
   - CXX=g++-4.8

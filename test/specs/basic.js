@@ -6,12 +6,12 @@ const Op = Sequelize.Op
 describe('interacting with elements', function() {
   it("Get text for element", () => {
     browser.url('https://prometheuspuzzles.herokuapp.com/index')
-    let text = $("h2").getText()
-    console.log(text)
+    let text = $("img")
+    //console.log(text)
     internetPage.getDivText()
     $(`div.flex-container:nth-child(${3}) div`).waitForDisplayed()
-    console.log($(`div.flex-container:nth-child(${3}) div`).getText())
-    return ($(`div.flex-container:nth-child(${3}) div`).getText())
+    //console.log($(`div.flex-container:nth-child(${3}) div`).getText())
+    //return ($(`div.flex-container:nth-child(${3}) div`).getText())
   })
   it("is headline dispalayed", () =>{
     console.log(internetPage.pageHeadline.isDisplayed())
@@ -36,7 +36,7 @@ describe('element actions', () => {
     })
     it('should get text', () => {
       browser.url('https://prometheuspuzzles.herokuapp.com/index')
-      $(`div.flex-container:nth-child(${3}) div`).waitForDisplayed()
+      $(`div`).waitForDisplayed()
       //console.log($(`div.flex-container:nth-child(${3}) div`).getText())
       //expect($(`div.flex-container:nth-child(${3}) div`).getText().equals(' '))
     })

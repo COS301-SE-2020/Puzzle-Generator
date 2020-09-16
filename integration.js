@@ -27,8 +27,8 @@ describe('POST /users/login', () => {
       .request('https://prometheuspuzzles.herokuapp.com')
       .post('/api/users/login')
       .send({
-        'username': 'charlo@test.com',
-        'password': 'charlotest'
+        'username': 'demo@user.com',
+        'password': 'demouser'
       })
       .end((err, res) => {
         res.should.have.status(201);

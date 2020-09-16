@@ -6721,7 +6721,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let getPuzzleDataURL = 'http://localhost:3200/api/puzzles/getPuzzleByID/';
+let getPuzzleDataURL = 'https://prometheuspuzzles.herokuapp.com/api/puzzles/getPuzzleByID/';
 let piecesJSONObject, pieces, base64Image;
 let desiredFile;
 
@@ -6843,6 +6843,7 @@ function generateImageFile()
 	});
 }
 
+
 /***/ }),
 
 /***/ "./src/assets/js/jszip.min.js":
@@ -6892,7 +6893,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let apiURL = "http://localhost:3200/api/puzzles/createPuzzle";
+let apiURL = "https://prometheuspuzzles.herokuapp.com/api/puzzles/createPuzzle";
 let distanceMetric = 'euclidean';
 let token;
 
@@ -6957,7 +6958,7 @@ function changePuzzleColorPalette(colors)
 			pieces[i].attrs.stroke = colors[i % colors.length];
 			layer.add(pieces[i]);
 		}
-		
+
 		piecesJSONObject = JSON.stringify(piecesJSONObject);
 		layer.draw();
 	}
@@ -7412,8 +7413,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let getPuzzleDataURL = 'http://localhost:3200/api/puzzles/getPuzzleByID/';
-let saveSolveAttemptURL = 'http://localhost:3200/api/puzzles/newSolveAttempt';
+let getPuzzleDataURL = 'https://prometheuspuzzles.herokuapp.com/api/puzzles/getPuzzleByID/';
+let saveSolveAttemptURL = 'https://prometheuspuzzles.herokuapp.com/api/puzzles/newSolveAttempt';
 let piecesJSONObject, pieces, colors, base64Image;
 let correctPositions, pieceInCorrectPosition;
 let defaultPalette = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine', 'AntiqueWhite', 'Red', 'Green'];
@@ -7500,7 +7501,7 @@ function saveSolveAttempt(solved, solvePuzzleID, solveStartTime)
 			console.log('success!');
 		},
 		error: function(data, status){
-			
+
 		}
 	});
 }
@@ -7512,7 +7513,7 @@ function getPuzzleData(puzzleID)
 		type: 'GET',
 		url: url,
 		success: function(data, status){
-			piecesJSONObject = JSON.parse(data[0].puzzleObject);			
+			piecesJSONObject = JSON.parse(data[0].puzzleObject);
 			base64Image = data[0].image;
 			pieces = piecesJSONObject.pieces;
 			colors = piecesJSONObject.colors;
@@ -7548,14 +7549,14 @@ function generatePieces()
 			selectedPiece[i] -= offsetX;
 			// selectedPiece[i+1] += minY - ((pieceIndex % 5) * 100);
 		}
-		
+
 		let group = new konva__WEBPACK_IMPORTED_MODULE_0___default.a.Group();
 
 		let hitBox = new konva__WEBPACK_IMPORTED_MODULE_0___default.a.Rect({
 			x: selectedPiece[0],
 			y: selectedPiece[1],
 			width: 5,
-			height: 5	
+			height: 5
 		});
 
 		let piece = new konva__WEBPACK_IMPORTED_MODULE_0___default.a.Line({
@@ -7765,7 +7766,7 @@ function generateSTLFiles()
 	base64Image = base64Image[1];
 	let img = zip.folder("images");
 	img.file("puzzle.jpeg", base64Image, {base64: true});
-	
+
 	zip.generateAsync({type:"blob"}).then(function(blob){
 		src_assets_js_FileSaver_js__WEBPACK_IMPORTED_MODULE_2___default()(blob, "puzzle.zip");
 	}, function(error){
@@ -7785,6 +7786,7 @@ function addVertexToFile(vertexA, vertexB, vertexC, stlFile)
 
 	return stlFile;
 }
+
 
 /***/ }),
 

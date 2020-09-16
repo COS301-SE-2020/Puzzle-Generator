@@ -2,7 +2,7 @@ import Konva from 'konva';
 export { width, height, setSites, setDisableEditMode, initializeData, calculateDistancesFromSitesToPoint,
 	equidistantPointsPresent, generateSiteBoundaries, createPieces, clearBoard };
 
-let apiURL = "http://localhost:3200/api/puzzles/createPuzzle";
+let apiURL = "https://prometheuspuzzles.herokuapp.com/api/puzzles/createPuzzle";
 let distanceMetric = 'euclidean';
 let token;
 
@@ -67,7 +67,7 @@ function changePuzzleColorPalette(colors)
 			pieces[i].attrs.stroke = colors[i % colors.length];
 			layer.add(pieces[i]);
 		}
-		
+
 		piecesJSONObject = JSON.stringify(piecesJSONObject);
 		layer.draw();
 	}

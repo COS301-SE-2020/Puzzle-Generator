@@ -13047,7 +13047,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var src_assets_js_FileSaver_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(src_assets_js_FileSaver_js__WEBPACK_IMPORTED_MODULE_1__);
 
-    var getPuzzleDataURL = 'http://localhost:3200/api/puzzles/getPuzzleByID/';
+    var getPuzzleDataURL = 'https://prometheuspuzzles.herokuapp.com/api/puzzles/getPuzzleByID/';
     var piecesJSONObject, pieces, base64Image;
     var desiredFile;
 
@@ -17315,7 +17315,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var konva__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(konva__WEBPACK_IMPORTED_MODULE_0__);
 
-    var apiURL = "http://localhost:3200/api/puzzles/createPuzzle";
+    var apiURL = "https://prometheuspuzzles.herokuapp.com/api/puzzles/createPuzzle";
     var distanceMetric = 'euclidean';
     var token;
     var contentDiv = null;
@@ -17779,8 +17779,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var src_assets_js_FileSaver_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(src_assets_js_FileSaver_js__WEBPACK_IMPORTED_MODULE_2__);
 
-    var getPuzzleDataURL = 'http://localhost:3200/api/puzzles/getPuzzleByID/';
-    var saveSolveAttemptURL = 'http://localhost:3200/api/puzzles/newSolveAttempt';
+    var getPuzzleDataURL = 'https://prometheuspuzzles.herokuapp.com/api/puzzles/getPuzzleByID/';
+    var saveSolveAttemptURL = 'https://prometheuspuzzles.herokuapp.com/api/puzzles/newSolveAttempt';
     var piecesJSONObject, pieces, colors, base64Image;
     var correctPositions, pieceInCorrectPosition;
     var defaultPalette = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine', 'AntiqueWhite', 'Red', 'Green'];

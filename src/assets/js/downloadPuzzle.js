@@ -2,7 +2,7 @@ import JSZip from 'src/assets/js/jszip.min.js';
 import saveAs from 'src/assets/js/FileSaver.js';
 export { downloadPuzzle3D, downloadPuzzle2D };
 
-let getPuzzleDataURL = 'http://localhost:3200/api/puzzles/getPuzzleByID/';
+let getPuzzleDataURL = 'https://prometheuspuzzles.herokuapp.com/api/puzzles/getPuzzleByID/';
 let piecesJSONObject, pieces, base64Image;
 let desiredFile;
 

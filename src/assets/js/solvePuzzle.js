@@ -3,8 +3,8 @@ import JSZip from 'src/assets/js/jszip.min.js';
 import saveAs from 'src/assets/js/FileSaver.js';
 export { initializeDataSolve };
 
-let getPuzzleDataURL = 'http://localhost:3200/api/puzzles/getPuzzleByID/';
-let saveSolveAttemptURL = 'http://localhost:3200/api/puzzles/newSolveAttempt';
+let getPuzzleDataURL = 'https://prometheuspuzzles.herokuapp.com/api/puzzles/getPuzzleByID/';
+let saveSolveAttemptURL = 'https://prometheuspuzzles.herokuapp.com/api/puzzles/newSolveAttempt';
 let piecesJSONObject, pieces, colors, base64Image;
 let correctPositions, pieceInCorrectPosition;
 let defaultPalette = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine', 'AntiqueWhite', 'Red', 'Green'];
@@ -91,7 +91,7 @@ function saveSolveAttempt(solved, solvePuzzleID, solveStartTime)
 			console.log('success!');
 		},
 		error: function(data, status){
-			
+
 		}
 	});
 }
@@ -103,7 +103,7 @@ function getPuzzleData(puzzleID)
 		type: 'GET',
 		url: url,
 		success: function(data, status){
-			piecesJSONObject = JSON.parse(data[0].puzzleObject);			
+			piecesJSONObject = JSON.parse(data[0].puzzleObject);
 			base64Image = data[0].image;
 			pieces = piecesJSONObject.pieces;
 			colors = piecesJSONObject.colors;
@@ -139,14 +139,14 @@ function generatePieces()
 			selectedPiece[i] -= offsetX;
 			// selectedPiece[i+1] += minY - ((pieceIndex % 5) * 100);
 		}
-		
+
 		let group = new Konva.Group();
 
 		let hitBox = new Konva.Rect({
 			x: selectedPiece[0],
 			y: selectedPiece[1],
 			width: 5,
-			height: 5	
+			height: 5
 		});
 
 		let piece = new Konva.Line({
@@ -356,7 +356,7 @@ function generateSTLFiles()
 	base64Image = base64Image[1];
 	let img = zip.folder("images");
 	img.file("puzzle.jpeg", base64Image, {base64: true});
-	
+
 	zip.generateAsync({type:"blob"}).then(function(blob){
 		saveAs(blob, "puzzle.zip");
 	}, function(error){

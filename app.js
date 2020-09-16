@@ -9,12 +9,6 @@ const Sequelize = require('sequelize');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mailer = require('./routes/mailer');
-/*
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var puzzleRouter = require('./routes/puzzles');
-
- */
 
 //var apiRouter = require('./routes/api');
 
@@ -34,6 +28,9 @@ app.use('/api/users', require('./routes/users'));
 
 //all requests associated with the user must make use of this route
 app.use('/api/puzzles', require('./routes/puzzles'));
+
+//all requests associated with the user must make use of this route
+app.use('/api/admin', require('./routes/admin'));
 
 //all requests associated with other api calls
 app.use('/api', require('./routes/api'));
@@ -88,7 +85,9 @@ app.use('/reset-success',express.static(__dirname+"/dist"));
 app.use('/resetPassword',express.static(__dirname+"/dist"));
 app.use('/resetSuccess',express.static(__dirname+"/dist"));
 app.use('/signup',express.static(__dirname+"/dist"));
-
+app.use('/adminUser',express.static(__dirname+"/dist"));
+app.use('/adminPuzzles',express.static(__dirname+"/dist"));
+app.use('/adminRatings',express.static(__dirname+"/dist"));
 /**
  * End Angular - Heroku stuff
  */

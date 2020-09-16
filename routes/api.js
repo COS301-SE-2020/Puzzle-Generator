@@ -14,7 +14,7 @@ const mailer = require('./mailer');
 
 
 
-router.get('/verify', (request, response) => {
+router.get('/verify/:usr', (request, response) => {
   const user = request.params.usr;
 
   User.findAll( { raw: true, where: { username: {[Op.like]:  user } } } )

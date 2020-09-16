@@ -142,7 +142,7 @@ router.post('/newSolveAttempt', (request, response) => {
     .then( user => {
         solverID = user[0].id;
         console.log("Just before creation to check values to be inserted: ", solverID, puzzleID, attemptDuration, solved, attempted);
-        
+
         SolveAttempt.findAll({ raw: true,
             where: { solverID:  solverID, puzzleID:  puzzleID }
           })

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": " mocha test --timeout 10000",
+    "test": " _mocha test --timeout 10000",
     "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls",
     "coverage": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=lcov"
   },

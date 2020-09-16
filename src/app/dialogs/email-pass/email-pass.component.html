@@ -1,0 +1,21 @@
+<form [formGroup]="form" (ngSubmit)="submit(form.value)">
+  <h1 mat-dialog-title>Enter email address. </h1>
+  <h3>Email with reset password confirmation will be sent.</h3>
+  <mat-dialog-content>
+    <mat-form-field>
+      <input matInput type="text" formControlName="email" placeholder="Enter Email" ngControl="email">
+    </mat-form-field>
+    <div>
+        <ng-container *ngFor="let error of error_messages.email">
+            <mat-error class="error-message" *ngIf="form.get('email').hasError(error.type) && (form.get('email').dirty || form.get('email').touched)">
+                {{ error.message }}
+            </mat-error>
+        </ng-container>
+    </div>
+
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button type="submit" [disabled]="!form.valid">Submit</button>
+    <button mat-button type="button" mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</form>

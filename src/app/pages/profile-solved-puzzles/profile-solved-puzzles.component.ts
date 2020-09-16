@@ -6,6 +6,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SolveDialogComponent } from 'src/app/dialogs/solve-dialog/solve-dialog.component';
 import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
 import { downloadPuzzle2D, downloadPuzzle3D } from 'src/assets/js/downloadPuzzle.js';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-profile-solved-puzzles',
@@ -39,10 +40,67 @@ export class ProfileSolvedPuzzlesComponent implements OnInit {
   solveDialog: MatDialogRef<SolveDialogComponent>
   loginDialog: MatDialogRef<LoginDialogComponent>;
 
+  datasource: any = "";
+  sortedBy: any;
+
   constructor(private api: APIService, private router: Router, private dialog: MatDialog) { }
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
     // this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  }
+
+  applyFilter(filterValue: string) {
+    this.datasource.filterPredicate = function(data, filter: string): boolean {
+      return data.puzzleName.toLowerCase().includes(filter)
+    };
+    this.datasource.filter = filterValue.trim().toLowerCase();
+    this.totalNumberOfPuzzles = this.datasource.filteredData.length;
+  }
+
+  nameDescending()
+  {
+    return this.userPuzzleList.sort( (a,b) => {
+      this.sortedBy = "puzzleDesc";
+      let paramA = a.puzzleName.toLowerCase();
+      let paramB = b.puzzleName.toLowerCase();
+
+      if(paramA > paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+  }
+
+  nameAscending()
+  {
+    return this.userPuzzleList.sort( (a,b) => {
+      this.sortedBy = "puzzleAsc";
+      let paramA = a.puzzleName.toLowerCase();
+      let paramB = b.puzzleName.toLowerCase();
+
+      if(paramA < paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+}
+
+  dateDescending()
+  {
+    return this.userPuzzleList.sort( (a,b) => {
+      this.sortedBy = "dateDesc";
+      let paramA = new Date(a.dateCreated).getTime();
+      let paramB = new Date(b.dateCreated).getTime();
+      return paramA > paramB ? 1 : -1;
+    });
+  }
+
+  dateAscending()
+  {
+    return this.userPuzzleList.sort( (a,b) => {
+      this.sortedBy = "dateAsc";
+      let paramA = new Date(a.dateCreated).getTime();
+      let paramB = new Date(b.dateCreated).getTime();
+      return paramA < paramB ? 1 : -1;
+    });
   }
 
   changeEvent(event: PageEvent)
@@ -57,34 +115,6 @@ export class ProfileSolvedPuzzlesComponent implements OnInit {
     return event;
   }
 
-  nameDescending()
-  {
-    return this.userPuzzleList.sort( (a,b) => {
-      console.log("values: ", this.userPuzzleList);
-      //console.log("args: ", args);
-      let paramA = a.name.toLowerCase();
-      let paramB = b.name.toLowerCase();
-
-      if(paramA > paramB ){ return -1; }
-      else { return 1; }
-      return 0;
-    });
-  }
-
-  nameAscending()
-  {
-    return this.userPuzzleList.sort( (a,b) => {
-      console.log("values: ", this.userPuzzleList);
-      //console.log("args: ", args);
-      let paramA = a.name.toLowerCase();
-      let paramB = b.name.toLowerCase();
-
-      if(paramA < paramB ){ return -1; }
-      else { return 1; }
-      return 0;
-    });
-  }
-
   getUserPuzzles(){
     this.api.retrieveAllSolveAttempts(this.currentUser).subscribe( data => {
       this.totalNumberOfPuzzles = Object.keys(data).length;
@@ -94,6 +124,9 @@ export class ProfileSolvedPuzzlesComponent implements OnInit {
         this.text = true;
       }
       this.show = false;
+
+      this.datasource = new MatTableDataSource(this.userPuzzleList);
+      this.nameAscending();
     });
   }
 

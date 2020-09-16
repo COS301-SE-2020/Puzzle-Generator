@@ -1,16 +1,37 @@
 <app-navbar></app-navbar>
 
+<mat-form-field class="searchArea">
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event.target.value)">
+</mat-form-field>
+
+<button mat-button [ngClass]="{
+  inUse: sortedBy=='puzzleAsc' || sortedBy=='puzzleDesc',
+  sortBtns: sortedBy!='puzzleAsc' || sortedBy!='puzzleDesc'
+}">Name
+  <mat-icon *ngIf='sortedBy!="puzzleAsc"' (click)="nameAscending()" class="arrow">arrow_upwardward</mat-icon> |
+  <mat-icon *ngIf='sortedBy!="puzzleDesc"' (click)="nameDescending()" class="arrow">arrow_downward</mat-icon>
+</button>
+
+<button mat-button [ngClass]="{
+  inUse: sortedBy=='dateAsc' || sortedBy=='dateDesc',
+  sortBtns: sortedBy!='dateAsc' || sortedBy!='dateDesc'
+}">Date
+  <mat-icon *ngIf='sortedBy!="dateAsc"' (click)="dateAscending()" class="arrow">arrow_upwardward</mat-icon> |
+  <mat-icon *ngIf='sortedBy!="dateDesc"' (click)="dateDescending()" class="arrow">arrow_downward</mat-icon>
+</button>
+
 <div class="container">
     <div class="container-fluid" *ngIf="currentUser" >
         <h1 class="main-title">Solved Puzzles</h1>
         <div class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
-          <mat-card class="content"  *ngFor="let puzzle of userPuzzleList | slice: startIndex:endIndex">
+          <mat-card class="content"  *ngFor="let puzzle of this.datasource.filteredData | slice: startIndex:endIndex">
             <div class="content-overlay"></div>
             <img class="content-image" src="{{puzzle.image}}">
               <div class="content-details fadeIn-bottom">
                 <mat-card-header>
                  <mat-card-subtitle class="puzzleDetails">Created by: {{puzzle.creator}}</mat-card-subtitle>
-                  <mat-card-subtitle class="puzzleDetails">Created on:{{puzzle.dateCreated}}</mat-card-subtitle>
+                  <mat-card-subtitle class="puzzleDetails">Created on: {{puzzle.dateCreated}}</mat-card-subtitle>
                   <mat-card-subtitle class="puzzleDetails">Description: {{puzzle.description}}</mat-card-subtitle>
                   <mat-card-subtitle class="puzzleDetails">Solve attempts duration: {{puzzle.attemptDuration}} seconds</mat-card-subtitle>
                 </mat-card-header>
@@ -34,13 +55,13 @@
                       (page)="pageEvent = changeEvent($event)">
     </mat-paginator>
 
+    <div *ngIf="text">
+      <h2 id="NoneText" >You have not solved any puzzles at the moment</h2>
     </div>
+  <div class="spinner">
+    <mat-spinner *ngIf="show" id="spinner"></mat-spinner>
+  </div>
 
-      <div *ngIf="text">
-        <h2 id="NoneText" >You have not solved any puzzles at the moment</h2>
-      </div>
-    <div class="spinner">
-      <mat-spinner *ngIf="show" id="spinner"></mat-spinner>
     </div>
 
 <!-- Button trigger modal -->

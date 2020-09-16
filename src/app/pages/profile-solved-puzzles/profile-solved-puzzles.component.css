@@ -59,6 +59,17 @@ mat-card-title{
  font-family: keep-calm;
 }
 
+.inUse{
+  background-color: white;
+  color: #7C593A;
+  margin-left: 3.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid white;
+  text-align: center;
+  font-family: keep-calm;
+  border: 2px solid #7C593A;
+}
+
 .arrow{
   margin: 1rem;
 }

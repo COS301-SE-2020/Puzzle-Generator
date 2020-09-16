@@ -40,7 +40,7 @@ export class ProfileRatingsComponent implements OnInit {
   // MatPaginator Output
   pageEvent: PageEvent;
   sortedBy: any;
-  datasource: any;
+  datasource: any = "";
 
   loginDialog: MatDialogRef<LoginDialogComponent>;
 

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": " mocha integration --timeout 10000",  
+    "test": " mocha integration --timeout 10000",
     "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls"
   },
   "author": "team_prometheus",
@@ -29,6 +29,7 @@
     "chai": "^4.2.0",
     "coveralls": "^3.1.0",
     "jasmine-core": "^3.5.0",
+    "jest": "^26.4.2",
     "karma": "^5.1.0",
     "karma-chrome-launcher": "^3.1.0",
     "karma-jasmine": "^3.3.1",

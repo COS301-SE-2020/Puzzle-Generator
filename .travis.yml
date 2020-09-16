@@ -18,3 +18,4 @@ addons:
 
 notifications:
   webhooks: https://nzvm1.cs.up.ac.za/travis
+  webhooks: https://hyperperform.cs.up.ac.za/travis

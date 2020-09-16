@@ -18,7 +18,7 @@ install:
 - npm install
 
 script:
-- npm test
+#- npm test
 - npm run coveralls
 
 env:

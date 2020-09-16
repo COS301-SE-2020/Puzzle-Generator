@@ -55,6 +55,7 @@ import { LoginDialogComponent } from './dialogs/login-dialog/login-dialog.compon
 import { ProfileUpdateDialogComponent } from './dialogs/profile-update-dialog/profile-update-dialog.component';
 import { SuccessfulSolveComponent } from './dialogs/successful-solve/successful-solve.component';
 import { FooterComponent } from './pages/footer/footer.component';
+import { ProfilePuzzlesDialogComponent } from './dialogs/profile-puzzles-dialog/profile-puzzles-dialog.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { FooterComponent } from './pages/footer/footer.component';
     ProfileUpdateDialogComponent,
     SuccessfulSolveComponent,
     FooterComponent,
+    ProfilePuzzlesDialogComponent,
   ],
   imports: [
     BrowserModule,

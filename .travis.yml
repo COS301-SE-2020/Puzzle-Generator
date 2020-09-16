@@ -6,9 +6,11 @@ sudo: required
 before_install:
   - npm install -g node-gyp
   - google-chrome-stable --no-sandbox --disable-dev-shm-usage --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  
 cache:
   npm: false
-
+  directories:
+  - node_modules
 env:
   - CXX=g++-4.8
 addons:
@@ -24,3 +26,28 @@ addons:
 
 notifications:
   webhooks: https://nzvm1.cs.up.ac.za/travis
+
+branches:
+  only:
+  - node/integration
+
+sudo: required
+before_install:
+  - npm install -g node-gyp
+  - npm update
+  
+install:
+ - npm install
+
+script:
+- npm test
+
+after_success:
+  - npm run coverage
+  - npm run coveralls
+  
+#language: python
+#install:
+    #- pip3 install --upgrade njsscan
+#script:
+    #- njsscan

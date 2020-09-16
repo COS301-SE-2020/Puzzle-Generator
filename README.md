@@ -1,6 +1,9 @@
 # Puzzle-Generator
 
 # Links
+[![Coverage Status](https://coveralls.io/repos/github/COS301-SE-2020/Puzzle-Generator/badge.svg?branch=node/integrationTesting)](https://coveralls.io/github/COS301-SE-2020/Puzzle-Generator?branch=node/IntegrationTesting)
+
+[![Build Status](https://travis-ci.org/COS301-SE-2020/Puzzle-Generator.svg?branch=node%2FintegrationTesting)](https://travis-ci.org/COS301-SE-2020/Puzzle-Generator)
 
 ## Website Link
 *https://prometheuspuzzles.herokuapp.com/

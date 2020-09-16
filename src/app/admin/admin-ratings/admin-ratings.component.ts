@@ -28,6 +28,7 @@ export class AdminRatingsComponent implements OnInit {
   show: boolean;
 
   datasource: any;
+  sortedBy: any = true;
 
   constructor(private api: APIService, private router: Router) { }
 
@@ -38,6 +39,7 @@ export class AdminRatingsComponent implements OnInit {
       console.log(this.ratingList);
       this.show = false ;
       this.datasource = new MatTableDataSource(this.ratingList);
+      this.puzzleAscending();
     }
     )
   }
@@ -62,9 +64,10 @@ export class AdminRatingsComponent implements OnInit {
     return event;
   }
 
-  nameDescending()
+  puzzleDescending()
   {
     return this.ratingList.sort( (a,b) => {
+      this.sortedBy = "puzzleDesc";
       let paramA = a.testPuzzle.name.toLowerCase();
       let paramB = b.testPuzzle.name.toLowerCase();
 
@@ -74,35 +77,12 @@ export class AdminRatingsComponent implements OnInit {
     });
   }
 
-  nameAscending()
+  puzzleAscending()
   {
     return this.ratingList.sort( (a,b) => {
+      this.sortedBy = "puzzleAsc";
       let paramA = a.testPuzzle.name.toLowerCase();
       let paramB = b.testPuzzle.name.toLowerCase();
-
-      if(paramA < paramB ){ return -1; }
-      else { return 1; }
-      return 0;
-    });
-  }
-
-  ratingDescending()
-  {
-    return this.ratingList.sort( (a,b) => {
-      let paramA = a.rating;//.toLowerCase();
-      let paramB = b.rating;//.toLowerCase();
-
-      if(paramA > paramB ){ return -1; }
-      else { return 1; }
-      return 0;
-    });
-  }
-
-  ratingAscending()
-  {
-    return this.ratingList.sort( (a,b) => {
-      let paramA = a.rating;//.toLowerCase();
-      let paramB = b.rating;//.toLowerCase();
 
       if(paramA < paramB ){ return -1; }
       else { return 1; }
@@ -113,6 +93,7 @@ export class AdminRatingsComponent implements OnInit {
   creatorDescending()
   {
     return this.ratingList.sort( (a,b) => {
+      this.sortedBy = "creatorDesc";
       let paramA = a.testUser.name.toLowerCase();
       let paramB = b.testUser.name.toLowerCase();
 
@@ -125,8 +106,35 @@ export class AdminRatingsComponent implements OnInit {
   creatorAscending()
   {
     return this.ratingList.sort( (a,b) => {
+      this.sortedBy = "creatorAsc";
       let paramA = a.testUser.name.toLowerCase();
       let paramB = b.testUser.name.toLowerCase();
+
+      if(paramA < paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+  }
+
+  ratingDescending()
+  {
+    return this.ratingList.sort( (a,b) => {
+      this.sortedBy = "ratingDesc";
+      let paramA = a.rating;
+      let paramB = b.rating;
+
+      if(paramA > paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+  }
+
+  ratingAscending()
+  {
+    return this.ratingList.sort( (a,b) => {
+      this.sortedBy = "ratingAsc";
+      let paramA = a.rating;
+      let paramB = b.rating;
 
       if(paramA < paramB ){ return -1; }
       else { return 1; }

@@ -38,7 +38,7 @@ export class RatingsComponent implements OnInit {
   searchTextboxValue: string;
   token: any;
   currentUser: any;
-  datasource: any;
+  datasource: any = "";
   solvingPuzzleID: any;
 
   totalNumberOfPuzzles: number;
@@ -58,7 +58,7 @@ export class RatingsComponent implements OnInit {
   sortedBy: any;
 
   ratingSavedDialog: any;
-  loginDialog: any; 
+  loginDialog: any;
 
   constructor(private api: APIService, private cdr: ChangeDetectorRef, private dialog: MatDialog, private router: Router) {
   }

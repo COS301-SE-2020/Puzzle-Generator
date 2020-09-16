@@ -182,8 +182,14 @@ router.put('/requestPasswordChange', (request, response)=>{
           response.status(404).send("User not found");
         }
         else {
-          mailer.addResetList(email);
-          mailer.mail("resetPassword",email);
+          if(email == "demo@user.com")
+          {
+            response.status(404).send("User not found");
+          }else{
+            mailer.addResetList(email);
+            mailer.mail("resetPassword",email);
+          }
+
         }
       })
       .catch( error => {

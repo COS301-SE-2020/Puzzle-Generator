@@ -1,6 +1,7 @@
 # Puzzle-Generator
 
 # Links
+https://coveralls.io/github/COS301-SE-2020/Puzzle-Generator?brach=node/integrationTesting[image:https://coveralls.io/repos/github/COS301-SE-2020/Puzzle-Generator/bagde.svg?branch=node/integrationTesting[Coverage Status]]
 
 ## Documenation
 * Demo One SRS Document:

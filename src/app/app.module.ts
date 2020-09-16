@@ -54,7 +54,11 @@ import { CreateDialogComponent } from './dialogs/create-dialog/create-dialog.com
 import { LoginDialogComponent } from './dialogs/login-dialog/login-dialog.component';
 import { ProfileUpdateDialogComponent } from './dialogs/profile-update-dialog/profile-update-dialog.component';
 import { SuccessfulSolveComponent } from './dialogs/successful-solve/successful-solve.component';
+<<<<<<< HEAD
 import { EmailPassComponent } from './dialogs/email-pass/email-pass.component';
+=======
+import { FooterComponent } from './pages/footer/footer.component';
+>>>>>>> 0f3eb30a0e7b2d84ed04c3d6fb8e63a6a44fc6c4
 
 @NgModule({
   declarations: [
@@ -83,6 +87,7 @@ import { EmailPassComponent } from './dialogs/email-pass/email-pass.component';
     ProfileUpdateDialogComponent,
     SuccessfulSolveComponent,
     EmailPassComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

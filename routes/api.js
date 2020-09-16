@@ -11,10 +11,10 @@ const PuzzleRating = require('../models/PuzzleRating');
 const Puzzle = require('../models/Puzzle');
 const SolveAttempt = require('../models/SolveAttempt');
 const mailer = require('./mailer');
+const verificationMessage = require("./verificationPage");
 
 
-
-router.get('/verify', (request, response) => {
+router.get('/verify/:usr', (request, response) => {
   const user = request.params.usr;
 
   User.findAll( { raw: true, where: { username: {[Op.like]:  user } } } )
@@ -23,12 +23,28 @@ router.get('/verify', (request, response) => {
         response.status(404).send("User not found");
       }
       else {
-        user.verified = true;
-        response.status(201).send("User successfully verified");
+        if(user.verified==false) {
+          user.verified = true;
+
+          response.status(201).send(verificationMessage.success());
+         // window.location.href = "https://prometheuspuzzles.herokuapp.com/login/";
+        }
+        else{
+          response.status(201).send(verificationMessage.alreadyVerified());
+        }
+        //response.writeHead(301,{Location: 'https://prometheuspuzzles.herokuapp.com/login/' + pathname});
+       /* wait(4*1000).then(() => {
+
+          console.log("waited for 4 seconds");
+          //throw new Error("error occurred");
+        }).catch(() => {
+          failureCallback();
+        });*/
+
       }
     })
     .catch( error => {
-      response.status(500).send("Server Error");
+      response.status(500).send("Server Error verifying user");
     })
 
 });
@@ -41,7 +57,8 @@ router.put('/requestPasswordChange', (request, response)=>{
     response.status(403).send("Invalid username, must be a valid email address");
   }
   else{
-    User.findAll( { raw: true, where: { username: {[Op.like]:  user } } } )
+    console.log(email);
+    User.findAll( { raw: true, where: { username: {[Op.like]:  email } } } )
       .then( user => {
         if(user.length == 0){
           response.status(404).send("User not found");

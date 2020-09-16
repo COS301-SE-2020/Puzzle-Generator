@@ -33,6 +33,7 @@ module.exports = {
   addResetList:function (user){
     var currTime = Date.now();
     requestedPassChanges.push({"email":user,"time":currTime});
+    console.log(requestedPassChanges);
     return true;
   },
   getResetList: function(user){

@@ -160,7 +160,7 @@ deleteRatingAdmin(rateID:number): Observable<number>{
 
 requestPasswordChange(email: any){
   const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
-  return this.http.put('http://localhost:3200/api/api/requestPasswordChange', email, httpOptions);
+  return this.http.put('https://prometheuspuzzles.herokuapp.com/api/requestPasswordChange', email, httpOptions);
 }
 
 }

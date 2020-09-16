@@ -17,9 +17,9 @@ before_install:
 #install:
 #- npm install
 
-#script:
-#- npm test
-#- npm run coveralls
+script:
+- npm test
+- npm run coveralls
 
 env:
   - CXX=g++-4.8

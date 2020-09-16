@@ -1,7 +1,7 @@
 const express = require('express');
 const { response, request } = require('express');
 const router = express.Router();
-const db = require('../config/database');
+const db = require('../config/dbConfig');
 const User = require('../models/User');
 const Puzzle = require('../models/Puzzle');
 const PuzzleRating = require('../models/PuzzleRating')
@@ -142,7 +142,7 @@ router.post('/newSolveAttempt', (request, response) => {
     .then( user => {
         solverID = user[0].id;
         console.log("Just before creation to check values to be inserted: ", solverID, puzzleID, attemptDuration, solved, attempted);
-        
+
         SolveAttempt.findAll({ raw: true,
             where: { solverID:  solverID, puzzleID:  puzzleID }
           })

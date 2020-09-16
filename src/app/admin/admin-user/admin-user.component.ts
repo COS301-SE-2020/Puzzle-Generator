@@ -22,6 +22,7 @@ export class AdminUserComponent implements OnInit {
   datasource: any;
 
   pageEvent: PageEvent;
+  sortedBy: any = "";
 
   constructor(private api: APIService, private router: Router) { }
 
@@ -38,9 +39,10 @@ export class AdminUserComponent implements OnInit {
     return event;
   }
 
-  nameDescending()
+  puzzleDescending()
   {
     return this.userList.sort( (a,b) => {
+      this.sortedBy = "puzzleDesc";
       let paramA = a.name.toLowerCase();
       let paramB = b.name.toLowerCase();
 
@@ -50,9 +52,10 @@ export class AdminUserComponent implements OnInit {
     });
   }
 
-  nameAscending()
+  puzzleAscending()
   {
     return this.userList.sort( (a,b) => {
+      this.sortedBy = "puzzleAsc";
       let paramA = a.name.toLowerCase();
       let paramB = b.name.toLowerCase();
 
@@ -65,7 +68,7 @@ export class AdminUserComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.datasource.filterPredicate = function(data, filter: string): boolean {
-      return data.name.toLowerCase().includes(filter) 
+      return data.name.toLowerCase().includes(filter) || data.username.toLowerCase().includes(filter)
     };
     this.datasource.filter = filterValue.trim().toLowerCase();
     this.totalNumberOfUsers = this.datasource.filteredData.length;
@@ -77,7 +80,8 @@ export class AdminUserComponent implements OnInit {
       this.userList = data;
       this.show = false;
       this.datasource = new MatTableDataSource(this.userList);
-    })
+      this.puzzleAscending();
+    });
   }
 
   delete(user){

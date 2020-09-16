@@ -92,6 +92,11 @@ mat-radio-group{
   background-color: gainsboro;
 }
 
+.footer {
+  background-color: #7C593A;
+  line-height: 3rem;
+}
+
 .saveOptions{
   margin: 1rem;
   padding-left: 4rem;

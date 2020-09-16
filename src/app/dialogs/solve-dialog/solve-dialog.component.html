@@ -1,8 +1,23 @@
-<div class="solver" keyboard="false" backdrop="static">
+<div class="solver" id="solverDialogDiv">
     <h3 mat-dialog-title><strong> Puzzle Pieces onto the canvas to solve the puzzle</strong></h3>
     <!-- <div mat-dialog-content> -->
-        <div id="solverContainer"></div>
-    <!-- </div> -->
+        
+    <!-- <div mat-dialog-content id="solvedDiv">
+    	<h3>Puzzle solved! Good show!</h3>
+    	<button class="btns" mat-button mat-dialog-close id="closeSolverDialogButton">Close</button>
+    </div> -->
+
+    <div id="solvedDiv" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Puzzle Successfully Solved</p>
+        </div>
+      </div>
+
+
+    <div id="solverContainer"></div>
+
     <div mat-dialog-actions>
     	<button class="btns" mat-button mat-dialog-close id="closeSolverDialogButton">Close</button>
 	</div>

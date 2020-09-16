@@ -40,7 +40,7 @@ export class ProfilePuzzlesComponent implements OnInit {
   solveDialog: MatDialogRef<SolveDialogComponent>
   loginDialog: MatDialogRef<LoginDialogComponent>;
 
-  datasource: any;
+  datasource: any = "";
   sortedBy: any;
 
   constructor(private api: APIService, private router: Router, private dialog: MatDialog) { }

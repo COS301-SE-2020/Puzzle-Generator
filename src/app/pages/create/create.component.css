@@ -104,6 +104,11 @@
     margin-left: -2rem;
   }
 
+  .footer {
+    background-color: #7C593A;
+    line-height: 3rem;
+  }
+
   .names{
     margin-left: -2rem;
     font-size: 1.5rem;

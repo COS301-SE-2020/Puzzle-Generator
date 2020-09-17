@@ -10,6 +10,7 @@ const User = db.define('testUsers', {
     username: { type: Sequelize.STRING },
     password: { type: Sequelize.STRING },
     token: { type: Sequelize.STRING },
+    verified: { type: Sequelize.BOOLEAN }
 });
 
 //User.hasMany(PuzzleRating);

@@ -7,7 +7,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --output-path dist"
+    "postinstall": "ng build --output-path dist",
+    "coveralls": " jest --coverage --coverageReporters=test-lcov  && cat ./coverage/lcov.info | coveralls",
+    "coverage": "jest --coverage | coveralls"
   },
   "private": true,
   "dependencies": {

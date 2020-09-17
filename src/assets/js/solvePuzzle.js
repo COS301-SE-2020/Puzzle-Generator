@@ -294,7 +294,7 @@ function checkIfPuzzleSolved()
 		span.onclick = function() {
 			solvedDiv.style.display = "none";
 		}
-	}, 125);
+	}, 500);
 
 	// alert('Puzzle Solved!');
 	puzzleSolved = true;

@@ -47,6 +47,13 @@ h1{
   margin-bottom: 1rem;
 }
 
+.btns:hover{
+  /* background-color: rgba(0,0,0,0.7);; */
+  background-color: white;
+  color: #7C593A;
+  border: #7C593A solid 0.1px;
+ }
+
 .container-fluid{
      background-color: white;
      margin-left: 1.5%;

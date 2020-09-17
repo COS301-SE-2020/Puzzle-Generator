@@ -114,7 +114,7 @@ mat-card-title{
  color: #fff;
 }
 
-.btns:hover, #delete:hover{
+.btns:hover, #delete:hover, .btnsA:hover{
  background-color: white;
  color: #7C593A;
  border: #7C593A solid 0.1px;

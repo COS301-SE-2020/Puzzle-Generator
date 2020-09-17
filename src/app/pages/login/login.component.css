@@ -9,7 +9,9 @@
     background-size: cover;
     background-position: center;
 }
-
+.forgot{
+    color: #7C593A;
+}
 .btns{
     background-color: #7C593A;
     color:white;

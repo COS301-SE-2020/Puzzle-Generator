@@ -106,10 +106,6 @@ mat-radio-group{
   background-color: gainsboro;
 }
 
-#progressBar {
-  margin-top: -29rem;
-}
-
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 
   .puzzleOptions{

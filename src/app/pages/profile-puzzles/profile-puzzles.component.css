@@ -56,7 +56,7 @@ mat-card-title{
   text-align: center;
   font-size: 1.7rem;
  }
- 
+
  .btnsA{
    background-color: #7C593A;
    color: white;
@@ -99,10 +99,10 @@ mat-card-title{
  color: #fff;
 }
 
-.btns:hover{
+.btns:hover, .btnsA:hover{
   /* background-color: rgba(0,0,0,0.7);; */
   background-color: white;
-  color: black;
+  color: #7C593A;
   border: #7C593A solid 0.1px;
  }
 

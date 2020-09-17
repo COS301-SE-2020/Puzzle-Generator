@@ -86,7 +86,10 @@ function expandPuzzle(sites, factor)
 export function initializeDataAI()
 {
 	initializeData('AI');
+	groupDistribution = [];
 	generatedPuzzles = [];
+	sliders = [];
+	labels = [];
 	renderedPuzzleIndex = 0;
 	generatePuzzleAIButton = document.getElementById('generatePuzzleButtonAI');
 	generatePuzzleAIButton.addEventListener('mousedown', generatePuzzleAI);

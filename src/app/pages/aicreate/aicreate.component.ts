@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { initializeDataAI } from 'src/assets/js/aiCreation.js';
 import { Router } from '@angular/router';
 import { Colors, Color } from 'angular-bootstrap-md';
@@ -20,6 +20,8 @@ export class AICreateComponent implements OnInit {
   description: any;
   createDialog: MatDialogRef<CreateDialogComponent>;
   loginDialog: MatDialogRef<LoginDialogComponent>
+
+  @Input() OnlyNumber: boolean;
   
   constructor(private router: Router, private dialog: MatDialog) { }
 

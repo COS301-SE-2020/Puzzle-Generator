@@ -29,6 +29,7 @@
     "benv": "^3.3.0",
     "chai": "^4.2.0",
     "coveralls": "^3.1.0",
+    "istanbul-reports": "^3.0.2",
     "jasmine-core": "^3.5.0",
     "jest": "^26.4.2",
     "karma": "^5.1.0",

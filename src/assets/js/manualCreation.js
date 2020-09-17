@@ -212,7 +212,7 @@ function savePuzzle(appendedString)
 	let puzzleName = document.getElementById('puzzleNameInputBox'+appendedString).value;
 	let puzzleDescription = document.getElementById('puzzleDescriptionInputBox'+appendedString).value;
 
-	let puzzleImage = stage.toDataURL({ pixelRatio: 0.25 });
+	let puzzleImage = stage.toDataURL({ pixelRatio: 0.50 });
 
 	let jsonData = {
 		token: token,

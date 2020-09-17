@@ -3,6 +3,8 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { APIService } from 'src/app/services/api.service';
 import { User } from 'src/app/models/user';
 import { Router } from '@angular/router';
+import { EmailPassComponent } from 'src/app/dialogs/email-pass/email-pass.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +17,10 @@ export class LoginComponent implements OnInit {
   verifyUser: any;
   formError: string;
   fieldTextType: boolean;
+  emailDialogRef: MatDialogRef<EmailPassComponent>;
+  entry: any;
 
-  constructor(private formBuilder: FormBuilder, private api: APIService, private router: Router) {}
+  constructor(private formBuilder: FormBuilder, private api: APIService, private router: Router, private dialog: MatDialog) {}
   //method for logging in user and getting the token associated with the said user
 
   toggleFieldTextType() {
@@ -59,7 +63,25 @@ export class LoginComponent implements OnInit {
   }
 
   sendMail(){
-    // ************** ENTER SEND MAIL API HERE **************
+    this.emailDialogRef = this.dialog.open(EmailPassComponent, { disableClose: true, hasBackdrop: true });
+
+    this.emailDialogRef.afterClosed().subscribe( result => {
+
+      if (result != ""){
+
+        this.entry = {
+        //"id":this.rateUID,
+          "username": result
+        }
+
+        if(this.api.requestPasswordChange(this.entry).subscribe())
+        {
+          alert("Email will be send to you.")
+          //alert("Rating added");
+        }
+      }
+
+    });
   }
 
   //error messages used during login/register validation

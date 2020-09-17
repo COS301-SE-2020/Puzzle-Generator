@@ -14,7 +14,7 @@ let Site = {
 	surfaceArea: 0,
 };
 
-let generatePuzzleAIButton, nextPuzzleButton, previousPuzzleButton;
+let generatePuzzleAIButton, nextPuzzleButton, previousPuzzleButton, progressBar;
 let generatedPuzzles;
 let renderedPuzzleIndex;
 let tempWidth, tempHeight;
@@ -97,6 +97,9 @@ export function initializeDataAI()
 	nextPuzzleButton.remove();
 	previousPuzzleButton.remove();
 
+	progressBar = document.getElementById('progressBar');
+	progressBar.style.display = 'none';
+
 	document.getElementById('nextButton').addEventListener('mousedown', displaySlidersCard);
 
 	nextPuzzleButton.addEventListener('mousedown', function(){
@@ -125,11 +128,15 @@ export function initializeDataAI()
 
 function displaySlidersCard()
 {
-	numberOfSites = document.getElementById('numberOfPiecesInputBox').value;
+	let numberOfPiecesInGroup;
+	numberOfSites = 0;
 
-	groupDistribution.push(document.getElementById('numberOfPiecesInputBox1').value);
-	groupDistribution.push(document.getElementById('numberOfPiecesInputBox2').value);
-	groupDistribution.push(document.getElementById('numberOfPiecesInputBox3').value);
+	for(let i = 0; i < 3; i++)
+	{
+		numberOfPiecesInGroup = parseInt(document.getElementById('numberOfPiecesInputBox' + (i+1)).value);
+		groupDistribution.push(numberOfPiecesInGroup);
+		numberOfSites += numberOfPiecesInGroup;
+	}
 
 	generateSliders(3);
 
@@ -138,6 +145,8 @@ function displaySlidersCard()
 
 function generatePuzzleAI()
 {
+	// document.getElementById('progressBarDiv').appendChild(progressBar);
+	// progressBar.style.display = 'block';
 	desiredProportions = [];
 
 	for(let i = 0; i < 3; i++)
@@ -159,7 +168,7 @@ function generatePuzzleAI()
 	}
 
 	renderPuzzle(lastGeneration[0].sites);
-
+	// progressBar.remove();
 	document.getElementById('puzzleControlsDiv').appendChild(previousPuzzleButton);
 	document.getElementById('puzzleControlsDiv').appendChild(nextPuzzleButton);
 }

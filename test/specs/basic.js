@@ -9,7 +9,7 @@ describe('interacting with elements', function() {
     let text = $("img")
     //console.log(text)
     internetPage.getDivText()
-    $(`div.flex-container:nth-child(${3}) div`).waitForDisplayed()
+    $(`img`).waitForDisplayed()
     //console.log($(`div.flex-container:nth-child(${3}) div`).getText())
     //return ($(`div.flex-container:nth-child(${3}) div`).getText())
   })
@@ -80,7 +80,7 @@ describe('element actions', () => {
 describe('Webdriver API actions', () => {
     it('should hover on figure', () => {
         browser.url('https://prometheuspuzzles.herokuapp.com/index')
-        $(`div.flex-container div.one:nth-child(${1}) div img`).waitForDisplayed()
+        $(`img`).waitForDisplayed()
         assert.equal("", $(`div.flex-container div.one:nth-child(1) div h3`).getText())
         browser.pause(2000)
     })

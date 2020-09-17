@@ -1,0 +1,7 @@
+language: python
+install:
+    - pip3 install --upgrade njsscan
+branches:
+  node/integrationTesting
+script:
+    - njsscan

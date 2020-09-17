@@ -2,7 +2,7 @@ import Konva from 'konva';
 export { width, height, setSites, setDisableEditMode, initializeData, calculateDistancesFromSitesToPoint,
 	equidistantPointsPresent, generateSiteBoundaries, createPieces, clearBoard };
 
-let apiURL = "http://localhost:3200/api/puzzles/createPuzzle";
+let apiURL = "https://prometheuspuzzles.herokuapp.com/api/puzzles/createPuzzle";
 let distanceMetric = 'euclidean';
 let token;
 
@@ -16,13 +16,12 @@ let stage;
 let layer;
 let square;
 let pointsArray = [];
-let sites = [];
+let sites;
 let siteBoundaries;
 let pieces = [];
 let precision = 0;
 
 let colorPalettes = [];
-//Default palette
 let selectedPalette;
 let paletteCounter = 0;
 let radioButtons = [];
@@ -47,24 +46,11 @@ addColorPalette(shadesOfGreenPalette, "Shades of Green");
 
 let shadesOfBluePalette = ['DarkBlue', 'DeepSkyBlue', 'MediumBlue', 'DodgerBlue', 'MidnightBlue', 'RoyalBlue', 'DarkSlateBlue', 'CornflowerBlue', 'SkyBlue', 'PowderBlue'];
 addColorPalette(shadesOfBluePalette, "Shades of Blue");
+
 ///Add a color palette to the page and needed functionality
 function addColorPalette(arrayOfColors, paletteName)
 {
 	colorPalettes.push(arrayOfColors);
-	// let radioButton = document.createElement('mat-radio-button');
-	// let radioButton = document.createElement('input');
-	// radioButton.type = 'radio';
-	// radioButton.class = 'radio-button';
-	// radioButton.value = paletteName;
-	// radioButton.innerHTML = paletteName;
-	// radioButton.name = 'colorPalette';
-	// radioButton.paletteid = paletteCounter++;
-	// radioButton.addEventListener('mousedown', function() {
-	// 	selectedPalette = colorPalettes[this.paletteid];
-	// 	changePuzzleColorPalette(selectedPalette);
-	// });
-
-	// radioButtons.push(radioButton);
 }
 
 ///Changes the displayed color palette used on the puzzle and re-renders it
@@ -73,12 +59,16 @@ function changePuzzleColorPalette(colors)
 	if(pieces.length > 0)
 	{
 		layer.removeChildren();
+		piecesJSONObject = JSON.parse(piecesJSONObject);
+		piecesJSONObject.colors = colors;
+
 		for(let i = 0; i < pieces.length; i++)
 		{
 			pieces[i].attrs.stroke = colors[i % colors.length];
 			layer.add(pieces[i]);
 		}
-
+		
+		piecesJSONObject = JSON.stringify(piecesJSONObject);
 		layer.draw();
 	}
 }
@@ -86,15 +76,23 @@ function changePuzzleColorPalette(colors)
 ///Randomizes the color palette used on the puzzle
 function randomizePuzzleColorPalette()
 {
+	selectedPalette = [];
 	if(pieces.length > 0)
 	{
+		let rgbColor;
 		layer.removeChildren();
+
 		for(let i = 0; i < pieces.length; i++)
 		{
-			pieces[i].attrs.stroke = getRandomRGB();
+			rgbColor = getRandomRGB();
+			selectedPalette.push(rgbColor);
+			pieces[i].attrs.stroke = rgbColor;
 			layer.add(pieces[i]);
 		}
 
+		piecesJSONObject = JSON.parse(piecesJSONObject);
+		piecesJSONObject.colors = selectedPalette;
+		piecesJSONObject = JSON.stringify(piecesJSONObject);
 		layer.draw();
 	}
 }
@@ -129,17 +127,6 @@ function initializeData(appendedString)
 
 	layer = new Konva.Layer();
 
-	square = new Konva.Rect({
-		x: 0,
-		y: 0,
-		width: width,
-		height: height,
-		stroke: 'black',
-		strokeWidth: 2,
-
-	});
-
-	layer.add(square);
 	stage.add(layer);
 
 	canvas.addEventListener('mousedown', function(event){
@@ -156,8 +143,6 @@ function initializeData(appendedString)
 			console.log("X: " + x + " Y: " + y);
 		}
 	});
-
-	// addColorPalettePicker(appendedString);
 
 	if(document.getElementById('generatePuzzleButton') != null)
 		document.getElementById('generatePuzzleButton').addEventListener('mousedown', generatePuzzle);
@@ -207,7 +192,6 @@ function initializeData(appendedString)
 	for(let paletteIndex = 0; paletteIndex < palettes.length; paletteIndex++)
 	{
 		palettes[paletteIndex].addEventListener('mousedown', function(){
-			// console.log(this.getAttribute('paletteid'));
 			selectedPalette = colorPalettes[this.getAttribute('paletteid')];
 			changePuzzleColorPalette(selectedPalette);
 		});
@@ -220,19 +204,6 @@ function initializeData(appendedString)
 	// });
 }
 
-function addColorPalettePicker(appendedString)
-{
-	let colorPaletteDiv = document.getElementById('colorPalettes'+appendedString);
-	let label;
-	for(let i = 0; i < radioButtons.length; i++)
-	{
-		label = document.createElement('label');
-		label.innerHTML = radioButtons[i].value;
-		colorPaletteDiv.appendChild(radioButtons[i]);
-		colorPaletteDiv.appendChild(label);
-	}
-}
-
 ///Create a post ajax request and send it to the API in order to save the user's created puzzle
 function savePuzzle(appendedString)
 {
@@ -241,7 +212,7 @@ function savePuzzle(appendedString)
 	let puzzleName = document.getElementById('puzzleNameInputBox'+appendedString).value;
 	let puzzleDescription = document.getElementById('puzzleDescriptionInputBox'+appendedString).value;
 
-	let puzzleImage = stage.toDataURL({ pixelRatio: 0.25 });
+	let puzzleImage = stage.toDataURL({ pixelRatio: 0.50 });
 
 	let jsonData = {
 		token: token,
@@ -294,7 +265,8 @@ function setSites(tempSites)
 function clearBoard()
 {
 	piecesJSONObject = {
-		'pieces' : []
+		'pieces' : [],
+		'colors' : []
 	};
 
 	pieces = [];
@@ -304,14 +276,17 @@ function clearBoard()
 ///Create a visual representation of where the user clicks
 function createPoint(x, y)
 {
-	let point = new Konva.Circle({
+	let point = new Konva.Ring({
 		x: x,
 		y: y,
-		radius: 1,
+		innerRadius: 3,
+        outerRadius: 15,
 		stroke: 'black',
-		strokeWidth: 4,
-		draggable: true
+		fill: '#7C593A',
+		strokeWidth: 1,
 	});
+
+	point.draggable(true);
 
 	point.on('mouseover', function (event){
 		document.onmousemove = function(event) {
@@ -330,7 +305,7 @@ function createPoint(x, y)
 		document.body.style.cursor = 'default';
 	});
 
-	point.on('click', function(event) {
+	point.on('mousedown', function(event) {
 		// console.log('clicked!');
 		if(deletePointButtonClicked)
 		{
@@ -348,35 +323,11 @@ function createPoint(x, y)
 ///Calls the necessary functions to generate puzzle's vertiecs as well as the visual representation
 function generatePuzzle()
 {
-	//Testing data
-	// {"sites":[78,108,300,102,100,247,333,281,184,331],"queries":[]}
-	// sites = [
-	// {
-	// 	x:78,
-	// 	y:108,
-	// },
-	// {
-	// 	x:300,
-	// 	y:102,
-	// },
-	// {
-	// 	x:100,
-	// 	y:247,
-	// },
-	// {
-	// 	x:333,
-	// 	y:281,
-	// },
-	// {
-	// 	x:184,
-	// 	y:331,
-	// }
-	// ];
-
 	pointsArray = layer.getChildren(function(node) {
-		return node.getClassName() === 'Circle';
+		return node.getClassName() === 'Ring';
 	});
 
+	sites = [];
 	for (let i = pointsArray.length - 1; i >= 0; i--) {
 		sites.push({
 			x: pointsArray[i].attrs.x,
@@ -418,8 +369,11 @@ function createPieces()
 		piecesJSONObject.pieces.push(trimmedPoints);
 		layer.add(piece);
 	}
+
+	piecesJSONObject.colors = selectedPalette;
 	layer.draw();
 	piecesJSONObject = JSON.stringify(piecesJSONObject);
+	// console.log(piecesJSONObject);
 }
 
 ///Shortens the array of vertices for each puzzle piece
@@ -464,7 +418,6 @@ function trimPoints(pointArray)
 ///Generate the boundaries around the sites
 function generateSiteBoundaries()
 {
-	// console.log(sites);
 	for(let i = 0; i < sites.length; i++)
 		siteBoundaries[i] = [];
 
@@ -487,8 +440,8 @@ function equidistantPointsPresent(distances)
 	let returnArray = [];
 	let minimumDistance = Math.min(...distances);
 
-	if(distanceMetric === 'euclidean')
-		minimumDistance = minimumDistance.toFixed(precision) + '';
+	// if(distanceMetric === 'euclidean')
+		// minimumDistance = minimumDistance + '';
 
 	let index = 0, counter = 0;
 
@@ -529,7 +482,7 @@ function calculateDistance(point1X, point1Y, point2X, point2Y)
 function calculateEuclideanDistance(point1X, point1Y, point2X, point2Y)
 {
 	let result = Math.pow( Math.pow( point1X - point2X, 2 ) + Math.pow( point1Y - point2Y, 2 ), 0.5 );
-	return result.toFixed(precision);
+	return result;
 }
 
 ///Calculates and returns the Manhattan distance

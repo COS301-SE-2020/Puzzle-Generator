@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { APIService } from 'src/app/services/api.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
+import { ProfileUpdateDialogComponent } from 'src/app/dialogs/profile-update-dialog/profile-update-dialog.component';
 
 @Component({
   selector: 'app-profile',
@@ -16,8 +19,10 @@ export class ProfileComponent implements OnInit {
   currentUser: any;
   updateNameForm: FormGroup;
   updateUsernameForm: FormGroup;
+  loginDialog: MatDialogRef<LoginDialogComponent>;
+  updatePorfileDialog: MatDialogRef<ProfileUpdateDialogComponent>;
 
-  constructor(private api: APIService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private api: APIService, private formBuilder: FormBuilder, private router: Router, private dialog: MatDialog) { }
 
   updateName(){
     this.currentUser = null;
@@ -31,10 +36,12 @@ export class ProfileComponent implements OnInit {
       this.api.updateName(this.currentUser).subscribe( data => {
         this.currentUserObject['name'] = data['name'];
       });
-      alert("Name updated");
+      this.updatePorfileDialog = this.dialog.open(ProfileUpdateDialogComponent, { disableClose: true, hasBackdrop: true });
+      //---------open dialog to say "Profile Updated"
+      //alert("Name updated");
     }
     else{ console.log("No value provided");}
-    location.reload();
+    //location.reload();
   }
 
   updateUsername(){
@@ -66,7 +73,8 @@ export class ProfileComponent implements OnInit {
 
     if(!localStorage.getItem('token')){
       this.router.navigate(['/index']);
-      alert("You are not logged in");
+      this.loginDialog = this.dialog.open(LoginDialogComponent, { disableClose: true, hasBackdrop: true });
+      //alert("You are not logged in");
     }
 
     this.currentUser = {

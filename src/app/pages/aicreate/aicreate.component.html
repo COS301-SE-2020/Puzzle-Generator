@@ -1,7 +1,8 @@
 <app-navbar></app-navbar>
 <div>
-  <a mat-raised-button id="help" (click)="videoModal1.show()">Tutorial</a>
- </div>
+ <a mat-raised-button id="help" (click)="videoModal1.show()">Tutorial</a>
+ <mat-icon class="fish" id="helpXs" (click)="videoModal1.show()">info_outline</mat-icon>
+</div>
 
 
  <div mdbModal #videoModal1="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myVideoModal1Label"
@@ -10,7 +11,7 @@
      <div class="modal-content">
        <div class="modal-body mb-0 p-0">
          <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-           <iframe class="embed-responsive-item" src="../../assets/AICreation.mp4" allowfullscreen></iframe>
+           <iframe class="embed-responsive-item" src="../../assets/AIFinal.mp4" allowfullscreen></iframe>
          </div>
        </div>
        <div class="modal-footer justify-content-center">
@@ -20,8 +21,6 @@
    </div>
  </div>
 
-
-
  <div class="container-fluid">
    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1">
      <mat-card class="puzzleOptions">
@@ -30,11 +29,11 @@
        </mat-card-header>
        <mat-card-content>
          <div id="inputContainer">
-           <label>Maximum of puzzle pieces - 20</label><br>
+           <!-- <label>Maximum of puzzle pieces - 20</label><br>
            <mat-form-field class="names" appearance="outline">
              <mat-label>Number of puzzle pieces</mat-label>
              <input class="input" type="number" matInput placeholder="3" name="numberOfPieces" id="numberOfPiecesInputBox">
-           </mat-form-field>
+           </mat-form-field> -->
            <mat-form-field class="names" appearance="outline">
              <mat-label>Number of Group 1 pieces:</mat-label>
              <input class="input" type="number" matInput placeholder="1" name="numberOfPieces" id="numberOfPiecesInputBox1">
@@ -44,18 +43,10 @@
              <input class="input" type="number" matInput placeholder="1" name="numberOfPieces" id="numberOfPiecesInputBox2">
            </mat-form-field>
            <mat-form-field class="names" appearance="outline">
-             <mat-label>Number of Group 2 pieces:</mat-label>
+             <mat-label>Number of Group 3 pieces:</mat-label>
              <input class="input" type="number" matInput placeholder="1" name="numberOfPieces" id="numberOfPiecesInputBox3">
            </mat-form-field>
-           <!-- <label>Number of puzzle pieces(20 max):</label><br>
-           <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox" value="3"><br>
-           <label>Number of Group 1 pieces:</label><br>
-           <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox1" value="1"><br>
-           <label>Number of Group 2 pieces:</label><br>
-           <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox2" value="1"><br>
-           <label>Number of Group 2 pieces:</label><br>
-           <input type="text" name="numberOfPieces" id="numberOfPiecesInputBox3" value="1"><br> -->
-           <label>Select Puzzle Type</label><br>
+           <br><label>Select Puzzle Type</label><br>
            <mat-radio-group class="radio-group">
              <mat-radio-button class="radio-button" value="euclidean" name="distanceMetric" id="euclideanButtonAI" > Euclidian </mat-radio-button>
              <mat-radio-button class="radio-button" value="manhattan" name="distanceMetric" id="manhattanButtonAI" > Manhattan </mat-radio-button>
@@ -73,17 +64,23 @@
      <mat-card-content>
        <div id="containerAI">
        </div>
-       <!-- <div id='colorPalettesAI'>
-         <button mat-raised-button class="btns" id="randomizeColorsButtonAI">Randomize Colors</button>
-       </div> -->
+       <div id="progressBarDiv">
+        <mat-progress-bar mode="indeterminate" id="progressBar"></mat-progress-bar>
+       </div>
+       <br>
+       <div id="puzzleControlsDiv">
+        <button mat-raised-button class="btns" id="previousPuzzleButton">Previous Puzzle</button>
+        <button mat-raised-button class="btns" id="nextPuzzleButton">Next Puzzle</button>
+       </div>
      </mat-card-content>
    </mat-card>
+
    <mat-card class="saveOptions">
      <mat-card-header>
        <mat-card-title class="titleLabel">Saving Options</mat-card-title>
      </mat-card-header>
      <mat-card-content class="matContentC">
-       <label>Select a color-palette:</label><br>
+       <label id="colorPalleteLabel">Select a color-palette:</label><br>
        <mat-radio-group>
          <mat-radio-button class="radio-button colorPalettes" paletteid=0 value="default" name="colorPalettes">Default</mat-radio-button>
          <mat-radio-button class="radio-button colorPalettes" paletteid=1 value="shadesOfRed" name="colorPalettes">Shades Of Red</mat-radio-button>
@@ -106,8 +103,11 @@
        <!-- <label id="">Name: </label><br><input [(ngModel)]="name" type="text" name="puzzleName" id="puzzleNameInputBoxAI"><br> -->
        <!-- <label id="">Short Description: </label><br><input [(ngModel)]="description" type="text" name="puzzleDescription" id="puzzleDescriptionInputBoxAI"><br> -->
        <label hidden="true" id="tokenLabel">{{token}}</label><br>
-       <button mat-raised-button class="btns" [disabled]="(!name) || (!description)" id="saveButtonAI" routerLink="/profilePuzzles">Save</button>
+       <button mat-raised-button class="btns" [disabled]="(!name) || (!description)" id="saveButtonAI" (click)="success()">Save</button>
+       <!-- <button mat-raised-button class="btns" [disabled]="(!name) || (!description)" id="saveButtonAI" routerLink="/profilePuzzles">Save</button> -->
      </mat-card-content>
    </mat-card>
    </div>
  </div>
+
+ <app-footer class="footer"></app-footer>

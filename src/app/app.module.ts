@@ -26,7 +26,8 @@ import { MatGridListModule } from '@angular/material/grid-list'
 import { MatRadioModule } from '@angular/material/radio';
 import { MatListModule } from '@angular/material/list';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 //pages
@@ -43,6 +44,19 @@ import { RateDialogComponent } from './rate-dialog/rate-dialog.component';
 import { ProfilePuzzlesComponent } from './pages/profile-puzzles/profile-puzzles.component';
 import { ProfileRatingsComponent } from './pages/profile-ratings/profile-ratings.component';
 import { AICreateComponent } from './pages/aicreate/aicreate.component';
+import { AdminUserComponent } from './admin/admin-user/admin-user.component';
+import { AdminRatingsComponent } from './admin/admin-ratings/admin-ratings.component';
+import { AdminPuzzlesComponent } from './admin/admin-puzzles/admin-puzzles.component';
+import { SolveDialogComponent } from './dialogs/solve-dialog/solve-dialog.component';
+import { ProfileSolvedPuzzlesComponent } from './pages/profile-solved-puzzles/profile-solved-puzzles.component';
+import { MenuComponent } from './dialogs/menu/menu.component';
+import { CreateDialogComponent } from './dialogs/create-dialog/create-dialog.component';
+import { LoginDialogComponent } from './dialogs/login-dialog/login-dialog.component';
+import { ProfileUpdateDialogComponent } from './dialogs/profile-update-dialog/profile-update-dialog.component';
+import { SuccessfulSolveComponent } from './dialogs/successful-solve/successful-solve.component';
+import { EmailPassComponent } from './dialogs/email-pass/email-pass.component';
+import { FooterComponent } from './pages/footer/footer.component';
+import { ProfilePuzzlesDialogComponent } from './dialogs/profile-puzzles-dialog/profile-puzzles-dialog.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +74,19 @@ import { AICreateComponent } from './pages/aicreate/aicreate.component';
     ProfilePuzzlesComponent,
     ProfileRatingsComponent,
     AICreateComponent,
+    AdminUserComponent,
+    AdminRatingsComponent,
+    AdminPuzzlesComponent,
+    SolveDialogComponent,
+    ProfileSolvedPuzzlesComponent,
+    MenuComponent,
+    CreateDialogComponent,
+    LoginDialogComponent,
+    ProfileUpdateDialogComponent,
+    SuccessfulSolveComponent,
+    EmailPassComponent,
+    FooterComponent,
+    ProfilePuzzlesDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +103,7 @@ import { AICreateComponent } from './pages/aicreate/aicreate.component';
     MatTableModule,
     HttpClientModule,
     FormsModule,
-    MatInputModule, MatListModule, MatPaginatorModule,
+    MatInputModule, MatListModule, MatPaginatorModule, MatProgressBarModule,
     MatCardModule, MatFormFieldModule, MatDialogModule, MatGridListModule, MatRadioModule, ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
   ],

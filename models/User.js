@@ -1,5 +1,5 @@
 const sequelize = require('sequelize');
-const db = require('../config/database');
+const db = require('../config/dbConfig');
 const { Sequelize } = require('sequelize');
 const PuzzleRating = require('./PuzzleRating');
 const Puzzle = require('./Puzzle');
@@ -10,6 +10,7 @@ const User = db.define('testUsers', {
     username: { type: Sequelize.STRING },
     password: { type: Sequelize.STRING },
     token: { type: Sequelize.STRING },
+    verified: { type: Sequelize.BOOLEAN }
 });
 
 //User.hasMany(PuzzleRating);

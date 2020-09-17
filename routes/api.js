@@ -15,17 +15,30 @@ const verificationMessage = require("./verificationPage");
 
 
 router.get('/verify/:usr', (request, response) => {
-  const user = request.params.usr;
-
-  User.findAll( { raw: true, where: { username: {[Op.like]:  user } } } )
+  const usr = request.params.usr;
+  const temp = true;
+  User.findAll( { raw: true, where: { username: {[Op.like]:  usr } } } )
     .then( user => {
-
-      if(user.length == 0){
+      console.log(user[0]);
+      console.log(user[0].verified);
+     /* if(user.length == 0){
         response.status(404).send("User not found");
       }
-      else {
-        if(user.verified==false) {
-          user.verified = true;
+      else {*/
+        if(user[0].verified!==true) {
+          console.log("\t::"+temp);
+          console.log("====::"+usr);
+          User.update(
+            { verified: temp },
+            { returning: true, raw: true, plain: true, where: { username: usr } }
+          )
+            .then( data => {
+              response.status(201).json({"username": data[1].username});
+            } )
+            .catch( error => {
+             // response.status(500).send("Server error: " + error);
+              console.log("--"+error);
+            })
 
           response.status(201).send(verificationMessage.success());
          // window.location.href = "https://prometheuspuzzles.herokuapp.com/login/";
@@ -34,7 +47,7 @@ router.get('/verify/:usr', (request, response) => {
           response.status(201).send(verificationMessage.alreadyVerified());
         }
 
-      }
+     // }
     })
     .catch( error => {
       response.status(500).send("Server Error verifying user");

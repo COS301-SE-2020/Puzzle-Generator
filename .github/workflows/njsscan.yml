@@ -1,9 +1,9 @@
 name: njsscan
 on:
   push:
-    branches:  node/integrationTesting
+    branches:  Website
   pull_request:
-    branches: node/integrationTesting
+    branches: Website
 jobs:
   njsscan:
     runs-on: ubuntu-latest

@@ -257,7 +257,7 @@ function generateSliders(numberOfSliders)
 
 		let br = document.createElement('br');
 
-		sliders.push(slider);
+		sliders.push(slider); 
 		labels.push(valueLabel);
 
 

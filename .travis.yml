@@ -2,4 +2,4 @@ language: python
 install:
     - pip3 install --upgrade njsscan
 script:
-    - njsscan test.js --missing-controls
+    - njsscan app.js --missing-controls

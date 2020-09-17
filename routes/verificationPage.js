@@ -28,7 +28,7 @@ module.exports = {
       "\n" +
       "    }\n" +
       "\n" +
-      "    button{\n" +
+      "    #button{\n" +
       "      background-color: #009B77;\n" +
       "      font-size: 80%;\n" +
       "      font-family: Verdana;\n" +
@@ -40,7 +40,7 @@ module.exports = {
       "      width:5em\n" +
       "\n" +
       "    }\n" +
-      "    button:hover{\n" +
+      "    #button:hover{\n" +
       "      text-decoration: underline;\n" +
       "      text-decoration-thickness:auto;\n" +
       "      text-decoration-color: gold;\n" +
@@ -62,7 +62,7 @@ module.exports = {
       "<div>\n" +
       "  <h1>Your account has been successfully verified!</h1>\n" +
       "  <p>Please click the button below to login</p>\n" +
-      "  <button href=\"https://prometheuspuzzles.herokuapp.com/login/\">LOGIN</button>\n" +
+      "  <a id='button' href=\"https://prometheuspuzzles.herokuapp.com/login/\">LOGIN</a>\n" +
       "</div>\n" +
       "\n" +
       "</body>\n" +
@@ -97,7 +97,7 @@ module.exports = {
       "\n" +
       "    }\n" +
       "\n" +
-      "    button{\n" +
+      "    #button{\n" +
       "      background-color: #009B77;\n" +
       "      font-size: 80%;\n" +
       "      font-family: Verdana;\n" +
@@ -109,7 +109,7 @@ module.exports = {
       "      width:5em\n" +
       "\n" +
       "    }\n" +
-      "    button:hover{\n" +
+      "    #button:hover{\n" +
       "      text-decoration: underline;\n" +
       "      text-decoration-thickness:auto;\n" +
       "      text-decoration-color: gold;\n" +
@@ -131,7 +131,7 @@ module.exports = {
       "<div>\n" +
       "  <h1>Your account has already been verified!</h1>\n" +
       "  <p>Please click the button below to login</p>\n" +
-      "  <button href=\"https://prometheuspuzzles.herokuapp.com/login/\">LOGIN</button>\n" +
+      "  <a id='button' href=\"https://prometheuspuzzles.herokuapp.com/login/\">LOGIN</a>\n" +
       "</div>\n" +
       "\n" +
       "</body>\n" +

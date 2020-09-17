@@ -19,6 +19,7 @@ router.get('/verify/:usr', (request, response) => {
 
   User.findAll( { raw: true, where: { username: {[Op.like]:  user } } } )
     .then( user => {
+
       if(user.length == 0){
         response.status(404).send("User not found");
       }
@@ -32,14 +33,6 @@ router.get('/verify/:usr', (request, response) => {
         else{
           response.status(201).send(verificationMessage.alreadyVerified());
         }
-        //response.writeHead(301,{Location: 'https://prometheuspuzzles.herokuapp.com/login/' + pathname});
-       /* wait(4*1000).then(() => {
-
-          console.log("waited for 4 seconds");
-          //throw new Error("error occurred");
-        }).catch(() => {
-          failureCallback();
-        });*/
 
       }
     })

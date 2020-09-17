@@ -176,6 +176,7 @@ router.post('/newSolveAttempt', (request, response) => {
                     // console.log("Best time: ", currBestTime);
 
                     SolveAttempt.update( //solve attempt exists so update current rating
+                        { solved: solved, attemptDuration: newAttemptDuration },
                         { solved: solved, attemptDuration: newAttemptDuration, bestTime: currBestTime },
                         { returning: true, raw: true, plain: true, where: { solverID: solverID, puzzleID:  puzzleID } }
                     )

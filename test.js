@@ -193,7 +193,7 @@ describe('POST /users/getPuzzleRatingsByUser', () => {
   });
 });
 
-describe('POST /puzzles/createPuzzleRating', () => {
+/*describe('POST /puzzles/createPuzzleRating', () => {
   it('should add a puzzle rating', done => {
     chai
       .request('https://prometheuspuzzles.herokuapp.com')
@@ -211,7 +211,7 @@ describe('POST /puzzles/createPuzzleRating', () => {
 });
 
 
-/*describe('POST /users/createUser', () => {
+describe('POST /users/createUser', () => {
   it('should create a user', done => {
     chai
       .request('https://prometheuspuzzles.herokuapp.com')

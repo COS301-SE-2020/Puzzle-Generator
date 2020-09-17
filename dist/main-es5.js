@@ -12816,8 +12816,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 }
 
                 sliders[_i].value = tempValue;
-                sliders[_i].previousValue = tempValue;
-                labels[_i].innerHTML = parseInt(tempValue);
+                sliders[_i].previousValue = tempValue; //labels[i].innerHTML = parseInt(tempValue);
               } else {
                 leftover += parseFloat(distributedValue);
               }
@@ -12830,23 +12829,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
               if (_tempValue >= 1.00) {
                 sliders[_i2].value = _tempValue;
-                sliders[_i2].previousValue = _tempValue;
-                labels[_i2].innerHTML = parseInt(_tempValue);
+                sliders[_i2].previousValue = _tempValue; //labels[i].innerHTML = parseInt(tempValue);
+
                 leftover = 0;
               }
             }
           }
 
-          this.previousValue = this.value;
-          labels[this.sliderid].innerHTML = parseInt(this.value);
+          this.previousValue = this.value; //labels[this.sliderid].innerHTML = parseInt(this.value);
         });
         var headerLabel = document.createElement('label');
         headerLabel.innerHTML = 'Size ' + (i + 1);
         var valueLabel = document.createElement('label');
         valueLabel.innerHTML = defaultValue.toFixed(0);
         var br = document.createElement('br');
-        sliders.push(slider);
-        labels.push(valueLabel);
+        sliders.push(slider); //labels.push(valueLabel);
+
         inputContainer.appendChild(headerLabel);
         inputContainer.appendChild(slider);
         inputContainer.appendChild(valueLabel);

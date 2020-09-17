@@ -221,7 +221,7 @@ function generateSliders(numberOfSliders)
 
 						sliders[i].value = tempValue;
 						sliders[i].previousValue = tempValue;
-						labels[i].innerHTML = parseInt(tempValue);
+						//labels[i].innerHTML = parseInt(tempValue);
 					}
 					else
 					{
@@ -239,14 +239,14 @@ function generateSliders(numberOfSliders)
 					{
 						sliders[i].value = tempValue;
 						sliders[i].previousValue = tempValue;
-						labels[i].innerHTML = parseInt(tempValue);
+						//labels[i].innerHTML = parseInt(tempValue);
 						leftover = 0;
 					}
 				}
 			}
 
 			this.previousValue = this.value;
-			labels[this.sliderid].innerHTML = parseInt(this.value);
+			//labels[this.sliderid].innerHTML = parseInt(this.value);
 		});
 
 		let headerLabel = document.createElement('label');
@@ -254,11 +254,11 @@ function generateSliders(numberOfSliders)
 
 		let valueLabel = document.createElement('label');
 		valueLabel.innerHTML = defaultValue.toFixed(0);
-
+    
 		let br = document.createElement('br');
 
 		sliders.push(slider);
-		labels.push(valueLabel);
+		//labels.push(valueLabel);
 
 
 		inputContainer.appendChild(headerLabel);

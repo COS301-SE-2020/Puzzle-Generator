@@ -1,35 +1,53 @@
-<<<<<<< HEAD
 language: node_js
 node_js: 14
+dist: xenial
 
 sudo: required
-after_success:
-  - npm run coverage
-  - npm run coveralls
 before_install:
   - npm install -g node-gyp
-  - npm install
+  - google-chrome-stable --no-sandbox --disable-dev-shm-usage --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  
 cache:
   npm: false
-
+  directories:
+  - node_modules
 env:
   - CXX=g++-4.8
 addons:
+  chrome: stable
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
+  sauce_connect:
+    username: "tapiwamazibuko"
+    access_key: "006fc024-6fcf-4cb3-9dfd-66e546b32790"
 
 notifications:
   webhooks: https://nzvm1.cs.up.ac.za/travis
-  webhooks: https://hyperperform.cs.up.ac.za/travis
-=======
-language: python
-install:
-    - pip3 install --upgrade njsscan
+
 branches:
-  node/integrationTesting
+  only:
+  - node/integration
+
+sudo: required
+before_install:
+  - npm install -g node-gyp
+  - npm update
+  
+install:
+ - npm install
+
 script:
-    - njsscan
->>>>>>> Documentation
+- npm test
+
+after_success:
+  - npm run coverage
+  - npm run coveralls
+  
+#language: python
+#install:
+    #- pip3 install --upgrade njsscan
+#script:
+    #- njsscan

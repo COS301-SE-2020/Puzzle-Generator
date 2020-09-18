@@ -57,6 +57,11 @@ exports.config = {
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
+        //chromeOptions: {args: ['--headless', '--no-sandbox', '--disable-dev-shm-usage']}
+        //headless: true
+        'goog:chromeOptions': { 
+           args: ["--headless", "user-agent=...","--disable-gpu","--window-size=1440,735"]
+      }
     }],
     //
     // ===================
@@ -197,7 +202,8 @@ exports.config = {
      beforeTest: function () {
        const chai = require('chai')
        const chaiWebdriver = require('chai-webdriverio').default
-
+       const webdriverio = require('webdriverio');
+       const chromedriver = require('chromedriver');
        chai.use(chaiWebdriver(browser))
 
        global.assert = chai.assert

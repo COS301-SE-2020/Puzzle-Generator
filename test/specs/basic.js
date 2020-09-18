@@ -1,17 +1,17 @@
 const internetPage = require("./pages/internet_page")
-//const User = require('./models/User')
+const User = require('./models/User')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 
 describe('interacting with elements', function() {
   it("Get text for element", () => {
-    browser.url('http://localhost:4200/index')
-    let text = $("h2").getText()
-    console.log(text)
-    internetPage.getDivText()
-    $(`div.flex-container:nth-child(${3}) div`).waitForDisplayed()
-    console.log($(`div.flex-container:nth-child(${3}) div`).getText())
-    return ($(`div.flex-container:nth-child(${3}) div`).getText())
+    browser.url('https://prometheuspuzzles.herokuapp.com/index')
+    let text = $("img")
+    //console.log(text)
+    //internetPage.getDivText()
+    $(`img`).waitForDisplayed()
+    //console.log($(`div.flex-container:nth-child(${3}) div`).getText())
+    //return ($(`div.flex-container:nth-child(${3}) div`).getText())
   })
   it("is headline dispalayed", () =>{
     console.log(internetPage.pageHeadline.isDisplayed())
@@ -26,43 +26,44 @@ describe('interacting with elements', function() {
 
 describe('element actions', () => {
     it('should click element', () => {
-        browser.url('http://localhost:4200/index')
+        browser.url('https://prometheuspuzzles.herokuapp.com/index')
         if($('li#btnLink a').isDisplayed() === true){
           $(`li#btnLink:nth-child(${2}) a`).click()
-          expect(browser.getUrl()).equals('http://localhost:4200/login');
+          expect(browser.getUrl()).equals('https://prometheuspuzzles.herokuapp.com/login');
         }
         browser.pause(5000)
 
     })
     it('should get text', () => {
-      browser.url('http://localhost:4200/index')
-      $(`div.flex-container:nth-child(${3}) div`).waitForDisplayed()
+      browser.url('https://prometheuspuzzles.herokuapp.com/index')
+      $(`div`).waitForDisplayed()
       //console.log($(`div.flex-container:nth-child(${3}) div`).getText())
       //expect($(`div.flex-container:nth-child(${3}) div`).getText().equals(' '))
     })
     it('should enter username', () => {
-      browser.url('http://localhost:4200/login')
+      browser.url('https://prometheuspuzzles.herokuapp.com/login')
       $('#mat-input-0').waitForDisplayed()
       $('#mat-input-0').setValue('charo@test.com')
       assert.equal('charo@test.com', $('#mat-input-0').getValue())
     })
 
     it('should create a user', () => {
-      browser.url('http://localhost:4200/signup')
+      browser.url('https://prometheuspuzzles.herokuapp.com/signup')
       $('#mat-input-1').waitForDisplayed()
       $('#mat-input-0').setValue('Jenny Doe')
       $('#mat-input-1').setValue('jenny@doe.com')
       $('#mat-input-2').setValue('jennydoe')
       $('#mat-input-3').setValue('jennydoe')
       $('#one').click()
-      /*User.findAll( { raw: true, where: { username: {[Op.like]: 'jenny@doe.com'  } } } )
+      User.findAll( { raw: true, where: { username: {[Op.like]: 'jenny@doe.com'  } } } )
       .then( user => {
+        assert.equal('Jenny Doe', user[0].name)
       })
-      assert.equal('Jenny Doe', user[0].name)*/
+
     })
 
     it('should enter password', () => {
-      browser.url('http://localhost:4200/login')
+      browser.url('https://prometheuspuzzles.herokuapp.com/login')
       $('#mat-input-1').waitForDisplayed()
       $('#mat-input-0').setValue('charo@test.com')
       $('#mat-input-1').setValue('charotest')
@@ -78,15 +79,15 @@ describe('element actions', () => {
 
 describe('Webdriver API actions', () => {
     it('should hover on figure', () => {
-        browser.url('http://localhost:4200/index')
-        $(`div.flex-container div.one:nth-child(${1}) div img`).waitForDisplayed()
-        assert.equal("", $(`div.flex-container div.one:nth-child(1) div h3`).getText())
+        browser.url('https://prometheuspuzzles.herokuapp.com/index')
+        $(`img`).waitForDisplayed()
+        assert.equal("", $(`img`).getText())
         browser.pause(2000)
     })
 
 })
 
-describe('Scroll to element', () => {
+/*describe('Scroll to element', () => {
     it('should scroll to the heading', () => {
         browser.url('http://localhost:4200')
         internetPage.pageHeadline.waitForDisplayed()
@@ -120,4 +121,4 @@ describe('Dropdown Menu', () => {
         assert.equal(true, internetPagedropDownMenuOption1.isSelected())
     })
 
-})
+})*/

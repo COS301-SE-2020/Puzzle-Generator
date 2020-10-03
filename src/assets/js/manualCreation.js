@@ -208,11 +208,11 @@ function initializeData(appendedString)
 	// });
 
 
-	if(document.getElementById('generate3DButton') != null)
+	if(document.getElementById('generate3DButton'+appendedString) != null)
 	{
 		initiate3DCanvas(height, width);
-		document.getElementById('generate3DButton').addEventListener('mousedown', function() {
-			render3D(JSON.parse(piecesJSONObject));
+		document.getElementById('generate3DButton'+appendedString).addEventListener('mousedown', function() {
+			render3D(JSON.parse(piecesJSONObject), appendedString);
 		});
 	}
 }
@@ -381,7 +381,7 @@ function createPieces()
 
 		pieces.push(piece);
 		piecesJSONObject.pieces.push(trimmedPoints);
-		piecesJSONObject.depths.push(Math.floor(Math.random() * 10));
+		piecesJSONObject.depths.push(Math.floor(Math.random() * 8) + 1);
 		layer.add(piece);
 	}
 

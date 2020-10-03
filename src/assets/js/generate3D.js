@@ -23,13 +23,16 @@ function initiate3DCanvas(height, width)
 	controls.update();
 }
 
-function render3D(jsonData)
+function render3D(jsonData, appendedString)
 {
+	while(scene.children.length > 0)
+		scene.remove(scene.children[0]);
+	
 	let pieceGeometryArray = extractPoints(jsonData.pieces, jsonData.depths);
 	let pieceMeshArray = generateAndColorMeshes(pieceGeometryArray, jsonData.colors);
 	addMeshesToScene(pieceMeshArray);
-	document.getElementById('container').innerHTML = "";
-	document.getElementById('container').appendChild(renderer.domElement);
+	document.getElementById('container'+appendedString).innerHTML = "";
+	document.getElementById('container'+appendedString).appendChild(renderer.domElement);
 	animate();
 }
 

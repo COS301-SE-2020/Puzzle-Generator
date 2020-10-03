@@ -1,4 +1,5 @@
 import Konva from 'konva';
+import { initiate3DCanvas, render3D } from 'src/assets/js/generate3D.js';
 export { width, height, setSites, setDisableEditMode, initializeData, calculateDistancesFromSitesToPoint,
 	equidistantPointsPresent, generateSiteBoundaries, createPieces, clearBoard };
 
@@ -34,17 +35,17 @@ let piecesJSONObject;
 let editIcon, deleteIcon;
 
 ///Make an array with desired colors - can be hex values or names
-let defaultPalette = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine', 'AntiqueWhite', 'Red', 'Green'];
+let defaultPalette = ['plum', 'tomato', 'orange', 'violet', 'gray', 'mediumseagreen', 'lightgray', 'slateblue', 'brown', 'aquamarine', 'antiquewhite', 'red', 'green'];
 ///Add the array to the page using this function with the array as a first and the desired name as a second parameter
 addColorPalette(defaultPalette, "Default");
 
-let shadesOfRedPalette = ['Crimson', 'DarkRed', 'Coral', 'FireBrick', 'IndianRed', 'Maroon', 'OrangeRed', 'PaleVioletRed', 'Red', 'Tomato', 'Brown'];
+let shadesOfRedPalette = ['crimson', 'darkred', 'coral', 'firebrick', 'indianred', 'maroon', 'orangered', 'palevioletred', 'red', 'tomato', 'brown'];
 addColorPalette(shadesOfRedPalette, "Shades Of Red");
 
-let shadesOfGreenPalette = ['Teal', 'MediumSpringGreen', 'LimeGreen', 'ForestGreen', 'MediumSeaGreen', 'LawnGreen', 'PaleGreen', 'GreenYellow', 'Aquamarine'];
+let shadesOfGreenPalette = ['teal', 'mediumspringgreen', 'limegreen', 'forestgreen', 'mediumseagreen', 'lawngreen', 'palegreen', 'greenyellow', 'aquamarine'];
 addColorPalette(shadesOfGreenPalette, "Shades of Green");
 
-let shadesOfBluePalette = ['DarkBlue', 'DeepSkyBlue', 'MediumBlue', 'DodgerBlue', 'MidnightBlue', 'RoyalBlue', 'DarkSlateBlue', 'CornflowerBlue', 'SkyBlue', 'PowderBlue'];
+let shadesOfBluePalette = ['darkblue', 'deepskyblue', 'mediumblue', 'dodgerblue', 'midnightblue', 'royalblue', 'darkslateblue', 'cornflowerblue', 'skyblue', 'powderblue'];
 addColorPalette(shadesOfBluePalette, "Shades of Blue");
 
 ///Add a color palette to the page and needed functionality
@@ -86,6 +87,8 @@ function randomizePuzzleColorPalette()
 		{
 			rgbColor = getRandomRGB();
 			selectedPalette.push(rgbColor);
+			rgbColor = getRandomRGB();
+			selectedPalette.push(rgbColor);
 			pieces[i].attrs.stroke = rgbColor;
 			layer.add(pieces[i]);
 		}
@@ -114,6 +117,7 @@ function initializeData(appendedString)
 
 	sites = [];
 	siteBoundaries = [];
+	pieces = [];
 
 	disableEditMode = false;
 
@@ -202,6 +206,15 @@ function initializeData(appendedString)
 	// 	// document.getElementById('testingImg').src = puzzleImage;
 	// 	savePuzzle(true);
 	// });
+
+
+	if(document.getElementById('generate3DButton') != null)
+	{
+		initiate3DCanvas(height, width);
+		document.getElementById('generate3DButton').addEventListener('mousedown', function() {
+			render3D(JSON.parse(piecesJSONObject));
+		});
+	}
 }
 
 ///Create a post ajax request and send it to the API in order to save the user's created puzzle
@@ -266,7 +279,8 @@ function clearBoard()
 {
 	piecesJSONObject = {
 		'pieces' : [],
-		'colors' : []
+		'colors' : [],
+		'depths' : []
 	};
 
 	pieces = [];
@@ -367,6 +381,7 @@ function createPieces()
 
 		pieces.push(piece);
 		piecesJSONObject.pieces.push(trimmedPoints);
+		piecesJSONObject.depths.push(Math.floor(Math.random() * 10));
 		layer.add(piece);
 	}
 

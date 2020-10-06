@@ -57,6 +57,7 @@ import { SuccessfulSolveComponent } from './dialogs/successful-solve/successful-
 import { EmailPassComponent } from './dialogs/email-pass/email-pass.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { ProfilePuzzlesDialogComponent } from './dialogs/profile-puzzles-dialog/profile-puzzles-dialog.component';
+import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import { ProfilePuzzlesDialogComponent } from './dialogs/profile-puzzles-dialog/
     EmailPassComponent,
     FooterComponent,
     ProfilePuzzlesDialogComponent,
+    LeaderboardComponent,
   ],
   imports: [
     BrowserModule,

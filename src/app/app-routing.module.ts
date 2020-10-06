@@ -16,6 +16,7 @@ import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 import { AdminRatingsComponent } from './admin/admin-ratings/admin-ratings.component';
 import { AdminPuzzlesComponent } from './admin/admin-puzzles/admin-puzzles.component';
 import {MatTableDataSource} from '@angular/material/table';
+import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
 
 
 const routes: Routes = [
@@ -33,7 +34,8 @@ const routes: Routes = [
   {path: 'aicreate', component: AICreateComponent},
   {path: 'adminUser', component: AdminUserComponent},
   {path: 'adminRatings', component: AdminRatingsComponent},
-  {path: 'adminPuzzles', component: AdminPuzzlesComponent}, 
+  {path: 'adminPuzzles', component: AdminPuzzlesComponent},
+  {path: 'leaderboard', component: LeaderboardComponent},
 
 
     // otherwise redirect to home

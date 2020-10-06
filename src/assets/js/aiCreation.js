@@ -86,6 +86,7 @@ function expandPuzzle(sites, factor)
 export function initializeDataAI()
 {
 	initializeData('AI');
+	setDisableEditMode(true);
 	groupDistribution = [];
 	generatedPuzzles = [];
 	sliders = [];
@@ -180,7 +181,6 @@ function renderPuzzle(sites)
 {
 	let expandedSites = expandPuzzle(sites, 10);
 	setSites(expandedSites);
-	setDisableEditMode(true);
 	clearBoard();
 	generateSiteBoundaries();
 	createPieces();

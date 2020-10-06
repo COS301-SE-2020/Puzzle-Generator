@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import { LeaderboardArr } from './LeaderboardArr';
+import { LeaderboardArr } from './leaderboardArr';
 import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
 
 @Component({
@@ -24,7 +24,7 @@ export class LeaderboardComponent implements OnInit {
   i: number;
   currentUser: any;
   token: any;
-  loginDialog: MatDialogRef<LoginDialogComponent>; 
+  loginDialog: MatDialogRef<LoginDialogComponent>;
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

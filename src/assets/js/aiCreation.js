@@ -86,7 +86,11 @@ function expandPuzzle(sites, factor)
 export function initializeDataAI()
 {
 	initializeData('AI');
+	setDisableEditMode(true);
+	groupDistribution = [];
 	generatedPuzzles = [];
+	sliders = [];
+	labels = [];
 	renderedPuzzleIndex = 0;
 	generatePuzzleAIButton = document.getElementById('generatePuzzleButtonAI');
 	generatePuzzleAIButton.addEventListener('mousedown', generatePuzzleAI);
@@ -177,7 +181,6 @@ function renderPuzzle(sites)
 {
 	let expandedSites = expandPuzzle(sites, 10);
 	setSites(expandedSites);
-	setDisableEditMode(true);
 	clearBoard();
 	generateSiteBoundaries();
 	createPieces();

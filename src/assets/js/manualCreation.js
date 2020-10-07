@@ -367,7 +367,7 @@ function createPieces()
 		let piece = new Konva.Line({
 			points: trimmedPoints,
 			stroke: selectedPalette[i % selectedPalette.length],
-			strokeWidth: 1,
+			strokeWidth: 2,
 		});
 
 		piece.on('mouseover', function (){
@@ -376,6 +376,16 @@ function createPieces()
 
 		piece.on('mouseout', function() {
 			document.body.style.cursor = 'default';
+		});
+
+		piece.on('mousedown', function() {
+			let paintBrushColor = document.getElementById('paintBrushColorInput').value;
+			this.stroke(paintBrushColor);
+			selectedPalette[i*2] = paintBrushColor;
+			piecesJSONObject = JSON.parse(piecesJSONObject);
+			piecesJSONObject.colors = selectedPalette;
+			piecesJSONObject = JSON.stringify(piecesJSONObject);
+			layer.draw();
 		});
 
 		pieces.push(piece);

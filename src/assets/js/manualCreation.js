@@ -368,7 +368,6 @@ function createPieces()
 			points: trimmedPoints,
 			stroke: selectedPalette[i % selectedPalette.length],
 			strokeWidth: 1,
-			draggable: true,
 		});
 
 		piece.on('mouseover', function (){

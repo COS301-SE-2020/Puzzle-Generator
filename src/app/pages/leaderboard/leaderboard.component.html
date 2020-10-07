@@ -2,8 +2,8 @@
 
 <h1>Leaderboard</h1>
 
-<mat-form-field>
-  <mat-label>Filter</mat-label>
+<mat-form-field class="searchArea">
+  <mat-label>Search</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
 </mat-form-field>
 
@@ -24,6 +24,16 @@
     <ng-container matColumnDef="nrPuzzles">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Number of Puzzles</th>
       <td mat-cell *matCellDef="let row"> {{row.nrPuzzles}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="avgRating">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Average Rating of puzzles</th>
+      <td mat-cell *matCellDef="let row"> {{row.avgRating}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="solved">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Puzzles Solved</th>
+      <td mat-cell *matCellDef="let row"> {{row.solved}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

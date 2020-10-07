@@ -1,5 +1,11 @@
 <div class="solver" id="solverDialogDiv">
-    <h3 mat-dialog-title><strong> Puzzle Pieces onto the canvas to solve the puzzle</strong></h3>
+  <div class="headings">
+    <h3 mat-dialog-title><strong>Drag Puzzle Pieces onto the canvas to solve the puzzle</strong></h3>
+
+    <label class="timer" *ngIf="showMe">Remaining Time:
+      <countdown [config]="{leftTime: 15 }"></countdown>
+    </label>
+  </div>
     <!-- <div mat-dialog-content> -->
         
     <!-- <div mat-dialog-content id="solvedDiv">
@@ -19,6 +25,15 @@
     <div id="solverContainer"></div>
 
     <div mat-dialog-actions>
-    	<button class="btns" mat-button mat-dialog-close id="closeSolverDialogButton">Close</button>
-	</div>
+      <button class="btns" mat-button mat-dialog-close id="closeSolverDialogButton">Close</button>
+      <button mat-button *ngIf="showHintButton" class="btns" (click)="showImage()">Hint {{fromPage}}(remaining)</button><label></label>
+  </div>
+
+  <div  class="modal" [ngStyle]="{'display':display}">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <img id="pic" src="{{hintImage}}">
+    </div>
+  </div>
+  
 </div>

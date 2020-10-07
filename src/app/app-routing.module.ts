@@ -16,6 +16,8 @@ import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 import { AdminRatingsComponent } from './admin/admin-ratings/admin-ratings.component';
 import { AdminPuzzlesComponent } from './admin/admin-puzzles/admin-puzzles.component';
 import {MatTableDataSource} from '@angular/material/table';
+import { AboutComponent } from './pages/about/about.component';
+import { ChallengesComponent } from './pages/challenges/challenges.component';
 
 
 const routes: Routes = [
@@ -26,6 +28,8 @@ const routes: Routes = [
   {path: 'profilePuzzles', component: ProfilePuzzlesComponent},
   {path: 'profileRatings', component: ProfileRatingsComponent},
   {path: 'profileSolvedPuzzle', component: ProfileSolvedPuzzlesComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'challenges', component: ChallengesComponent},
   {path: 'ratings', component: RatingsComponent},
   {path: 'resetPassword', component: ResetPasswordComponent},
   {path: 'resetSuccess', component: ResetSuccessComponent},

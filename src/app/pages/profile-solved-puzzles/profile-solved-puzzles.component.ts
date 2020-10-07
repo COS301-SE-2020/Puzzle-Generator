@@ -7,6 +7,7 @@ import { SolveDialogComponent } from 'src/app/dialogs/solve-dialog/solve-dialog.
 import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
 import { downloadPuzzle2D, downloadPuzzle3D } from 'src/assets/js/downloadPuzzle.js';
 import {MatTableDataSource} from '@angular/material/table';
+import { HintComponent } from 'src/app/dialogs/hint/hint.component';
 
 @Component({
   selector: 'app-profile-solved-puzzles',
@@ -39,6 +40,7 @@ export class ProfileSolvedPuzzlesComponent implements OnInit {
 
   solveDialog: MatDialogRef<SolveDialogComponent>
   loginDialog: MatDialogRef<LoginDialogComponent>;
+  levelDialog: MatDialogRef<HintComponent>;
 
   datasource: any = "";
   sortedBy: any;
@@ -132,7 +134,11 @@ export class ProfileSolvedPuzzlesComponent implements OnInit {
 
   openSolveDialog(puzzleID: any){
     localStorage.setItem('solvingPuzzleID', puzzleID);
-    this.solveDialog = this.dialog.open(SolveDialogComponent, { disableClose: true, hasBackdrop: true });
+    // this.solveDialog = this.dialog.open(SolveDialogComponent, { 
+    //   disableClose: true, hasBackdrop: true,
+    //   data: { pageValue:  ""} 
+    // });
+    this.levelDialog = this.dialog.open(HintComponent, {disableClose: true, hasBackdrop: true});
   }
 
   twoDDownload(puzzleID: any){

@@ -15,6 +15,7 @@ import { SolveDialogComponent } from 'src/app/dialogs/solve-dialog/solve-dialog.
 import { MenuComponent } from 'src/app/dialogs/menu/menu.component';
 import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
 import { downloadPuzzle2D, downloadPuzzle3D } from 'src/assets/js/downloadPuzzle.js';
+import { HintComponent } from 'src/app/dialogs/hint/hint.component';
 
 @Component({
   selector: 'app-ratings',
@@ -56,6 +57,8 @@ export class RatingsComponent implements OnInit {
   //solve dialog variable
   solveDialog: MatDialogRef<SolveDialogComponent>;
   sortedBy: any;
+
+  levelDialog: MatDialogRef<HintComponent>;
 
   ratingSavedDialog: any;
   loginDialog: any;
@@ -330,7 +333,11 @@ export class RatingsComponent implements OnInit {
   //solve dialog
   openSolveDialog(puzzleID: any){
     localStorage.setItem('solvingPuzzleID', puzzleID);
-    this.solveDialog = this.dialog.open(SolveDialogComponent, { disableClose: true, hasBackdrop: true });
+    // this.solveDialog = this.dialog.open(SolveDialogComponent, { 
+    //   disableClose: true, hasBackdrop: true,
+    //   data: { pageValue:  ""} 
+    // });
+    this.levelDialog = this.dialog.open(HintComponent, {disableClose: true, hasBackdrop: true});
   }
   //end of solve dialog
   //start of download methods

@@ -1,7 +1,7 @@
 import Konva from 'konva';
 import JSZip from 'src/assets/js/jszip.min.js';
 import saveAs from 'src/assets/js/FileSaver.js';
-export { initializeDataSolve };
+export { initializeDataSolve, getPieceInCorrectPositionArray };
 
 let getPuzzleDataURL = 'http://localhost:3200/api/puzzles/getPuzzleByID/';
 let saveSolveAttemptURL = 'http://localhost:3200/api/puzzles/newSolveAttempt';
@@ -62,6 +62,11 @@ function initializeDataSolve()
 		if(!puzzleSolved)
 			saveSolveAttempt(false, puzzleID, startTime);
 	});
+}
+
+function getPieceInCorrectPositionArray()
+{
+	return pieceInCorrectPosition;
 }
 
 function saveSolveAttempt(solved, solvePuzzleID, solveStartTime)

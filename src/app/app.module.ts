@@ -7,6 +7,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { CountdownModule } from 'ngx-countdown';
+import { NgCircleProgressModule } from 'ng-circle-progress';
+
 //
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
@@ -58,6 +61,9 @@ import { SuccessfulSolveComponent } from './dialogs/successful-solve/successful-
 import { EmailPassComponent } from './dialogs/email-pass/email-pass.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { ProfilePuzzlesDialogComponent } from './dialogs/profile-puzzles-dialog/profile-puzzles-dialog.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ChallengesComponent } from './pages/challenges/challenges.component';
+import { HintComponent } from './dialogs/hint/hint.component';
 import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
 
 @NgModule({
@@ -89,6 +95,9 @@ import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component'
     EmailPassComponent,
     FooterComponent,
     ProfilePuzzlesDialogComponent,
+    AboutComponent,
+    ChallengesComponent,
+    HintComponent,
     LeaderboardComponent,
   ],
   imports: [
@@ -109,7 +118,15 @@ import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component'
     MatSortModule,
     MatInputModule, MatListModule, MatPaginatorModule, MatProgressBarModule,
     MatCardModule, MatFormFieldModule, MatDialogModule, MatGridListModule, MatRadioModule, ReactiveFormsModule,
-    MDBBootstrapModule.forRoot(),
+    MDBBootstrapModule, NgCircleProgressModule.forRoot({
+       // set defaults here
+      //  radius: 100,
+      //  outerStrokeWidth: 16,
+      //  innerStrokeWidth: 8,
+      //  outerStrokeColor: "#78C000",
+      //  innerStrokeColor: "#C7E596",
+      //  animationDuration: 300
+    }),
   ],
   entryComponents: [RateDialogComponent],
   providers: [],

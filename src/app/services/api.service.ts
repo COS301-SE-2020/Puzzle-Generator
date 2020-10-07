@@ -61,6 +61,18 @@ export class APIService {
    * User endpoints end here
    */
 
+  /**
+   * Challenge Endpoints start here
+   */
+
+  getChallenges(){
+    return this.http.get('http://localhost:3200/api/puzzles/getChallenges');
+  }
+
+   /**
+   * Challenge Endpoints end here
+   */
+
 
 /**
 * Puzzle endpoints start here
@@ -70,7 +82,7 @@ getAllPuzzles(){
 }
 
 getAllPuzzleByID(puzzleID: number){
-  return this.http.get('http://localhost:3200/api/puzzles/getPuzzleByID?Id=' + puzzleID);
+  return this.http.get('http://localhost:3200/api/puzzles/getPuzzleByID/' + puzzleID);
 }
 
 createNewPuzzle(puzzle: Puzzle){

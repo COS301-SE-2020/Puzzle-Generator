@@ -1,11 +1,7 @@
 <div class="solver" id="solverDialogDiv">
   <!-- <div class="headings"> -->
-    <h3 *ngIf="!expertMode" mat-dialog-title><strong>Drag Puzzle Pieces onto the canvas to solve the puzzle</strong></h3>
-    <h3 *ngIf="expertMode" mat-dialog-title><strong>Drag Puzzle Pieces onto the canvas to solve the puzzle. Be sure to rotate them to the right position</strong></h3>
-
-     <label class="timer" *ngIf="showMe">Remaining Time:
-      <countdown [config]="{leftTime: 15 }"></countdown>
-    </label> 
+    <h3 *ngIf="!expertMode" mat-dialog-title><strong>Instructions:</strong>Drag Puzzle Pieces onto the canvas to solve the puzzle</h3>
+    <h3 *ngIf="expertMode" mat-dialog-title><strong>Instructions:</strong> Click and drag pieces into their correct positions. Double click a piece to rotate it!</h3>
   <!-- </div> -->
 
     <div id="solvedDiv" class="modal">

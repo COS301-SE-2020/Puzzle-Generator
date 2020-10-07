@@ -6,9 +6,8 @@ export { initializeDataSolve };
 let getPuzzleDataURL = 'http://localhost:3200/api/puzzles/getPuzzleByID/';
 let saveSolveAttemptURL = 'http://localhost:3200/api/puzzles/newSolveAttempt';
 let piecesJSONObject, pieces, colors, base64Image;
-let correctPositions, pieceInCorrectPosition;
+let correctPositions, pieceInCorrectPosition, correctOrientation;
 let defaultPalette = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine', 'AntiqueWhite', 'Red', 'Green'];
-let shadesOfBluePalette = ['DarkBlue', 'DeepSkyBlue', 'MediumBlue', 'DodgerBlue', 'MidnightBlue', 'RoyalBlue', 'DarkSlateBlue', 'CornflowerBlue', 'SkyBlue', 'PowderBlue'];
 let canvas, stage, layer, outline, board, puzzleID;
 let width = 1000, height = 500;
 let startTime, puzzleSolved;
@@ -23,6 +22,7 @@ function initializeDataSolve()
 	solvedDiv.remove();
 	correctPositions = [];
 	pieceInCorrectPosition = [];
+	correctOrientation = [];
 	puzzleID = localStorage.getItem('solvingPuzzleID');
 	puzzleSolved = false;
 	getPuzzleData(puzzleID);
@@ -109,7 +109,6 @@ function getPuzzleData(puzzleID)
 			colors = piecesJSONObject.colors;
 			if(colors === undefined)
 				colors = defaultPalette;
-			// generateSTLFiles();
 			generatePieces();
 		},
 		error: function(data, status){
@@ -121,6 +120,19 @@ function getPuzzleData(puzzleID)
 
 function generatePieces()
 {
+	let generalTransformer = new Konva.Transformer({
+		centeredScaling: true,
+        rotationSnaps: [0, 90, 180, 270],
+        rotationSnapTolerance: 45,
+        resizeEnabled: false,
+        borderEnabled: false,
+        anchorStroke: '',
+        anchorFill: '',
+        rotateAnchorOffset: -20,
+	});
+
+	layer.add(generalTransformer);
+	
 	for(let pieceIndex = 0; pieceIndex < pieces.length; pieceIndex++)
 	{
 		let selectedPiece = pieces[pieceIndex];
@@ -170,38 +182,114 @@ function generatePieces()
 			// layer.draw();
 		});
 
-		group.on('dragend', function(){
-			let hitBox = this.getChildren()[1];
-			let hitBoxCoordinates = hitBox.absolutePosition();
-			hitBoxCoordinates.x -= 250;
+		group.on('dblclick', function() {
+			// piece.rotate(90);
+			if(pieceInCorrectPosition[pieceIndex] == false)
+			{
+				generalTransformer.nodes([piece]);
+				let attributes = generalTransformer._getNodeRect();
+				var shape = rotateAroundCenter(attributes, 1.5707963267948966);
 
-			if(checkPosition(hitBoxCoordinates, correctPositions[pieceIndex]))
-			{
-				snapPieceIntoPlace(hitBoxCoordinates, correctPositions[pieceIndex], this);
-				group.draggable(false);
-				console.log('nailed it!!');
-				pieceInCorrectPosition[pieceIndex] = true;
-				checkIfPuzzleSolved();
+				if(Math.floor(shape.rotation) == -1)
+				{
+					correctOrientation[pieceIndex] = true;
+				}
+				else
+				{
+					correctOrientation[pieceIndex] = false;
+				}
+
+				generalTransformer._fitNodesInto(shape);
+				console.log((shape.rotation));
+				checkPositionAndSnapIntoPlace(this, pieceIndex);
 			}
-			else
-			{
-				console.log('you are off bud!');
-				console.log('The correct x: ' + correctPositions[pieceIndex].x + ' - The correct y: ' + correctPositions[pieceIndex].y);
-				console.log('The current x: ' + hitBoxCoordinates.x + ' - The current y: ' + hitBoxCoordinates.y);
-				pieceInCorrectPosition[pieceIndex] = false;
-			}
+			
 		});
 
-		// piece.scale({x: 0.75, y: 0.75});
+		// piece.on('transformend', function() {
+		// 	console.log(generalTransformer._getNodeRect());
+		// });
+
+		group.on('dragend', function(){
+			checkPositionAndSnapIntoPlace(this, pieceIndex);
+		});
+
 		group.add(piece);
 		group.add(hitBox);
 		group.draggable(true);
 		layer.add(group);
+
+		//randomly rotate piece
+		group.add(generalTransformer);
+		generalTransformer.nodes([piece]);
+		var attributes = generalTransformer._getNodeRect();
+		var shape = rotateAroundCenter(attributes, getRandomRotation());
+		
+		if(shape.rotation == 0)
+		{
+			console.log('correct orientation');
+			correctOrientation[pieceIndex] = true;
+		}
+		else
+		{
+			correctOrientation[pieceIndex] = false;
+		}
+
+		generalTransformer._fitNodesInto(shape);
 	}
 
 	layer.add(board);
 	layer.draw();
 	startTime = performance.now();
+}
+
+function checkPositionAndSnapIntoPlace(group, pieceIndex)
+{
+	let hitBox = group.getChildren()[1];
+	let hitBoxCoordinates = hitBox.absolutePosition();
+	hitBoxCoordinates.x -= 250;
+
+	if(checkPosition(hitBoxCoordinates, correctPositions[pieceIndex]) && correctOrientation[pieceIndex])
+	{
+		snapPieceIntoPlace(hitBoxCoordinates, correctPositions[pieceIndex], group);
+		group.draggable(false);
+		console.log('nailed it!!');
+		pieceInCorrectPosition[pieceIndex] = true;
+		checkIfPuzzleSolved();
+	}
+	else
+	{
+		console.log('you are off bud!');
+		console.log('The correct x: ' + correctPositions[pieceIndex].x + ' - The correct y: ' + correctPositions[pieceIndex].y);
+		console.log('The current x: ' + hitBoxCoordinates.x + ' - The current y: ' + hitBoxCoordinates.y);
+		pieceInCorrectPosition[pieceIndex] = false;
+	}
+}
+
+function getRandomRotation()
+{
+	let choice = Math.floor(Math.random() * 4);
+
+	if(choice == 0)
+	{
+		//no change to rotation
+		return 0;
+	}
+	else if(choice == 1)
+	{
+		//rotate 90 degrees
+		return 1.5707963267948966;
+	}
+	else if(choice == 2)
+	{
+		//rotate 180 degrees
+		return 3.141592653589793;
+	}
+	else
+	{
+		//rotate 270 degrees
+		return 4.71238898038469;
+	}
 }
 
 function getMax(pointsArray, coordinate)
@@ -310,69 +398,39 @@ function snapPieceIntoPlace(currentCoords, targetCoords, piece)
 	layer.draw();
 }
 
-function generateSTLFiles()
-{
-	let zip = new JSZip();
-	let currentPiece;
-	let topRight, topLeft, bottomRight, bottomLeft;
-	let stlFile;
-	for(let pieceIndex = 0; pieceIndex < pieces.length; pieceIndex++)
-	{
-		stlFile = 'solid piece_number_' + pieceIndex + '\n';
-		currentPiece = pieces[pieceIndex];
-		for(let vertexIndex = 0; vertexIndex < currentPiece.length; vertexIndex+=4)
-		{
-			topLeft = {
-				x: currentPiece[vertexIndex],
-				y: currentPiece[vertexIndex+1],
-				z: 5
-			};
-
-			bottomLeft = {
-				x: currentPiece[vertexIndex],
-				y: currentPiece[vertexIndex+1],
-				z: 0
-			};
-
-			topRight = {
-				x: currentPiece[vertexIndex+2],
-				y: currentPiece[vertexIndex+3],
-				z: 5
-			};
-
-			bottomRight = {
-				x: currentPiece[vertexIndex+2],
-				y: currentPiece[vertexIndex+3],
-				z: 0
-			};
-
-			stlFile = addVertexToFile(bottomLeft, bottomRight, topRight, stlFile);
-			stlFile = addVertexToFile(topRight, topLeft, bottomLeft, stlFile);
-		}
-		stlFile += "endsolid puzzle";
-		zip.file("piece_number_" + pieceIndex + ".stl", stlFile);
-	}
-	base64Image = base64Image.split(",");
-	base64Image = base64Image[1];
-	let img = zip.folder("images");
-	img.file("puzzle.jpeg", base64Image, {base64: true});
-	
-	zip.generateAsync({type:"blob"}).then(function(blob){
-		saveAs(blob, "puzzle.zip");
-	}, function(error){
-		console.log(error);
-	});
+function rotateAroundPoint(shape, angleRad, point) {
+  var x = point.x +
+      (shape.x - point.x) * Math.cos(angleRad) -
+      (shape.y - point.y) * Math.sin(angleRad);
+  var y = point.y +
+      (shape.x - point.x) * Math.sin(angleRad) +
+      (shape.y - point.y) * Math.cos(angleRad);
+  return __assign(__assign({}, shape), { rotation: shape.rotation + angleRad, x: x,
+      y: y });
+}
+function rotateAroundCenter(shape, deltaRad) {
+  var center = getCenter(shape);
+  return rotateAroundPoint(shape, deltaRad, center);
 }
 
-function addVertexToFile(vertexA, vertexB, vertexC, stlFile)
-{
-	stlFile += "facet normal 0 0 0\n";
-	stlFile += "outer loop\n";
-	stlFile += "vertex " + vertexA.x + " " + vertexA.y + " " + vertexA.z + "\n";
-	stlFile += "vertex " + vertexB.x + " " + vertexB.y + " " + vertexB.z + "\n";
-	stlFile += "vertex " + vertexC.x + " " + vertexC.y + " " + vertexC.z + "\n";
-	stlFile += "endloop\n";
-	stlFile += "endfacet\n";
+var __assign = function() {
+  __assign = Object.assign || function __assign(t) {
+      for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+      }
+      return t;
+  };
+  return __assign.apply(this, arguments);
+};
 
-	return stlFile;
+function getCenter(shape) {
+  return {
+      x: shape.x +
+          (shape.width / 2) * Math.cos(shape.rotation) +
+          (shape.height / 2) * Math.sin(-shape.rotation),
+      y: shape.y +
+          (shape.height / 2) * Math.cos(shape.rotation) +
+          (shape.width / 2) * Math.sin(shape.rotation),
+  };
 }

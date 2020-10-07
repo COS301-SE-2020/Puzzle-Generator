@@ -62,6 +62,7 @@ import { ProfilePuzzlesDialogComponent } from './dialogs/profile-puzzles-dialog/
 import { AboutComponent } from './pages/about/about.component';
 import { ChallengesComponent } from './pages/challenges/challenges.component';
 import { HintComponent } from './dialogs/hint/hint.component';
+import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +96,7 @@ import { HintComponent } from './dialogs/hint/hint.component';
     AboutComponent,
     ChallengesComponent,
     HintComponent,
+    LeaderboardComponent,
   ],
   imports: [
     BrowserModule,

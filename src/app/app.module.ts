@@ -30,6 +30,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSortModule} from '@angular/material/sort';
 
 
 //pages
@@ -113,6 +114,7 @@ import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component'
     MatTableModule,
     HttpClientModule,
     FormsModule,
+    MatSortModule,
     MatInputModule, MatListModule, MatPaginatorModule, MatProgressBarModule, CountdownModule,
     MatCardModule, MatFormFieldModule, MatDialogModule, MatGridListModule, MatRadioModule, ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),

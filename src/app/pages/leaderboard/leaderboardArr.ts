@@ -1,5 +1,7 @@
 export class LeaderboardArr{
   name: string;
   memberSince: string;
-  nrPuzzles: number; 
+  nrPuzzles: number;
+  avgRating: number;
+  solved: number; 
 }

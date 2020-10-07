@@ -1,17 +1,12 @@
 <div class="solver" id="solverDialogDiv">
-  <div class="headings">
-    <h3 mat-dialog-title><strong>Drag Puzzle Pieces onto the canvas to solve the puzzle</strong></h3>
+  <!-- <div class="headings"> -->
+    <h3 *ngIf="!expertMode" mat-dialog-title><strong>Drag Puzzle Pieces onto the canvas to solve the puzzle</strong></h3>
+    <h3 *ngIf="expertMode" mat-dialog-title><strong>Drag Puzzle Pieces onto the canvas to solve the puzzle. Be sure to rotate them to the right position</strong></h3>
 
-    <label class="timer" *ngIf="showMe">Remaining Time:
+     <label class="timer" *ngIf="showMe">Remaining Time:
       <countdown [config]="{leftTime: 15 }"></countdown>
-    </label>
-  </div>
-    <!-- <div mat-dialog-content> -->
-        
-    <!-- <div mat-dialog-content id="solvedDiv">
-    	<h3>Puzzle solved! Good show!</h3>
-    	<button class="btns" mat-button mat-dialog-close id="closeSolverDialogButton">Close</button>
-    </div> -->
+    </label> 
+  <!-- </div> -->
 
     <div id="solvedDiv" class="modal">
         <!-- Modal content -->
@@ -26,14 +21,14 @@
 
     <div mat-dialog-actions>
       <button class="btns" mat-button mat-dialog-close id="closeSolverDialogButton">Close</button>
+      <label hidden="true" id="difficultyLevel">{{numHints}}</label>
       <button mat-button *ngIf="showHintButton" class="btns" (click)="showImage()">Hint {{fromPage}}(remaining)</button><label></label>
   </div>
 
   <div  class="modal" [ngStyle]="{'display':display}">
-    <!-- Modal content -->
-    <div class="modal-content">
+    <div id="cc" class="modal-content">
       <img id="pic" src="{{hintImage}}">
     </div>
-  </div>
+  </div> 
   
 </div>

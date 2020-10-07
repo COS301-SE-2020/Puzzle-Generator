@@ -37,6 +37,11 @@ export class APIService {
     return this.http.post('http://localhost:3200/api/users/getUser',token, httpOptions);
   }
 
+  updateLevel(currentUser:User){
+    const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
+    return this.http.put('http://localhost:3200/api/users/updateLevel', currentUser, httpOptions);
+  }
+
   updateName(currentUser: User){
     const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
     return this.http.put('http://localhost:3200/api/users/updateName', currentUser, httpOptions);

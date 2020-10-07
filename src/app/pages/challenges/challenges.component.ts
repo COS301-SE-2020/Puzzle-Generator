@@ -55,16 +55,20 @@ export class ChallengesComponent implements OnInit {
     this.api.getChallenges().subscribe( data => {
       console.log("Got da data", data);
       this.timeDif = data[0].timeDifficulty;
-      this.timeDur = data[0].timeDuration;
       this.timeID = data[0].timeID;
       this.timeImage = data[0].timeImage;
       this.timeName = data[0].timeName;
+      if(this.timeDif == "Novice"){ this.timeDur = 90;}
+      else if(this.timeDif == "Intermediate"){ this.timeDur = 45;}
+      else if (this.timeDif == "Expert"){ this.timeDur = 25;}
       //
       this.solveDif = data[1].solveDifficulty;
-      this.solveHints = data[1].solveHints;
       this.solveID = data[1].solveID;
       this.solveImage = data[1].solveImage;
       this.solveName = data[1].solveName;
+      if(this.solveDif == "Novice"){ this.solveHints = 5}
+      else if(this.solveDif == "Intermediate"){ this.solveHints = 3}
+      else if(this.solveDif == "Expert"){ this.solveHints = 0}
     })
   }
 

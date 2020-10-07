@@ -43,6 +43,25 @@
         </mat-card-content>
     </mat-card>
 
+    <mat-card class="lvl">
+        <mat-card-title>Progress</mat-card-title>
+        <mat-card-content class="move">
+        <circle-progress
+            [percent]="3"
+            [radius]="100"
+            [outerStrokeWidth]="16"
+            [innerStrokeWidth]="8"
+            [outerStrokeColor]="'#7C593A'"
+            [innerStrokeColor]="'#7C593C'"
+            [animation]="true"
+            [animationDuration]="300"
+            >
+        </circle-progress>
+        <mat-card-title>Level: {{playerLevel}}</mat-card-title>
+        <mat-card-subtitle>XP: {{playerXP}}</mat-card-subtitle>
+    </mat-card-content>
+    </mat-card>
+
   </div>
 </div>
 

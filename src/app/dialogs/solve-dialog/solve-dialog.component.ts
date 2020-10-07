@@ -20,7 +20,11 @@ export class SolveDialogComponent implements OnInit {
   showMe:boolean = false;
   hintImage: any;
 
+  numHints: number;
+
   display = "none";
+
+  expertMode:boolean = false;
 
   hintDialog: MatDialogRef<HintComponent>;
 
@@ -73,11 +77,24 @@ export class SolveDialogComponent implements OnInit {
     this.token =  localStorage.getItem('token');
     initializeDataSolve();
 
-    if(this.fromPage == 5){
+    if(this.fromPage > 5){
       this.showMe = true;
+      if(this.fromPage == 25)
+      {
+        this.expertMode = true;
+        this.numHints = 0;
+        this.showHintButton = false;
+      }
     }
     else{
-      this.showHintButton = true;
+      this.numHints = this.fromPage;
+      if(this.numHints == 0){
+        this.expertMode = true;
+        this.showHintButton = false;
+      }
+      else{
+        this.showHintButton = true;
+      }
     }
 
   }

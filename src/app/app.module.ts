@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CountdownModule } from 'ngx-countdown';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 //
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -115,7 +116,15 @@ import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component'
     FormsModule,
     MatInputModule, MatListModule, MatPaginatorModule, MatProgressBarModule, CountdownModule,
     MatCardModule, MatFormFieldModule, MatDialogModule, MatGridListModule, MatRadioModule, ReactiveFormsModule,
-    MDBBootstrapModule.forRoot(),
+    MDBBootstrapModule, NgCircleProgressModule.forRoot({
+       // set defaults here
+      //  radius: 100,
+      //  outerStrokeWidth: 16,
+      //  innerStrokeWidth: 8,
+      //  outerStrokeColor: "#78C000",
+      //  innerStrokeColor: "#C7E596",
+      //  animationDuration: 300
+    }),
   ],
   entryComponents: [RateDialogComponent],
   providers: [],

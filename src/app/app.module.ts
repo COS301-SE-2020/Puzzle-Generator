@@ -62,6 +62,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { ChallengesComponent } from './pages/challenges/challenges.component';
 import { HintComponent } from './dialogs/hint/hint.component';
 import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
+import { AdminChallengeComponent } from './admin/admin-challenge/admin-challenge.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +97,7 @@ import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component'
     ChallengesComponent,
     HintComponent,
     LeaderboardComponent,
+    AdminChallengeComponent,
   ],
   imports: [
     BrowserModule,

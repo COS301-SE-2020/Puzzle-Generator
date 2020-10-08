@@ -19,6 +19,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { AboutComponent } from './pages/about/about.component';
 import { ChallengesComponent } from './pages/challenges/challenges.component';
 import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
+import { AdminChallengeComponent } from './admin/admin-challenge/admin-challenge.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,7 @@ const routes: Routes = [
   {path: 'adminUser', component: AdminUserComponent},
   {path: 'adminRatings', component: AdminRatingsComponent},
   {path: 'adminPuzzles', component: AdminPuzzlesComponent},
+  {path: 'adminChallenge', component: AdminChallengeComponent},
   {path: 'leaderboard', component: LeaderboardComponent},
 
 

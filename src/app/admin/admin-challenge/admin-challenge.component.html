@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid" >
+    <div fxLayout="row" fxLayout.xs="col wrap">
+    <mat-card class="chall">
+        <mat-card-header>
+            <h1>Create Challenges</h1>
+        </mat-card-header>
+        <mat-card-content class="content">
+            <form [formGroup]="challengeForm" (ngSubmit)="createChallenge()">
+
+            <div class="challengeOne">
+                <h3>Challenge One</h3>
+                <mat-form-field appearance="outline">
+                    <label for="name">Puzzle Name: </label>
+                    <input matInput formControlName="oneName"  placeholder="XYZ">
+                </mat-form-field>
+
+                <mat-form-field appearance="standard">
+                    <label for="name">Difficulty: </label>
+                    <input matInput formControlName="oneDiff"  placeholder="Intermediate">
+                </mat-form-field>
+            </div>
+            <hr>
+
+            <div class="challengeOne">
+                <h3>Challenge Two</h3>
+                <mat-form-field appearance="outline">
+                    <label for="name">Puzzle Name: </label>
+                    <input matInput formControlName="twoName"  placeholder="XYZ">
+                </mat-form-field>
+
+                <mat-form-field appearance="standard">
+                    <label for="name">Difficulty: </label>
+                    <input matInput formControlName="twoDiff"  placeholder="Novice">
+                </mat-form-field>
+            </div>
+            <hr>
+
+            <div class="challengeOne">
+                <h3>Bonus Challenge</h3>
+                <mat-form-field appearance="outline">
+                    <label for="name">Puzzle Name: </label>
+                    <input matInput formControlName="bonusName"  placeholder="XYZ">
+                </mat-form-field>
+
+                <mat-form-field appearance="standard">
+                    <label for="name">Difficulty: </label>
+                    <input matInput formControlName="bonusDiff"  placeholder="Expert">
+                </mat-form-field>
+            </div>
+            
+            <button mat-raised-button type="submit" class="btns" >Save</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+  </div>
+</div>
+
+<!-- <app-footer class="footer" ></app-footer> -->

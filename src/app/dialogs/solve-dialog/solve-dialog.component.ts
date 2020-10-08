@@ -75,6 +75,7 @@ export class SolveDialogComponent implements OnInit {
     }
 
     this.token =  localStorage.getItem('token');
+    localStorage.setItem('numHints', "" + this.fromPage);
     initializeDataSolve();
 
     if(this.fromPage > 5){

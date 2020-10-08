@@ -17,3 +17,13 @@
 .right{
   float: right;
 }
+
+.mediumImage {
+	height: 500px;
+	width: 75%;
+}
+
+.largeImage {
+	height: 50%;
+	width: 75%;
+}

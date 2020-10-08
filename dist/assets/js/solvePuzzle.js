@@ -1,7 +1,7 @@
 import Konva from 'konva';
 import JSZip from 'src/assets/js/jszip.min.js';
 import saveAs from 'src/assets/js/FileSaver.js';
-export { initializeDataSolve };
+export { initializeDataSolve, getPieceInCorrectPositionArray };
 
 let getPuzzleDataURL = 'https://prometheuspuzzles.herokuapp.com/api/puzzles/getPuzzleByID/';
 let saveSolveAttemptURL = 'https://prometheuspuzzles.herokuapp.com/api/puzzles/newSolveAttempt';
@@ -10,7 +10,7 @@ let correctPositions, pieceInCorrectPosition, correctOrientation;
 let defaultPalette = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine', 'AntiqueWhite', 'Red', 'Green'];
 let canvas, stage, layer, outline, board, puzzleID;
 let width = 1000, height = 500;
-let startTime, puzzleSolved;
+let startTime, puzzleSolved, selectedDifficulty, rotationEnabled;
 let solvedDiv;
 // window.onload = function(){
 // 	initializeDataSolve();
@@ -18,6 +18,7 @@ let solvedDiv;
 
 function initializeDataSolve()
 {
+
 	solvedDiv = document.getElementById('solvedDiv');
 	solvedDiv.remove();
 	correctPositions = [];
@@ -62,6 +63,29 @@ function initializeDataSolve()
 		if(!puzzleSolved)
 			saveSolveAttempt(false, puzzleID, startTime);
 	});
+	
+	let numHints = parseInt(localStorage.getItem('numHints'));
+	rotationEnabled = true;
+
+	if(numHints == 0)
+	{
+		selectedDifficulty = 'expert';
+	}
+	else if(numHints == 3)
+	{
+		selectedDifficulty = 'intermediate';
+	}
+	else
+	{
+		rotationEnabled = false;
+		selectedDifficulty = 'novice';
+	}
+	console.log(selectedDifficulty);
+}
+
+function getPieceInCorrectPositionArray()
+{
+	return pieceInCorrectPosition;
 }
 
 function saveSolveAttempt(solved, solvePuzzleID, solveStartTime)
@@ -70,12 +94,21 @@ function saveSolveAttempt(solved, solvePuzzleID, solveStartTime)
 	let timeTaken = performance.now();
 	timeTaken = (timeTaken - solveStartTime).toFixed(0);
 	timeTaken = Math.floor(timeTaken / 1000);
+	
+	let gainedExp = 0;
+	if(solved && selectedDifficulty == 'expert')
+		gainedExp = 50;
+	else if(solved && selectedDifficulty == 'intermediate')
+		gainedExp = 30;
+	else if(solved && selectedDifficulty == 'novice')
+		gainedExp = 10;
 
 	let jsonData = {
 		token: token,
 		puzzleID: solvePuzzleID,
 		attemptDuration: timeTaken,
-		solved: solved
+		solved: solved,
+		xp: gainedExp
 	};
 
 	$.ajax({
@@ -184,7 +217,7 @@ function generatePieces()
 
 		group.on('dblclick', function() {
 			// piece.rotate(90);
-			if(pieceInCorrectPosition[pieceIndex] == false)
+			if(rotationEnabled && pieceInCorrectPosition[pieceIndex] == false)
 			{
 				generalTransformer.nodes([piece]);
 				let attributes = generalTransformer._getNodeRect();
@@ -219,23 +252,30 @@ function generatePieces()
 		group.draggable(true);
 		layer.add(group);
 
-		//randomly rotate piece
-		group.add(generalTransformer);
-		generalTransformer.nodes([piece]);
-		var attributes = generalTransformer._getNodeRect();
-		var shape = rotateAroundCenter(attributes, getRandomRotation());
-		
-		if(shape.rotation == 0)
+		if(rotationEnabled)
 		{
-			console.log('correct orientation');
-			correctOrientation[pieceIndex] = true;
+			//randomly rotate piece
+			group.add(generalTransformer);
+			generalTransformer.nodes([piece]);
+			var attributes = generalTransformer._getNodeRect();
+			var shape = rotateAroundCenter(attributes, getRandomRotation());
+			generalTransformer._fitNodesInto(shape);
+			
+			if(shape.rotation == 0)
+			{
+				console.log('correct orientation');
+				correctOrientation[pieceIndex] = true;
+			}
+			else
+			{
+				correctOrientation[pieceIndex] = false;
+			}
 		}
 		else
 		{
-			correctOrientation[pieceIndex] = false;
+				correctOrientation[pieceIndex] = true;
 		}
 
-		generalTransformer._fitNodesInto(shape);
 	}
 
 	layer.add(board);

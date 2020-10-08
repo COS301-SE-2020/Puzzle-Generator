@@ -1,8 +1,9 @@
 import * as THREE from 'src/assets/js/three.module.js';
 import { OrbitControls } from 'src/assets/js/OrbitControls.js';
-export { initiate3DCanvas, render3D };
+export { initiate3DCanvas, render3D, render2D };
 
 let scene, camera, renderer, line, points, pieceGeometry, pieceGeometryArray, piece;
+let tile;
 let factor = 5;
 
 function initiate3DCanvas(height, width)
@@ -31,9 +32,15 @@ function render3D(jsonData, appendedString)
 	let pieceGeometryArray = extractPoints(jsonData.pieces, jsonData.depths);
 	let pieceMeshArray = generateAndColorMeshes(pieceGeometryArray, jsonData.colors);
 	addMeshesToScene(pieceMeshArray);
+	tile = document.getElementById('container'+appendedString).innerHTML;
 	document.getElementById('container'+appendedString).innerHTML = "";
 	document.getElementById('container'+appendedString).appendChild(renderer.domElement);
 	animate();
+}
+
+function render2D(appendedString)
+{
+	document.getElementById('container'+appendedString).innerHTML = tile;
 }
 
 function addMeshesToScene(meshArray)
@@ -50,11 +57,17 @@ function generateAndColorMeshes(pieceGeometryArray, colors)
 {
 	let tempPieceMeshArray = [];
 	let material;
-	for(let i = 0; i <  pieceGeometryArray.length; i++)
+	let numberOfPiecesPerFace = pieceGeometryArray.length/2;
+	let colorCounter = 0;
+	for(let i = 0; i < pieceGeometryArray.length; i+=2)
 	{
 		// Create mesh with geo and MeshBasicMaterial
-		material = new THREE.MeshBasicMaterial({color: colors[(i % colors.length)]});
+		material = new THREE.MeshBasicMaterial({color: colors[(colorCounter % colors.length)]});
 		tempPieceMeshArray.push(new THREE.Mesh(pieceGeometryArray[i], material));
+		material = new THREE.MeshBasicMaterial({color: colors[( (colorCounter+numberOfPiecesPerFace) % colors.length )]});
+		tempPieceMeshArray.push(new THREE.Mesh(pieceGeometryArray[i+1], material));
+
+		colorCounter++;
 	}
 
 	return tempPieceMeshArray;

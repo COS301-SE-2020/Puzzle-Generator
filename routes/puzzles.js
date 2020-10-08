@@ -7,6 +7,7 @@ const Puzzle = require('../models/Puzzle');
 const PuzzleRating = require('../models/PuzzleRating')
 const Sequelize = require('sequelize');
 const SolveAttempt = require('../models/SolveAttempt');
+const Challenge = require('../models/Challenge');
 const Op = Sequelize.Op;
 
 /**

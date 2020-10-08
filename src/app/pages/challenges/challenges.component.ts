@@ -19,6 +19,7 @@ export class ChallengesComponent implements OnInit {
   year: any = this.date.getFullYear();
   months: any[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
   actualMonth: any = this.months[this.month];
+  xppoints: number;
 
   token: any;
   solveDialog: MatDialogRef<SolveDialogComponent>
@@ -58,17 +59,17 @@ export class ChallengesComponent implements OnInit {
       this.timeID = data[0].timeID;
       this.timeImage = data[0].timeImage;
       this.timeName = data[0].timeName;
-      if(this.timeDif == "Novice"){ this.timeDur = 90;}
-      else if(this.timeDif == "Intermediate"){ this.timeDur = 45;}
-      else if (this.timeDif == "Expert"){ this.timeDur = 25;}
+      if(this.timeDif == "Novice"){ this.timeDur = 90; this.xppoints = 10;}
+      else if(this.timeDif == "Intermediate"){ this.timeDur = 45; this.xppoints = 30;}
+      else if (this.timeDif == "Expert"){ this.timeDur = 25; this.xppoints = 50;}
       //
       this.solveDif = data[1].solveDifficulty;
       this.solveID = data[1].solveID;
       this.solveImage = data[1].solveImage;
       this.solveName = data[1].solveName;
-      if(this.solveDif == "Novice"){ this.solveHints = 5}
-      else if(this.solveDif == "Intermediate"){ this.solveHints = 3}
-      else if(this.solveDif == "Expert"){ this.solveHints = 0}
+      if(this.solveDif == "Novice"){ this.solveHints = 5; this.xppoints = 10;}
+      else if(this.solveDif == "Intermediate"){ this.solveHints = 3; this.xppoints = 30;}
+      else if(this.solveDif == "Expert"){ this.solveHints = 0; this.xppoints = 50;}
     })
   }
 

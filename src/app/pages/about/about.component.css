@@ -27,3 +27,7 @@
 	height: 50%;
 	width: 75%;
 }
+
+mat-card-content{
+  font-size: medium;
+}

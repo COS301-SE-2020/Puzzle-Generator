@@ -66,6 +66,327 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   },
 
   /***/
+  "./src/app/admin/admin-challenge/admin-challenge.component.ts":
+  /*!********************************************************************!*\
+    !*** ./src/app/admin/admin-challenge/admin-challenge.component.ts ***!
+    \********************************************************************/
+
+  /*! exports provided: AdminChallengeComponent */
+
+  /***/
+  function srcAppAdminAdminChallengeAdminChallengeComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AdminChallengeComponent", function () {
+      return AdminChallengeComponent;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var src_app_services_api_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! src/app/services/api.service */
+    "./src/app/services/api.service.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/material/dialog */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/dialog.js");
+    /* harmony import */
+
+
+    var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../../navbar/navbar.component */
+    "./src/app/navbar/navbar.component.ts");
+    /* harmony import */
+
+
+    var _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/flex-layout/flex */
+    "./node_modules/@angular/flex-layout/__ivy_ngcc__/esm2015/flex.js");
+    /* harmony import */
+
+
+    var _angular_material_card__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @angular/material/card */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/card.js");
+    /* harmony import */
+
+
+    var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @angular/material/form-field */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/form-field.js");
+    /* harmony import */
+
+
+    var _angular_material_input__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! @angular/material/input */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/input.js");
+    /* harmony import */
+
+
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! @angular/material/button */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
+
+    var AdminChallengeComponent = /*#__PURE__*/function () {
+      function AdminChallengeComponent(api, formBuilder, router, dialog) {
+        _classCallCheck(this, AdminChallengeComponent);
+
+        this.api = api;
+        this.formBuilder = formBuilder;
+        this.router = router;
+        this.dialog = dialog;
+        this.error_messages = {
+          'name': [{
+            type: 'required',
+            message: 'Name is required.'
+          }, {
+            type: 'pattern',
+            message: 'Name can only consist of letters'
+          }]
+        };
+      }
+
+      _createClass(AdminChallengeComponent, [{
+        key: "createChallenge",
+        value: function createChallenge() {}
+      }, {
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          this.challengeForm = this.formBuilder.group({
+            oneName: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern('[a-zA-Z ]*')]],
+            twoName: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern('[a-zA-Z ]*')]],
+            bonusName: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern('[a-zA-Z ]*')]],
+            oneDif: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern('[a-zA-Z ]*')]],
+            twoDiff: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern('[a-zA-Z ]*')]],
+            bonusDiff: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern('[a-zA-Z ]*')]]
+          });
+        }
+      }]);
+
+      return AdminChallengeComponent;
+    }();
+
+    AdminChallengeComponent.ɵfac = function AdminChallengeComponent_Factory(t) {
+      return new (t || AdminChallengeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_api_service__WEBPACK_IMPORTED_MODULE_2__["APIService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_4__["MatDialog"]));
+    };
+
+    AdminChallengeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+      type: AdminChallengeComponent,
+      selectors: [["app-admin-challenge"]],
+      decls: 46,
+      vars: 1,
+      consts: [[1, "container-fluid"], ["fxLayout", "row", "fxLayout.xs", "col wrap"], [1, "chall"], [1, "content"], [3, "formGroup", "ngSubmit"], [1, "challengeOne"], ["appearance", "outline"], ["for", "name"], ["matInput", "", "formControlName", "oneName", "placeholder", "XYZ"], ["appearance", "standard"], ["matInput", "", "formControlName", "oneDiff", "placeholder", "Intermediate"], ["matInput", "", "formControlName", "twoName", "placeholder", "XYZ"], ["matInput", "", "formControlName", "twoDiff", "placeholder", "Novice"], ["matInput", "", "formControlName", "bonusName", "placeholder", "XYZ"], ["matInput", "", "formControlName", "bonusDiff", "placeholder", "Expert"], ["mat-raised-button", "", "type", "submit", 1, "btns"]],
+      template: function AdminChallengeComponent_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-navbar");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 0);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "mat-card", 2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "mat-card-header");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "h1");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Create Challenges");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "mat-card-content", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "form", 4);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngSubmit", function AdminChallengeComponent_Template_form_ngSubmit_8_listener() {
+            return ctx.createChallenge();
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 5);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "h3");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Challenge One");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "mat-form-field", 6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "label", 7);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Puzzle Name: ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](15, "input", 8);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "mat-form-field", 9);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "label", 7);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18, "Difficulty: ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](19, "input", 10);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](20, "hr");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "div", 5);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "h3");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23, "Challenge Two");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "mat-form-field", 6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "label", 7);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Puzzle Name: ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](27, "input", 11);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "mat-form-field", 9);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "label", 7);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "Difficulty: ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](31, "input", 12);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](32, "hr");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "div", 5);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "h3");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](35, "Bonus Challenge");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "mat-form-field", 6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "label", 7);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](38, "Puzzle Name: ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](39, "input", 13);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "mat-form-field", 9);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "label", 7);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](42, "Difficulty: ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](43, "input", 14);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](44, "button", 15);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](45, "Save");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        }
+
+        if (rf & 2) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formGroup", ctx.challengeForm);
+        }
+      },
+      directives: [_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_5__["NavbarComponent"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_6__["DefaultLayoutDirective"], _angular_material_card__WEBPACK_IMPORTED_MODULE_7__["MatCard"], _angular_material_card__WEBPACK_IMPORTED_MODULE_7__["MatCardHeader"], _angular_material_card__WEBPACK_IMPORTED_MODULE_7__["MatCardContent"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroupDirective"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_8__["MatFormField"], _angular_material_input__WEBPACK_IMPORTED_MODULE_9__["MatInput"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControlName"], _angular_material_button__WEBPACK_IMPORTED_MODULE_10__["MatButton"]],
+      styles: [".chall[_ngcontent-%COMP%]{\r\n    background-color: gainsboro;\r\n    margin: auto;\r\n    margin-bottom: 2rem;\r\n}\r\n\r\n.content[_ngcontent-%COMP%]{\r\n    display: inline-block;\r\n    \r\n}\r\n\r\n.challengeOne[_ngcontent-%COMP%]{\r\n    background-color: ghostwhite;\r\n    padding: 1rem;\r\n}\r\n\r\n.footer[_ngcontent-%COMP%] {\r\n    background-color: #7C593A;\r\n    line-height: 3rem;\r\n  }\r\n\r\n.btns[_ngcontent-%COMP%]:hover{\r\n    \r\n    background-color: white;\r\n    color: #7C593A;\r\n    border: #7C593A solid 0.1px;\r\n   }\r\n\r\n.btns[_ngcontent-%COMP%]{\r\n    background-color: #7C593A;\r\n    color: white;\r\n    margin: 0.5vw;\r\n    \r\n    border: 1px solid white;\r\n    text-align: center;\r\n    font-size: 1.5rem;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWRtaW4vYWRtaW4tY2hhbGxlbmdlL2FkbWluLWNoYWxsZW5nZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksMkJBQTJCO0lBQzNCLFlBQVk7SUFDWixtQkFBbUI7QUFDdkI7O0FBRUE7SUFDSSxxQkFBcUI7SUFDckIsa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0ksNEJBQTRCO0lBQzVCLGFBQWE7QUFDakI7O0FBRUE7SUFDSSx5QkFBeUI7SUFDekIsaUJBQWlCO0VBQ25COztBQUVGO0lBQ0ksd0NBQXdDO0lBQ3hDLHVCQUF1QjtJQUN2QixjQUFjO0lBQ2QsMkJBQTJCO0dBQzVCOztBQUVBO0lBQ0MseUJBQXlCO0lBQ3pCLFlBQVk7SUFDWixhQUFhO0lBQ2IsZ0JBQWdCO0lBQ2hCLHVCQUF1QjtJQUN2QixrQkFBa0I7SUFDbEIsaUJBQWlCO0FBQ3JCIiwiZmlsZSI6InNyYy9hcHAvYWRtaW4vYWRtaW4tY2hhbGxlbmdlL2FkbWluLWNoYWxsZW5nZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNoYWxse1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogZ2FpbnNib3JvO1xyXG4gICAgbWFyZ2luOiBhdXRvO1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMnJlbTtcclxufVxyXG5cclxuLmNvbnRlbnR7XHJcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgICAvKiBtYXJnaW46IDFyZW07ICovXHJcbn1cclxuXHJcbi5jaGFsbGVuZ2VPbmV7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBnaG9zdHdoaXRlO1xyXG4gICAgcGFkZGluZzogMXJlbTtcclxufVxyXG5cclxuLmZvb3RlciB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjN0M1OTNBO1xyXG4gICAgbGluZS1oZWlnaHQ6IDNyZW07XHJcbiAgfVxyXG5cclxuLmJ0bnM6aG92ZXJ7XHJcbiAgICAvKiBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsMCwwLDAuNyk7OyAqL1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XHJcbiAgICBjb2xvcjogIzdDNTkzQTtcclxuICAgIGJvcmRlcjogIzdDNTkzQSBzb2xpZCAwLjFweDtcclxuICAgfVxyXG5cclxuICAgLmJ0bnN7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjN0M1OTNBO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgbWFyZ2luOiAwLjV2dztcclxuICAgIC8qIHdpZHRoOiA1MCU7ICovXHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCB3aGl0ZTtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGZvbnQtc2l6ZTogMS41cmVtO1xyXG59Il19 */"]
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AdminChallengeComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+          selector: 'app-admin-challenge',
+          templateUrl: './admin-challenge.component.html',
+          styleUrls: ['./admin-challenge.component.css']
+        }]
+      }], function () {
+        return [{
+          type: src_app_services_api_service__WEBPACK_IMPORTED_MODULE_2__["APIService"]
+        }, {
+          type: _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"]
+        }, {
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
+        }, {
+          type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_4__["MatDialog"]
+        }];
+      }, null);
+    })();
+    /***/
+
+  },
+
+  /***/
   "./src/app/admin/admin-puzzles/admin-puzzles.component.ts":
   /*!****************************************************************!*\
     !*** ./src/app/admin/admin-puzzles/admin-puzzles.component.ts ***!
@@ -2376,6 +2697,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _pages_leaderboard_leaderboard_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
     /*! ./pages/leaderboard/leaderboard.component */
     "./src/app/pages/leaderboard/leaderboard.component.ts");
+    /* harmony import */
+
+
+    var _admin_admin_challenge_admin_challenge_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
+    /*! ./admin/admin-challenge/admin-challenge.component */
+    "./src/app/admin/admin-challenge/admin-challenge.component.ts");
 
     var routes = [{
       path: 'index',
@@ -2428,6 +2755,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }, {
       path: 'adminPuzzles',
       component: _admin_admin_puzzles_admin_puzzles_component__WEBPACK_IMPORTED_MODULE_16__["AdminPuzzlesComponent"]
+    }, {
+      path: 'adminChallenge',
+      component: _admin_admin_challenge_admin_challenge_component__WEBPACK_IMPORTED_MODULE_20__["AdminChallengeComponent"]
     }, {
       path: 'leaderboard',
       component: _pages_leaderboard_leaderboard_component__WEBPACK_IMPORTED_MODULE_19__["LeaderboardComponent"]
@@ -2910,7 +3240,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var _pages_leaderboard_leaderboard_component__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(
     /*! ./pages/leaderboard/leaderboard.component */
-    "./src/app/pages/leaderboard/leaderboard.component.ts"); //
+    "./src/app/pages/leaderboard/leaderboard.component.ts");
+    /* harmony import */
+
+
+    var _admin_admin_challenge_admin_challenge_component__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(
+    /*! ./admin/admin-challenge/admin-challenge.component */
+    "./src/app/admin/admin-challenge/admin-challenge.component.ts"); //
     //pages
 
 
@@ -2932,7 +3268,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     (function () {
       (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](AppModule, {
-        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"], _pages_index_index_component__WEBPACK_IMPORTED_MODULE_27__["IndexComponent"], _pages_signup_signup_component__WEBPACK_IMPORTED_MODULE_28__["SignupComponent"], _pages_login_login_component__WEBPACK_IMPORTED_MODULE_29__["LoginComponent"], _pages_profile_profile_component__WEBPACK_IMPORTED_MODULE_30__["ProfileComponent"], _pages_ratings_ratings_component__WEBPACK_IMPORTED_MODULE_32__["RatingsComponent"], _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_31__["NavbarComponent"], _pages_reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_33__["ResetPasswordComponent"], _pages_reset_success_reset_success_component__WEBPACK_IMPORTED_MODULE_34__["ResetSuccessComponent"], _pages_create_create_component__WEBPACK_IMPORTED_MODULE_35__["CreateComponent"], _rate_dialog_rate_dialog_component__WEBPACK_IMPORTED_MODULE_36__["RateDialogComponent"], _pages_profile_puzzles_profile_puzzles_component__WEBPACK_IMPORTED_MODULE_37__["ProfilePuzzlesComponent"], _pages_profile_ratings_profile_ratings_component__WEBPACK_IMPORTED_MODULE_38__["ProfileRatingsComponent"], _pages_aicreate_aicreate_component__WEBPACK_IMPORTED_MODULE_39__["AICreateComponent"], _admin_admin_user_admin_user_component__WEBPACK_IMPORTED_MODULE_40__["AdminUserComponent"], _admin_admin_ratings_admin_ratings_component__WEBPACK_IMPORTED_MODULE_41__["AdminRatingsComponent"], _admin_admin_puzzles_admin_puzzles_component__WEBPACK_IMPORTED_MODULE_42__["AdminPuzzlesComponent"], _dialogs_solve_dialog_solve_dialog_component__WEBPACK_IMPORTED_MODULE_43__["SolveDialogComponent"], _pages_profile_solved_puzzles_profile_solved_puzzles_component__WEBPACK_IMPORTED_MODULE_44__["ProfileSolvedPuzzlesComponent"], _dialogs_menu_menu_component__WEBPACK_IMPORTED_MODULE_45__["MenuComponent"], _dialogs_create_dialog_create_dialog_component__WEBPACK_IMPORTED_MODULE_46__["CreateDialogComponent"], _dialogs_login_dialog_login_dialog_component__WEBPACK_IMPORTED_MODULE_47__["LoginDialogComponent"], _dialogs_profile_update_dialog_profile_update_dialog_component__WEBPACK_IMPORTED_MODULE_48__["ProfileUpdateDialogComponent"], _dialogs_successful_solve_successful_solve_component__WEBPACK_IMPORTED_MODULE_49__["SuccessfulSolveComponent"], _dialogs_email_pass_email_pass_component__WEBPACK_IMPORTED_MODULE_50__["EmailPassComponent"], _pages_footer_footer_component__WEBPACK_IMPORTED_MODULE_51__["FooterComponent"], _dialogs_profile_puzzles_dialog_profile_puzzles_dialog_component__WEBPACK_IMPORTED_MODULE_52__["ProfilePuzzlesDialogComponent"], _pages_about_about_component__WEBPACK_IMPORTED_MODULE_53__["AboutComponent"], _pages_challenges_challenges_component__WEBPACK_IMPORTED_MODULE_54__["ChallengesComponent"], _dialogs_hint_hint_component__WEBPACK_IMPORTED_MODULE_55__["HintComponent"], _pages_leaderboard_leaderboard_component__WEBPACK_IMPORTED_MODULE_56__["LeaderboardComponent"]],
+        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"], _pages_index_index_component__WEBPACK_IMPORTED_MODULE_27__["IndexComponent"], _pages_signup_signup_component__WEBPACK_IMPORTED_MODULE_28__["SignupComponent"], _pages_login_login_component__WEBPACK_IMPORTED_MODULE_29__["LoginComponent"], _pages_profile_profile_component__WEBPACK_IMPORTED_MODULE_30__["ProfileComponent"], _pages_ratings_ratings_component__WEBPACK_IMPORTED_MODULE_32__["RatingsComponent"], _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_31__["NavbarComponent"], _pages_reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_33__["ResetPasswordComponent"], _pages_reset_success_reset_success_component__WEBPACK_IMPORTED_MODULE_34__["ResetSuccessComponent"], _pages_create_create_component__WEBPACK_IMPORTED_MODULE_35__["CreateComponent"], _rate_dialog_rate_dialog_component__WEBPACK_IMPORTED_MODULE_36__["RateDialogComponent"], _pages_profile_puzzles_profile_puzzles_component__WEBPACK_IMPORTED_MODULE_37__["ProfilePuzzlesComponent"], _pages_profile_ratings_profile_ratings_component__WEBPACK_IMPORTED_MODULE_38__["ProfileRatingsComponent"], _pages_aicreate_aicreate_component__WEBPACK_IMPORTED_MODULE_39__["AICreateComponent"], _admin_admin_user_admin_user_component__WEBPACK_IMPORTED_MODULE_40__["AdminUserComponent"], _admin_admin_ratings_admin_ratings_component__WEBPACK_IMPORTED_MODULE_41__["AdminRatingsComponent"], _admin_admin_puzzles_admin_puzzles_component__WEBPACK_IMPORTED_MODULE_42__["AdminPuzzlesComponent"], _dialogs_solve_dialog_solve_dialog_component__WEBPACK_IMPORTED_MODULE_43__["SolveDialogComponent"], _pages_profile_solved_puzzles_profile_solved_puzzles_component__WEBPACK_IMPORTED_MODULE_44__["ProfileSolvedPuzzlesComponent"], _dialogs_menu_menu_component__WEBPACK_IMPORTED_MODULE_45__["MenuComponent"], _dialogs_create_dialog_create_dialog_component__WEBPACK_IMPORTED_MODULE_46__["CreateDialogComponent"], _dialogs_login_dialog_login_dialog_component__WEBPACK_IMPORTED_MODULE_47__["LoginDialogComponent"], _dialogs_profile_update_dialog_profile_update_dialog_component__WEBPACK_IMPORTED_MODULE_48__["ProfileUpdateDialogComponent"], _dialogs_successful_solve_successful_solve_component__WEBPACK_IMPORTED_MODULE_49__["SuccessfulSolveComponent"], _dialogs_email_pass_email_pass_component__WEBPACK_IMPORTED_MODULE_50__["EmailPassComponent"], _pages_footer_footer_component__WEBPACK_IMPORTED_MODULE_51__["FooterComponent"], _dialogs_profile_puzzles_dialog_profile_puzzles_dialog_component__WEBPACK_IMPORTED_MODULE_52__["ProfilePuzzlesDialogComponent"], _pages_about_about_component__WEBPACK_IMPORTED_MODULE_53__["AboutComponent"], _pages_challenges_challenges_component__WEBPACK_IMPORTED_MODULE_54__["ChallengesComponent"], _dialogs_hint_hint_component__WEBPACK_IMPORTED_MODULE_55__["HintComponent"], _pages_leaderboard_leaderboard_component__WEBPACK_IMPORTED_MODULE_56__["LeaderboardComponent"], _admin_admin_challenge_admin_challenge_component__WEBPACK_IMPORTED_MODULE_57__["AdminChallengeComponent"]],
         imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], ngx_pagination__WEBPACK_IMPORTED_MODULE_2__["NgxPaginationModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["BrowserAnimationsModule"], _angular_flex_layout__WEBPACK_IMPORTED_MODULE_7__["FlexLayoutModule"], _angular_material_button__WEBPACK_IMPORTED_MODULE_8__["MatButtonModule"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_9__["MatDividerModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_10__["MatIconModule"], _angular_material_menu__WEBPACK_IMPORTED_MODULE_11__["MatMenuModule"], _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_12__["MatProgressSpinnerModule"], _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_13__["MatToolbarModule"], _angular_material_table__WEBPACK_IMPORTED_MODULE_14__["MatTableModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_15__["HttpClientModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_16__["FormsModule"], _angular_material_sort__WEBPACK_IMPORTED_MODULE_26__["MatSortModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_17__["MatInputModule"], _angular_material_list__WEBPACK_IMPORTED_MODULE_23__["MatListModule"], _angular_material_paginator__WEBPACK_IMPORTED_MODULE_24__["MatPaginatorModule"], _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_25__["MatProgressBarModule"], _angular_material_card__WEBPACK_IMPORTED_MODULE_18__["MatCardModule"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_19__["MatFormFieldModule"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_20__["MatDialogModule"], _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_21__["MatGridListModule"], _angular_material_radio__WEBPACK_IMPORTED_MODULE_22__["MatRadioModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_16__["ReactiveFormsModule"], angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_3__["MDBRootModule"]]
       });
     })();
@@ -2943,7 +3279,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](AppModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{
-          declarations: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"], _pages_index_index_component__WEBPACK_IMPORTED_MODULE_27__["IndexComponent"], _pages_signup_signup_component__WEBPACK_IMPORTED_MODULE_28__["SignupComponent"], _pages_login_login_component__WEBPACK_IMPORTED_MODULE_29__["LoginComponent"], _pages_profile_profile_component__WEBPACK_IMPORTED_MODULE_30__["ProfileComponent"], _pages_ratings_ratings_component__WEBPACK_IMPORTED_MODULE_32__["RatingsComponent"], _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_31__["NavbarComponent"], _pages_reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_33__["ResetPasswordComponent"], _pages_reset_success_reset_success_component__WEBPACK_IMPORTED_MODULE_34__["ResetSuccessComponent"], _pages_create_create_component__WEBPACK_IMPORTED_MODULE_35__["CreateComponent"], _rate_dialog_rate_dialog_component__WEBPACK_IMPORTED_MODULE_36__["RateDialogComponent"], _pages_profile_puzzles_profile_puzzles_component__WEBPACK_IMPORTED_MODULE_37__["ProfilePuzzlesComponent"], _pages_profile_ratings_profile_ratings_component__WEBPACK_IMPORTED_MODULE_38__["ProfileRatingsComponent"], _pages_aicreate_aicreate_component__WEBPACK_IMPORTED_MODULE_39__["AICreateComponent"], _admin_admin_user_admin_user_component__WEBPACK_IMPORTED_MODULE_40__["AdminUserComponent"], _admin_admin_ratings_admin_ratings_component__WEBPACK_IMPORTED_MODULE_41__["AdminRatingsComponent"], _admin_admin_puzzles_admin_puzzles_component__WEBPACK_IMPORTED_MODULE_42__["AdminPuzzlesComponent"], _dialogs_solve_dialog_solve_dialog_component__WEBPACK_IMPORTED_MODULE_43__["SolveDialogComponent"], _pages_profile_solved_puzzles_profile_solved_puzzles_component__WEBPACK_IMPORTED_MODULE_44__["ProfileSolvedPuzzlesComponent"], _dialogs_menu_menu_component__WEBPACK_IMPORTED_MODULE_45__["MenuComponent"], _dialogs_create_dialog_create_dialog_component__WEBPACK_IMPORTED_MODULE_46__["CreateDialogComponent"], _dialogs_login_dialog_login_dialog_component__WEBPACK_IMPORTED_MODULE_47__["LoginDialogComponent"], _dialogs_profile_update_dialog_profile_update_dialog_component__WEBPACK_IMPORTED_MODULE_48__["ProfileUpdateDialogComponent"], _dialogs_successful_solve_successful_solve_component__WEBPACK_IMPORTED_MODULE_49__["SuccessfulSolveComponent"], _dialogs_email_pass_email_pass_component__WEBPACK_IMPORTED_MODULE_50__["EmailPassComponent"], _pages_footer_footer_component__WEBPACK_IMPORTED_MODULE_51__["FooterComponent"], _dialogs_profile_puzzles_dialog_profile_puzzles_dialog_component__WEBPACK_IMPORTED_MODULE_52__["ProfilePuzzlesDialogComponent"], _pages_about_about_component__WEBPACK_IMPORTED_MODULE_53__["AboutComponent"], _pages_challenges_challenges_component__WEBPACK_IMPORTED_MODULE_54__["ChallengesComponent"], _dialogs_hint_hint_component__WEBPACK_IMPORTED_MODULE_55__["HintComponent"], _pages_leaderboard_leaderboard_component__WEBPACK_IMPORTED_MODULE_56__["LeaderboardComponent"]],
+          declarations: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"], _pages_index_index_component__WEBPACK_IMPORTED_MODULE_27__["IndexComponent"], _pages_signup_signup_component__WEBPACK_IMPORTED_MODULE_28__["SignupComponent"], _pages_login_login_component__WEBPACK_IMPORTED_MODULE_29__["LoginComponent"], _pages_profile_profile_component__WEBPACK_IMPORTED_MODULE_30__["ProfileComponent"], _pages_ratings_ratings_component__WEBPACK_IMPORTED_MODULE_32__["RatingsComponent"], _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_31__["NavbarComponent"], _pages_reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_33__["ResetPasswordComponent"], _pages_reset_success_reset_success_component__WEBPACK_IMPORTED_MODULE_34__["ResetSuccessComponent"], _pages_create_create_component__WEBPACK_IMPORTED_MODULE_35__["CreateComponent"], _rate_dialog_rate_dialog_component__WEBPACK_IMPORTED_MODULE_36__["RateDialogComponent"], _pages_profile_puzzles_profile_puzzles_component__WEBPACK_IMPORTED_MODULE_37__["ProfilePuzzlesComponent"], _pages_profile_ratings_profile_ratings_component__WEBPACK_IMPORTED_MODULE_38__["ProfileRatingsComponent"], _pages_aicreate_aicreate_component__WEBPACK_IMPORTED_MODULE_39__["AICreateComponent"], _admin_admin_user_admin_user_component__WEBPACK_IMPORTED_MODULE_40__["AdminUserComponent"], _admin_admin_ratings_admin_ratings_component__WEBPACK_IMPORTED_MODULE_41__["AdminRatingsComponent"], _admin_admin_puzzles_admin_puzzles_component__WEBPACK_IMPORTED_MODULE_42__["AdminPuzzlesComponent"], _dialogs_solve_dialog_solve_dialog_component__WEBPACK_IMPORTED_MODULE_43__["SolveDialogComponent"], _pages_profile_solved_puzzles_profile_solved_puzzles_component__WEBPACK_IMPORTED_MODULE_44__["ProfileSolvedPuzzlesComponent"], _dialogs_menu_menu_component__WEBPACK_IMPORTED_MODULE_45__["MenuComponent"], _dialogs_create_dialog_create_dialog_component__WEBPACK_IMPORTED_MODULE_46__["CreateDialogComponent"], _dialogs_login_dialog_login_dialog_component__WEBPACK_IMPORTED_MODULE_47__["LoginDialogComponent"], _dialogs_profile_update_dialog_profile_update_dialog_component__WEBPACK_IMPORTED_MODULE_48__["ProfileUpdateDialogComponent"], _dialogs_successful_solve_successful_solve_component__WEBPACK_IMPORTED_MODULE_49__["SuccessfulSolveComponent"], _dialogs_email_pass_email_pass_component__WEBPACK_IMPORTED_MODULE_50__["EmailPassComponent"], _pages_footer_footer_component__WEBPACK_IMPORTED_MODULE_51__["FooterComponent"], _dialogs_profile_puzzles_dialog_profile_puzzles_dialog_component__WEBPACK_IMPORTED_MODULE_52__["ProfilePuzzlesDialogComponent"], _pages_about_about_component__WEBPACK_IMPORTED_MODULE_53__["AboutComponent"], _pages_challenges_challenges_component__WEBPACK_IMPORTED_MODULE_54__["ChallengesComponent"], _dialogs_hint_hint_component__WEBPACK_IMPORTED_MODULE_55__["HintComponent"], _pages_leaderboard_leaderboard_component__WEBPACK_IMPORTED_MODULE_56__["LeaderboardComponent"], _admin_admin_challenge_admin_challenge_component__WEBPACK_IMPORTED_MODULE_57__["AdminChallengeComponent"]],
           imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], ngx_pagination__WEBPACK_IMPORTED_MODULE_2__["NgxPaginationModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["BrowserAnimationsModule"], _angular_flex_layout__WEBPACK_IMPORTED_MODULE_7__["FlexLayoutModule"], _angular_material_button__WEBPACK_IMPORTED_MODULE_8__["MatButtonModule"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_9__["MatDividerModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_10__["MatIconModule"], _angular_material_menu__WEBPACK_IMPORTED_MODULE_11__["MatMenuModule"], _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_12__["MatProgressSpinnerModule"], _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_13__["MatToolbarModule"], _angular_material_table__WEBPACK_IMPORTED_MODULE_14__["MatTableModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_15__["HttpClientModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_16__["FormsModule"], _angular_material_sort__WEBPACK_IMPORTED_MODULE_26__["MatSortModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_17__["MatInputModule"], _angular_material_list__WEBPACK_IMPORTED_MODULE_23__["MatListModule"], _angular_material_paginator__WEBPACK_IMPORTED_MODULE_24__["MatPaginatorModule"], _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_25__["MatProgressBarModule"], _angular_material_card__WEBPACK_IMPORTED_MODULE_18__["MatCardModule"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_19__["MatFormFieldModule"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_20__["MatDialogModule"], _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_21__["MatGridListModule"], _angular_material_radio__WEBPACK_IMPORTED_MODULE_22__["MatRadioModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_16__["ReactiveFormsModule"], angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_3__["MDBBootstrapModule"].forRoot()],
           entryComponents: [_rate_dialog_rate_dialog_component__WEBPACK_IMPORTED_MODULE_36__["RateDialogComponent"]],
           providers: [],
@@ -4536,6 +4872,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "br");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "a", 32);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, "Challenges");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -4579,7 +4923,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       selectors: [["app-navbar"]],
       decls: 54,
       vars: 2,
-      consts: [[1, "container-fluid"], [1, "logo"], ["src", "assets/images/logo_nav.png", "routerLink", "/ratings", 1, "navimg"], ["id", "navCustom", 1, "navbar", "navbar-expand-sm"], [1, "left"], ["id", "burger", "type", "button", "data-toggle", "collapse", "data-target", "#navbarSupportedContent1", "aria-controls", "navbarSupportedContent1", "aria-expanded", "false", "aria-label", "Toggle navigation", 1, "navbar-toggler", "hidden-sm", "hidden-md", "hidden-lg", "hidden-xl"], [1, "fa", "fa-bars", "fa-2x"], ["id", "navbarSupportedContent1", 1, "collapse", "navbar-collapse", "left"], ["routerLinkActive", "active", 1, "nav", "navbar-nav", "mr-auto"], [1, "nav-item"], ["routerLink", "/ratings", 1, "nav-link"], [1, "nav-item", "dropdown"], ["role", "button", "id", "navbarDropdown", "data-toggle", "dropdown", "aria-haspopup", "true", "aria-expanded", "false", 1, "nav-link", "dropdown-toggle"], [1, "caret"], ["aria-labelledby", "navbarDropdown", 1, "dropdown-menu"], ["routerLink", "/create", 1, "dropdown-item"], ["routerLink", "/aicreate", 1, "dropdown-item"], ["role", "button", "id", "navbarDropdown2", "data-toggle", "dropdown", "aria-haspopup", "true", "aria-expanded", "false", 1, "nav-link", "dropdown-toggle"], ["aria-labelledby", "navbarDropdown2", 1, "dropdown-menu"], ["routerLink", "/profile", 1, "dropdown-item"], ["routerLink", "/profilePuzzles", 1, "dropdown-item"], ["routerLink", "/profileRatings", 1, "dropdown-item"], ["routerLink", "/profileSolvedPuzzle", 1, "dropdown-item"], ["routerLink", "/about", 1, "nav-link"], ["routerLink", "/challenges", 1, "nav-link"], ["routerLink", "/leaderboard", 1, "nav-link"], ["class", "nav-item dropdown", 4, "ngIf"], [1, "navbar-text"], ["id", "logout", 3, "click"], ["routerLink", "/adminUser", 1, "dropdown-item"], ["routerLink", "/adminPuzzles", 1, "dropdown-item"], ["routerLink", "/adminRatings", 1, "dropdown-item"]],
+      consts: [[1, "container-fluid"], [1, "logo"], ["src", "assets/images/logo_nav.png", "routerLink", "/ratings", 1, "navimg"], ["id", "navCustom", 1, "navbar", "navbar-expand-sm"], [1, "left"], ["id", "burger", "type", "button", "data-toggle", "collapse", "data-target", "#navbarSupportedContent1", "aria-controls", "navbarSupportedContent1", "aria-expanded", "false", "aria-label", "Toggle navigation", 1, "navbar-toggler", "hidden-sm", "hidden-md", "hidden-lg", "hidden-xl"], [1, "fa", "fa-bars", "fa-2x"], ["id", "navbarSupportedContent1", 1, "collapse", "navbar-collapse", "left"], ["routerLinkActive", "active", 1, "nav", "navbar-nav", "mr-auto"], [1, "nav-item"], ["routerLink", "/ratings", 1, "nav-link"], [1, "nav-item", "dropdown"], ["role", "button", "id", "navbarDropdown", "data-toggle", "dropdown", "aria-haspopup", "true", "aria-expanded", "false", 1, "nav-link", "dropdown-toggle"], [1, "caret"], ["aria-labelledby", "navbarDropdown", 1, "dropdown-menu"], ["routerLink", "/create", 1, "dropdown-item"], ["routerLink", "/aicreate", 1, "dropdown-item"], ["role", "button", "id", "navbarDropdown2", "data-toggle", "dropdown", "aria-haspopup", "true", "aria-expanded", "false", 1, "nav-link", "dropdown-toggle"], ["aria-labelledby", "navbarDropdown2", 1, "dropdown-menu"], ["routerLink", "/profile", 1, "dropdown-item"], ["routerLink", "/profilePuzzles", 1, "dropdown-item"], ["routerLink", "/profileRatings", 1, "dropdown-item"], ["routerLink", "/profileSolvedPuzzle", 1, "dropdown-item"], ["routerLink", "/about", 1, "nav-link"], ["routerLink", "/challenges", 1, "nav-link"], ["routerLink", "/leaderboard", 1, "nav-link"], ["class", "nav-item dropdown", 4, "ngIf"], [1, "navbar-text"], ["id", "logout", 3, "click"], ["routerLink", "/adminUser", 1, "dropdown-item"], ["routerLink", "/adminPuzzles", 1, "dropdown-item"], ["routerLink", "/adminRatings", 1, "dropdown-item"], ["routerLink", "/adminChallenge", 1, "dropdown-item"]],
       template: function NavbarComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -4728,7 +5072,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](49, NavbarComponent_li_49_Template, 13, 0, "li", 26);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](49, NavbarComponent_li_49_Template, 16, 0, "li", 26);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -5746,26 +6090,38 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       _createClass(ChallengesComponent, [{
-        key: "openSolveDialog",
-        value: function openSolveDialog(puzzleID) {
+        key: "openSolveDialogEasy",
+        value: function openSolveDialogEasy(puzzleID) {
           localStorage.setItem('solvingPuzzleID', puzzleID);
           this.solveDialog = this.dialog.open(src_app_dialogs_solve_dialog_solve_dialog_component__WEBPACK_IMPORTED_MODULE_2__["SolveDialogComponent"], {
             disableClose: true,
             hasBackdrop: true,
             data: {
-              pageValue: this.solveHints
+              pageValue: 5
             }
           });
         }
       }, {
-        key: "openSolveDialogTime",
-        value: function openSolveDialogTime(puzzleID) {
+        key: "openSolveDialogMed",
+        value: function openSolveDialogMed(puzzleID) {
           localStorage.setItem('solvingPuzzleID', puzzleID);
           this.solveDialog = this.dialog.open(src_app_dialogs_solve_dialog_solve_dialog_component__WEBPACK_IMPORTED_MODULE_2__["SolveDialogComponent"], {
             disableClose: true,
             hasBackdrop: true,
             data: {
-              pageValue: this.timeDur
+              pageValue: 3
+            }
+          });
+        }
+      }, {
+        key: "openSolveDialogHard",
+        value: function openSolveDialogHard(puzzleID) {
+          localStorage.setItem('solvingPuzzleID', puzzleID);
+          this.solveDialog = this.dialog.open(src_app_dialogs_solve_dialog_solve_dialog_component__WEBPACK_IMPORTED_MODULE_2__["SolveDialogComponent"], {
+            disableClose: true,
+            hasBackdrop: true,
+            data: {
+              pageValue: 0
             }
           });
         }
@@ -5784,39 +6140,41 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           this.token = localStorage.getItem('token');
           this.api.getChallenges().subscribe(function (data) {
-            console.log("Got da data", data);
-            _this22.timeDif = data[0].timeDifficulty;
-            _this22.timeID = data[0].timeID;
-            _this22.timeImage = data[0].timeImage;
-            _this22.timeName = data[0].timeName;
+            console.log("Got da data", data['puzzleOneName']);
+            _this22.puzzleOneID = data['puzzleOneID'];
+            _this22.puzzleOneName = data['puzzleOneName'];
+            _this22.puzzleOneImage = data['puzzleOneImage'];
+            _this22.puzzleOneDifficulty = data['puzzleOneDifficulty'];
+            _this22.oneXP = 10;
+            _this22.oneHints = 5; //
 
-            if (_this22.timeDif == "Novice") {
-              _this22.timeDur = 90;
-              _this22.xppoints = 10;
-            } else if (_this22.timeDif == "Intermediate") {
-              _this22.timeDur = 45;
-              _this22.xppoints = 30;
-            } else if (_this22.timeDif == "Expert") {
-              _this22.timeDur = 25;
-              _this22.xppoints = 50;
-            } //
+            _this22.puzzleTwoID = data['puzzleTwoID'];
+            _this22.puzzleTwoName = data['puzzleTwoName'];
+            _this22.puzzleTwoImage = data['puzzleTwoImage'];
+            _this22.puzzleTwoDifficulty = data['puzzleTwoDifficulty'];
+            _this22.twoXP = 30;
+            _this22.twoHints = 3; //
 
-
-            _this22.solveDif = data[1].solveDifficulty;
-            _this22.solveID = data[1].solveID;
-            _this22.solveImage = data[1].solveImage;
-            _this22.solveName = data[1].solveName;
-
-            if (_this22.solveDif == "Novice") {
-              _this22.solveHints = 5;
-              _this22.xppoints = 10;
-            } else if (_this22.solveDif == "Intermediate") {
-              _this22.solveHints = 3;
-              _this22.xppoints = 30;
-            } else if (_this22.solveDif == "Expert") {
-              _this22.solveHints = 0;
-              _this22.xppoints = 50;
-            }
+            _this22.puzzleThreeID = data['puzzleThreeID'];
+            _this22.puzzleThreeName = data['puzzleThreeName'];
+            _this22.puzzleThreeImage = data['puzzleThreeImage'];
+            _this22.puzzleThreeDifficulty = data['puzzleThreeDifficulty'];
+            _this22.threeXP = 50;
+            _this22.threeHints = 0; // this.timeDif = data[0].timeDifficulty;
+            // this.timeID = data[0].timeID;
+            // this.timeImage = data[0].timeImage;
+            // this.timeName = data[0].timeName;
+            // if(this.timeDif == "Novice"){ this.timeDur = 90; this.xppoints = 10;}
+            // else if(this.timeDif == "Intermediate"){ this.timeDur = 45; this.xppoints = 30;}
+            // else if (this.timeDif == "Expert"){ this.timeDur = 25; this.xppoints = 50;}
+            // //
+            // this.solveDif = data[1].solveDifficulty;
+            // this.solveID = data[1].solveID;
+            // this.solveImage = data[1].solveImage;
+            // this.solveName = data[1].solveName;
+            // if(this.solveDif == "Novice"){ this.solveHints = 5; this.xppoints = 10;}
+            // else if(this.solveDif == "Intermediate"){ this.solveHints = 3; this.xppoints = 30;}
+            // else if(this.solveDif == "Expert"){ this.solveHints = 0; this.xppoints = 50;}
           });
         }
       }]);
@@ -5831,22 +6189,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     ChallengesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
       type: ChallengesComponent,
       selectors: [["app-challenges"]],
-      decls: 71,
-      vars: 17,
-      consts: [[1, "container-fluid"], ["fxLayout", "row", "fxLayout.xs", "column", "fxLayoutGap", "1"], [1, "date"], [1, "content"], [1, "content-overlay"], [1, "content-image", 3, "src"], [1, "content-details", "fadeIn-bottom"], [1, "puzzleDetails"], ["hidden", "true", "id", "tokenLabel"], [1, "puzzleActions"], ["mat-button", "", "id", "solveButton", 1, "btns", 3, "click"], ["src", "", 1, "content-image"], [1, "footer"]],
+      decls: 78,
+      vars: 21,
+      consts: [[1, "container-fluid"], [1, "main-title"], ["fxLayout", "row", "fxLayout.xs", "column", "fxLayoutGap", "1"], [1, "date"], [1, "content"], [1, "content-overlay"], [1, "content-image", 3, "src"], [1, "content-details", "fadeIn-bottom"], [1, "puzzleDetails"], ["hidden", "true", "id", "tokenLabel"], [1, "puzzleActions"], ["mat-button", "", "id", "solveButton", 1, "btns", 3, "click"], [1, "footer"]],
       template: function ChallengesComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-navbar");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 0);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "h1", 1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "mat-card", 2);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Complete Daily Challenges to Earn XP and Level Up");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "br");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "mat-card", 3);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
 
@@ -5854,75 +6214,79 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "br");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "mat-card", 3);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "mat-card-title");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "strong");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Solve Challenge");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "mat-card", 4);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "div", 4);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "mat-card-title");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "img", 5);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "strong");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "div", 6);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "mat-card-header");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "mat-card-subtitle", 7);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Easy Challenge");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "mat-card-subtitle", 7);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](15, "div", 5);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](16, "img", 6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "div", 7);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "mat-card-header");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "mat-card-subtitle", 8);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "mat-card-subtitle", 7);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "mat-card-subtitle", 8);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "mat-card-subtitle", 8);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "mat-card-title");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "strong");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "label", 8);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "mat-card-title");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "strong");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "mat-card-actions", 9);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "button", 10);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "label", 9);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ChallengesComponent_Template_button_click_29_listener() {
-            return ctx.openSolveDialog(ctx.solveID);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](29);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "mat-card-actions", 10);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "button", 11);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ChallengesComponent_Template_button_click_31_listener() {
+            return ctx.openSolveDialogEasy(ctx.puzzleOneID);
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "Solve");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, "Solve");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -5930,73 +6294,73 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "mat-card", 3);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "mat-card", 4);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "mat-card-title");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "mat-card-title");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "strong");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "strong");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](34, "Time Challenge");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](36, "Medium Challenge");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](35, "div", 4);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](36, "img", 5);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "div", 6);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "mat-card-header");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "mat-card-subtitle", 7);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](40);
-
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "mat-card-subtitle", 7);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](37, "div", 5);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](38, "img", 6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "div", 7);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "mat-card-header");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "mat-card-subtitle", 8);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](42);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "mat-card-subtitle", 7);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "mat-card-subtitle", 8);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](44);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "mat-card-subtitle", 8);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "mat-card-title");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "strong");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](47);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](46);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "label", 8);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "mat-card-title");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "strong");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](49);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "mat-card-actions", 9);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "button", 10);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "label", 9);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ChallengesComponent_Template_button_click_51_listener() {
-            return ctx.openSolveDialogTime(ctx.timeID);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](51);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "mat-card-actions", 10);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "button", 11);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ChallengesComponent_Template_button_click_53_listener() {
+            return ctx.openSolveDialogMed(ctx.puzzleTwoID);
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](52, "Solve");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](54, "Solve");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -6004,55 +6368,73 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "mat-card", 3);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](55, "mat-card", 4);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](54, "mat-card-title");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "mat-card-title");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](55, "strong");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "strong");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](56, "Bonus Challenge");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](58, "Hard Challenge");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](57, "div", 4);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](58, "img", 11);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](59, "div", 5);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "div", 6);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](60, "img", 6);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](60, "mat-card-header");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "div", 7);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "mat-card-subtitle", 7);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](62, "mat-card-header");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](62, "Solve in: ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](63, "mat-card-subtitle", 8);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](64);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](63, "mat-card-subtitle", 7);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](64, "Difficulty:");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "mat-card-subtitle", 7);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "mat-card-subtitle", 8);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](66);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](67, "label", 8);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](67, "mat-card-subtitle", 8);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](68);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](69, "mat-card-actions", 9);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](69, "mat-card-title");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "strong");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](71);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](72, "label", 9);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](73);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](74, "mat-card-actions", 10);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](75, "button", 11);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ChallengesComponent_Template_button_click_75_listener() {
+            return ctx.openSolveDialogHard(ctx.puzzleThreeID);
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](76, "Solve");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -6060,11 +6442,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](70, "app-footer", 12);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](77, "app-footer", 12);
         }
 
         if (rf & 2) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx.datee, "");
 
@@ -6078,23 +6464,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("src", ctx.solveImage, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("src", ctx.puzzleOneImage, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Number of Given Hints: ", ctx.solveHints, "");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Number of Given Hints: ", ctx.oneHints, "");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Difficulty: ", ctx.solveDif, "");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Difficulty: ", ctx.puzzleOneDifficulty, "");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Earn: ", ctx.xppoints, " XP");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Earn: ", ctx.oneXP, " XP");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.solveName);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.puzzleOneName);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
@@ -6102,31 +6488,47 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("src", ctx.timeImage, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("src", ctx.puzzleTwoImage, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Solve in: ", ctx.timeDur, " seconds");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Number of Given Hints: ", ctx.twoHints, "");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Difficulty: ", ctx.timeDif, "");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Difficulty: ", ctx.puzzleTwoDifficulty, "");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Earn: ", ctx.xppoints, " XP");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Earn: ", ctx.twoXP, " XP");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.timeName);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.puzzleTwoName);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.token);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](17);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Earn: ", ctx.xppoints, " XP");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("src", ctx.puzzleThreeImage, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Number of Given Hints: ", ctx.threeHints, "");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Difficulty: ", ctx.puzzleThreeDifficulty, "");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Earn: ", ctx.threeXP, " XP");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.puzzleThreeName);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 

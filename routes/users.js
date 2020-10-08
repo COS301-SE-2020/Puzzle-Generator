@@ -101,10 +101,11 @@ router.post('/verify', (request, response) => {
 
 router.post('/getUser', (request, response) => {
   User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
-    .then( user => {
-      response.status(200).json({"name": user[0].name, "username": user[0].username});
-    })
-    .catch();
+  .then( user => {
+      console.log(user[0]);
+      response.status(200).json({"name": user[0].name, "username": user[0].username, "xp": user[0].xp, "level": user[0].level});
+  })
+  .catch();
 })
 
 router.put('/updateUsername', (request, response) => {
@@ -138,6 +139,19 @@ router.put('/updateName', (request, response) => {
     .catch( error => {
       response.status(500).send("Server error");
     } )
+});
+
+router.put('/updateLevel', (request, response) => {
+  User.update(
+      { level: request.body.level },
+      { returning: true, raw: true, plain: true, where: { token: request.body.token } }
+  )
+  .then( data => {
+      response.status(201).json({"level": data[1].level});
+  } )
+  .catch( error => {
+      response.status(500).send("Server error");
+  } );
 });
 
 router.put('/resetPassword', (request, response) => {

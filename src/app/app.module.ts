@@ -7,8 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { CountdownModule } from 'ngx-countdown';
-
 //
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
@@ -115,7 +113,7 @@ import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component'
     HttpClientModule,
     FormsModule,
     MatSortModule,
-    MatInputModule, MatListModule, MatPaginatorModule, MatProgressBarModule, CountdownModule,
+    MatInputModule, MatListModule, MatPaginatorModule, MatProgressBarModule,
     MatCardModule, MatFormFieldModule, MatDialogModule, MatGridListModule, MatRadioModule, ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
   ],

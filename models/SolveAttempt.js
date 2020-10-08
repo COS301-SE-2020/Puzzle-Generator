@@ -10,7 +10,7 @@ const SolveAttempt = db.define('testSolveAttempts', {
     attempted: { type: Sequelize.BOOLEAN },
     createdAt: { type: Sequelize.DATE },
     attemptDuration: { type: Sequelize.STRING },
-    bestTime: { type: Sequelize.STRING }
+    bestTime: { type: Sequelize.STRING}
 });
 
 module.exports = SolveAttempt;

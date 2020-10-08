@@ -1,0 +1,37 @@
+.chall{
+    background-color: gainsboro;
+    margin: auto;
+    margin-bottom: 2rem;
+}
+
+.content{
+    display: inline-block;
+    /* margin: 1rem; */
+}
+
+.challengeOne{
+    background-color: ghostwhite;
+    padding: 1rem;
+}
+
+.footer {
+    background-color: #7C593A;
+    line-height: 3rem;
+  }
+
+.btns:hover{
+    /* background-color: rgba(0,0,0,0.7);; */
+    background-color: white;
+    color: #7C593A;
+    border: #7C593A solid 0.1px;
+   }
+
+   .btns{
+    background-color: #7C593A;
+    color: white;
+    margin: 0.5vw;
+    /* width: 50%; */
+    border: 1px solid white;
+    text-align: center;
+    font-size: 1.5rem;
+}

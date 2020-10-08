@@ -1,31 +1,23 @@
 import Konva from 'konva';
+import { initiate3DCanvas, render3D, render2D } from 'src/assets/js/generate3D.js';
 export { width, height, setSites, setDisableEditMode, initializeData, calculateDistancesFromSitesToPoint,
-	equidistantPointsPresent, generateSiteBoundaries, createPieces, clearBoard };
+	equidistantPointsPresent, generateSiteBoundaries, createPieces, clearBoard, getCurrentRenderMode };
 
 let apiURL = "https://prometheuspuzzles.herokuapp.com/api/puzzles/createPuzzle";
 let distanceMetric = 'euclidean';
 let token;
 
-let contentDiv = null;
-let aiContentDiv = null;
-let canvas;
-let canvasCoords;
-let width =  500;
-let height = 500;
-let stage;
-let layer;
-let square;
-let pointsArray = [];
-let sites;
-let siteBoundaries;
-let pieces = [];
-let precision = 0;
+let canvas, canvasCoords;
+let width =  500, height = 500;
+let stage, layer;
+let pointsArray, pieces;
+let sites, siteBoundaries;
 
 let colorPalettes = [];
 let selectedPalette;
-let paletteCounter = 0;
-let radioButtons = [];
 
+let appendedString;
+let currentRenderMode;
 let hoverOverPoint = false;
 let disableEditMode = false;
 let deletePointButtonClicked = false;
@@ -34,17 +26,17 @@ let piecesJSONObject;
 let editIcon, deleteIcon;
 
 ///Make an array with desired colors - can be hex values or names
-let defaultPalette = ['Plum', 'Tomato', 'Orange', 'Violet', 'Gray', 'MediumSeaGreen', 'LightGray', 'SlateBlue', 'Brown', 'Aquamarine', 'AntiqueWhite', 'Red', 'Green'];
+let defaultPalette = ['plum', 'tomato', 'orange', 'violet', 'gray', 'mediumseagreen', 'lightgray', 'slateblue', 'brown', 'aquamarine', 'antiquewhite', 'red', 'green'];
 ///Add the array to the page using this function with the array as a first and the desired name as a second parameter
 addColorPalette(defaultPalette, "Default");
 
-let shadesOfRedPalette = ['Crimson', 'DarkRed', 'Coral', 'FireBrick', 'IndianRed', 'Maroon', 'OrangeRed', 'PaleVioletRed', 'Red', 'Tomato', 'Brown'];
+let shadesOfRedPalette = ['crimson', 'darkred', 'coral', 'firebrick', 'indianred', 'maroon', 'orangered', 'palevioletred', 'red', 'tomato', 'brown'];
 addColorPalette(shadesOfRedPalette, "Shades Of Red");
 
-let shadesOfGreenPalette = ['Teal', 'MediumSpringGreen', 'LimeGreen', 'ForestGreen', 'MediumSeaGreen', 'LawnGreen', 'PaleGreen', 'GreenYellow', 'Aquamarine'];
+let shadesOfGreenPalette = ['teal', 'mediumspringgreen', 'limegreen', 'forestgreen', 'mediumseagreen', 'lawngreen', 'palegreen', 'greenyellow', 'aquamarine'];
 addColorPalette(shadesOfGreenPalette, "Shades of Green");
 
-let shadesOfBluePalette = ['DarkBlue', 'DeepSkyBlue', 'MediumBlue', 'DodgerBlue', 'MidnightBlue', 'RoyalBlue', 'DarkSlateBlue', 'CornflowerBlue', 'SkyBlue', 'PowderBlue'];
+let shadesOfBluePalette = ['darkblue', 'deepskyblue', 'mediumblue', 'dodgerblue', 'midnightblue', 'royalblue', 'darkslateblue', 'cornflowerblue', 'skyblue', 'powderblue'];
 addColorPalette(shadesOfBluePalette, "Shades of Blue");
 
 ///Add a color palette to the page and needed functionality
@@ -67,9 +59,13 @@ function changePuzzleColorPalette(colors)
 			pieces[i].attrs.stroke = colors[i % colors.length];
 			layer.add(pieces[i]);
 		}
+
+		if(currentRenderMode == '3D')
+			render3D(piecesJSONObject, appendedString);
+		else
+			layer.draw();
 		
 		piecesJSONObject = JSON.stringify(piecesJSONObject);
-		layer.draw();
 	}
 }
 
@@ -81,20 +77,33 @@ function randomizePuzzleColorPalette()
 	{
 		let rgbColor;
 		layer.removeChildren();
-
+		selectedPalette = getRandomColorsArray(pieces.length*2);
 		for(let i = 0; i < pieces.length; i++)
 		{
-			rgbColor = getRandomRGB();
-			selectedPalette.push(rgbColor);
-			pieces[i].attrs.stroke = rgbColor;
+			pieces[i].attrs.stroke = selectedPalette[i];
 			layer.add(pieces[i]);
 		}
 
 		piecesJSONObject = JSON.parse(piecesJSONObject);
 		piecesJSONObject.colors = selectedPalette;
+		if(currentRenderMode == '3D')
+			render3D(piecesJSONObject, appendedString);
+		else
+			layer.draw();
+
 		piecesJSONObject = JSON.stringify(piecesJSONObject);
-		layer.draw();
 	}
+}
+
+function getRandomColorsArray(n)
+{
+	let randomColorArray = [];
+	for(let i = 0; i < n; i++)
+	{
+		randomColorArray.push(getRandomRGB());
+	}
+
+	return randomColorArray;
 }
 
 ///Returns a random RGB value
@@ -107,17 +116,21 @@ function getRandomRGB()
 }
 
 ///Initialize data and set functions for buttons
-function initializeData(appendedString)
+function initializeData(append)
 {
+	appendedString = append;
 	if(appendedString == undefined)
 		appendedString = '';
 
 	sites = [];
 	siteBoundaries = [];
+	pieces = [];
 
 	disableEditMode = false;
 
 	selectedPalette = defaultPalette;
+
+	currentRenderMode = '2D';
 	canvas = document.getElementById('container'+appendedString);
 	stage = new Konva.Stage({
 		container: 'container'+appendedString,
@@ -202,6 +215,33 @@ function initializeData(appendedString)
 	// 	// document.getElementById('testingImg').src = puzzleImage;
 	// 	savePuzzle(true);
 	// });
+
+
+	if(document.getElementById('generate3DButton'+appendedString) != null)
+	{
+		initiate3DCanvas(height, width);
+		document.getElementById('generate3DButton'+appendedString).addEventListener('mousedown', function() {
+			if(currentRenderMode == '2D')
+			{
+				document.getElementById('generate3DButton'+appendedString).innerHTML = 'Generate 2D';
+				render3D(JSON.parse(piecesJSONObject), appendedString);
+				currentRenderMode = '3D';
+			}
+			else
+			{
+				document.getElementById('generate3DButton'+appendedString).innerHTML = 'Generate 3D';
+				render2D(appendedString);
+				currentRenderMode = '2D';
+				stage = new Konva.Stage({
+					container: 'container'+appendedString,
+					width: width,
+					height: height,
+				});
+				stage.add(layer);
+				layer.draw();
+			}
+		});
+	}
 }
 
 ///Create a post ajax request and send it to the API in order to save the user's created puzzle
@@ -243,6 +283,11 @@ function savePuzzle(appendedString)
 	});
 }
 
+function getCurrentRenderMode()
+{
+	return currentRenderMode;
+}
+
 ///Set the selected distance metric for the puzzle
 function setDistanceMetric(metric)
 {
@@ -266,7 +311,8 @@ function clearBoard()
 {
 	piecesJSONObject = {
 		'pieces' : [],
-		'colors' : []
+		'colors' : [],
+		'depths' : []
 	};
 
 	pieces = [];
@@ -353,8 +399,7 @@ function createPieces()
 		let piece = new Konva.Line({
 			points: trimmedPoints,
 			stroke: selectedPalette[i % selectedPalette.length],
-			strokeWidth: 1,
-			draggable: true,
+			strokeWidth: 2,
 		});
 
 		piece.on('mouseover', function (){
@@ -365,14 +410,26 @@ function createPieces()
 			document.body.style.cursor = 'default';
 		});
 
+		piece.on('mousedown', function() {
+			let paintBrushColor = document.getElementById('paintBrushColorInput'+appendedString).value;
+			this.stroke(paintBrushColor);
+			selectedPalette[i] = paintBrushColor;
+			piecesJSONObject = JSON.parse(piecesJSONObject);
+			piecesJSONObject.colors = selectedPalette;
+			piecesJSONObject = JSON.stringify(piecesJSONObject);
+			layer.draw();
+		});
+
 		pieces.push(piece);
 		piecesJSONObject.pieces.push(trimmedPoints);
+		piecesJSONObject.depths.push(Math.floor(Math.random() * 8) + 1);
 		layer.add(piece);
 	}
 
 	piecesJSONObject.colors = selectedPalette;
 	layer.draw();
 	piecesJSONObject = JSON.stringify(piecesJSONObject);
+	return piecesJSONObject;
 	// console.log(piecesJSONObject);
 }
 

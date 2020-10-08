@@ -79,6 +79,7 @@ app.use('/profile-puzzles',express.static(__dirname+"/dist"));
 app.use('/profilePuzzles',express.static(__dirname+"/dist"));
 app.use('/profile-ratings',express.static(__dirname+"/dist"));
 app.use('/profileRatings',express.static(__dirname+"/dist"));
+app.use('/profileSolvedPuzzle',express.static(__dirname+"/dist"));
 app.use('/ratings',express.static(__dirname+"/dist"));
 app.use('/reset-password',express.static(__dirname+"/dist"));
 app.use('/reset-success',express.static(__dirname+"/dist"));
@@ -88,6 +89,11 @@ app.use('/signup',express.static(__dirname+"/dist"));
 app.use('/adminUser',express.static(__dirname+"/dist"));
 app.use('/adminPuzzles',express.static(__dirname+"/dist"));
 app.use('/adminRatings',express.static(__dirname+"/dist"));
+app.use('/leaderboard',express.static(__dirname+"/dist"));
+app.use('/aboutus',express.static(__dirname+"/dist"));
+app.use('/about',express.static(__dirname+"/dist"));
+
+
 /**
  * End Angular - Heroku stuff
  */

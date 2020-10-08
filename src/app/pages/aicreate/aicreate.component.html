@@ -71,6 +71,7 @@
        <div id="puzzleControlsDiv">
         <button mat-raised-button class="btns" id="previousPuzzleButton">Previous Puzzle</button>
         <button mat-raised-button class="btns" id="nextPuzzleButton">Next Puzzle</button>
+        <button mat-raised-button class="btns" id="generate3DButtonAI">Generate 3D</button>
        </div>
      </mat-card-content>
    </mat-card>
@@ -80,6 +81,9 @@
        <mat-card-title class="titleLabel">Saving Options</mat-card-title>
      </mat-card-header>
      <mat-card-content class="matContentC">
+       <button mat-raised-button class="btns" id="paintBrushButton">
+         <mat-icon id="paintBrushButtonIcon">brush</mat-icon><input type="color" id="paintBrushColorInputAI" class="">
+       </button><br>
        <label id="colorPalleteLabel">Select a color-palette:</label><br>
        <mat-radio-group>
          <mat-radio-button class="radio-button colorPalettes" paletteid=0 value="default" name="colorPalettes">Default</mat-radio-button>

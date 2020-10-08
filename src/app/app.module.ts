@@ -28,6 +28,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSortModule} from '@angular/material/sort';
 
 
 //pages
@@ -57,6 +58,9 @@ import { SuccessfulSolveComponent } from './dialogs/successful-solve/successful-
 import { EmailPassComponent } from './dialogs/email-pass/email-pass.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { ProfilePuzzlesDialogComponent } from './dialogs/profile-puzzles-dialog/profile-puzzles-dialog.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ChallengesComponent } from './pages/challenges/challenges.component';
+import { HintComponent } from './dialogs/hint/hint.component';
 import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
 
 @NgModule({
@@ -88,6 +92,9 @@ import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component'
     EmailPassComponent,
     FooterComponent,
     ProfilePuzzlesDialogComponent,
+    AboutComponent,
+    ChallengesComponent,
+    HintComponent,
     LeaderboardComponent,
   ],
   imports: [
@@ -105,6 +112,7 @@ import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component'
     MatTableModule,
     HttpClientModule,
     FormsModule,
+    MatSortModule,
     MatInputModule, MatListModule, MatPaginatorModule, MatProgressBarModule,
     MatCardModule, MatFormFieldModule, MatDialogModule, MatGridListModule, MatRadioModule, ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),

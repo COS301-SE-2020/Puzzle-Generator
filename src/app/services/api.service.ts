@@ -37,6 +37,11 @@ export class APIService {
     return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/getUser',token, httpOptions);
   }
 
+  updateLevel(currentUser:User){
+    const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
+    return this.http.put('https://prometheuspuzzles.herokuapp.com/api/users/updateLevel', currentUser, httpOptions);
+  }
+
   updateName(currentUser: User){
     const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
     return this.http.put('https://prometheuspuzzles.herokuapp.com/api/users/updateName', currentUser, httpOptions);
@@ -61,6 +66,18 @@ export class APIService {
    * User endpoints end here
    */
 
+  /**
+   * Challenge Endpoints start here
+   */
+
+  getChallenges(){
+    return this.http.get('https://prometheuspuzzles.herokuapp.com/api/puzzles/getChallenges');
+  }
+
+   /**
+   * Challenge Endpoints end here
+   */
+
 
 /**
 * Puzzle endpoints start here
@@ -70,7 +87,7 @@ getAllPuzzles(){
 }
 
 getAllPuzzleByID(puzzleID: number){
-  return this.http.get('https://prometheuspuzzles.herokuapp.com/api/puzzles/getPuzzleByID?Id=' + puzzleID);
+  return this.http.get('https://prometheuspuzzles.herokuapp.com/api/puzzles/getPuzzleByID/' + puzzleID);
 }
 
 createNewPuzzle(puzzle: Puzzle){

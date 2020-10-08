@@ -1,5 +1,6 @@
 import { width, height, setSites, setDisableEditMode, initializeData, calculateDistancesFromSitesToPoint,
-	equidistantPointsPresent, generateSiteBoundaries, createPieces, clearBoard } from 'src/assets/js/manualCreation.js';
+	equidistantPointsPresent, generateSiteBoundaries, createPieces, clearBoard, getCurrentRenderMode } from 'src/assets/js/manualCreation.js';
+import { render3D, render2D } from 'src/assets/js/generate3D.js';
 
 ///The structure of each individual/chromosome object
 let Chromosome = {
@@ -183,7 +184,10 @@ function renderPuzzle(sites)
 	setSites(expandedSites);
 	clearBoard();
 	generateSiteBoundaries();
-	createPieces();
+	let piecesJSONObject = createPieces();
+	piecesJSONObject = JSON.parse(piecesJSONObject);
+	if(getCurrentRenderMode() == '3D')
+		render3D(piecesJSONObject, 'AI');
 }
 
 function generateSliders(numberOfSliders)

@@ -47,6 +47,25 @@ h1{
   margin-bottom: 1rem;
 }
 
+.lvl{
+  background-color: gainsboro;
+  width: 30%;
+}
+
+.bb{
+  height: 10rem;
+}
+
+.lvlText{
+  margin: 6rem;
+}
+
+.prog{
+  margin: 2rem;
+  padding: 1rem;
+}
+
+
 .btns:hover{
   /* background-color: rgba(0,0,0,0.7);; */
   background-color: white;

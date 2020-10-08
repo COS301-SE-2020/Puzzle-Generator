@@ -1,0 +1,93 @@
+<app-navbar></app-navbar>
+
+ <div class="container-fluid">
+   <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1">
+
+    <mat-card class="date">
+        {{datee}}<br>{{actualMonth}}<br>{{year}}
+    </mat-card>
+
+     <!-- <mat-card class="chall1">
+       <mat-card-header>
+         <mat-card-title class="">Solve Challenge</mat-card-title>
+       </mat-card-header>
+       <mat-card-content>
+       </mat-card-content>
+    </mat-card> -->
+
+    <mat-card class="content" >
+        <mat-card-title><strong>Solve Challenge</strong></mat-card-title>
+        <!-- <mat-card-title class="">Solve Challenge</mat-card-title> -->
+        <div class="content-overlay"></div>
+        <img class="content-image" src="{{solveImage}}">
+          <div class="content-details fadeIn-bottom">
+            <mat-card-header>
+              <mat-card-subtitle class="puzzleDetails">Number of Given Hints: {{solveHints}}</mat-card-subtitle>
+              <mat-card-subtitle class="puzzleDetails">Difficulty: {{solveDif}}</mat-card-subtitle>
+              <mat-card-subtitle class="puzzleDetails">Earn: {{xppoints}} XP</mat-card-subtitle>
+            </mat-card-header>
+          </div>
+          <mat-card-title><strong>{{solveName}}</strong></mat-card-title>
+          <label hidden="true" id="tokenLabel">{{token}}</label>
+          <mat-card-actions class="puzzleActions">
+            <button mat-button class="btns" id="solveButton" (click)="openSolveDialog(solveID)">Solve</button>
+          </mat-card-actions>
+      </mat-card>
+
+      <mat-card class="content" >
+        <mat-card-title><strong>Time Challenge</strong></mat-card-title>
+        <!-- <mat-card-title class="">Solve Challenge</mat-card-title> -->
+        <div class="content-overlay"></div>
+        <img class="content-image" src="{{timeImage}}">
+          <div class="content-details fadeIn-bottom">
+            <mat-card-header>
+                <mat-card-subtitle class="puzzleDetails">Solve in: {{timeDur}} seconds</mat-card-subtitle>
+                <mat-card-subtitle class="puzzleDetails">Difficulty: {{timeDif}}</mat-card-subtitle>
+                <mat-card-subtitle class="puzzleDetails">Earn: {{xppoints}} XP</mat-card-subtitle>
+            </mat-card-header>
+          </div>
+          <mat-card-title><strong>{{timeName}}</strong></mat-card-title>
+          <label hidden="true" id="tokenLabel">{{token}}</label>
+          <mat-card-actions class="puzzleActions">
+            <button mat-button class="btns" id="solveButton" (click)="openSolveDialogTime(timeID)">Solve</button>
+          </mat-card-actions>
+      </mat-card>
+
+      <mat-card class="content" >
+        <mat-card-title><strong>Bonus Challenge</strong></mat-card-title>
+        <!-- <mat-card-title class="">Solve Challenge</mat-card-title> -->
+        <div class="content-overlay"></div>
+        <img class="content-image" src="">
+          <div class="content-details fadeIn-bottom">
+            <mat-card-header>
+              <mat-card-subtitle class="puzzleDetails">Solve in: </mat-card-subtitle>
+              <mat-card-subtitle class="puzzleDetails">Difficulty:</mat-card-subtitle>
+              <mat-card-subtitle class="puzzleDetails">Earn: {{xppoints}} XP</mat-card-subtitle>
+            </mat-card-header>
+          </div>
+          <!-- <mat-card-title><strong>Puzzle Name</strong></mat-card-title> -->
+          <label hidden="true" id="tokenLabel">{{token}}</label>
+          <mat-card-actions class="puzzleActions">
+            <!-- <button mat-button class="btns" id="solveButton" (click)="openSolveDialog()">Solve</button> -->
+          </mat-card-actions>
+      </mat-card>
+
+    <!-- <mat-card class="chall2">
+      <mat-card-header>
+        <mat-card-title >Time Challenge</mat-card-title>
+      </mat-card-header>
+     <mat-card-content>
+     </mat-card-content>
+   </mat-card>
+
+   <mat-card class="chall3">
+     <mat-card-header>
+       <mat-card-title class="titleLabel">Bonus Challenge</mat-card-title>
+     </mat-card-header>
+     <mat-card-content class="">
+       </mat-card-content>
+   </mat-card> -->
+   </div>
+ </div>
+
+ <app-footer class="footer"></app-footer>

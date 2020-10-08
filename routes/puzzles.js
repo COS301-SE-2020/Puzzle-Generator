@@ -46,63 +46,114 @@ router.get('/getAllPuzzles', (request, response) => {
         });
 });
 
-//get challenges
 router.get('/getChallenges', (request, response) => {
-    var puzzleJsonObject = [];
-    var puzzlePlaceholder = {};
-    Challenge.findAll( { raw: true } )
-        .then( challengeList => {
-            // console.log("challenge##########: ",challengeList[0].details);
-            let temp = JSON.parse(challengeList[0].details);
-            const solveChallengePuzzle = temp.solve.puzzleID;
-            const timeChallengePuzzle = temp.time.puzzleID;
-            //response.status(201).send(puzzle);
-            Puzzle.findAll( { raw: true, where: { id: solveChallengePuzzle } } )
-            .then( puzzle => {
-                let solveChallengePuzzleData = puzzle[0];
-               // console.log("Solve Object: ", solveChallengePuzzleData)
+    let placeholher = {};
+    Challenge.findAll( {raw: true})
+    .then( challengeList => {
+       // console.log("ChallengeList: ", challengeList);
+        var array = challengeList;
+        var today = new Date();
+        var date = today.getDate();
+        var getIndexAt = parseInt(date)/2;
+        // console.log("ChallengeList Today: ", challengeList[getIndexAt]);
+        let puzzleOne = challengeList[getIndexAt].oneName;
+        let puzzleTwo = challengeList[getIndexAt].twoName;
+        let bonus = challengeList[getIndexAt].bonusName;
 
-                Puzzle.findAll( { raw: true, where: { id: timeChallengePuzzle } } )
-                .then( data => {
-                    let timeChallengePuzzleData = data[0];
-                   // console.log('Time object: ', timeChallengePuzzleData);
+        Puzzle.findAll( { raw: true, where: { id: puzzleOne } } )
+        .then( tempOne => {
+            //
+            Puzzle.findAll( { raw: true, where: { id: puzzleTwo } } )
+            .then( tempTwo => {
+                //
+                Puzzle.findAll( { raw: true, where: { id: bonus } } )
+                .then( tempThree => {
+                    //
+                    placeholher = {
+                        "puzzleOneID": tempOne[0].id,
+                        "puzzleOneName": tempOne[0].name,
+                        "puzzleOneImage": tempOne[0].image,
+                        "puzzleOneDifficulty": "Novice",
+                        "puzzleTwoID": tempTwo[0].id,
+                        "puzzleTwoName":tempTwo[0].name,
+                        "puzzleTwoImage": tempTwo[0].image,
+                        "puzzleTwoDifficulty": "Intermediate",
+                        "puzzleThreeID": tempThree[0].id,
+                        "puzzleThreeName":tempThree[0].name,
+                        "puzzleThreeImage": tempThree[0].image,
+                        "puzzleThreeDifficulty": "Expert",
+                    }
 
-                    var array = data;
-                    var array1 = puzzle;
-                    array.forEach(element => {
-                        puzzlePlaceholder = {
-                            "timeID":element.id,
-                            "timeName":element.name,
-                            "timeImage": element.image,
-                            "timeDifficulty": temp.time.difficulty
-                        };
-                        puzzleJsonObject.push(puzzlePlaceholder);
-                    });
-                    array1.forEach(element => {
-                        puzzlePlaceholder = {
-                            "solveID":element.id,
-                            "solveName":element.name,
-                            "solveImage": element.image,
-                            "solveDifficulty": temp.solve.difficulty
-                        };
-                        puzzleJsonObject.push(puzzlePlaceholder);
-                    });
-                    // console.log("---------------", puzzleJsonObject);
-                    response.status(201).send(puzzleJsonObject);
-
+                    // console.log("return me: ", placeholher);
+                    response.status(201).send(placeholher);
+                    
                 })
-                .catch( error => {
-                    response.status(403).send("Failed due to: ", error);
-                })
+                .catch()
+                    })
+            .catch()
             })
-            .catch( error => {
-                response.status(403).send("Failed due to: ", error);
-            })
-        })
-        .catch( error => {
-            response.status(403).send("Failed due to: ", error);
-        })
-});
+        .catch()
+    })
+    .catch();
+})
+
+//get challenges
+// router.get('/getChallenges', (request, response) => {
+//     var puzzleJsonObject = [];
+//     var puzzlePlaceholder = {};
+//     Challenge.findAll( { raw: true } )
+//         .then( challengeList => {
+//             // console.log("challenge##########: ",challengeList[0].details);
+//             let temp = JSON.parse(challengeList[0].details);
+//             const solveChallengePuzzle = temp.solve.puzzleID;
+//             const timeChallengePuzzle = temp.time.puzzleID;
+//             //response.status(201).send(puzzle);
+//             Puzzle.findAll( { raw: true, where: { id: solveChallengePuzzle } } )
+//             .then( puzzle => {
+//                 let solveChallengePuzzleData = puzzle[0];
+//                // console.log("Solve Object: ", solveChallengePuzzleData)
+
+//                 Puzzle.findAll( { raw: true, where: { id: timeChallengePuzzle } } )
+//                 .then( data => {
+//                     let timeChallengePuzzleData = data[0];
+//                    // console.log('Time object: ', timeChallengePuzzleData);
+
+//                     var array = data;
+//                     var array1 = puzzle;
+//                     array.forEach(element => {
+//                         puzzlePlaceholder = {
+//                             "timeID":element.id,
+//                             "timeName":element.name,
+//                             "timeImage": element.image,
+//                             "timeDifficulty": temp.time.difficulty
+//                         };
+//                         puzzleJsonObject.push(puzzlePlaceholder);
+//                     });
+//                     array1.forEach(element => {
+//                         puzzlePlaceholder = {
+//                             "solveID":element.id,
+//                             "solveName":element.name,
+//                             "solveImage": element.image,
+//                             "solveDifficulty": temp.solve.difficulty
+//                         };
+//                         puzzleJsonObject.push(puzzlePlaceholder);
+//                     });
+//                     // console.log("---------------", puzzleJsonObject);
+//                     response.status(201).send(puzzleJsonObject);
+
+//                 })
+//                 .catch( error => {
+//                     response.status(403).send("Failed due to: ", error);
+//                 })
+//             })
+//             .catch( error => {
+//                 response.status(403).send("Failed due to: ", error);
+//             })
+//         })
+//         .catch( error => {
+//             response.status(403).send("Failed due to: ", error);
+//         })
+// });
 
 //get puzzle by id
 router.get('/getPuzzleByID/:id', (request, response) => {

@@ -12,24 +12,34 @@ import { SolveDialogComponent } from '../solve-dialog/solve-dialog.component';
 export class HintComponent implements OnInit {
 
   fromPage: any;
-  display = 'none';
+  solveDialog: MatDialogRef<SolveDialogComponent>;
 
-  constructor(private api: APIService, private router: Router, private dialog: MatDialog,
-    public dialogRef: MatDialogRef<SolveDialogComponent>, 
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: any){
-      this.fromPage = data.pageValue;
+  constructor(private api: APIService, private router: Router, private dialog: MatDialog){}
+
+    easy(){
+      this.solveDialog = this.dialog.open(SolveDialogComponent,
+        { 
+          disableClose: true, hasBackdrop: true,
+          data: { pageValue: 5 } 
+        });
+    }
+  
+    med(){
+      this.solveDialog = this.dialog.open(SolveDialogComponent, 
+        { 
+          disableClose: true, hasBackdrop: true,
+          data: { pageValue: 3 } 
+        });
+    }
+  
+    hard(){
+      this.solveDialog = this.dialog.open(SolveDialogComponent, 
+        { 
+          disableClose: true, hasBackdrop: true,
+          data: { pageValue: 0 } 
+        });
     }
 
-    async delay(ms: number) {
-      await new Promise(resolve => setTimeout(()=>resolve(), ms))
-      .then( () => { console.log("fired"); });
-    }
-
-  ngOnInit(): void {
-    this.display = 'block';
-    this.delay(2500).then( () =>{
-        this.display = 'none';
-      });
-  }
+  ngOnInit(): void {}
 
 }

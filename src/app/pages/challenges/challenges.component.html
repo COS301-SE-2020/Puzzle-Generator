@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
 
  <div class="container-fluid">
+  <h1 class="main-title">Complete Daily Challenges to Earn XP and Level Up</h1>
    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1">
 
     <mat-card class="date">
@@ -16,59 +17,59 @@
     </mat-card> -->
 
     <mat-card class="content" >
-        <mat-card-title><strong>Solve Challenge</strong></mat-card-title>
+        <mat-card-title><strong>Easy Challenge</strong></mat-card-title>
         <!-- <mat-card-title class="">Solve Challenge</mat-card-title> -->
         <div class="content-overlay"></div>
-        <img class="content-image" src="{{solveImage}}">
+        <img class="content-image" src="{{puzzleOneImage}}">
           <div class="content-details fadeIn-bottom">
             <mat-card-header>
-              <mat-card-subtitle class="puzzleDetails">Number of Given Hints: {{solveHints}}</mat-card-subtitle>
-              <mat-card-subtitle class="puzzleDetails">Difficulty: {{solveDif}}</mat-card-subtitle>
-              <mat-card-subtitle class="puzzleDetails">Earn: {{xppoints}} XP</mat-card-subtitle>
+              <mat-card-subtitle class="puzzleDetails">Number of Given Hints: {{oneHints}}</mat-card-subtitle>
+              <mat-card-subtitle class="puzzleDetails">Difficulty: {{puzzleOneDifficulty}}</mat-card-subtitle>
+              <mat-card-subtitle class="puzzleDetails">Earn: {{oneXP}} XP</mat-card-subtitle>
             </mat-card-header>
           </div>
-          <mat-card-title><strong>{{solveName}}</strong></mat-card-title>
+          <mat-card-title><strong>{{puzzleOneName}}</strong></mat-card-title>
           <label hidden="true" id="tokenLabel">{{token}}</label>
           <mat-card-actions class="puzzleActions">
-            <button mat-button class="btns" id="solveButton" (click)="openSolveDialog(solveID)">Solve</button>
+            <button mat-button class="btns" id="solveButton" (click)="openSolveDialogEasy(puzzleOneID)">Solve</button>
           </mat-card-actions>
       </mat-card>
 
       <mat-card class="content" >
-        <mat-card-title><strong>Time Challenge</strong></mat-card-title>
+        <mat-card-title><strong>Medium Challenge</strong></mat-card-title>
         <!-- <mat-card-title class="">Solve Challenge</mat-card-title> -->
         <div class="content-overlay"></div>
-        <img class="content-image" src="{{timeImage}}">
+        <img class="content-image" src="{{puzzleTwoImage}}">
           <div class="content-details fadeIn-bottom">
             <mat-card-header>
-                <mat-card-subtitle class="puzzleDetails">Solve in: {{timeDur}} seconds</mat-card-subtitle>
-                <mat-card-subtitle class="puzzleDetails">Difficulty: {{timeDif}}</mat-card-subtitle>
-                <mat-card-subtitle class="puzzleDetails">Earn: {{xppoints}} XP</mat-card-subtitle>
+              <mat-card-subtitle class="puzzleDetails">Number of Given Hints: {{twoHints}}</mat-card-subtitle>
+              <mat-card-subtitle class="puzzleDetails">Difficulty: {{puzzleTwoDifficulty}}</mat-card-subtitle>
+              <mat-card-subtitle class="puzzleDetails">Earn: {{twoXP}} XP</mat-card-subtitle>
             </mat-card-header>
           </div>
-          <mat-card-title><strong>{{timeName}}</strong></mat-card-title>
+          <mat-card-title><strong>{{puzzleTwoName}}</strong></mat-card-title>
           <label hidden="true" id="tokenLabel">{{token}}</label>
           <mat-card-actions class="puzzleActions">
-            <button mat-button class="btns" id="solveButton" (click)="openSolveDialogTime(timeID)">Solve</button>
+            <button mat-button class="btns" id="solveButton" (click)="openSolveDialogMed(puzzleTwoID)">Solve</button>
           </mat-card-actions>
       </mat-card>
 
       <mat-card class="content" >
-        <mat-card-title><strong>Bonus Challenge</strong></mat-card-title>
+        <mat-card-title><strong>Hard Challenge</strong></mat-card-title>
         <!-- <mat-card-title class="">Solve Challenge</mat-card-title> -->
         <div class="content-overlay"></div>
-        <img class="content-image" src="">
+        <img class="content-image" src="{{puzzleThreeImage}}">
           <div class="content-details fadeIn-bottom">
             <mat-card-header>
-              <mat-card-subtitle class="puzzleDetails">Solve in: </mat-card-subtitle>
-              <mat-card-subtitle class="puzzleDetails">Difficulty:</mat-card-subtitle>
-              <mat-card-subtitle class="puzzleDetails">Earn: {{xppoints}} XP</mat-card-subtitle>
+              <mat-card-subtitle class="puzzleDetails">Number of Given Hints: {{threeHints}}</mat-card-subtitle>
+              <mat-card-subtitle class="puzzleDetails">Difficulty: {{puzzleThreeDifficulty}}</mat-card-subtitle>
+              <mat-card-subtitle class="puzzleDetails">Earn: {{threeXP}} XP</mat-card-subtitle>
             </mat-card-header>
           </div>
-          <!-- <mat-card-title><strong>Puzzle Name</strong></mat-card-title> -->
+          <mat-card-title><strong>{{puzzleThreeName}}</strong></mat-card-title>
           <label hidden="true" id="tokenLabel">{{token}}</label>
           <mat-card-actions class="puzzleActions">
-            <!-- <button mat-button class="btns" id="solveButton" (click)="openSolveDialog()">Solve</button> -->
+            <button mat-button class="btns" id="solveButton" (click)="openSolveDialogHard(puzzleThreeID)">Solve</button>
           </mat-card-actions>
       </mat-card>
 

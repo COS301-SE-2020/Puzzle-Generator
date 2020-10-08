@@ -16385,6 +16385,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var tileFolder = zip.folder("tile puzzle");
       var cuboidFolder = zip.folder("cuboid puzzle");
       createTilePrintableFiles(tileFolder, 0, 5);
+      var depths;
 
       if (piecesJSONObject.depths === undefined) {
         depths = [];

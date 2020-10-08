@@ -9211,10 +9211,11 @@ function generateSTLFiles()
 	let tileFolder = zip.folder("tile puzzle");
 	let cuboidFolder = zip.folder("cuboid puzzle");
 	createTilePrintableFiles(tileFolder, 0, 5);
-
+  let depths;
 	if(piecesJSONObject.depths === undefined)
 	{
-		depths = [];
+    
+    depths = [];
 		for(let i = 0; i < pieces.length; i++)
 			depths[i] = getDepth(Math.floor(Math.random() * 8) + 1);
 	}
@@ -9273,7 +9274,7 @@ function createCuboidPrintableFiles(folder, depthsArray)
 			};
 
 			if(vertexIndex+4 < currentPiece.length)
-			{	
+			{
 				nextTopLeft = {
 					x: currentPiece[vertexIndex+4],
 					y: currentPiece[vertexIndex+4+1],

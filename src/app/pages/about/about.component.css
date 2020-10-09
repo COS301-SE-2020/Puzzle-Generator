@@ -1,0 +1,33 @@
+.container-fluid{
+    /* background-color: whitesmoke; */
+    padding: 3%;
+    border-radius: 0.5%;
+  }
+
+.content{
+    background-color: whitesmoke;
+    width: 95%;
+    margin-left: 3rem;
+}
+
+.left{
+  float: left;
+}
+
+.right{
+  float: right;
+}
+
+.mediumImage {
+	height: 500px;
+	width: 75%;
+}
+
+.largeImage {
+	height: 50%;
+	width: 75%;
+}
+
+mat-card-content{
+  font-size: medium;
+}

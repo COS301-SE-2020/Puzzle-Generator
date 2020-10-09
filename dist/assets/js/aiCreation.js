@@ -1,5 +1,6 @@
 import { width, height, setSites, setDisableEditMode, initializeData, calculateDistancesFromSitesToPoint,
-	equidistantPointsPresent, generateSiteBoundaries, createPieces, clearBoard } from 'src/assets/js/manualCreation.js'
+	equidistantPointsPresent, generateSiteBoundaries, createPieces, clearBoard, getCurrentRenderMode } from 'src/assets/js/manualCreation.js';
+import { render3D, render2D } from 'src/assets/js/generate3D.js';
 
 ///The structure of each individual/chromosome object
 let Chromosome = {
@@ -12,12 +13,15 @@ let Site = {
 	x: 0,
 	y: 0,
 	surfaceArea: 0,
-}
+};
 
-let generatePuzzleAIButton, colorPalettesDiv;
+let generatePuzzleAIButton, nextPuzzleButton, previousPuzzleButton, progressBar;
+let generatedPuzzles;
+let renderedPuzzleIndex;
 let tempWidth, tempHeight;
 let totalSurfaceArea;
 
+//Genetic Algorithm parameters
 let generationSize = 10 + 1;
 let tournamentSize = 4;
 let maximumIterations = 150;
@@ -59,39 +63,85 @@ let rand = mulberry32(seed());
 
 function random(max)
 {
-    return Math.ceil(rand() * max) - 1;
+    // return Math.ceil(rand() * max) - 1;
+    return Math.floor(Math.random() * max);
 }
 
 function expandPuzzle(sites, factor)
 {
+	let tempSites = [];
+
 	for(let i = 0; i < sites.length; i++)
 	{
-		sites[i].x = sites[i].x * factor;
-		sites[i].y = sites[i].y * factor;
+		tempSites[i] = {
+			x: 0,
+			y: 0
+		}
+		tempSites[i].x = sites[i].x * factor;
+		tempSites[i].y = sites[i].y * factor;
 	}
 
-	return sites;
+	return tempSites;
 }
 
 export function initializeDataAI()
 {
 	initializeData('AI');
+	setDisableEditMode(true);
+	groupDistribution = [];
+	generatedPuzzles = [];
+	sliders = [];
+	labels = [];
+	renderedPuzzleIndex = 0;
 	generatePuzzleAIButton = document.getElementById('generatePuzzleButtonAI');
 	generatePuzzleAIButton.addEventListener('mousedown', generatePuzzleAI);
 	generatePuzzleAIButton.remove();
 
+	nextPuzzleButton = document.getElementById('nextPuzzleButton');
+	previousPuzzleButton = document.getElementById('previousPuzzleButton');
+	nextPuzzleButton.remove();
+	previousPuzzleButton.remove();
+
+	progressBar = document.getElementById('progressBar');
+	progressBar.style.display = 'none';
+
 	document.getElementById('nextButton').addEventListener('mousedown', displaySlidersCard);
-	// colorPalettesDiv = document.getElementById('colorPalettesAI');
-	// colorPalettesDiv.remove();
+
+	nextPuzzleButton.addEventListener('mousedown', function(){
+		renderedPuzzleIndex++;
+		if(renderedPuzzleIndex == generatedPuzzles.length)
+		{
+			let newGeneration = run();
+			for(let index = 0; index < newGeneration.length; index++)
+			{
+				generatedPuzzles.push(newGeneration[index].sites);
+			}
+			console.log('reached maximum :<');
+		}
+
+		renderPuzzle(generatedPuzzles[renderedPuzzleIndex]);
+	});
+
+	previousPuzzleButton.addEventListener('mousedown', function(){
+		if(renderedPuzzleIndex != 0)
+		{
+			renderedPuzzleIndex--;
+			renderPuzzle(generatedPuzzles[renderedPuzzleIndex]);
+		}
+	});
 }
 
 function displaySlidersCard()
 {
-	numberOfSites = document.getElementById('numberOfPiecesInputBox').value;
+	let numberOfPiecesInGroup;
+	numberOfSites = 0;
 
-	groupDistribution.push(document.getElementById('numberOfPiecesInputBox1').value);
-	groupDistribution.push(document.getElementById('numberOfPiecesInputBox2').value);
-	groupDistribution.push(document.getElementById('numberOfPiecesInputBox3').value);
+	for(let i = 0; i < 3; i++)
+	{
+		numberOfPiecesInGroup = parseInt(document.getElementById('numberOfPiecesInputBox' + (i+1)).value);
+		groupDistribution.push(numberOfPiecesInGroup);
+		numberOfSites += numberOfPiecesInGroup;
+	}
 
 	generateSliders(3);
 
@@ -100,6 +150,8 @@ function displaySlidersCard()
 
 function generatePuzzleAI()
 {
+	// document.getElementById('progressBarDiv').appendChild(progressBar);
+	// progressBar.style.display = 'block';
 	desiredProportions = [];
 
 	for(let i = 0; i < 3; i++)
@@ -113,16 +165,29 @@ function generatePuzzleAI()
 	desiredProportions.sort( function(a, b) { return b - a } );
 
 	document.getElementById('inputContainer').innerHTML = '';
-	// document.getElementById('inputContainer').appendChild(colorPalettesDiv);
 
-	let sites = run();
-	sites = expandPuzzle(sites, 10);
+	let lastGeneration = run();
+	for(let index = 0; index < lastGeneration.length; index++)
+	{
+		generatedPuzzles.push(lastGeneration[index].sites);
+	}
 
-	setSites(sites);
-	setDisableEditMode(true);
+	renderPuzzle(lastGeneration[0].sites);
+	// progressBar.remove();
+	document.getElementById('puzzleControlsDiv').appendChild(previousPuzzleButton);
+	document.getElementById('puzzleControlsDiv').appendChild(nextPuzzleButton);
+}
+
+function renderPuzzle(sites)
+{
+	let expandedSites = expandPuzzle(sites, 10);
+	setSites(expandedSites);
 	clearBoard();
 	generateSiteBoundaries();
-	createPieces();
+	let piecesJSONObject = createPieces();
+	piecesJSONObject = JSON.parse(piecesJSONObject);
+	if(getCurrentRenderMode() == '3D')
+		render3D(piecesJSONObject, 'AI');
 }
 
 function generateSliders(numberOfSliders)
@@ -199,7 +264,7 @@ function generateSliders(numberOfSliders)
 
 		let br = document.createElement('br');
 
-		sliders.push(slider);
+		sliders.push(slider); 
 		labels.push(valueLabel);
 
 
@@ -241,7 +306,7 @@ function run()
 
 	console.log(nextGeneration);
 	console.log('done!');
-	return getFittest(nextGeneration).sites;
+	return nextGeneration;
 }
 
 ///Returns the fittest chromosome from generation
@@ -262,7 +327,7 @@ function mutate(chromosome)
 {
 	// let siteIndex = random(numberOfSites);
 	let selectedSite = chromosome.sites[random(numberOfSites)];
-	let offset = random(5);
+	let offset = random(5 + 1);
 	let movementDirection = random(4);
 
 	///Move site to the right by offset (increment x by offset), or move to the left if at board edge

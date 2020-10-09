@@ -1,0 +1,198 @@
+.container-fluid{
+  background-color: white;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+  border-radius: 0.5%;
+}
+
+.container{
+ background-color: white;
+ height: 100%;
+ width: 100%;
+}
+
+.content-image{
+ width: 100%;
+ margin-bottom: 1rem;
+}
+
+h1{
+  padding-top: 1%;
+  margin-top: 0.5rem;
+  font-family: keep-calm;
+  color: black;
+  text-align: center;
+}
+
+mat-card{
+ margin: auto;
+ margin-top: 2vw;
+ background-color: gainsboro;
+ color: black;
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+ font-family: keep-calm;
+}
+
+mat-card-title{
+  margin: 2rem 0 !important;
+ font-family: keep-calm;
+}
+
+
+.btns{
+ background-color: #7C593A;
+ color: white;
+ margin: 0.5vw;
+ /* width: 50%; */
+ text-align: center;
+ font-size: 1.7rem;
+ font-weight: normal;
+}
+
+.sortBtns{
+ background-color: #7C593A;
+ color: white;
+ margin-left: 3.5rem;
+ margin-bottom: 1rem;
+ border: 1px solid white;
+ text-align: center;
+ font-family: keep-calm;
+}
+
+.inUse{
+  background-color: white;
+  color: #7C593A;
+  margin-left: 3.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid white;
+  text-align: center;
+  font-family: keep-calm;
+  border: 2px solid #7C593A;
+}
+
+.arrow{
+  margin: 1rem;
+}
+
+.puzzleActions{
+ display: inline;
+}
+
+.puzzleDetails{
+ color: #fff;
+}
+
+#resetBtn:hover, .btns:hover{
+ background-color: white;
+ color: #7C593A;
+}
+
+.searchArea{
+ margin-left: 2vw;
+ font-family: keep-calm;
+ font-size:1.8rem;
+}
+
+#resetBtn{
+ margin-left: 2vw;
+ background-color: #7C593A;
+ color: white;
+ margin: 0.5vw;
+ text-align: center;
+ font-weight: normal;
+ padding: 0.5vw;
+ border-radius: 0.5vw;
+
+}
+
+#spinner{
+ margin: auto ;
+ color: black;
+}
+
+.content {
+ position: relative;
+ width: 100%;
+ max-width: 370px;
+ overflow: hidden;
+}
+
+.content .content-overlay {
+ background: rgba(0,0,0,0.7);
+ position: absolute;
+ height: 100%;
+ width: 100%;
+ left: 0;
+ top: 0;
+ bottom: 0;
+ right: 0;
+ opacity: 0;
+ -webkit-transition: all 0.4s ease-in-out 0s;
+ -moz-transition: all 0.4s ease-in-out 0s;
+ transition: all 0.4s ease-in-out 0s;
+}
+
+.content:hover .content-overlay{
+ opacity: 1;
+}
+
+
+.content-details {
+ position: absolute;
+ text-align: justify;
+ padding-left: 1em;
+ padding-right: 1em;
+ width: 100%;
+ top: 50%;
+ left: 50%;
+ opacity: 0;
+ -webkit-transform: translate(-50%, -50%);
+ -moz-transform: translate(-50%, -50%);
+ transform: translate(-50%, -50%);
+ -webkit-transition: all 0.3s ease-in-out 0s;
+ -moz-transition: all 0.3s ease-in-out 0s;
+ transition: all 0.3s ease-in-out 0s;
+}
+
+.content:hover .content-details{
+ top: 30%;
+ left: 50%;
+ opacity: 1;
+}
+
+.content-details h3{
+ color: #fff;
+ font-weight: 500;
+ letter-spacing: 0.15em;
+ margin-bottom: 0.5em;
+ text-transform: uppercase;
+}
+
+.fadeIn-bottom{
+ top: 80%;
+}
+
+.spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+       stroke: #7C593A;
+     }
+
+.footer {
+      /* height: 50px; */
+      background-color: #7C593A;
+      line-height: 3rem;
+      /* padding: 0 5rem; */
+}
+
+@media only screen and (min-width: 435px) and (max-width: 670px){
+ .sortBtns{
+   background-color: #7C593A;
+   color: white;
+   margin-left: 3.5rem;
+   margin-bottom: 1rem;
+   border: 1px solid white;
+   text-align: center;
+   font-family: keep-calm;
+   width: 50%;
+   margin-left: 25%;
+  }
+}

@@ -37,6 +37,11 @@ export class APIService {
     return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/getUser',token, httpOptions);
   }
 
+  updateLevel(currentUser:User){
+    const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
+    return this.http.put('https://prometheuspuzzles.herokuapp.com/api/users/updateLevel', currentUser, httpOptions);
+  }
+
   updateName(currentUser: User){
     const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
     return this.http.put('https://prometheuspuzzles.herokuapp.com/api/users/updateName', currentUser, httpOptions);
@@ -61,6 +66,18 @@ export class APIService {
    * User endpoints end here
    */
 
+  /**
+   * Challenge Endpoints start here
+   */
+
+  getChallenges(){
+    return this.http.get('https://prometheuspuzzles.herokuapp.com/api/puzzles/getChallenges');
+  }
+
+   /**
+   * Challenge Endpoints end here
+   */
+
 
 /**
 * Puzzle endpoints start here
@@ -70,7 +87,7 @@ getAllPuzzles(){
 }
 
 getAllPuzzleByID(puzzleID: number){
-  return this.http.get('https://prometheuspuzzles.herokuapp.com/api/puzzles/getPuzzleByID?Id=' + puzzleID);
+  return this.http.get('https://prometheuspuzzles.herokuapp.com/api/puzzles/getPuzzleByID/' + puzzleID);
 }
 
 createNewPuzzle(puzzle: Puzzle){
@@ -116,7 +133,51 @@ deleteRating(rating:number):Observable<number>
   return this.http.delete<number>('https://prometheuspuzzles.herokuapp.com/api/puzzles/deleteRating/'+rating);
 }
 
+retrieveAllSolveAttempts(currentUser: any){
+  const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
+  return this.http.post('https://prometheuspuzzles.herokuapp.com/api/users/getSolvedPuzzles', currentUser, httpOptions);
+}
+
 /**
 * Puzzle endpoints end here
 */
+
+/**
+* Admin endpoints start here
+*/
+
+getAllUsers(){
+  return this.http.get('https://prometheuspuzzles.herokuapp.com/api/admin/getAllUsers');
+}
+
+deleteUser(user:number): Observable<number>
+{
+  return this.http.delete<number>('https://prometheuspuzzles.herokuapp.com/api/admin/deleteUser/'+user);
+}
+
+getAllPuzzlesAdmin()
+{
+  return this.http.get('https://prometheuspuzzles.herokuapp.com/api/admin/getAllPuzzles');
+}
+
+deletePuzzleAdmin(puzzle:number): Observable<number>{
+  return this.http.delete<number>('https://prometheuspuzzles.herokuapp.com/api/admin/deletePuzzle/'+puzzle);
+}
+
+getAllRatingsAdmin(){
+  return this.http.get('https://prometheuspuzzles.herokuapp.com/api/admin/getAllRatings');
+}
+
+deleteRatingAdmin(rateID:number): Observable<number>{
+  return this.http.delete<number>('https://prometheuspuzzles.herokuapp.com/api/admin/deleteRatingAdmin/'+rateID);
+}
+/**
+* Admin endpoints end here
+*/
+
+requestPasswordChange(email: any){
+  const httpOptions = { headers: new HttpHeaders( { 'Content-Type': 'application/json' })};
+  return this.http.put('https://prometheuspuzzles.herokuapp.com/api/requestPasswordChange', email, httpOptions);
+}
+
 }

@@ -1,0 +1,65 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1"> 
+     <mat-card class="content">
+       <mat-card-header>
+       </mat-card-header>
+      <mat-card-content>
+        <div id="topContent">
+            <mat-card-title >Introducing Prometheus: The Artificial "Brain" behind Prometheus' Puzzles</mat-card-title>
+            <div id="topText">
+                Prometheus is our AI (short for artificial intelligence), and Prometheus is in-charge of generating all the wonderful puzzles hosted on this site - hence the name "Prometheus' Puzzles". Prometheus is a genetic algorithm and it works by burrowing the concept of Darwin's Theory of Evolution. In simple terms, Prometheus generates a set of puzzles (referred to as a generation), and through multiple iterations Prometheus decides which puzzles best fit certain criteria. These puzzles that are selected by Prometheus are then allowed to contribute to the next generation of puzzles. This "evolution" is repeated until a generation Prometheus deems worthy is produced, and these are the puzzles that are shown at the end.
+            </div>
+        </div>
+        <!-- <hr> -->
+        <br>
+        <div id="bottomContent">
+            <mat-card-title >How does Prometheus work?</mat-card-title>
+              Prometheus is a genetic algorithm - it essentially finds solutions by firstly creating an initial set of puzzles and evolving successive generations which are fitter than said initial set. And this process of evolution is emulated through the use of the reproduction, mutation, and crossover operations. <br><br>
+
+            <mat-card-title >Reproduction</mat-card-title>
+              In this operation, the fittest puzzle of the current generation is selected to proceed into the next. This is only done once in every generation. <br><br>
+            
+            <mat-card-title >Mutation</mat-card-title>
+              For this operation, the puzzle selected changes by having one of the sites shift in a random direction by a random offset. This is demonstrated in the following figure: <br><br>
+              <img class="mediumImage" src="assets/images/mutation.png"> <br><br>
+
+            <mat-card-title >Crossover</mat-card-title>
+              For this operation, two puzzles are selected and they each exchange of their respective sites with the other. This operation produces two new offspring, which are then mutated and become part of the next generation. This is shown in the following diagram:<br><br>
+              <img class="largeImage" src="assets/images/crossover.png"><br><br>
+
+            <mat-card-title >How does Prometheus select puzzles?</mat-card-title>
+              Prometheus selects puzzles by conducting tournament selection, wherein puzzles compete and the fittest one wins. Prometheus will randomly select a few puzzles from the generation and then run the tournament. <br><br>
+
+            <mat-card-title >How is a puzzle's fitness determined?</mat-card-title>
+              A puzzles' fitness is determined by how well the puzzle fits the criteria established by the user. The criteria is set up in the algorithm parameters section by the user, where the user will input the number of pieces assigned to each of the three groups: <br><br>
+              <img src="assets/images/parameters_number_per_group.png"><br><br>
+              And afterwards the user will decide how much of the board space should belong to each group: <br><br>
+              <img src="assets/images/parameters_distribution.png"><br><br>
+              Now the criteria from which Prometheus evaluates puzzles is set. Prometheus quantifies a puzzle's fitness by how close the board space distribution is to the user's specifications. Board space occupied by a piece in measured by the surface area (in piexls) of said piece. <br><br>
+
+              As a simple example, take a look at the previous two images of the algorithm parameters section. Notice that for group 3, there is only 1 puzzle piece and we have given it 55% of the board space. One of the results we get looks like this (where the label correspondes to the group the piece belongs to): <br><br>
+              <img src="assets/images/parameters_result.png"><br><br>
+
+              And that's it! That is how Prometheus works it's magic. 
+
+            <!-- <div id="bottomText">
+              <div class="left">
+               Our AI Puzzle Generator makes use of a Genetic Algorithm (GA). Blah blah Blah
+               <br>
+               <img src="assets/images/Capture.PNG">
+              </div>
+              <div class="right"> 
+                Bleh bleh bleh<br>
+               <img src="assets/images/Capture2.PNG"/>
+              </div>
+            </div> -->
+        </div>
+      </mat-card-content>
+    </mat-card>
+    </div>
+  </div>
+ 
+  <app-footer class="footer"></app-footer>
+ 

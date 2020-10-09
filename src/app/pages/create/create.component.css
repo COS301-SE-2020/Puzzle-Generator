@@ -17,7 +17,7 @@
 
   mat-radio-group{
     font-size: 1.5rem;
-    padding:0.5rem;
+    /* padding:0.5rem; */
     display: flex;
     flex-direction: column;
   }
@@ -30,10 +30,6 @@
     color: black;
   }
 
-  .names{
-    font-size: 1.5rem;
-  }
-
   .btns{
     background-color: #7C593A;
     color: white;
@@ -44,6 +40,15 @@
   mat-card-actions{
     margin-top: -1rem;
     margin-left: 1rem;
+  }
+
+  #helpXs{
+    color: #7C593A;
+    visibility: hidden;
+    padding: 0.5rem;
+    float: right;
+    margin-right: 2vw;
+    cursor: pointer;
   }
 
   #help{
@@ -71,13 +76,15 @@
   }
 
   .puzzleType{
-    margin-left: 5rem;
+    margin-left: 1.5rem;
+    padding-right: -2rem;
+    width: 30rem;
   }
 
   .creationCard{
     margin: 1rem;
-    padding-left: 5rem;
-    padding-right: 5rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
     padding-top: 4rem;
     margin-bottom: 1rem;
     background-color: gainsboro;
@@ -85,38 +92,143 @@
 
   .saveOptions{
     margin: 1rem;
-    padding-left: 2rem;
+    padding-left: 4rem;
+    padding-right: 2rem;
     padding-top: 4rem;
     width: 30rem;
-    max-width: 50rem;
+    /* max-width: 50rem; */
     background-color: gainsboro;
   }
 
-  .matContentC{
-    margin-left: 4.5rem;
+  #saveHeading{
+    margin-left: -2rem;
   }
 
-  @media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
-    #container {
-      width: 23rem;
-      height: 35rem;
-      border: 1px solid black;
-      margin-left: -3.5rem;
+  .footer {
+    background-color: #7C593A;
+    line-height: 3rem;
+  }
+
+  .names{
+    margin-left: -2rem;
+    font-size: 1.5rem;
+    /* display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start; */
+  }
+
+  .matContentC{
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  #randomizeColorsButton{
+    margin-left: -2rem;
+  }
+  
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+  #container {
+    margin: unset;
+    width: 29rem;
+    height: 35rem;
+    border: 1px solid black;
+    margin-left: -2.5rem;
   }
 
   .puzzleType{
     margin-left: .8rem;
-    width: 25rem;
+    width: 32rem;
+  }
+
+  .creationCard{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 32rem;
   }
 
   .saveOptions{
-    /* margin: 1rem; */
-    /* padding-left: 2rem; */
-    /* padding-top: 4rem; */
-    width: 25rem;
-  } 
+    width: 32rem;
+  }
+
+  .matContentC{
+    margin-left: 3rem;
+  }
+
+  #colorPalleteLabel{
+    font-size: medium;
+  }
 
   #help{
     visibility: hidden;
   }
+
+  #helpXs{
+    visibility: visible;
+    margin-top: -1.5rem;
+    margin-right: -5rem;
   }
+
+  .modal{
+    /*  */
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {  
+  #container {
+    margin: unset;
+    width: 29rem;
+    height: 35rem;
+    border: 1px solid black;
+    margin-left: -2.5rem;
+  }
+
+  .puzzleType{
+    margin-left: .8rem;
+    width: 32rem;
+  }
+
+  .creationCard{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 32rem;
+  }
+
+  .saveOptions{
+    width: 32rem;
+  }
+
+  .matContentC{
+    margin-left: 3rem;
+  }
+
+  #colorPalleteLabel{
+    font-size: medium;
+  }
+
+  #help{
+    visibility: hidden;
+  }
+
+  #helpXs{
+    visibility: visible;
+    margin-top: -1.5rem;
+    margin-right: -5rem;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {  }
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {  }
+
+ /* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  }
+

@@ -4,6 +4,13 @@ import { Puzzle } from 'src/app/models/Puzzle';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { SolveDialogComponent } from 'src/app/dialogs/solve-dialog/solve-dialog.component';
+import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
+import {MatTableDataSource} from '@angular/material/table';
+import { ProfilePuzzlesDialogComponent } from 'src/app/dialogs/profile-puzzles-dialog/profile-puzzles-dialog.component';
+import { downloadPuzzle2D, downloadPuzzle3D } from 'src/assets/js/downloadPuzzle.js';
+import { HintComponent } from 'src/app/dialogs/hint/hint.component';
 
 @Component({
   selector: 'app-profile-puzzles',
@@ -14,14 +21,13 @@ export class ProfilePuzzlesComponent implements OnInit {
 
   currentUser: any;
   //user  puzzle variables
-  //puzzleList: Observable <Puzzle[]> ;
   userPuzzleList: any;
   puzzle: any;
   show: boolean;
   text: boolean;
   imageList: any;
   temp: boolean = false;
-  tee: any;
+  token: any;
 
   totalNumberOfPuzzles: number;
   ratingsLSize: number;
@@ -30,15 +36,102 @@ export class ProfilePuzzlesComponent implements OnInit {
   pageSize: number = 6;
   startIndex:number = 0;
   endIndex: number = 6;
-  // pageSizeOptions: number[] = [5, 10, 25, 100];
 
   // MatPaginator Output
   pageEvent: PageEvent;
 
-  constructor(private api: APIService, private router: Router) { }
+  solveDialog: MatDialogRef<SolveDialogComponent>;
+  loginDialog: MatDialogRef<LoginDialogComponent>;
+  profileDialog: MatDialogRef<ProfilePuzzlesDialogComponent>;
+  levelDialog: MatDialogRef<HintComponent>;
+
+  datasource: any = "";
+  sortedBy: any;
+
+  constructor(private api: APIService, private router: Router, private dialog: MatDialog) { }
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
     // this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  }
+
+  applyFilter(filterValue: string) {
+    this.datasource.filterPredicate = function(data, filter: string): boolean {
+      return data.name.toLowerCase().includes(filter)
+    };
+    this.datasource.filter = filterValue.trim().toLowerCase();
+    this.totalNumberOfPuzzles = this.datasource.filteredData.length;
+  }
+
+  nameDescending()
+  {
+    return this.userPuzzleList.sort( (a,b) => {
+      this.sortedBy = "puzzleDesc";
+      let paramA = a.name.toLowerCase();
+      let paramB = b.name.toLowerCase();
+
+      if(paramA > paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+  }
+
+  nameAscending()
+  {
+    return this.userPuzzleList.sort( (a,b) => {
+      this.sortedBy = "puzzleAsc";
+      let paramA = a.name.toLowerCase();
+      let paramB = b.name.toLowerCase();
+
+      if(paramA < paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+  }
+
+  ratingDescending()
+  {
+    return this.userPuzzleList.sort( (a,b) => {
+      this.sortedBy = "ratingDesc";
+      let paramA = a.rating;
+      let paramB = b.rating;
+
+      if(paramA > paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+  }
+
+  ratingAscending()
+  {
+    return this.userPuzzleList.sort( (a,b) => {
+      this.sortedBy = "ratingAsc";
+      let paramA = a.rating;
+      let paramB = b.rating;
+
+      if(paramA < paramB ){ return -1; }
+      else { return 1; }
+      return 0;
+    });
+  }
+
+  dateDescending()
+  {
+    return this.userPuzzleList.sort( (a,b) => {
+      this.sortedBy = "dateDesc";
+      let paramA = new Date(a.createdAt).getTime();
+      let paramB = new Date(b.createdAt).getTime();
+      return paramA > paramB ? 1 : -1;
+    });
+  }
+
+  dateAscending()
+  {
+    return this.userPuzzleList.sort( (a,b) => {
+      this.sortedBy = "dateAsc";
+      let paramA = new Date(a.createdAt).getTime();
+      let paramB = new Date(b.createdAt).getTime();
+      return paramA < paramB ? 1 : -1;
+    });
   }
 
   changeEvent(event: PageEvent)
@@ -53,37 +146,9 @@ export class ProfilePuzzlesComponent implements OnInit {
     return event;
   }
 
-  nameDescending()
-  {
-    return this.userPuzzleList.sort( (a,b) => {
-      console.log("values: ", this.userPuzzleList);
-      //console.log("args: ", args);
-      let paramA = a.name.toLowerCase();
-      let paramB = b.name.toLowerCase();
-
-      if(paramA > paramB ){ return -1; }
-      else { return 1; }
-      return 0;
-    });
-  }
-
-  nameAscending()
-  {
-    return this.userPuzzleList.sort( (a,b) => {
-      console.log("values: ", this.userPuzzleList);
-      //console.log("args: ", args);
-      let paramA = a.name.toLowerCase();
-      let paramB = b.name.toLowerCase();
-
-      if(paramA < paramB ){ return -1; }
-      else { return 1; }
-      return 0;
-    });
-  }
-
-
 
   getUserPuzzles(){
+    this.userPuzzleList = "";
     this.api.getPuzzlesByUser(this.currentUser).subscribe( data => {
       this.totalNumberOfPuzzles = Object.keys(data).length;
       this.userPuzzleList = data;
@@ -92,6 +157,8 @@ export class ProfilePuzzlesComponent implements OnInit {
         this.text = true;
       }
       this.show = false;
+      this.datasource = new MatTableDataSource(this.userPuzzleList);
+      this.nameAscending();
     });
   }
 
@@ -100,9 +167,14 @@ export class ProfilePuzzlesComponent implements OnInit {
       "puzzleID": data
     }
     if(this.api.sharePuzzle(this.puzzle).subscribe()){
-        alert("Puzzle shared");
+        //alert("Puzzle shared");
+        this.profileDialog = this.dialog.open(ProfilePuzzlesDialogComponent, 
+          { 
+            disableClose: true, hasBackdrop: true,
+            data: { pageValue: "Puzzle shared" } 
+          });
     }
-    location.reload();
+    //location.reload();
   }
 
   deletePuzzle(puzzleID: any){
@@ -110,9 +182,14 @@ export class ProfilePuzzlesComponent implements OnInit {
     //   "puzzleID": puzzleID
     // }
     if(this.api.deletePuzzle(puzzleID).subscribe()){
-        alert("Puzzle deleted");
+        //alert("Puzzle deleted");
+        this.profileDialog = this.dialog.open(ProfilePuzzlesDialogComponent, 
+          { 
+            disableClose: true, hasBackdrop: true,
+            data: { pageValue: "Puzzle deleted" } 
+          });
     }
-    location.reload();
+    //location.reload();
   }
 
   stopShare(data: any){
@@ -120,9 +197,14 @@ export class ProfilePuzzlesComponent implements OnInit {
       "puzzleID": data
     }
     if(this.api.stopSharingPuzzle(this.puzzle).subscribe()){
-        alert("Stop sharing puzzle");
+        //alert("Stop sharing puzzle");
+        this.profileDialog = this.dialog.open(ProfilePuzzlesDialogComponent, 
+          { 
+            disableClose: true, hasBackdrop: true,
+            data: { pageValue: "Stopped sharing shared" } 
+          });
     }
-    location.reload();
+    //location.reload();
   }
 
   async delay(ms: number) {
@@ -130,24 +212,41 @@ export class ProfilePuzzlesComponent implements OnInit {
     .then( () => { console.log("fired"); });
   }
 
+  openSolveDialog(puzzleID: any){
+    localStorage.setItem('solvingPuzzleID', puzzleID);
+    // this.solveDialog = this.dialog.open(SolveDialogComponent, { disableClose: true, hasBackdrop: true });
+    this.levelDialog = this.dialog.open(HintComponent, {disableClose: true, hasBackdrop: true});
+  }
+
+  twoDDownload(puzzleID: any){
+    downloadPuzzle2D(puzzleID);
+  }
+
+  threeDDownload(puzzleID: any){
+    downloadPuzzle3D(puzzleID);
+  }
+
   ngOnInit(): void {
 
     if(!localStorage.getItem('token')){
       this.router.navigate(['/index']);
-      alert("You are not logged in");
+      this.loginDialog = this.dialog.open(LoginDialogComponent, { disableClose: true, hasBackdrop: true });
+      // alert("You are not logged in");
     }
 
     this.currentUser = {
       "token": localStorage.getItem('token')
     }
+
+    this.token = localStorage.getItem('token');
+
     this.show = true;
     this.text = false;
 
-    this.delay(2500).then( () =>{
+    this.delay(2000).then( () =>{
       this.getUserPuzzles();
     });
 
-    //this.getUserPuzzles();
   }
 
 }

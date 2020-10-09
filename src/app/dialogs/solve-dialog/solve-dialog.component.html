@@ -1,0 +1,30 @@
+<div class="solver" id="solverDialogDiv">
+  <!-- <div class="headings"> -->
+    <h3 *ngIf="!expertMode" mat-dialog-title><strong>Instructions:</strong>Drag Puzzle Pieces onto the canvas to solve the puzzle</h3>
+    <h3 *ngIf="expertMode" mat-dialog-title><strong>Instructions:</strong> Click and drag pieces into their correct positions. Double click a piece to rotate it!</h3>
+  <!-- </div> -->
+
+    <div id="solvedDiv" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Puzzle Successfully Solved</p>
+        </div>
+      </div>
+
+
+    <div id="solverContainer"></div>
+
+    <div mat-dialog-actions>
+      <button class="btns" mat-button mat-dialog-close id="closeSolverDialogButton">Close</button>
+      <label hidden="true" id="difficultyLevel">{{numHints}}</label>
+      <button mat-button *ngIf="showHintButton" class="btns" (click)="showImage()">Hint {{fromPage}}(remaining)</button><label></label>
+  </div>
+
+  <div  class="modal" [ngStyle]="{'display':display}">
+    <div id="cc" class="modal-content">
+      <img id="pic" src="{{hintImage}}">
+    </div>
+  </div> 
+  
+</div>

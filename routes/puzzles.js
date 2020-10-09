@@ -1,12 +1,13 @@
 const express = require('express');
 const { response, request } = require('express');
 const router = express.Router();
-//const db = require('../config/database');
 const db = require('../config/dbConfig');
 const User = require('../models/User');
 const Puzzle = require('../models/Puzzle');
 const PuzzleRating = require('../models/PuzzleRating')
 const Sequelize = require('sequelize');
+const SolveAttempt = require('../models/SolveAttempt');
+const Challenge = require('../models/Challenge');
 const Op = Sequelize.Op;
 
 /**
@@ -14,6 +15,7 @@ const Op = Sequelize.Op;
  */
 
 //get all puzzles
+
 router.get('/getAllPuzzles', (request, response) => {
     var puzzleJsonObject = [];
     var puzzlePlaceholder = {};
@@ -43,6 +45,115 @@ router.get('/getAllPuzzles', (request, response) => {
             response.status(500).send("Failed to get all puzzles due to: ", error)
         });
 });
+
+router.get('/getChallenges', (request, response) => {
+    let placeholher = {};
+    Challenge.findAll( {raw: true})
+    .then( challengeList => {
+       // console.log("ChallengeList: ", challengeList);
+        var array = challengeList;
+        var today = new Date();
+        var date = today.getDate();
+        var getIndexAt = parseInt(date)/2;
+        // console.log("ChallengeList Today: ", challengeList[getIndexAt]);
+        let puzzleOne = challengeList[getIndexAt].oneName;
+        let puzzleTwo = challengeList[getIndexAt].twoName;
+        let bonus = challengeList[getIndexAt].bonusName;
+
+        Puzzle.findAll( { raw: true, where: { id: puzzleOne } } )
+        .then( tempOne => {
+            //
+            Puzzle.findAll( { raw: true, where: { id: puzzleTwo } } )
+            .then( tempTwo => {
+                //
+                Puzzle.findAll( { raw: true, where: { id: bonus } } )
+                .then( tempThree => {
+                    //
+                    placeholher = {
+                        "puzzleOneID": tempOne[0].id,
+                        "puzzleOneName": tempOne[0].name,
+                        "puzzleOneImage": tempOne[0].image,
+                        "puzzleOneDifficulty": "Novice",
+                        "puzzleTwoID": tempTwo[0].id,
+                        "puzzleTwoName":tempTwo[0].name,
+                        "puzzleTwoImage": tempTwo[0].image,
+                        "puzzleTwoDifficulty": "Intermediate",
+                        "puzzleThreeID": tempThree[0].id,
+                        "puzzleThreeName":tempThree[0].name,
+                        "puzzleThreeImage": tempThree[0].image,
+                        "puzzleThreeDifficulty": "Expert",
+                    }
+
+                    // console.log("return me: ", placeholher);
+                    response.status(201).send(placeholher);
+                    
+                })
+                .catch()
+                    })
+            .catch()
+            })
+        .catch()
+    })
+    .catch();
+})
+
+//get challenges
+// router.get('/getChallenges', (request, response) => {
+//     var puzzleJsonObject = [];
+//     var puzzlePlaceholder = {};
+//     Challenge.findAll( { raw: true } )
+//         .then( challengeList => {
+//             // console.log("challenge##########: ",challengeList[0].details);
+//             let temp = JSON.parse(challengeList[0].details);
+//             const solveChallengePuzzle = temp.solve.puzzleID;
+//             const timeChallengePuzzle = temp.time.puzzleID;
+//             //response.status(201).send(puzzle);
+//             Puzzle.findAll( { raw: true, where: { id: solveChallengePuzzle } } )
+//             .then( puzzle => {
+//                 let solveChallengePuzzleData = puzzle[0];
+//                // console.log("Solve Object: ", solveChallengePuzzleData)
+
+//                 Puzzle.findAll( { raw: true, where: { id: timeChallengePuzzle } } )
+//                 .then( data => {
+//                     let timeChallengePuzzleData = data[0];
+//                    // console.log('Time object: ', timeChallengePuzzleData);
+
+//                     var array = data;
+//                     var array1 = puzzle;
+//                     array.forEach(element => {
+//                         puzzlePlaceholder = {
+//                             "timeID":element.id,
+//                             "timeName":element.name,
+//                             "timeImage": element.image,
+//                             "timeDifficulty": temp.time.difficulty
+//                         };
+//                         puzzleJsonObject.push(puzzlePlaceholder);
+//                     });
+//                     array1.forEach(element => {
+//                         puzzlePlaceholder = {
+//                             "solveID":element.id,
+//                             "solveName":element.name,
+//                             "solveImage": element.image,
+//                             "solveDifficulty": temp.solve.difficulty
+//                         };
+//                         puzzleJsonObject.push(puzzlePlaceholder);
+//                     });
+//                     // console.log("---------------", puzzleJsonObject);
+//                     response.status(201).send(puzzleJsonObject);
+
+//                 })
+//                 .catch( error => {
+//                     response.status(403).send("Failed due to: ", error);
+//                 })
+//             })
+//             .catch( error => {
+//                 response.status(403).send("Failed due to: ", error);
+//             })
+//         })
+//         .catch( error => {
+//             response.status(403).send("Failed due to: ", error);
+//         })
+// });
 
 //get puzzle by id
 router.get('/getPuzzleByID/:id', (request, response) => {
@@ -111,6 +222,7 @@ router.put('/sharePuzzle',(request, response) => {
         response.status(500).send("Server error");
     } );
 });
+
 //stop sharing puzzle
 router.put('/stopSharingPuzzle',(request, response) => {
     const puzzleID = request.body.puzzleID;
@@ -126,6 +238,171 @@ router.put('/stopSharingPuzzle',(request, response) => {
     } );
 });
 
+//start of solving endpoints
+//new solve attempt record
+//new solve attempt record
+router.post('/newSolveAttempt', (request, response) => {
+    console.log("the body *---> ", request.body);
+    const token = request.body.token;
+    const puzzleID = request.body.puzzleID;
+    let solved = request.body.solved;
+    const attemptDuration = request.body.attemptDuration;
+    let attempted = true;
+    let solverID = null;
+    const xp = request.body.xp;
+    User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
+    .then( user => {
+        solverID = user[0].id;
+        console.log("Just before creation to check values to be inserted: ", solverID, puzzleID, attemptDuration, solved, attempted, xp);
+        
+        SolveAttempt.findAll({ raw: true,
+            where: { solverID:  solverID, puzzleID:  puzzleID }
+          })
+          .then( data => {
+              if(data.length == 0){ //solve attempt doesnt exist so create new rating
+                    SolveAttempt.create({
+                        solverID, puzzleID, attemptDuration, solved, attempted
+                    })
+                    .then( () => {
+                        //response.status(200).send("Attempt successfully created")
+                        //update player xp
+                        User.findOne({ raw: true, where: { id: solverID } })
+                        .then( user => {
+                            let currUserId = user.id;
+                            let currUserXP = user.xp;
+                            let newXP = parseInt(currUserXP) + parseInt(xp);
+                            User.update(
+                                { xp: newXP },
+                                { returning: true, raw: true, plain: true, where: { id: currUserId } }
+                            )
+                            .then( data => {
+                                response.status(201).json({"xp": data[1].xp});
+                            } )
+                            .catch( error => {
+                                response.status(500).send("Server error");
+                            } );
+                        })
+                        .catch( () => {
+                            response.status(500).send("Server error");
+                        })
+                    })
+                    .catch( error => {
+                        response.status(403).send("Solve attempt creation failed due to: ", error);
+                    })
+                }
+                else
+                {
+                    let newAttemptDuration = parseInt(data[0].attemptDuration) + parseInt(attemptDuration);
+                    if(data[0].solved == true){solved = data[0].solved; }
+                    else {solved = request.body.solved; }
+                    SolveAttempt.update( //solve attempt exists so update current rating
+                        { solved: solved, attemptDuration: newAttemptDuration },
+                        { returning: true, raw: true, plain: true, where: { solverID: solverID, puzzleID:  puzzleID } }
+                    )
+                    .then( () => {
+                        //response.status(200).send("Solve attempt successfully updated");
+                        //update player xp
+                        User.findOne({ raw: true, where: { id: solverID } })
+                        .then( user => {
+                            let currUserId = user.id;
+                            let currUserXP = user.xp;
+                            let newXP = parseInt(currUserXP) + parseInt(xp);
+                            User.update(
+                                { xp: newXP },
+                                { returning: true, raw: true, plain: true, where: { id: currUserId } }
+                            )
+                            .then( data => {
+                                response.status(201).json({"xp": data[1].xp});
+                            } )
+                            .catch( error => {
+                                response.status(500).send("Server error");
+                            } );
+                        })
+                        .catch( () => {
+                            response.status(500).send("Server error");
+                        })
+                     })
+                    .catch( error => {
+                        response.status(500).send("Server error");
+                    } );
+                }
+            })
+            .catch(error => {
+                response.status(403).send("Attempt record not found due to: ", error);
+            });
+    })
+    .catch(error => {
+        response.status(403).send("User not found due to: ", error);
+    });
+});
+// router.post('/newSolveAttempt', (request, response) => {
+//     // console.log("the body *---> ", request.body);
+//     const token = request.body.token;
+//     const puzzleID = request.body.puzzleID;
+//     let solved = request.body.solved;
+//     const attemptDuration = request.body.attemptDuration;
+//     let attempted = true;
+//     let solverID = null;
+//     const bestTime = request.body.attemptDuration;
+//     User.findAll( { raw: true, where: { token: {[Op.like]:  request.body.token } } } )
+//     .then( user => {
+//         solverID = user[0].id;
+//         // console.log("Just before creation to check values to be inserted: ", solverID, puzzleID, attemptDuration, solved, attempted, bestTime);
+        
+//         SolveAttempt.findAll({ raw: true,
+//             where: { solverID:  solverID, puzzleID:  puzzleID }
+//           })
+//           .then( data => {
+//               if(data.length == 0){ //solve attempt doesnt exist so create new rating
+//                     SolveAttempt.create({
+//                         solverID, puzzleID, attemptDuration, solved, attempted, bestTime 
+//                     })
+//                     .then( () => {
+//                         response.status(200).send("Attempt successfully created")
+//                     })
+//                     .catch( error => {
+//                         response.status(403).send("Solve attempt creation failed due to: ", error);
+//                     })
+//                 }
+//                 else
+//                 {
+//                     let newAttemptDuration = parseInt(data[0].attemptDuration) + parseInt(attemptDuration);
+
+//                     if(data[0].solved == true){solved = data[0].solved; }
+//                     else {solved = request.body.solved; }
+
+//                     let currBestTime = data[0].bestTime;
+//                     if(
+//                         data[0].bestTime == null || parseInt(bestTime) <= parseInt(data[0].bestTime)
+//                     )
+//                     { currBestTime = bestTime; }
+//                     else { currBestTime = data[0].bestTime; } 
+
+//                     // console.log("Best time: ", currBestTime);
+
+//                     SolveAttempt.update( //solve attempt exists so update current rating
+//                         { solved: solved, attemptDuration: newAttemptDuration },
+//                         { solved: solved, attemptDuration: newAttemptDuration, bestTime: currBestTime },
+//                         { returning: true, raw: true, plain: true, where: { solverID: solverID, puzzleID:  puzzleID } }
+//                     )
+//                     .then( () => {
+//                         response.status(200).send("Solve attempt successfully updated");
+//                      })
+//                     .catch( error => {
+//                         response.status(500).send("Server error");
+//                     } );
+//                 }
+//             })
+//             .catch(error => {
+//                 response.status(403).send("Attempt record not found due to: ", error);
+//             });
+//     })
+//     .catch(error => {
+//         response.status(403).send("User not found due to: ", error);
+//     });
+// });
+//end of solving endpoints
+
 //deletePuzzle
 router.delete('/deletePuzzle/:puzzleID', (request, response) => {
     const puzzleID = request.params.puzzleID; //req.params.userid
@@ -133,11 +410,9 @@ router.delete('/deletePuzzle/:puzzleID', (request, response) => {
     Puzzle.destroy( { returning: true, raw: true, plain: true, where: { id:  puzzleID } }
     )
     .then( () => {
-        console.log("Worx---> ");
         response.status(200).send("Successfully deleted");
      })
     .catch( error => {
-        console.log("No bueno---> ");
         response.status(500).send("Server error");
     } );
 })

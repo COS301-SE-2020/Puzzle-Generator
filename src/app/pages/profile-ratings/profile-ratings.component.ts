@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RateDialogComponent } from '../../rate-dialog/rate-dialog.component';
 import { PageEvent } from '@angular/material/paginator';
+import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
+import {MatTableDataSource} from '@angular/material/table';
+import { downloadPuzzle2D, downloadPuzzle3D } from 'src/assets/js/downloadPuzzle.js';
 
 @Component({
   selector: 'app-profile-ratings',
@@ -36,6 +39,10 @@ export class ProfileRatingsComponent implements OnInit {
 
   // MatPaginator Output
   pageEvent: PageEvent;
+  sortedBy: any;
+  datasource: any = "";
+
+  loginDialog: MatDialogRef<LoginDialogComponent>;
 
   constructor(private api: APIService, private router: Router, private dialog: MatDialog) { }
 
@@ -55,9 +62,18 @@ export class ProfileRatingsComponent implements OnInit {
     return event;
   }
 
+  applyFilter(filterValue: string) {
+    this.datasource.filterPredicate = function(data, filter: string): boolean {
+      return data.puzzleName.toLowerCase().includes(filter)
+    };
+    this.datasource.filter = filterValue.trim().toLowerCase();
+    this.totalNumberOfPuzzles = this.datasource.filteredData.length;
+  }
+
   nameDescending()
   {
     return this.userRatingsList.sort( (a,b) => {
+      this.sortedBy = "puzzleDesc";
       let paramA = a.puzzleName.toLowerCase();
       let paramB = b.puzzleName.toLowerCase();
 
@@ -70,6 +86,7 @@ export class ProfileRatingsComponent implements OnInit {
   nameAscending()
   {
     return this.userRatingsList.sort( (a,b) => {
+      this.sortedBy = "puzzleAsc";
       let paramA = a.puzzleName.toLowerCase();
       let paramB = b.puzzleName.toLowerCase();
 
@@ -82,8 +99,9 @@ export class ProfileRatingsComponent implements OnInit {
   ratingDescending()
   {
     return this.userRatingsList.sort( (a,b) => {
-      let paramA = a.rating;//.toLowerCase();
-      let paramB = b.rating;//.toLowerCase();
+      this.sortedBy = "ratingDesc";
+      let paramA = a.rating;
+      let paramB = b.rating;
 
       if(paramA > paramB ){ return -1; }
       else { return 1; }
@@ -94,12 +112,33 @@ export class ProfileRatingsComponent implements OnInit {
   ratingAscending()
   {
     return this.userRatingsList.sort( (a,b) => {
-      let paramA = a.rating;//.toLowerCase();
-      let paramB = b.rating;//.toLowerCase();
+      this.sortedBy = "ratingAsc";
+      let paramA = a.rating;
+      let paramB = b.rating;
 
       if(paramA < paramB ){ return -1; }
       else { return 1; }
       return 0;
+    });
+  }
+
+  dateDescending()
+  {
+    return this.userRatingsList.sort( (a,b) => {
+      this.sortedBy = "dateDesc";
+      let paramA = new Date(a.created).getTime();
+      let paramB = new Date(b.created).getTime();
+      return paramA > paramB ? 1 : -1;
+    });
+  }
+
+  dateAscending()
+  {
+    return this.userRatingsList.sort( (a,b) => {
+      this.sortedBy = "dateAsc";
+      let paramA = new Date(a.created).getTime();
+      let paramB = new Date(b.created).getTime();
+      return paramA < paramB ? 1 : -1;
     });
   }
 
@@ -112,6 +151,8 @@ export class ProfileRatingsComponent implements OnInit {
       if (this.totalNumberOfPuzzles == 0){
         this.text = true;
       }
+      this.datasource = new MatTableDataSource(this.userRatingsList);
+      this.nameAscending();
     });
   }
 
@@ -120,7 +161,7 @@ export class ProfileRatingsComponent implements OnInit {
   }
 
   openRateDialog(){
-    this.rateDialogRef = this.dialog.open(RateDialogComponent);
+    this.rateDialogRef = this.dialog.open(RateDialogComponent, { disableClose: true, hasBackdrop: true });
 
     this.rateDialogRef.afterClosed().subscribe( result => {
       if (result != ""){
@@ -157,17 +198,25 @@ export class ProfileRatingsComponent implements OnInit {
   this.api.findRatingID(this.deleteVal).subscribe( (result) => {
     if(this.api.deleteRating(result["id"]).subscribe()){
         alert("Rating deleted");
-        location.reload(); 
-    }
-  });
+        location.reload();
+      }
+    });
+  }
 
+  twoDDownload(puzzleID: any){
+    downloadPuzzle2D(puzzleID);
+  }
+
+  threeDDownload(puzzleID: any){
+    downloadPuzzle3D(puzzleID);
   }
 
   ngOnInit(): void {
 
     if(!localStorage.getItem('token')){
       this.router.navigate(['/index']);
-      alert("You are not logged in");
+      this.loginDialog = this.dialog.open(LoginDialogComponent, { disableClose: true, hasBackdrop: true });
+      // alert("You are not logged in");
     }
 
     this.currentUser = {

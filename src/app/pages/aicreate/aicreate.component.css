@@ -15,6 +15,10 @@
   width: 7rem;
 }
 
+#helpXs{
+  visibility: hidden;
+}
+
 .content{
  margin-left: 10rem;
 }
@@ -40,7 +44,6 @@ mat-radio-group{
 .radio-group {
    display: flex;
    flex-direction: column;
-   /* margin-left: 1rem; */
    font-size: 1vw;
  }
 
@@ -72,35 +75,100 @@ mat-radio-group{
 
  .puzzleOptions{
   margin: 1rem;
-  padding-left: 5rem;
-  padding-right: 5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
   padding-top: 4rem;
   width: 40rem;
   background-color: gainsboro;
-}
-
-.puzzleOptions{
-  margin-left: 3rem;
+  margin-left: 1rem;
 }
 
 .creationCard{
   margin: 1rem;
-  padding-left: 5rem;
-  padding-right: 5rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
   padding-top: 4rem;
   margin-bottom: 1rem;
   background-color: gainsboro;
 }
 
+.footer {
+  background-color: #7C593A;
+  line-height: 3rem;
+}
+
 .saveOptions{
   margin: 1rem;
-  padding-left: 2rem;
+  padding-left: 4rem;
   padding-top: 4rem;
-  width: 30rem;
+  width: 35rem;
   max-width: 50rem;
   background-color: gainsboro;
 }
 
-.matContentC{
-  margin-left: 1rem;
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+  .puzzleOptions{
+    width: 32rem;
+  }
+  #container {
+    margin: unset;
+    width: 29rem;
+    height: 35rem;
+    border: 1px solid black;
+    margin-left: -2.5rem;
+  }
+
+  .puzzleType{
+    margin-left: .8rem;
+    width: 32rem;
+  }
+
+  .creationCard{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 32rem;
+  }
+
+  .saveOptions{
+    width: 32rem;
+  }
+
+  .matContentC{
+    margin-left: 3rem;
+  }
+
+  #colorPalleteLabel{
+    font-size: medium;
+  }
+
+  #help{
+    visibility: hidden;
+  }
+
+  #helpXs{
+    margin-top: 1rem;
+  }
+
+  .radio-group {
+    font-size: medium;
+  }
+
 }
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) { 
+ 
+ }
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {  }
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {  }
+
+ /* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  }
+

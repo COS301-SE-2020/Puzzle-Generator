@@ -8,19 +8,14 @@ var logger = require('morgan');
 const Sequelize = require('sequelize');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-/*
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var puzzleRouter = require('./routes/puzzles');
-
- */
+const mailer = require('./routes/mailer');
 
 //var apiRouter = require('./routes/api');
 
 const db = require('./config/dbConfig');
 
 //test db connection
-db.authenticate()
+  db.authenticate()
     .then( () => {console.log("Successfully connected to db");} )
     .catch( error => {console.log("Error: ", error);})
 
@@ -31,10 +26,14 @@ app.use(cors());
 //all requests associated with the user must make use of this route
 app.use('/api/users', require('./routes/users'));
 
-
 //all requests associated with the user must make use of this route
 app.use('/api/puzzles', require('./routes/puzzles'));
 
+//all requests associated with the user must make use of this route
+app.use('/api/admin', require('./routes/admin'));
+
+//all requests associated with other api calls
+app.use('/api', require('./routes/api'));
 
 app.all("/*", function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -80,12 +79,20 @@ app.use('/profile-puzzles',express.static(__dirname+"/dist"));
 app.use('/profilePuzzles',express.static(__dirname+"/dist"));
 app.use('/profile-ratings',express.static(__dirname+"/dist"));
 app.use('/profileRatings',express.static(__dirname+"/dist"));
+app.use('/profileSolvedPuzzle',express.static(__dirname+"/dist"));
 app.use('/ratings',express.static(__dirname+"/dist"));
 app.use('/reset-password',express.static(__dirname+"/dist"));
 app.use('/reset-success',express.static(__dirname+"/dist"));
 app.use('/resetPassword',express.static(__dirname+"/dist"));
 app.use('/resetSuccess',express.static(__dirname+"/dist"));
 app.use('/signup',express.static(__dirname+"/dist"));
+app.use('/adminUser',express.static(__dirname+"/dist"));
+app.use('/adminPuzzles',express.static(__dirname+"/dist"));
+app.use('/adminRatings',express.static(__dirname+"/dist"));
+app.use('/leaderboard',express.static(__dirname+"/dist"));
+app.use('/aboutus',express.static(__dirname+"/dist"));
+app.use('/about',express.static(__dirname+"/dist"));
+
 
 /**
  * End Angular - Heroku stuff
@@ -113,8 +120,10 @@ app.use(function(err, req, res, next) {
 //import  db
 app.get('/', (request, response) => {response.send("Sequelize API test");});
 
+//mailer.mail("welcome","jaynillg@gmail.com");
+
 module.exports = app;
-console.log(process.env.dbPass)
+//console.log(process.env.dbPass)
 /*
 //all requests associated with the user must make use of this route
 app.use('/api/users', require('./routes/users'));
@@ -123,7 +132,8 @@ app.use('/api/users', require('./routes/users'));
 //all requests associated with the user must make use of this route
 app.use('/api/puzzles', require('./routes/puzzles'));
 
+app.use('/api/admin', require('./routes/admin'))
+
 const PORT = process.env.PORT || 3200;
 
-app.listen(PORT, console.log(`Server running at: ${PORT}`));
-*/
+app.listen(PORT, console.log(`Server running at: ${PORT}`));*/

@@ -1,29 +1,70 @@
 <app-navbar></app-navbar>
 
-<button mat-button class="sortBtns">Name
-  <mat-icon (click)="nameAscending()" class="arrow">arrow_upwardward</mat-icon> |
-  <mat-icon (click)="nameDescending()" class="arrow">arrow_downward</mat-icon>
+<mat-form-field class="searchArea">
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event.target.value)">
+</mat-form-field>
+
+<button mat-button [ngClass]="{
+  inUse: sortedBy=='puzzleAsc' || sortedBy=='puzzleDesc',
+  sortBtns: sortedBy!='puzzleAsc' || sortedBy!='puzzleDesc'
+}">Name
+  <mat-icon *ngIf='sortedBy!="puzzleAsc"' (click)="nameAscending()" class="arrow">arrow_upwardward</mat-icon> |
+  <mat-icon *ngIf='sortedBy!="puzzleDesc"' (click)="nameDescending()" class="arrow">arrow_downward</mat-icon>
+</button>
+
+<button mat-button [ngClass]="{
+  inUse: sortedBy=='dateAsc' || sortedBy=='dateDesc',
+  sortBtns: sortedBy!='dateAsc' || sortedBy!='dateDesc'
+}">Date
+  <mat-icon *ngIf='sortedBy!="dateAsc"' (click)="dateAscending()" class="arrow">arrow_upwardward</mat-icon> |
+  <mat-icon *ngIf='sortedBy!="dateDesc"' (click)="dateDescending()" class="arrow">arrow_downward</mat-icon>
 </button>
 
 <div class="container">
 <div class="container-fluid" *ngIf="currentUser" >
     <h1 class="main-title" >My Puzzles</h1>
     <div class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-evenly center">
-        <mat-card class="content" *ngFor="let puzzle of (userPuzzleList | slice: startIndex:endIndex)">
+        <mat-card class="content" *ngFor="let puzzle of (this.datasource.filteredData | slice: startIndex:endIndex)">
           <div class="content-overlay"></div>
           <img class="content-image" src="{{puzzle.image}}">
+          <div class="content-details fadeIn-bottom">
+            <mat-card-header>
+              <mat-card-subtitle class="puzzleDetails"><strong>Created on:</strong> {{puzzle.createdAt}}</mat-card-subtitle>
+              <mat-card-subtitle class="puzzleDetails"><strong>Description:</strong> {{puzzle.description}}</mat-card-subtitle>
+            </mat-card-header>
+          </div>
             <mat-card-title><strong>{{puzzle.name}}</strong></mat-card-title>
             <!-- <mat-card-subtitle>Description: {{puzzle.description}}</mat-card-subtitle> -->
-            <mat-card-actions class="puzzleActions">
-              <button *ngIf="!puzzle.shared" mat-button class="btns" (click)="share(puzzle.id)">SHARE</button>
-              <button *ngIf="puzzle.shared" mat-button class="btns" (click)="stopShare(puzzle.id)">STOP SHARING</button>
-              <button mat-button class="btns" (click)="deletePuzzle(puzzle.id)">DELETE</button>
+            <label hidden="true" id="tokenLabel">{{token}}</label>
+            <mat-card-actions class="puzzleActions" >
+              <button *ngIf="!puzzle.shared" mat-button class="btns" (click)="share(puzzle.id)">Share</button>
+              <button *ngIf="puzzle.shared" mat-button class="btns" (click)="stopShare(puzzle.id)">Stop Sharing</button>
+              <button mat-button class="btns" (click)="deletePuzzle(puzzle.id)">Delete</button>
+              <!-- <button mat-button class="btns" id="solveButton" (click)="openSolveDialog(puzzle.id)">SOLVE</button> -->
             </mat-card-actions>
+
+            <!-- <mat-card-actions class="puzzleActions">
+              <button mat-button class="btns" (click)="openAndCheck(rating.puzzleID)">Update Rating</button>
+              <button mat-button class="btns" id="delete" (click)="delete(rating.puzzleID)">Delete Rating</button>
+          </mat-card-actions> -->
+          <br>
+          <mat-card-actions class="puzzleActionsA">
+            <button mat-button class="btnsA" id="solveButton" (click)="openSolveDialog(puzzle.id)">Solve</button>
+              <button mat-button class="btnsA" id="2dDownload" (click)="twoDDownload(puzzle.id)" >2D
+                <mat-icon>save_alt</mat-icon>
+              </button>
+              <button mat-button class="btnsA" id="3dDownload" (click)="threeDDownload(puzzle.id)">3D
+                <mat-icon>save_alt</mat-icon>
+              </button>
+          </mat-card-actions>
+
+
         </mat-card>
     </div>
 </div>
 
-<mat-paginator class="paginator" *ngIf="!show" [length]="totalNumberOfPuzzles" [pageSize]="pageSize"
+<mat-paginator class="paginator" *ngIf="!text && !show" [length]="totalNumberOfPuzzles" [pageSize]="pageSize"
                   (page)="pageEvent = changeEvent($event)">
 </mat-paginator>
 
@@ -34,4 +75,6 @@
   </div>
 <div class="spinner">
   <mat-spinner *ngIf="show" id="spinner"></mat-spinner>
-</div> 
+</div>
+
+<app-footer class="footer" *ngIf="!show"></app-footer>

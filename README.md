@@ -33,18 +33,6 @@ https://drive.google.com/drive/folders/1ULxjGFUPBP7LBiTA9wZ5OtLRJFXGaqWC?usp=sha
 * Clickup:
 https://share.clickup.com/b/h/4-2672456-2/8ce32a2cd3801b0
 
-## Members LinkedIn Profile Links
-* Jaynill Gopal:
-http://www.linkedin.com/in/jaynill-gopal-5b32381a4
-
-* Tapiwa Mazibuko:
-https://www.linkedin.com/in/tapiwa-m-066326120
-
-* Tsholofelo Gomba:
-https://www.linkedin.com/in/tsholofelo-gomba-8189b712b
-
-* Yuval Langa:
-https://www.linkedin.com/in/yuval-langa-27ab251ab/
 
 # Profile Descriptions
 ### Charlotte Jacobs 
@@ -57,21 +45,25 @@ u15165622
 u15175295
 * Jaynill was responsible for the deployment of the website and github branching.
 * https://jaynillg.github.io
+* http://www.linkedin.com/in/jaynill-gopal-5b32381a4
 
 ### Tapiwa Mazibuko 
 u18203541
 * Tapiwa was responsible for integration and unit testing and quality requirements testing
 * https://tapiwamazibuko.github.io
+* https://www.linkedin.com/in/tapiwa-m-066326120
 
 ### Tsholofelo Gomba
 u17391718
 * Tsholofelo was responsible for the Angular Website setup and functtionality, Node API setup and functionality and database setup and functionality
 * https://u173Tsholo.github.io
+* https://www.linkedin.com/in/tsholofelo-gomba-8189b712b
 
 ### Yuval Langa
 u18174142
 * Yuval is our Team Lead responsible for manual and AI puzzle functionality and the puzzle solver system.
 * https://glasses-kun.github.io/online-cv/
+* https://www.linkedin.com/in/yuval-langa-27ab251ab/
 
 
 
@@ -80,33 +72,7 @@ u18174142
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
 ## Angular File Structure 
-
-We kept the file structure that Angular uses. 
 
 ### Main Folder
 
@@ -118,7 +84,7 @@ The src folder has the index.html file which is the main file that gets called w
 
 ### assets folder 
 
-The assets folder consists of all our images, fonts and our js files used for the manual creation. 
+The assets folder consists of all our images, fonts and our js files used for the ai/manual creation. 
 
 ### app folder
 

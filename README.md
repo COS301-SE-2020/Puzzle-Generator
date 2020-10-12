@@ -34,9 +34,6 @@ https://drive.google.com/drive/folders/1ULxjGFUPBP7LBiTA9wZ5OtLRJFXGaqWC?usp=sha
 https://share.clickup.com/b/h/4-2672456-2/8ce32a2cd3801b0
 
 ## Members LinkedIn Profile Links
-* Charlotte Jacobs:
-https://www.linkedin.com/in/charlotte-jacobs-b1558216b/
-
 * Jaynill Gopal:
 http://www.linkedin.com/in/jaynill-gopal-5b32381a4
 
@@ -54,6 +51,7 @@ https://www.linkedin.com/in/yuval-langa-27ab251ab/
 u15165622
 * Charlotte was responsible for the Angular website functionality.
 * https://charley817.github.io
+* https://www.linkedin.com/in/charlotte-jacobs-b1558216b/
 
 ### Jaynill Gopal 
 u15175295
@@ -62,17 +60,17 @@ u15175295
 
 ### Tapiwa Mazibuko 
 u18203541
-* Tapiwa was responsible for integration and unit testing
+* Tapiwa was responsible for integration and unit testing and quality requirements testing
 * https://tapiwamazibuko.github.io
 
 ### Tsholofelo Gomba
 u17391718
-* Tsholofelo was responsible for the Angular website and Node API functionality
+* Tsholofelo was responsible for the Angular Website setup and functtionality, Node API setup and functionality and database setup and functionality
 * https://u173Tsholo.github.io
 
 ### Yuval Langa
 u18174142
-* Yuval is our team leader responsible for manual and AI puzzle functionality.
+* Yuval is our Team Lead responsible for manual and AI puzzle functionality and the puzzle solver system.
 * https://glasses-kun.github.io/online-cv/
 
 

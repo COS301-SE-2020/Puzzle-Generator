@@ -1,8 +1,6 @@
 # Puzzle-Generator
 
 # Links
-[![Coverage Status](https://coveralls.io/repos/github/COS301-SE-2020/Puzzle-Generator/badge.svg?branch=node/integrationTesting)](https://coveralls.io/github/COS301-SE-2020/Puzzle-Generator?branch=node/IntegrationTesting)
-
 [![Build Status](https://travis-ci.org/COS301-SE-2020/Puzzle-Generator.svg?branch=node%2FintegrationTesting)](https://travis-ci.org/COS301-SE-2020/Puzzle-Generator)
 
 ## Website Link
@@ -65,40 +63,6 @@ u18174142
 * https://glasses-kun.github.io/online-cv/
 * https://www.linkedin.com/in/yuval-langa-27ab251ab/
 
-
-
-
 # PrometheusPuzzles
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
-
-## Angular File Structure 
-
-### Main Folder
-
-The parent directory consists of all our proxy files, package files, config files and our gitignore file - which consists of our node modules folder and other files git should ignore. It also has the src folder which consists of our whole website. 
-
-### src folder
-
-The src folder has the index.html file which is the main file that gets called when our website is running. The src folder also has the assets folder and the app folder. 
-
-### assets folder 
-
-The assets folder consists of all our images, fonts and our js files used for the ai/manual creation. 
-
-### app folder
-
-The app folder has the app component and the routing component. It also has the following folders: models, services, pages, navbar and rate-dialog. The navbar and rate-dialog is used throughout our website and that is why they have seperate components on this directory. 
-
-### models folder
-
-The models folder is used for the puzzles, puzzleRatings and users to provide a model that we can use throughout the website. 
-
-### services folder 
-
-The services folder consists of our the service that interacts with our API. 
-
-### pages folder 
-
-We use the pages folder for all the pages components of our website. Each folder inside the pages folder uses the same file structure - we have the .html file for all the html of the page, then we have the .css file that consists of the styles for that specific page, we also have the .ts file that consists of the functions and we have the spec.ts file that will be used for unit testing. 
+Our Puzzle Generator system allows for the automation of the traditional puzzle creation process through the use of manual amd AI puzzle generations. Generated puzzles can be downloaded in 2D image mode, 3D tile puzzles and 3D cuboid puzzles that one can slot in and play at home. Our system also allows users to share puzzles, rate each other's puzzles and solve puzzles online.
 

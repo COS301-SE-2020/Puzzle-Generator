@@ -28,8 +28,10 @@ router.post('/createUser', (request, response) => {
       .then( user => {
         if(user.length == 0){
           //create user
+          let xp = 0;
+          level = 1;
           User.create({
-            name, username, password, token
+            name, username, password, token, xp, level
           })
             .then( data => {
               mailer.mail("welcome", username);

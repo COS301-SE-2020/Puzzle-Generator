@@ -19,6 +19,7 @@ export class SolveDialogComponent implements OnInit {
   showHintButton: boolean = false;
   showMe:boolean = false;
   hintImage: any;
+  xppoints:any;
 
   numHints: number;
 
@@ -36,7 +37,7 @@ export class SolveDialogComponent implements OnInit {
 
     async delay(ms: number) {
       await new Promise(resolve => setTimeout(()=>resolve(), ms))
-      .then( () => { console.log("fired"); });
+      .then( () => { });
     }
 
     showImage(){
@@ -45,15 +46,7 @@ export class SolveDialogComponent implements OnInit {
       {
         this.fromPage = this.fromPage - 1;
         this.api.getAllPuzzleByID(parseInt(puzzleID)).subscribe( data => {
-          // this.hintDialog = this.dialog.open(HintComponent, { 
-          //   disableClose: true, hasBackdrop: true,
-          //   data: { pageValue:  data[0].image} 
-          // });
           this.hintImage = data[0].image;
-          // this.showMe = true;
-          // this.delay(2000).then( () =>{
-          //   this.showMe = false;
-          // });
           this.display = 'block';
           this.delay(2500).then( () =>{
               this.display = 'none';
@@ -77,6 +70,10 @@ export class SolveDialogComponent implements OnInit {
     this.token =  localStorage.getItem('token');
     localStorage.setItem('numHints', "" + this.fromPage);
     initializeDataSolve();
+
+    if(this.fromPage == 5){ this.xppoints = 10;}
+    else if(this.fromPage == 3){ this.xppoints = 30;}
+    else if(this.fromPage == 0){ this.xppoints = 50;}
 
     if(this.fromPage > 5){
       this.showMe = true;

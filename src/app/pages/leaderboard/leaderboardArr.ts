@@ -3,5 +3,7 @@ export class LeaderboardArr{
   memberSince: string;
   nrPuzzles: number;
   avgRating: number;
-  solved: number; 
+  solved: number;
+  xp: number;
+  level: number;
 }

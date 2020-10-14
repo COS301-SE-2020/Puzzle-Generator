@@ -3,10 +3,10 @@
     font-family: keep-calm;
     height: 7rem;
     border-radius: .3rem;
-    font-size: 1.7rem;
     color: #fff;
 }
 
 .text{
     display: inline;
+    font-size: 1.5vw;
 }

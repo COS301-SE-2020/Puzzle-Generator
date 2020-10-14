@@ -7,7 +7,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
+import {MatSort, MatSortable} from '@angular/material/sort';
 import { LeaderboardArr } from './leaderboardArr';
 import { LoginDialogComponent } from 'src/app/dialogs/login-dialog/login-dialog.component';
 import {ChangeDetectorRef } from '@angular/core';
@@ -20,7 +20,7 @@ import { RatingsArr } from '../ratings/RatingsArr';
 })
 export class LeaderboardComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'memberSince', 'nrPuzzles', 'avgRating', 'solved'];
+  displayedColumns: string[] = ['position','name', 'memberSince', 'xp', 'level', 'nrPuzzles', 'avgRating', 'solved'];
   userList: Array<LeaderboardArr> = [];
   dataSource: any;
   i: number;
@@ -32,6 +32,7 @@ export class LeaderboardComponent implements OnInit {
   loginDialog: MatDialogRef<LoginDialogComponent>;
   countPuzzles: number =0;
   ratings: Array<RatingsArr> = [];
+
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -74,6 +75,14 @@ export class LeaderboardComponent implements OnInit {
         let leaderboardObj = new LeaderboardArr();
         leaderboardObj.name = data[this.i].name;
         leaderboardObj.memberSince = data[this.i].createdAt;
+        leaderboardObj.xp = data[this.i].xp;
+        leaderboardObj.level = data[this.i].level;
+        if (leaderboardObj.xp == null){
+          leaderboardObj.xp = 0;
+        }
+        if (leaderboardObj.level == null){
+          leaderboardObj.level = 0;
+        }
 
         this.currentUser = {
           "token": data[this.i].token
@@ -123,6 +132,7 @@ export class LeaderboardComponent implements OnInit {
       }
       this.dataSource = new MatTableDataSource(this.userList);
       this.dataSource.paginator = this.paginator;
+      this.sort.sort(({ id: 'xp', start: 'desc'}) as MatSortable);
       this.dataSource.sort = this.sort;
     });
 

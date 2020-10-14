@@ -54,7 +54,9 @@ router.get('/getChallenges', (request, response) => {
         var array = challengeList;
         var today = new Date();
         var date = today.getDate();
-        var getIndexAt = parseInt(date)/2;
+        // var getIndexAt = parseInt(date)/2;
+        var getIndexAt = parseInt(date);
+        // console.log("Today is the : ", date, " day of this month");
         // console.log("ChallengeList Today: ", challengeList[getIndexAt]);
         let puzzleOne = challengeList[getIndexAt].oneName;
         let puzzleTwo = challengeList[getIndexAt].twoName;

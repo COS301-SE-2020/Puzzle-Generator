@@ -182,10 +182,15 @@ mat-card-title{
 .searchArea{
   margin-left: 2vw;
   font-size:1.8rem;
+  padding-right: 80%;
 }
 
 table {
-  width: 100%;
+  width: 96%;
+  margin-left: 2%;
+  border: 4px solid #7C593A;
+  border-radius: 4em;
+  background-color: transparent !important;
 }
 
 .mat-form-field {
@@ -194,7 +199,12 @@ table {
 }
 
 td, th {
-  width: 25%;
+  width: 11%;
+}
+
+th {
+  font-size: 1.5rem ;
+  font-weight: bold;
 }
 
 

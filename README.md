@@ -6,7 +6,7 @@
 ## Website Link
 *https://prometheuspuzzles.herokuapp.com/
 
-## Social/Health impacts of our system 
+## Educational, Health and Business Values of our system 
 * Link to our powerpoint presentation: 
 https://docs.google.com/presentation/d/1U3ou2js9yRAIh-gHwR2n4hg8TnI6-naORtPv4XPqbrU/edit?usp=sharing
 

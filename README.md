@@ -6,7 +6,7 @@
 ## Website Link
 *https://prometheuspuzzles.herokuapp.com/
 
-## Educational, Health and Business Values of our system 
+## Educational, Health and Business values of our system 
 * Link to our powerpoint presentation: 
 https://docs.google.com/presentation/d/1U3ou2js9yRAIh-gHwR2n4hg8TnI6-naORtPv4XPqbrU/edit?usp=sharing
 
@@ -45,7 +45,7 @@ u15165622
 
 ### Jaynill Gopal 
 u15175295
-* Jaynill was responsible for the deployment of the website and github branching.
+* Jaynill was responsible for the server setup and maintenance, deployment of the website to Heroku and github management.
 * https://jaynillg.github.io
 * http://www.linkedin.com/in/jaynill-gopal-5b32381a4
 
@@ -57,13 +57,13 @@ u18203541
 
 ### Tsholofelo Gomba
 u17391718
-* Tsholofelo was responsible for the Angular Website setup and functtionality, Node API setup and functionality and database setup and functionality
+* Tsholofelo was responsible for the Angular Website setup and functionality, Node API setup and functionality and database setup and functionality
 * https://u173Tsholo.github.io
 * https://www.linkedin.com/in/tsholofelo-gomba-8189b712b
 
 ### Yuval Langa
 u18174142
-* Yuval is our Team Lead responsible for manual and AI puzzle functionality and the puzzle solver system.
+* Yuval is our Team Leader responsible for manual and AI puzzle functionality and the puzzle solver system.
 * https://glasses-kun.github.io/online-cv/
 * https://www.linkedin.com/in/yuval-langa-27ab251ab/
 

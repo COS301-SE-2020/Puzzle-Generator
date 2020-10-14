@@ -139,6 +139,16 @@ function displaySlidersCard()
 	for(let i = 0; i < 3; i++)
 	{
 		numberOfPiecesInGroup = parseInt(document.getElementById('numberOfPiecesInputBox' + (i+1)).value);
+
+		if(document.getElementById('numberOfPiecesInputBox' + (i+1)).value === '')
+		{
+			numberOfPiecesInGroup = 1;
+		}
+		if(numberOfPiecesInGroup < 0)
+		{
+			numberOfPiecesInGroup *= -1;
+		}
+
 		groupDistribution.push(numberOfPiecesInGroup);
 		numberOfSites += numberOfPiecesInGroup;
 	}

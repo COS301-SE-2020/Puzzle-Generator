@@ -193,6 +193,7 @@ function createTilePrintableFiles(folder, zPositionBottom, zPositionTop, optiona
 
 	let currentPiece;
 	let topRight, topLeft, bottomRight, bottomLeft;
+	let nextTopRight, nextTopLeft, nextBottomRight, nextBottomLeft;
 	let stlFile;
 
 	for(let pieceIndex = 0; pieceIndex < pieces.length; pieceIndex++)
@@ -224,6 +225,42 @@ function createTilePrintableFiles(folder, zPositionBottom, zPositionTop, optiona
 				y: currentPiece[vertexIndex+3],
 				z: zPositionBottom
 			};
+
+			if(vertexIndex+4 < currentPiece.length)
+			{	
+				nextTopLeft = {
+					x: currentPiece[vertexIndex+4],
+					y: currentPiece[vertexIndex+4+1],
+					z: zPositionTop
+				};
+
+				nextBottomLeft = {
+					x: currentPiece[vertexIndex+4],
+					y: currentPiece[vertexIndex+4+1],
+					z: zPositionBottom
+				};
+
+				nextTopRight = {
+					x: currentPiece[vertexIndex+4+2],
+					y: currentPiece[vertexIndex+4+3],
+					z: zPositionTop
+				};
+
+				nextBottomRight = {
+					x: currentPiece[vertexIndex+4+2],
+					y: currentPiece[vertexIndex+4+3],
+					z: zPositionBottom
+				};
+
+				stlFile = addVertexToFile(topLeft, topRight, nextTopRight, stlFile);
+				stlFile = addVertexToFile(nextTopRight, nextTopLeft, topLeft, stlFile);
+
+				stlFile = addVertexToFile(bottomRight, nextBottomRight, nextTopRight, stlFile);
+				stlFile = addVertexToFile(nextTopRight, topRight, bottomRight, stlFile);
+
+				stlFile = addVertexToFile(bottomLeft, nextBottomLeft, nextTopLeft, stlFile);
+				stlFile = addVertexToFile(nextTopLeft, topLeft, bottomLeft, stlFile);
+			}
 
 			stlFile = addVertexToFile(bottomLeft, bottomRight, topRight, stlFile);
 			stlFile = addVertexToFile(topRight, topLeft, bottomLeft, stlFile);

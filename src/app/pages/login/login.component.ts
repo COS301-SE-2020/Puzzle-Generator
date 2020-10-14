@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       }
 
       this.api.loginUser(this.verifyUser).subscribe(
-        data => { console.log(data);
+        data => {
           localStorage.removeItem('name');
           localStorage.setItem('name', data['name']);
           localStorage.removeItem('token');

@@ -36,16 +36,17 @@
            </mat-form-field> -->
            <mat-form-field class="names" appearance="outline">
              <mat-label>Number of Group 1 pieces:</mat-label>
-             <input class="input" type="number" matInput placeholder="1" name="numberOfPieces" id="numberOfPiecesInputBox1" OnlyNumber="true">
+             <input class="input" type="number" min="1" matInput placeholder="1" name="numberOfPieces" id="numberOfPiecesInputBox1" OnlyNumber="true">
            </mat-form-field>
            <mat-form-field class="names" appearance="outline">
              <mat-label>Number of Group 2 pieces:</mat-label>
-             <input class="input" type="number" matInput placeholder="1" name="numberOfPieces" id="numberOfPiecesInputBox2" OnlyNumber="true">
+             <input class="input" type="number" min="1" matInput placeholder="1" name="numberOfPieces" id="numberOfPiecesInputBox2" OnlyNumber="true">
            </mat-form-field>
            <mat-form-field class="names" appearance="outline">
              <mat-label>Number of Group 3 pieces:</mat-label>
-             <input class="input" type="number" matInput placeholder="1" name="numberOfPieces" id="numberOfPiecesInputBox3" OnlyNumber="true">
+             <input class="input" type="number" min="1" matInput placeholder="1" name="numberOfPieces" id="numberOfPiecesInputBox3" OnlyNumber="true">
            </mat-form-field>
+
            <br><label>Select Puzzle Type</label><br>
            <mat-radio-group class="radio-group">
              <mat-radio-button class="radio-button" value="euclidean" name="distanceMetric" id="euclideanButtonAI" > Euclidean </mat-radio-button>

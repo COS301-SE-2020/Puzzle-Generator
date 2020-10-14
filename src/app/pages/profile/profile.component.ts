@@ -26,6 +26,8 @@ export class ProfileComponent implements OnInit {
   playerXP: number;
   object: any;
 
+  upperBound:number; lowerBound:number; currXP:number; currProgress:number; range:number; temp: number;
+
   constructor(private api: APIService, private formBuilder: FormBuilder, private router: Router, private dialog: MatDialog) { }
 
   updateName(){
@@ -49,11 +51,39 @@ export class ProfileComponent implements OnInit {
   }
 
   checkLevel(currPlayerXP: any){
-    if(currPlayerXP <= 200 ){ this.playerLevel = 1}
-    else if(currPlayerXP >= 201 && currPlayerXP <= 350 ){ this.playerLevel = 2}
-    else if(currPlayerXP >= 351 && currPlayerXP <= 500 ){ this.playerLevel = 3}
-    else if(currPlayerXP >= 501 && currPlayerXP <= 750){ this.playerLevel = 4}
-    else if(currPlayerXP >= 751 ){ this.playerLevel = 5}
+    if(currPlayerXP <= 200 ){ this.playerLevel = 1;
+      this.upperBound = 200; this.lowerBound = 0; this.currXP = currPlayerXP; 
+      this.range = this.upperBound - this.lowerBound;
+      this.temp = (this.currXP - this.lowerBound);
+      this.currProgress = Math.round((this.temp / this.range ) * 100);
+    }
+    else if(currPlayerXP >= 201 && currPlayerXP <= 350 ){ 
+      this.playerLevel = 2;
+      this.upperBound = 350; this.lowerBound = 201; this.currXP = currPlayerXP; 
+      this.range = this.upperBound - this.lowerBound;
+      this.temp = (this.currXP - this.lowerBound);
+      this.currProgress = Math.round((this.temp / this.range ) * 100);
+    }
+    else if(currPlayerXP >= 351 && currPlayerXP <= 500 ){ 
+      this.playerLevel = 3;
+      this.upperBound = 500; this.lowerBound = 351; this.currXP = currPlayerXP; 
+      this.range = this.upperBound - this.lowerBound;
+      this.temp = (this.currXP - this.lowerBound);
+      this.currProgress = Math.round((this.temp / this.range ) * 100);
+    }
+    else if(currPlayerXP >= 501 && currPlayerXP <= 750){ 
+      this.playerLevel = 4;
+      this.upperBound = 750; this.lowerBound = 501; this.currXP = currPlayerXP; 
+      this.range = this.upperBound - this.lowerBound;
+      this.temp = (this.currXP - this.lowerBound);
+      this.currProgress = Math.round((this.temp / this.range ) * 100);}
+    else if(currPlayerXP >= 751 ){ 
+      this.playerLevel = 5;
+      this.upperBound = 1000; this.lowerBound = 751; this.currXP = currPlayerXP; 
+      this.range = this.upperBound - this.lowerBound;
+      this.temp = (this.currXP - this.lowerBound);
+      this.currProgress = Math.round((this.temp / this.range ) * 100);
+    }
     //updateXP
     this.object = {
       "token": localStorage.getItem('token'),

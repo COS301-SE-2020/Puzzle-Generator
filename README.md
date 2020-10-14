@@ -6,7 +6,7 @@
 ## Website Link
 *https://prometheuspuzzles.herokuapp.com/
 
-## Health impact of our system 
+## Social/Health impacts of our system 
 * Link to our powerpoint presentation: 
 https://docs.google.com/presentation/d/1U3ou2js9yRAIh-gHwR2n4hg8TnI6-naORtPv4XPqbrU/edit?usp=sharing
 

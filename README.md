@@ -6,6 +6,10 @@
 ## Website Link
 *https://prometheuspuzzles.herokuapp.com/
 
+## Walkthrough video
+Link to the walkthough video for our website:
+https://youtu.be/2iNuuBswVUI 
+
 ## Educational, Health and Business values of our system 
 * Link to our powerpoint presentation: 
 https://docs.google.com/presentation/d/1U3ou2js9yRAIh-gHwR2n4hg8TnI6-naORtPv4XPqbrU/edit?usp=sharing

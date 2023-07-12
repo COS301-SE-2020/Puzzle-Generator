@@ -49,7 +49,7 @@
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^6.2.4"
+    "sequelize": "^6.29.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.1000.1",
